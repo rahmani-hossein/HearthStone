@@ -1,0 +1,18 @@
+{
+  "name": "bloodRazor",
+  "manaCost":4,
+  "damage": 2,
+  "durability":2,
+  "description": "BATTLECRY,DEATHRATTLE deal 1 damage to all minions",
+  "type":"weapen" ,
+  "heroClass": "neutral",
+  "rarity": "epic",
+  "battleCry": true,
+  "summon": false,
+  "deathRattle": true,
+  "isDescription": true,
+  "turny": false,
+  "cost": 8,
+  "poisonous": false,
+  "discover": false
+}

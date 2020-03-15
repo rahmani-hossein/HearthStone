@@ -1,0 +1,16 @@
+{
+  "name": "malygosFireball",
+  "manaCost":4,
+  "description": "deal 8 damage",
+  "type":"spell" ,
+  "heroClass": "neutral",
+  "rarity": "epic",
+  "battleCry": false,
+  "summon": false,
+  "deathRattle": false,
+  "isDescription": true,
+  "turny": false,
+  "cost": 7,
+  "poisonous": false,
+  "discover": false
+}

@@ -1,0 +1,18 @@
+{
+  "name": "cursedBlade",
+  "manaCost":1,
+  "damage": 2,
+  "durability":3,
+  "description": "double all damage dealt to your hero",
+  "type":"weapen" ,
+  "heroClass": "neutral",
+  "rarity": "common",
+  "battleCry": false,
+  "summon": false,
+  "deathRattle": false,
+  "isDescription": true,
+  "turny": false,
+  "cost": 5,
+  "poisonous": false,
+  "discover": false
+}

@@ -1,0 +1,16 @@
+{
+  "name": "polymorph",
+  "manaCost":4,
+  "description": "transform a minion into a sheep+1/+1",
+  "type":"spell" ,
+  "heroClass": "mage",
+  "rarity": "rare",
+  "battleCry": false,
+  "summon": false,
+  "deathRattle": false,
+  "isDescription": true,
+  "turny": false,
+  "cost": 6,
+  "poisonous": false,
+  "discover": false
+}

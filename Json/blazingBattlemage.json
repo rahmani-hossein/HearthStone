@@ -1,0 +1,18 @@
+{
+  "name": "blazingBattlemage",
+  "manaCost":1,
+  "damage": 2,
+ "health":2,
+  "description": "",
+  "type":"minion" ,
+  "heroClass": "neutral",
+  "rarity": "common",
+  "battleCry": false,
+  "summon": false,
+  "deathRattle": false,
+  "isDescription": false,
+  "turny": false,
+  "cost": 4,
+  "poisonous": false,
+  "discover": false
+}

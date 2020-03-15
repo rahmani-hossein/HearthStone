@@ -1,0 +1,16 @@
+{
+  "name": "malygosFlamestrike",
+  "manaCost":7,
+  "description": "deal 8 damage to all enemy minions",
+  "type":"spell" ,
+  "heroClass": "neutral",
+  "rarity": "legendary",
+  "battleCry": false,
+  "summon": false,
+  "deathRattle": false,
+  "isDescription": true,
+  "turny": false,
+  "cost": 10,
+  "poisonous": false,
+  "discover": false
+}

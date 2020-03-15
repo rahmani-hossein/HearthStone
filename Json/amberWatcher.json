@@ -1,0 +1,18 @@
+{
+  "name": "amberWatcher",
+  "manaCost":5,
+  "damage": 4,
+  "health":6,
+  "description": " BATTLECRY restore 8 health",
+  "type":"minion" ,
+  "heroClass": "neutral",
+  "rarity": "legendary",
+  "battleCry": true,
+  "summon": false,
+  "deathRattle": false,
+  "isDescription": true,
+  "turny": false,
+  "cost": 9,
+  "poisonous": false,
+  "discover": false
+}

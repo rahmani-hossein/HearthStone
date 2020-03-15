@@ -1,0 +1,16 @@
+{
+  "name": "decimation",
+  "manaCost":0,
+  "description": "deal 5 damage to the enemy hero and restore 5 health to your hero",
+  "type":"spell" ,
+  "heroClass": "neutral",
+  "rarity": "legendary",
+  "battleCry": false,
+  "summon": false,
+  "deathRattle": false,
+  "isDescription": true,
+  "turny": false,
+  "cost": 10,
+  "poisonous": false,
+  "discover": false
+}
