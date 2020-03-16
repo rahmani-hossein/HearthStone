@@ -3,6 +3,7 @@ package CLI;
 import charactor.Hero;
 import charactor.Minion;
 import charactor.card;
+import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.*;
@@ -16,6 +17,7 @@ public class Main {
    static Administer administer;
    static Player currentPlayer;
     public static void begin() throws IOException {
+        ObjectMapper objectMapper=new ObjectMapper();
         Date date=new Date();
         SimpleDateFormat ft = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
         Scanner scanner=new Scanner(System.in);
@@ -27,58 +29,69 @@ public class Main {
             String user=scanner.next();
             System.out.println("enter a new password");
             String pass=scanner.next();
+
+            // create txt file for user
+            String st1=String.format("%s.txt",user);
+            File file=new File(st1);
+            FileWriter fileWriter=new FileWriter(st1,true);
+            fileWriter.flush();
+           fileWriter.write("username: "+user+"\n");
+           fileWriter.write("Created_at: "+ft.format(date)+"\n");
+            fileWriter.write("password: "+pass+"\n");
+           fileWriter.flush();
+            fileWriter.close();
+           //json file for users
+            String st=String.format("userJson\\%s.json",user+pass);
+            FileWriter fileWriter1=new FileWriter(st);
             // inicialize player
             ArrayList<card> availableCards=new ArrayList<>();
             ArrayList<Hero>availableHeros=new ArrayList<>();
             availableCards.add(administer.create("blazingBattlemage"));
-            availableCards.add(administer.create("fireHawk"));
+            availableCards.add(administer.create("fireBlast"));
             Player player=new Player(user,pass,50,null,availableCards,availableHeros);
 
-            // create txt file for user
-            String st=String.format("%s.txt",user);
-            FileWriter fileWriter=new FileWriter(st,true);
-            fileWriter.flush();
-            PrintWriter printWriter=new PrintWriter(fileWriter);
-            printWriter.write("username: "+user+"\n");
-            printWriter.write("Created_at"+ft.format(date)+"\n");
-            printWriter.write("password: "+pass);
-            printWriter.flush();
-           //json file for users
-            String stjson=String.format("userJson\\%s.json",user+pass);
-            FileWriter fileWriterj=new FileWriter(stjson,true);
-            fileWriterj.flush();
-            ObjectMapper objectMapper=new ObjectMapper();
-            objectMapper.writeValue(fileWriterj,player);
+            objectMapper.writeValue(fileWriter1,player);
+            fileWriter1.close();
+            fileWriter.close();
 
-
-            callMenu();
-        }else{
+            callMenu(player);
+        }else if ("yes".equalsIgnoreCase(ans)){
             System.out.println("enter your user name");
             String user=scanner.next();
             System.out.println("enter your password");
             String pass=scanner.next();
             String st=String.format("userJson\\%s.json",user+pass);
             File file= new File(st);
+
             if (file.exists()){
                 String account=String.format("%s.txt",user);
-                PrintWriter printWriter=new PrintWriter(account);
-                printWriter.write("signed in at:"+ft.format(date));
-                printWriter.flush();
-                ObjectMapper objectMapper=new ObjectMapper();
+                FileWriter fileWriter=new FileWriter(account,true);
+                fileWriter.write("signed in at:"+ft.format(date)+"\n");
+                fileWriter.flush();
+                objectMapper.configure(JsonParser.Feature.AUTO_CLOSE_SOURCE, true);
                 Player player=objectMapper.readValue(file,Player.class);
-                currentPlayer=player;
-                callMenu();
+                FileWriter fileWriter1=new FileWriter(st);
+                fileWriter1.flush();
+
+               player=currentPlayer;
+                fileWriter.close();
+                fileWriter1.flush();
+                fileWriter1.close();
+                callMenu(player);
             }else {
                 System.out.println("you dont have account please try again and  build an account ");
                 begin();
 
             }
+        }else{
+            System.out.println("please type suitable answer");
+            begin();
         }
     }
     public static void  callCollection(){
 
     }
-    public static void callMenu() throws IOException {
+    public static void callMenu(Player player) throws IOException {
         Date date=new Date();
         SimpleDateFormat ft = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
         Scanner commond=new Scanner(System.in);
@@ -101,19 +114,22 @@ public class Main {
             case "exit":
                 System.out.println("wait for update");
                 ObjectMapper objectMapper=new ObjectMapper();
-                String account=String.format("userJson\\%s.json",currentPlayer.getUsername()+currentPlayer.getPassword());
-                File file=new File(account);
+                String account=String.format("userJson\\%s.json",player.username+player.password);
+                FileWriter fileWriter1=new FileWriter(account);
                 Player temp=currentPlayer;
-                objectMapper.writeValue(file,temp);
-                PrintWriter printWriter=new PrintWriter(file);
-                printWriter.write("signed up at:"+ft.format(date));
-                printWriter.flush();
-                currentPlayer=null;
+                objectMapper.writeValue(fileWriter1,temp);
+                fileWriter1.close();
+                String account2=String.format("%s.txt",player.username);
+                FileWriter file2=new FileWriter(account2,true);
+
+                file2.write("signed up at:"+ft.format(date));
+                file2.flush();
+                file2.close();
                 System.out.println("see you soon");
                 System.exit(0);
             default:
                 System.out.println("your commond was not recognized");
-                callMenu();
+                callMenu(player);
         }
     }
     public static void callStore() throws FileNotFoundException {
@@ -141,8 +157,8 @@ public class Main {
     }
     public static void main(String[] args) throws IOException {
         administer=new Administer();
-//       String sc="fireBlast";
-//        System.out.println( administer.create(sc).toString());
+       String sc="blazingBattlemage";
+        System.out.println( administer.create(sc).toString());
         begin();
 
 

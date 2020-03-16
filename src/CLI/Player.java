@@ -2,17 +2,26 @@ package CLI;
 
 import charactor.Hero;
 import charactor.card;
+import org.codehaus.jackson.annotate.JsonTypeInfo;
 
 import java.util.ArrayList;
 
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class")
 public class Player {
     String username;
     String password;
     int diamond=60;
     Hero currentHero;
-    private final static int vipCards=2;
     ArrayList<card>availableCards=new ArrayList<>();
     ArrayList<Hero>availableHeroes=new ArrayList<>();
+    public Player(String username, String password, int diamond, Hero currentHero, ArrayList<card> availableCards, ArrayList<Hero> availableHeroes) {
+        this.username = username;
+        this.password = password;
+        this.diamond = diamond;
+        this.currentHero = currentHero;
+        this.availableCards = availableCards;
+        this.availableHeroes = availableHeroes;
+    }
     public Player(){
 
     }
@@ -65,12 +74,5 @@ public class Player {
         this.availableHeroes = availableHeroes;
     }
 
-    public Player(String username, String password, int diamond, Hero currentHero, ArrayList<card> availableCards, ArrayList<Hero> availableHeroes) {
-        this.username = username;
-        this.password = password;
-        this.diamond = diamond;
-        this.currentHero = currentHero;
-        this.availableCards = availableCards;
-        this.availableHeroes = availableHeroes;
-    }
+
 }

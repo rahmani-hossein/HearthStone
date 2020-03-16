@@ -6,6 +6,7 @@ import charactor.spell;
 import charactor.weapen;
 import org.codehaus.jackson.map.ObjectMapper;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class Administer {
 
 
 
-   String[] minions= new String[]{"blazingBattlemage", "hotAirballoon", "fireHawk", "evasiveChimaera", "amberWatcher", "dreadScale","veranus"};
+   String[] minions= new String[]{"blazingBattlemage", "hotAirballoon", "cc ", "evasiveChimaera", "amberWatcher", "dreadScale","veranus"};
     String[] spells= new String[]{"decimation","malygosFireball","malygosFlamestrike","friendlySmith","fireBlast"};
     String[]weapens= new String[]{"bloodRazor","fieryWaraxe","bloodClaw","assassinBlade","arcaniteReaper","cursedBlade"};
    public boolean contains(String[] st,String name){
@@ -35,11 +36,17 @@ public class Administer {
         FileReader fileReader=new FileReader(st);
         ObjectMapper objectMapper=new ObjectMapper();
         if (contains(minions,name)) {
-            return objectMapper.readValue(fileReader, Minion.class);
+            Minion minion=new Minion();
+            minion= objectMapper.readValue(fileReader, Minion.class);
+            return minion;
         }else if (contains(spells,name)){
-            return objectMapper.readValue(fileReader, spell.class);
+            spell spell=new spell();
+           spell= objectMapper.readValue(fileReader, spell.class);
+           return spell;
         }else if (contains(weapens,name)){
-            return objectMapper.readValue(fileReader, weapen.class);
+            weapen weapen=new weapen();
+            weapen= objectMapper.readValue(fileReader, weapen.class);
+            return weapen;
         }
         return null;
     }
