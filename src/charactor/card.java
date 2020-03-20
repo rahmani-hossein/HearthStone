@@ -1,5 +1,6 @@
 package charactor;
 
+import org.codehaus.jackson.annotate.JsonTypeInfo;
 public  class card {
     int manaCost;
     String name;
@@ -15,7 +16,6 @@ public  class card {
     int cost;
     boolean poisonous;
     boolean discover;
-
 
 
     public card(int manaCost, String name, String description, String type, String heroClass, String rarity, boolean battleCry, boolean summon, boolean deathRattle, boolean isDescription, boolean turny, int cost, boolean poisonous, boolean discover) {

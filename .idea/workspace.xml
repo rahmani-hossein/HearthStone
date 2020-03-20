@@ -2,16 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cb7ea98-0a12-4c97-9e27-432e4492f674" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Json/mage.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Json/rouge.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Json/warlock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CLI/utilities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/negin.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Json/fierrywaraxe.json" beforeDir="false" afterPath="$PROJECT_DIR$/Json/fierrywaraxe.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maryam.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/apgame/CLI/Administer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/CLI/Administer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/apgame/CLI/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/CLI/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/CLI/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/CLI/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/charactor/Hero.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/charactor/Hero.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/charactor/weapen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/charactor/weapen.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CLI/Administer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CLI/Administer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CLI/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CLI/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CLI/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CLI/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/charactor/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/charactor/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userJson/neginrahmani.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/charactor/card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/charactor/card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/charactor/weapen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/charactor/weapen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userJson/maryamebrahimi.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,14 +145,18 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="404" y="179" key="#Inspections" timestamp="1584434382081">
+      <screen x="0" y="0" width="1620" height="1040" />
+    </state>
+    <state x="404" y="179" key="#Inspections/0.0.1620.1040@0.0.1620.1040" timestamp="1584434382081" />
     <state x="580" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584271527297">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
     <state x="580" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1620.1040@0.0.1620.1040" timestamp="1584271527297" />
-    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1584288835069">
+    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1584720062754">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1620.1040@0.0.1620.1040" timestamp="1584288835069" />
+    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1620.1040@0.0.1620.1040" timestamp="1584720062754" />
     <state x="542" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584199054351">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
@@ -152,22 +165,22 @@
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
     <state x="514" y="262" key="FileChooserDialogImpl/0.0.1620.1040@0.0.1620.1040" timestamp="1584188863622" />
-    <state width="1564" height="279" key="GridCell.Tab.0.bottom" timestamp="1584378183240">
+    <state width="1578" height="279" key="GridCell.Tab.0.bottom" timestamp="1584732245259">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1564" height="279" key="GridCell.Tab.0.bottom/0.0.1620.1040@0.0.1620.1040" timestamp="1584378183240" />
-    <state width="1564" height="279" key="GridCell.Tab.0.center" timestamp="1584378183240">
+    <state width="1578" height="279" key="GridCell.Tab.0.bottom/0.0.1620.1040@0.0.1620.1040" timestamp="1584732245259" />
+    <state width="1578" height="279" key="GridCell.Tab.0.center" timestamp="1584732245258">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1564" height="279" key="GridCell.Tab.0.center/0.0.1620.1040@0.0.1620.1040" timestamp="1584378183240" />
-    <state width="1564" height="279" key="GridCell.Tab.0.left" timestamp="1584378183240">
+    <state width="1578" height="279" key="GridCell.Tab.0.center/0.0.1620.1040@0.0.1620.1040" timestamp="1584732245258" />
+    <state width="1578" height="279" key="GridCell.Tab.0.left" timestamp="1584732245257">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1564" height="279" key="GridCell.Tab.0.left/0.0.1620.1040@0.0.1620.1040" timestamp="1584378183240" />
-    <state width="1564" height="279" key="GridCell.Tab.0.right" timestamp="1584378183240">
+    <state width="1578" height="279" key="GridCell.Tab.0.left/0.0.1620.1040@0.0.1620.1040" timestamp="1584732245257" />
+    <state width="1578" height="279" key="GridCell.Tab.0.right" timestamp="1584732245258">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1564" height="279" key="GridCell.Tab.0.right/0.0.1620.1040@0.0.1620.1040" timestamp="1584378183240" />
+    <state width="1578" height="279" key="GridCell.Tab.0.right/0.0.1620.1040@0.0.1620.1040" timestamp="1584732245258" />
     <state x="292" y="95" key="SettingsEditor" timestamp="1584188869862">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>

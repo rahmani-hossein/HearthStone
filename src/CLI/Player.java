@@ -1,25 +1,27 @@
 package CLI;
 
-import charactor.Hero;
-import charactor.card;
+import charactor.*;
 import org.codehaus.jackson.annotate.JsonTypeInfo;
 
 import java.util.ArrayList;
 
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class")
 public class Player {
     String username;
     String password;
-    int diamond=60;
+   public int diamond=80;
     Hero currentHero;
-    ArrayList<card>availableCards=new ArrayList<>();
-    ArrayList<Hero>availableHeroes=new ArrayList<>();
-    public Player(String username, String password, int diamond, Hero currentHero, ArrayList<card> availableCards, ArrayList<Hero> availableHeroes) {
+   public ArrayList<Minion>availableCardsM=new ArrayList<>();
+    public ArrayList<weapen>availableCardsW=new ArrayList<>();
+   public ArrayList<spell>availableCardsS=new ArrayList<>();
+    public ArrayList<Hero>availableHeroes=new ArrayList<>();
+    public Player(String username, String password, int diamond, Hero currentHero, ArrayList<spell> availableCardsS, ArrayList<Minion>availableCardsM, ArrayList<weapen>availableCardsW, ArrayList<Hero> availableHeroes) {
         this.username = username;
         this.password = password;
-        this.diamond = diamond;
+        this.diamond = 80;
         this.currentHero = currentHero;
-        this.availableCards = availableCards;
+        this.availableCardsW = availableCardsW;
+        this.availableCardsM = availableCardsM;
+        this.availableCardsS = availableCardsS;
         this.availableHeroes = availableHeroes;
     }
     public Player(){
@@ -58,12 +60,28 @@ public class Player {
         this.currentHero = currentHero;
     }
 
-    public ArrayList<card> getAvailableCards() {
-        return availableCards;
+    public ArrayList<Minion> getAvailableCardsM() {
+        return availableCardsM;
     }
 
-    public void setAvailableCards(ArrayList<card> availableCards) {
-        this.availableCards = availableCards;
+    public void setAvailableCardsM(ArrayList<Minion> availableCardsM) {
+        this.availableCardsM = availableCardsM;
+    }
+
+    public ArrayList<weapen> getAvailableCardsW() {
+        return availableCardsW;
+    }
+
+    public void setAvailableCardsW(ArrayList<weapen> availableCardsW) {
+        this.availableCardsW = availableCardsW;
+    }
+
+    public ArrayList<spell> getAvailableCardsS() {
+        return availableCardsS;
+    }
+
+    public void setAvailableCardsS(ArrayList<spell> availableCardsS) {
+        this.availableCardsS = availableCardsS;
     }
 
     public ArrayList<Hero> getAvailableHeroes() {

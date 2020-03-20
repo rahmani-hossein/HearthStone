@@ -1,0 +1,6 @@
+{
+  "name": "rouge",
+  "HP": 30,
+  "showSpecialPower": "2 mana less than usual for cards that are not neutral or vip of herself",
+  "showHeroPower": "spend 3 mana and can get 1 card from enemy deck and add this to her hand. "
+}

@@ -3,6 +3,23 @@ package charactor;
 public class weapen  extends card{
     int durability;
     int damage;
+
+    public int getDurability() {
+        return durability;
+    }
+
+    public void setDurability(int durability) {
+        this.durability = durability;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
     public weapen(){
         super();
 
