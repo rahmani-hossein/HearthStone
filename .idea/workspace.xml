@@ -2,25 +2,70 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cb7ea98-0a12-4c97-9e27-432e4492f674" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Json/mage.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Json/rouge.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Json/warlock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CLI/utilities.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/BackGround2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/LargeBackground.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/arcanitereaper.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/ashbringer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/blessingoftheancients.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/bloodfury.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/bookofspecters.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/cobaltspellkin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/curiocollector.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/darkskies.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/deadlyshot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/deathwing.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/depthcharge.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/divinehymn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/dreadscale.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/evasivewyrm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/fierywaraxe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/flamestrike.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/friendlysmith.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/gearblade.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/highpriestamet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/holylight.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/koboldstickyfinger.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/learndraconic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/lightforgedblessing.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/pharaohblessing.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/polymorph.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/sandbreath.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/sathrovarr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/securityrover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/silversword.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/sprint.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/strengthinnumbers.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/swampkingdred.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/swarmoflocusts.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/tastyflyfish.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/tombwarden.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/truesilverchampion.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/cards/umbralskulker.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/friendlysmith.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/game/main.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/game/rogue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/game/warlock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/hero/hunter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/hero/mage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/hero/priest.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/hero/rogue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/hero/warlock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/mage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/rogue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/pics/warlock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/swing/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/swing/FirstHeroSelector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/swing/Login.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/swing/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/swing/MyFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/swing/dasd.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Json/fierrywaraxe.json" beforeDir="false" afterPath="$PROJECT_DIR$/Json/fierrywaraxe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maryam.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/CLI/Administer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/CLI/Administer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/apgame/CLI/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/CLI/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/CLI/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/CLI/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/charactor/Hero.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/charactor/Hero.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/charactor/weapen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/charactor/weapen.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CLI/Administer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CLI/Administer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CLI/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CLI/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CLI/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CLI/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/charactor/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/charactor/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/charactor/card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/charactor/card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/charactor/weapen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/charactor/weapen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userJson/maryamebrahimi.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,17 +92,22 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/jackson-all-1.9.0.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/pics" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\hossein rahmani\IdeaProjects\apgame\resources\pics" />
+      <recent name="C:\Users\hossein rahmani\IdeaProjects\apgame\src\swing" />
+      <recent name="C:\Users\hossein rahmani\IdeaProjects\apgame" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\hossein rahmani\IdeaProjects\apgame\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.MyFrame">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="CLI.Main" />
       <module name="apgame" />
@@ -71,12 +121,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Person" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="charactors.Person" />
+    <configuration name="MyFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="swing.MyFrame" />
       <module name="apgame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="charactors.*" />
+          <option name="PATTERN" value="swing.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -97,12 +147,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="player" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="CLI.player" />
+    <configuration name="dasd" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="swing.dasd" />
       <module name="apgame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="CLI.*" />
+          <option name="PATTERN" value="swing.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="swing.test" />
+      <module name="apgame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="swing.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -112,10 +175,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MyFrame" />
+        <item itemvalue="Application.test" />
+        <item itemvalue="Application.dasd" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Player" />
-        <item itemvalue="Application.player" />
-        <item itemvalue="Application.Person" />
       </list>
     </recent_temporary>
   </component>
@@ -153,38 +217,50 @@
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
     <state x="580" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1620.1040@0.0.1620.1040" timestamp="1584271527297" />
-    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1584720062754">
+    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1586678820234">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1620.1040@0.0.1620.1040" timestamp="1584720062754" />
+    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1620.1040@0.0.1620.1040" timestamp="1586678820234" />
+    <state x="605" y="405" width="408" height="238" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1586422389849">
+      <screen x="0" y="0" width="1620" height="1040" />
+    </state>
+    <state x="605" y="405" width="408" height="238" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1620.1040@0.0.1620.1040" timestamp="1586422389849" />
     <state x="542" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584199054351">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
     <state x="542" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1620.1040@0.0.1620.1040" timestamp="1584199054351" />
-    <state x="514" y="262" key="FileChooserDialogImpl" timestamp="1584188863622">
+    <state x="514" y="262" key="FileChooserDialogImpl" timestamp="1586281288357">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state x="514" y="262" key="FileChooserDialogImpl/0.0.1620.1040@0.0.1620.1040" timestamp="1584188863622" />
-    <state width="1578" height="279" key="GridCell.Tab.0.bottom" timestamp="1584732245259">
+    <state x="514" y="262" key="FileChooserDialogImpl/0.0.1620.1040@0.0.1620.1040" timestamp="1586281288357" />
+    <state width="1578" height="279" key="GridCell.Tab.0.bottom" timestamp="1587033800646">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1578" height="279" key="GridCell.Tab.0.bottom/0.0.1620.1040@0.0.1620.1040" timestamp="1584732245259" />
-    <state width="1578" height="279" key="GridCell.Tab.0.center" timestamp="1584732245258">
+    <state width="1578" height="279" key="GridCell.Tab.0.bottom/0.0.1620.1040@0.0.1620.1040" timestamp="1587033800646" />
+    <state width="1578" height="279" key="GridCell.Tab.0.center" timestamp="1587033800645">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1578" height="279" key="GridCell.Tab.0.center/0.0.1620.1040@0.0.1620.1040" timestamp="1584732245258" />
-    <state width="1578" height="279" key="GridCell.Tab.0.left" timestamp="1584732245257">
+    <state width="1578" height="279" key="GridCell.Tab.0.center/0.0.1620.1040@0.0.1620.1040" timestamp="1587033800645" />
+    <state width="1578" height="279" key="GridCell.Tab.0.left" timestamp="1587033800644">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1578" height="279" key="GridCell.Tab.0.left/0.0.1620.1040@0.0.1620.1040" timestamp="1584732245257" />
-    <state width="1578" height="279" key="GridCell.Tab.0.right" timestamp="1584732245258">
+    <state width="1578" height="279" key="GridCell.Tab.0.left/0.0.1620.1040@0.0.1620.1040" timestamp="1587033800644" />
+    <state width="1578" height="279" key="GridCell.Tab.0.right" timestamp="1587033800646">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1578" height="279" key="GridCell.Tab.0.right/0.0.1620.1040@0.0.1620.1040" timestamp="1584732245258" />
+    <state width="1578" height="279" key="GridCell.Tab.0.right/0.0.1620.1040@0.0.1620.1040" timestamp="1587033800646" />
+    <state x="479" y="219" key="NewModule_or_Project.wizard" timestamp="1586281354449">
+      <screen x="0" y="0" width="1620" height="1040" />
+    </state>
+    <state x="479" y="219" key="NewModule_or_Project.wizard/0.0.1620.1040@0.0.1620.1040" timestamp="1586281354449" />
     <state x="292" y="95" key="SettingsEditor" timestamp="1584188869862">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
     <state x="292" y="95" key="SettingsEditor/0.0.1620.1040@0.0.1620.1040" timestamp="1584188869862" />
+    <state x="235" y="140" key="new project wizard" timestamp="1584820340222">
+      <screen x="0" y="0" width="1620" height="1040" />
+    </state>
+    <state x="235" y="140" key="new project wizard/0.0.1620.1040@0.0.1620.1040" timestamp="1584820340222" />
     <state x="554" y="149" key="refactoring.ChangeSignatureDialog" timestamp="1584257036799">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
@@ -193,9 +269,9 @@
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
     <state x="468" y="243" key="run.anything.popup/0.0.1620.1040@0.0.1620.1040" timestamp="1584198983285" />
-    <state x="473" y="229" width="672" height="678" key="search.everywhere.popup" timestamp="1584347709154">
+    <state x="476" y="232" width="672" height="678" key="search.everywhere.popup" timestamp="1587034399656">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state x="473" y="229" width="672" height="678" key="search.everywhere.popup/0.0.1620.1040@0.0.1620.1040" timestamp="1584347709154" />
+    <state x="476" y="232" width="672" height="678" key="search.everywhere.popup/0.0.1620.1040@0.0.1620.1040" timestamp="1587034399656" />
   </component>
 </project>

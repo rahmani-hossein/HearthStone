@@ -1,0 +1,25 @@
+username: hossein
+Created_at: Tue 2020.03.31 at 02:37:21 PM IRDT
+password: rahmani
+you use ls-b command  Tue 2020.03.31 at 02:37:46 PM IRDT
+blazingBattlemage,
+hotAirballoon,
+FireHawk ,
+evasiveChimaera,
+amberWatcher,
+dreadScale,
+veranus,
+decimation,
+malygosFireball,
+malygosFlamestrike,
+friendlySmith,
+fireBlast,
+bloodRazor,
+fieryWaraxe,
+bloodClaw,
+assassinBlade,
+arcaniteReaper,
+cursedBlade,
+you buy amberWatcher
+commond:ls-m-hero    Tue 2020.03.31 at 02:39:41 PM IRDT
+your hero is mage
