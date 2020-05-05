@@ -2,6 +2,6 @@
   "name": "mage",
   "HP": 30,
   "showSpecialPower": "2 mana less than usual for spells",
-  "showHeroPower": "spend 2 mana and can ddeal 1 damage from a chosen enemy "
+  "showHeroPower": "spend 2 mana and can deal 1 damage from a chosen enemy "
 
 }

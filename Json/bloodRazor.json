@@ -10,9 +10,10 @@
   "battleCry": true,
   "summon": false,
   "deathRattle": true,
-  "isDescription": true,
   "turny": false,
   "cost": 8,
   "poisonous": false,
-  "discover": false
+  "discover": false,
+  "rush": false,
+  "taunt": false
 }

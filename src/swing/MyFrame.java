@@ -1,45 +1,62 @@
 package swing;
 
+import logic.Constans;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class MyFrame extends JFrame {
-    public static final String MAIN_PANEL = "main";
+
     public static final String LOGIN_PANEL = "login";
+    public static final String MENU_PANEL = "menu";
+
+    private CardLayout cardLayout;
+    private Controller controller;
     private Login login;
-    private JPanel store;
-    private JPanel collection;
-    private JPanel mainpanel;
+    private Menu menu;
+
+    public JPanel getMainpanel() {
+        return mainpanel;
+    }
+
+    public void setMainpanel(JPanel mainpanel) {
+        this.mainpanel = mainpanel;
+    }
+
+    private JPanel mainpanel;//package level for using cardLayout
 
 
-    private void setCardLayout() {
+    private void createPanel() {
         try {
-            mainpanel = new JPanel(new CardLayout());
+            Controller.getInstance().setMyFrame(this);
+            cardLayout = new CardLayout();
+            mainpanel = new JPanel(cardLayout);
             setContentPane(mainpanel);
-            store = new JPanel();
+            login = new Login(this);
             mainpanel.add(login, LOGIN_PANEL);
-            mainpanel.add(store, MAIN_PANEL);
+            menu=new Menu();
+            mainpanel.add(menu, MENU_PANEL);
+//            mainpanel.add(collection,COLLECTION_PANEL);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    public void setPanel(String panelName) {
+        cardLayout.show(mainpanel, panelName);
+    }
+
 
     public MyFrame() {
         super("HearthStone");
-        setSize(1000,562);
+        Constans.fill();
+        setSize(1778, 1000);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setResizable(false);
-        login = new Login();
-        setCardLayout();
+        createPanel();
         setVisible(true);
-    }
-//    CardLayout cl = (CardLayout) (mainpanel.getLayout());
-//                cl.show(, MAIN_PANEL);
 
-    public static void main(String[] args) {
-        MyFrame myFrame = new MyFrame();
-    }
 
+    }
 }

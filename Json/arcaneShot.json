@@ -1,0 +1,17 @@
+{
+  "name": "arcaneShot",
+  "manaCost":1,
+  "description": "deal 2 damage",
+  "type":"spell" ,
+  "heroClass": "hunter",
+  "rarity": "common",
+  "battleCry": true,
+  "summon": false,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 5,
+  "poisonous": false,
+  "discover": false,
+  "rush": false,
+  "taunt": false
+}

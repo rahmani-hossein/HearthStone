@@ -1,0 +1,17 @@
+{
+  "name": "strengthInNumbres",
+  "manaCost":1,
+  "description": "SIDEQUEST:spend 10 mana on minions REWARD: summon a minion from your deck",
+  "type":"spell" ,
+  "heroClass": "neutral",
+  "rarity": "rare",
+  "battleCry": false,
+  "summon": false,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 6,
+  "poisonous": false,
+  "discover": false,
+  "rush": false,
+  "taunt": false
+}

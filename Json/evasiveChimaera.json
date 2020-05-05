@@ -1,0 +1,19 @@
+{
+  "name": "evasiveChimaera",
+  "manaCost":2,
+  "damage": 2,
+  "health":1,
+  "description": "POISONOUS cant be targeted by spells or hero powers ",
+  "type":"minion" ,
+  "heroClass": "neutral",
+  "rarity": "rare",
+  "battleCry": false,
+  "summon": false,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 6,
+  "poisonous": true,
+  "discover": false,
+  "rush": false,
+  "taunt": false
+}

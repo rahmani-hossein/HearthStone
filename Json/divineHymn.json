@@ -1,0 +1,17 @@
+{
+  "name": "divineHymn",
+  "manaCost":2,
+  "description": "restore 6 health to all friendly characters",
+  "type":"spell" ,
+  "heroClass": "neutral",
+  "rarity": "epic",
+  "battleCry": true,
+  "summon": false,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 7,
+  "poisonous": false,
+  "discover": false,
+  "rush": false,
+  "taunt": false
+}

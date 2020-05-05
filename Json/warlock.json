@@ -1,5 +1,5 @@
 {
-  "name": "Warlock",
+  "name": "warlock",
   "HP": 35,
   "showSpecialPower": "he has 35 hp",
   "showHeroPower": "cost 2hp and randomly do one of these 2 works  if we have minion in ground plus+1 attack and hp to it or get randomly one card from deck and add it to its hand"

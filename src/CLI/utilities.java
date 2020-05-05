@@ -1,19 +1,13 @@
 package CLI;
 
-import charactor.Minion;
-import charactor.card;
-import charactor.spell;
-import charactor.weapen;
-import org.codehaus.jackson.map.ObjectMapper;
-
-import java.awt.*;
-import java.io.File;
+import model.Minion;
+import model.card;
+import model.spell;
+import model.weapen;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
-import static CLI.Main.myLogger;
 
 public class utilities {
     public static String time(){
@@ -60,19 +54,27 @@ public class utilities {
         }
         return false;
     }
-    public static void exit(Player player) throws IOException {
-        System.out.println("wait for update");
-        ObjectMapper objectMapper = new ObjectMapper();
-        String account = String.format("userJson\\%s.json", player.username + player.password);
-        FileWriter fileWriter = new FileWriter(account, false);
-        objectMapper.writeValue(fileWriter, player);
-        fileWriter.close();
-        String account2 = String.format("%s.txt", player.username + player.password);
-        FileWriter file2 = new FileWriter(account2, true);
-        file2.write("signed up at:" + time());
-        file2.flush();
-        file2.close();
-        System.out.println("see you soon");
-        System.exit(0);
-}
+    public static int firstIndex(String[] names,String name){
+        for (int i = 0; i < names.length; i++) {
+            if (name.equals(names[i])){
+                return i;
+            }
+        }
+        return -1;
+    }
+//    public static void exit(Player player) throws IOException {
+////        System.out.println("wait for update");
+////        ObjectMapper objectMapper = new ObjectMapper();
+////        String account = String.format("userJson\\%s.json", player.username + player.password);
+////        FileWriter fileWriter = new FileWriter(account, false);
+////        objectMapper.writeValue(fileWriter, player);
+////        fileWriter.close();
+////        String account2 = String.format("%s.tt", player.username + player.password);
+////        FileWriter file2 = new FileWriter(account2, true);
+////        file2.write("signed up at:" + time());
+////        file2.flush();
+////        file2.close();
+////        System.out.println("see you soon");
+////        System.exit(0);
+////}
 }

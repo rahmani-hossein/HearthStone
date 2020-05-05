@@ -5,12 +5,13 @@
   "type":"spell" ,
   "heroClass": "neutral",
   "rarity": "legendary",
-  "battleCry": false,
+  "battleCry": true,
   "summon": false,
   "deathRattle": false,
-  "isDescription": true,
   "turny": false,
   "cost": 10,
   "poisonous": false,
-  "discover": false
+  "discover": false,
+  "rush": false,
+  "taunt": false
 }

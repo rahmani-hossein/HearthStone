@@ -1,0 +1,19 @@
+{
+  "name": "fierywaraxe",
+  "manaCost":3,
+  "damage": 3,
+  "durability":2,
+  "description": "no description",
+  "type":"weapen" ,
+  "heroClass": "rouge",
+  "rarity": "epic",
+  "battleCry": false,
+  "summon": false,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 8,
+  "poisonous": false,
+  "discover": false,
+  "rush": false,
+  "taunt": false
+}

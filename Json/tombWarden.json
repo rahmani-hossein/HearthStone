@@ -1,0 +1,19 @@
+{
+  "name": "tombWarden",
+  "manaCost":8,
+  "damage": 3,
+  "health":6,
+  "description": "Taunt ,Battlecry:Summon a copy of this minion ",
+  "type":"minion" ,
+  "heroClass": "neutral",
+  "rarity": "epic",
+  "battleCry": true,
+  "summon": true,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 8,
+  "poisonous": false,
+  "discover": false,
+  "rush": false,
+  "taunt": true
+}

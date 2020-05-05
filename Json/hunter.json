@@ -1,0 +1,6 @@
+{
+  "name": "hunter",
+  "HP": 30,
+  "showSpecialPower": "all minions have rush ",
+  "showHeroPower": "PASSIVE after your opponent plays a minion deal 1 damage to it"
+}

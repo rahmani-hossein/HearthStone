@@ -1,0 +1,17 @@
+{
+  "name": "sprint",
+  "manaCost":7,
+  "description": "draw 4 cards",
+  "type":"spell" ,
+  "heroClass": "neutral",
+  "rarity": "epic",
+  "battleCry": true,
+  "summon": false,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 9,
+  "poisonous": false,
+  "discover": false,
+  "rush": false,
+  "taunt": false
+}

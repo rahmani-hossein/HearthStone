@@ -1,30 +1,31 @@
 package CLI;
 
-import charactor.*;
-import org.codehaus.jackson.annotate.JsonTypeInfo;
+import model.*;
 
 import java.util.ArrayList;
 
 public class Player {
     String username;
     String password;
-   public int diamond=80;
-    Hero currentHero;
-   public ArrayList<Minion>availableCardsM=new ArrayList<>();
-    public ArrayList<weapen>availableCardsW=new ArrayList<>();
-   public ArrayList<spell>availableCardsS=new ArrayList<>();
-    public ArrayList<Hero>availableHeroes=new ArrayList<>();
-    public Player(String username, String password, int diamond, Hero currentHero, ArrayList<spell> availableCardsS, ArrayList<Minion>availableCardsM, ArrayList<weapen>availableCardsW, ArrayList<Hero> availableHeroes) {
+    public int diamond = 80;
+    Deck currentDeck;
+    private ArrayList<Minion> availableCardsM = new ArrayList<>();
+    private ArrayList<weapen> availableCardsW = new ArrayList<>();
+    private ArrayList<spell> availableCardsS = new ArrayList<>();
+    private ArrayList<Deck> availableDecks = new ArrayList<>();
+
+    public Player(String username, String password, int diamond, Deck currentDeck, ArrayList<spell> availableCardsS, ArrayList<Minion> availableCardsM, ArrayList<weapen> availableCardsW, ArrayList<Deck> availableDecks) {
         this.username = username;
         this.password = password;
         this.diamond = 80;
-        this.currentHero = currentHero;
+        this.currentDeck = currentDeck;
         this.availableCardsW = availableCardsW;
         this.availableCardsM = availableCardsM;
         this.availableCardsS = availableCardsS;
-        this.availableHeroes = availableHeroes;
+        this.availableDecks = availableDecks;
     }
-    public Player(){
+
+    public Player() {
 
     }
 
@@ -52,12 +53,12 @@ public class Player {
         this.diamond = diamond;
     }
 
-    public Hero getCurrentHero() {
-        return currentHero;
+    public Deck getCurrentDeck() {
+        return currentDeck;
     }
 
-    public void setCurrentHero(Hero currentHero) {
-        this.currentHero = currentHero;
+    public void setCurrentDeck(Deck currentDeck) {
+        this.currentDeck = currentDeck;
     }
 
     public ArrayList<Minion> getAvailableCardsM() {
@@ -84,13 +85,11 @@ public class Player {
         this.availableCardsS = availableCardsS;
     }
 
-    public ArrayList<Hero> getAvailableHeroes() {
-        return availableHeroes;
+    public ArrayList<Deck> getAvailableDecks() {
+        return availableDecks;
     }
 
-    public void setAvailableHeroes(ArrayList<Hero> availableHeroes) {
-        this.availableHeroes = availableHeroes;
+    public void setAvailableDecks(ArrayList<Deck> availableDecks) {
+        this.availableDecks = availableDecks;
     }
-
-
 }

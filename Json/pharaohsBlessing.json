@@ -1,0 +1,17 @@
+{
+  "name": "pharaohsBlessing",
+  "manaCost":6,
+  "description": "give a minion +4/+4 Divine Sheild,and Taunt",
+  "type":"spell" ,
+  "heroClass": "neutral",
+  "rarity": "epic",
+  "battleCry": true,
+  "summon": false,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 10,
+  "poisonous": false,
+  "discover": false,
+  "rush": false,
+  "taunt": false
+}
