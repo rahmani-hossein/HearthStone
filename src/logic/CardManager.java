@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 import static CLI.utilities.contains;
 
@@ -32,7 +33,7 @@ public CardManager(){
         CardManager.rarity = rarity;
     }
 
-    static String[] rarity = {"common", "rare", "epic", "legendary"};
+    public static String[] rarity = {"common", "rare", "epic", "legendary"};
 
 public String tellRarity(String name){
     String rar=null;
@@ -174,5 +175,83 @@ public String tellRarity(String name){
             k = -1;
         }
         return k;
+    }
+    private int  findIndex(String type1){
+    for (int i=0;i<rarity.length;i++){
+        if (type1.equalsIgnoreCase(rarity[i])){
+            return i;
+        }
+    }
+        System.out.println("cant find the type of card in sorting deck");
+        return -1;
+    }
+    private int findRarer(card card1,card card2){
+        int i=findIndex(card1.getRarity());
+        int j=findIndex(card2.getRarity());
+        if (i>j){
+            return 1;
+        }
+        if (i<j){
+            return -1;
+        }
+        //i==j
+        else {
+            if (card1.getManaCost()>card2.getManaCost()){
+                return 1;
+            }
+            if (card2.getManaCost()>card1.getManaCost()){
+                return -1;
+            }
+            else {
+                if (card1.getType().equalsIgnoreCase(card2.getType())) {
+                    Random random = new Random();
+                    int rand = random.nextInt(2);
+                    return rand;
+                } else {
+                    if (card1.getType().equalsIgnoreCase("minion")) {
+                        return 1;
+                    }
+                    if (card2.getType().equalsIgnoreCase("minion")) {
+                        return -1;
+                    } else {
+                        if (card1.getType().equalsIgnoreCase("spell")) {
+                            return 1;
+                        }
+                        if (card2.getType().equalsIgnoreCase("spell")) {
+                            return -1;
+                        } else {
+                            if (card1.getType().equalsIgnoreCase("weapen")) {
+                                return 1;
+                            }
+                            if (card2.getType().equalsIgnoreCase("weapen")) {
+                                return -1;
+                            }
+                            else {
+                                Random random = new Random();
+                                int rand = random.nextInt(2);
+                                if (rand==1){
+                                    return 1;
+                                }
+                                else {
+                                    return -1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    public int compareTo(card card1,card card2,Deck deck){
+    if (number(deck,card1.getName())>number(deck,card2.getName())){
+        return 1;
+    }
+    else if (number(deck,card1.getName())<number(deck,card2.getName())){
+        return -1;
+    }
+    else {
+        return findRarer(card1,card2);
+    }
+
     }
 }

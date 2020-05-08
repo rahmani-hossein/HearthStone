@@ -163,4 +163,8 @@ public class card {
     }
 
 
+//    @Override
+//    public int compareTo(card o) {
+//        return 0;
+//    }
 }

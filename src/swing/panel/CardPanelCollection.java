@@ -1,5 +1,6 @@
 package swing.panel;
 
+import CLI.utilities;
 import logic.CardManager;
 import logic.Constans;
 import logic.ShopManager;
@@ -77,10 +78,14 @@ public class CardPanelCollection  extends JPanel implements MouseListener {
                 int action = JOptionPane.showConfirmDialog(getParent(), "do you want to buy?", "buy Title", JOptionPane.OK_CANCEL_OPTION);
                 if (action == JOptionPane.OK_OPTION) {
                     this.setVisible(false);
+                    String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
+                    Controller.myLogger(st1,"you clicked to "+name+"  and you go to shop "+ utilities.time()+"\n",true);
                     Controller.getInstance().getMyFrame().setPanel("shop");
                 }
             } else {
                 JOptionPane.showMessageDialog(getParent(), "you can not buy this card ", "Error", JOptionPane.ERROR);
+                String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
+                Controller.myLogger(st1,"you clicked to "+name+"  but you cant buy"+ utilities.time()+"\n",true);
             }
         }
          else if (e.getSource()==exit){

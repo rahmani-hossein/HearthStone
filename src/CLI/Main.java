@@ -208,7 +208,7 @@
 //                    for (weapen weapen : W) {
 //                        String print = administer.number(player.currentHero, weapen.getName()) + "of card:" + weapen.toString();
 //                        System.out.println(print);
-//                        myLogger(st1, print + "\n", true);
+    //                    myLogger(st1, print + "\n", true);
 //
 //                    }
 //                }

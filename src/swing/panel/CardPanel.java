@@ -1,8 +1,10 @@
 package swing.panel;
 
+import CLI.utilities;
 import logic.CardManager;
 import logic.Constans;
 import logic.ShopManager;
+import swing.Controller;
 
 import javax.swing.*;
 import java.awt.*;
@@ -88,9 +90,13 @@ public class CardPanel extends JPanel implements MouseListener {
                 int action = JOptionPane.showConfirmDialog(getParent(), "do you want to buy?", "buy Title", JOptionPane.OK_CANCEL_OPTION);
                 if (action == JOptionPane.OK_OPTION) {
                     shopManager.buy(name);
+                    String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
+                    Controller.myLogger(st1,"you buy "+name+" "+ utilities.time()+"\n",true);
                 }
             } else {
                 JOptionPane.showMessageDialog(getParent(), "you can not buy this card ", "Error", JOptionPane.ERROR);
+                String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
+                Controller.myLogger(st1," you can not buy "+name+" "+ utilities.time()+"\n",true);
             }
         }
         else if (e.getSource()==sell) {
@@ -98,9 +104,13 @@ public class CardPanel extends JPanel implements MouseListener {
                 int action = JOptionPane.showConfirmDialog(getParent(), "do you want to sell?", "Sell Title", JOptionPane.OK_CANCEL_OPTION);
                 if (action == JOptionPane.OK_OPTION) {
                     shopManager.sell(name);
+                    String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
+                    Controller.myLogger(st1,"you sell "+name+" "+ utilities.time()+"\n",true);
                 }
             } else {
                 JOptionPane.showMessageDialog(getParent(), "you can not sell this card ", "Error", JOptionPane.ERROR_MESSAGE);
+                String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
+                Controller.myLogger(st1,"you can not sell "+name+" "+ utilities.time()+"\n",true);
             }
         }
         else if (e.getSource()==exit){

@@ -1,0 +1,19 @@
+username: m
+Created_at: Fri 2020.05.08 at 02:30:22 PM IRDT
+password: e
+ click for see sellable cards  Fri 2020.05.08 at 02:30:27 PM IRDT click for see buyables cards  Fri 2020.05.08 at 02:30:29 PM IRDT
+ player see wallet  Fri 2020.05.08 at 02:30:32 PM IRDT
+ card  amberWatcher in the shop clickedFri 2020.05.08 at 02:30:39 PM IRDT
+you buy amberWatcher Fri 2020.05.08 at 02:30:48 PM IRDT
+ click for see sellable cards  Fri 2020.05.08 at 02:30:51 PM IRDT click for see buyables cards  Fri 2020.05.08 at 02:31:00 PM IRDT
+ player see wallet  Fri 2020.05.08 at 02:31:03 PM IRDT
+ back to menu   Fri 2020.05.08 at 02:31:07 PM IRDT
+button default Fri 2020.05.08 at 02:31:16 PM IRDT
+you clicked to see knocked cards  Fri 2020.05.08 at 02:31:36 PM IRDT
+you clicked to see all cards  Fri 2020.05.08 at 02:31:38 PM IRDT
+you clicked to see all cards  Fri 2020.05.08 at 02:31:43 PM IRDT
+you clicked to see mages cards  Fri 2020.05.08 at 02:32:02 PM IRDT
+you add  amberWatcherto default Fri 2020.05.08 at 02:32:11 PM IRDT
+button default Fri 2020.05.08 at 02:32:17 PM IRDT
+back to menu Fri 2020.05.08 at 02:32:35 PM IRDT
+signed up at:Fri 2020.05.08 at 02:32:37 PM IRDT

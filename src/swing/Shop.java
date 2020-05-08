@@ -1,5 +1,6 @@
 package swing;
 
+import CLI.utilities;
 import logic.Constans;
 import logic.ShopManager;
 import swing.button.Button;
@@ -106,6 +107,8 @@ public class Shop extends JPanel implements MouseListener {
             showCards = converter.convert(shopManager.showSellable());
             showButton = initButton(showCards, shopManager.showSellable());
             center.setShowButton(showButton);
+            String st1 = String.format("%s.txt", controller.getGameState().getPlayer().getUsername() +  controller.getGameState().getPlayer().getPassword());
+            Controller.myLogger(st1," click for see sellable cards  "+ utilities.time(),true);
 
             repaint();
             revalidate();
@@ -113,6 +116,8 @@ public class Shop extends JPanel implements MouseListener {
             showCards = converter.convert(shopManager.showBuyable());
             showButton = initButton(showCards, shopManager.showBuyable());
             center.setShowButton(showButton);
+            String st1 = String.format("%s.txt", controller.getGameState().getPlayer().getUsername() +  controller.getGameState().getPlayer().getPassword());
+            Controller.myLogger(st1," click for see buyables cards  "+ utilities.time()+"\n",true);
 
             repaint();
             revalidate();
@@ -120,6 +125,8 @@ public class Shop extends JPanel implements MouseListener {
             controller.exitGame();
         } else if (e.getSource() == back) {
             controller.getMyFrame().setPanel("menu");
+            String st1 = String.format("%s.txt", controller.getGameState().getPlayer().getUsername() +  controller.getGameState().getPlayer().getPassword());
+            Controller.myLogger(st1," back to menu   "+ utilities.time()+"\n",true);
         }
 
     }
@@ -147,6 +154,8 @@ public class Shop extends JPanel implements MouseListener {
     public void mouseExited(MouseEvent e) {
         if (e.getSource() == wallet) {
             wallet.setText("Wallet");
+            String st1 = String.format("%s.txt", controller.getGameState().getPlayer().getUsername() +  controller.getGameState().getPlayer().getPassword());
+            Controller.myLogger(st1," player see wallet  "+ utilities.time()+"\n",true);
             repaint();
             revalidate();
         }

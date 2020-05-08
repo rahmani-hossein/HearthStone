@@ -1,6 +1,8 @@
 package swing.panel;
 
+import CLI.utilities;
 import logic.Constans;
+import swing.Controller;
 import swing.button.Button;
 import swing.panel.CardPanel;
 import swing.panel.CardPanelCollection;
@@ -77,6 +79,8 @@ public class FilterPanel extends JPanel implements MouseListener {
             if ((e.getX()>=showButton.get(i).getWidth())&&(e.getX()<=showButton.get(i).getWidth()+width)&&(e.getY()>=showButton.get(i).getHeight())&&(e.getY()<=showButton.get(i).getHeight()+height)){
                // System.out.println("button "+i+"clicked");
                 showButton.get(i).makePanel(this);
+                String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
+                Controller.myLogger(st1," card  "+showButton.get(i).getName()+" in the shop clicked"+ utilities.time()+"\n",true);
                 repaint();
                 revalidate();
             }

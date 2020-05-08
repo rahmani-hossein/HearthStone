@@ -209,7 +209,7 @@ public class Administer {
         currentDeck = DeckBuilder(hero, availableCardsM, availableCardsS, availableCardsW);
         availableDecks.add(currentDeck);
 
-        player = new Player(user, pass, 80, currentDeck, availableCardsS, availableCardsM, availableCardsW, availableDecks);
+        player = new Player(user, pass, 80, null, availableCardsS, availableCardsM, availableCardsW, availableDecks);
 
         return player;
     }

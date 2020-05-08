@@ -2,6 +2,7 @@ package swing;
 
 import CLI.Administer;
 import CLI.GameState;
+import logic.Constans;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -24,21 +25,22 @@ public class Login extends JPanel {
     private JButton create;
     private JButton exit;
     private MyFrame myFrame;
+    private int similiar=Constans.panelHeight;
 
     public Login(MyFrame frame) {
         this.myFrame = frame;
         Administer administer = new Administer();
-        setSize(1700, 1000);
+        setSize(Constans.panelWidth, Constans.panelHeight);
         subject = new JLabel("LoginForm");
         passwordLabel = new JLabel("password:");
         userNameLabel = new JLabel("userName:");
-        userNameText = new JTextField(20);
-        passwordText = new JTextField(20);
+        userNameText = new JTextField(similiar/50);
+        passwordText = new JTextField(similiar/50);
         login = new JButton("login");
         create = new JButton("new Account");
         exit = new JButton("exit");
         setLayout(null);
-        exit.setBounds(990, 100, 70, 30);
+        exit.setBounds(similiar-(similiar/100), similiar/10, 7*(similiar/100), 3*(similiar/100));
         subject.setBounds(275, 150, 70, 30);
         userNameLabel.setBounds(250, 200, 90, 20);
         userNameText.setBounds(316, 200, 50, 20);

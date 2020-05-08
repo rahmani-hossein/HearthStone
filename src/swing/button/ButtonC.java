@@ -17,9 +17,9 @@ public class ButtonC implements MouseListener {
     private ShopManager shopManager = new ShopManager(Controller.getInstance().getGameState().getPlayer());
     private int width;
     private int height;
-    private int sizeW=200;
-    private int sizeH=275;
-    CardPanelCollection cardPanelCollection ;
+    private int sizeW = 200;
+    private int sizeH = 275;
+    CardPanelCollection cardPanelCollection;
 
 
     public int getSizeW() {
@@ -65,8 +65,8 @@ public class ButtonC implements MouseListener {
     public ButtonC(BufferedImage image, String name, int width, int height) {
         this.image = image;
         this.name = name;
-        this.width=width;
-        this.height=height;
+        this.width = width;
+        this.height = height;
 
     }
 
@@ -78,71 +78,31 @@ public class ButtonC implements MouseListener {
         this.image = image;
     }
 
-    public void paint(Graphics g){
-        g.drawImage(this.image,this.width,this.height,this.sizeW,this.sizeH,null);
+    public void paint(Graphics g) {
+        g.drawImage(this.image, this.width, this.height, this.sizeW, this.sizeH, null);
         // System.out.println(this.name+"painted");
     }
-    public void hidePanel(){
+
+    public void hidePanel() {
         cardPanelCollection.setVisible(false);
     }
 
 
     public void makePanel(FilterPanelCollection filterPanelCollection) {
-        cardPanelCollection= new CardPanelCollection(this.getName(), shopManager);
+        cardPanelCollection = new CardPanelCollection(this.getName(), shopManager);
         int cardWidth = this.width;
-        int cardHeight =this.height ;
+        int cardHeight = this.height;
         cardPanelCollection.setSize(cardWidth, cardHeight);
         cardPanelCollection.setVisible(true);
         filterPanelCollection.add(cardPanelCollection);
-        cardPanelCollection.setBounds(width,height,sizeW,sizeH);
+        cardPanelCollection.setBounds(width, height, sizeW, sizeH);
         filterPanelCollection.getCardPanelCollections().add(cardPanelCollection);
-
-
-
-//            showButton.get(i).addMouseListener(new MouseListener() {
-//                @Override
-//                public void mouseClicked(MouseEvent e) {
-//
-//                }
-//
-//                @Override
-//                public void mousePressed(MouseEvent e) {
-//
-//                }
-//
-//                @Override
-//                public void mouseReleased(MouseEvent e) {
-//
-//                }
-//
-//                @Override
-//                public void mouseEntered(MouseEvent e) {
-//                    cardPanel.setBounds(e.getX(), e.getY() - cardWidth, cardWidth, cardHeight);
-//                    setVisible(true);
-//                    repaint();
-//                    revalidate();
-//                }
-//
-//                @Override
-//                public void mouseExited(MouseEvent e) {
-//                    setVisible(false);
-//                    repaint();
-//                    revalidate();
-//                }
-//            });
-//        }
-//
-//
-
 
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-//        if ((e.getX()>=width)&&(e.getX()<=width+sizeW)&&(e.getY()>=height)&&(e.getY()<=height+sizeH)){
-//            System.out.println("button clicked");
-//            makePanel();
-//        }
+
     }
 
     @Override

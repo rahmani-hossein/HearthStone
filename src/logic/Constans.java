@@ -11,10 +11,12 @@ import static javax.imageio.ImageIO.read;
 public class Constans {
 
     public static final int cardWidth = 200;
-    public static final int cardHeigth = 284;
+    public static final int cardHeigth = 285;
     public static final int space = 100;
     public static final int panelHeight = 1000;
     public static final int panelWidth = 1700;
+//    public static final int sizeW=200;
+//    public static final int sizeH=275;
 
     public static String[] minions = new String[]{"blazingBattlemage", "hotAirballon", "fireHawk ", "evasiveChimaera", "amberWatcher", "dreadScale", "veranus", "curioCollector", "highPriestAmet", "sathrovarr", "securityRover", "swampKingDred", "tombWarden"};
     public static String[] spells = new String[]{"decimation", "malygosFireball", "malygosFlamestrike", "friendlySmith", "fireBlast", "arcaneShot", "bookOfSpecters", "flamestrike", "learnDraconic", "pharaohsBlessing", "sprint", "strengthInNumbers", "swarmOfLocusts", "divineHymn"};
@@ -24,6 +26,7 @@ public class Constans {
     public static HashMap<String, Integer> costsMap = new HashMap<>();
     public static HashMap<String, String> types = new HashMap<>();
     public static HashMap<String, BufferedImage> images = new HashMap<>();
+    public static String[] rarity = {"common", "rare", "epic", "legendary"};
     public static String[] HeroClass = new String[]{"mage", "rouge", "warlock", "hunter", "priest","neutral"};
     public static String[] warlock = {"fireHawk", "dreadScale"};
     public static String[] mage = {"fireBlast", "polymorph"};
