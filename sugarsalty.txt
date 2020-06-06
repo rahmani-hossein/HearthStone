@@ -1,0 +1,42 @@
+username: sugar
+Created_at: Mon 2020.05.11 at 10:23:38 AM IRDT
+password: salty
+ click for see buyables cards  Mon 2020.05.11 at 10:23:57 AM IRDT
+ click for see sellable cards  Mon 2020.05.11 at 10:23:59 AM IRDT player see wallet  Mon 2020.05.11 at 10:24:00 AM IRDT
+ player see wallet  Mon 2020.05.11 at 10:24:00 AM IRDT
+ player see wallet  Mon 2020.05.11 at 10:24:00 AM IRDT
+ player see wallet  Mon 2020.05.11 at 10:24:01 AM IRDT
+ player see wallet  Mon 2020.05.11 at 10:24:01 AM IRDT
+ player see wallet  Mon 2020.05.11 at 10:24:01 AM IRDT
+ player see wallet  Mon 2020.05.11 at 10:24:02 AM IRDT
+ player see wallet  Mon 2020.05.11 at 10:24:12 AM IRDT
+ click for see buyables cards  Mon 2020.05.11 at 10:24:17 AM IRDT
+ card  decimation in the shop clickedMon 2020.05.11 at 10:24:21 AM IRDT
+you buy decimation Mon 2020.05.11 at 10:24:33 AM IRDT
+ player see wallet  Mon 2020.05.11 at 10:24:36 AM IRDT
+ player see wallet  Mon 2020.05.11 at 10:24:36 AM IRDT
+ player see wallet  Mon 2020.05.11 at 10:24:37 AM IRDT
+ player see wallet  Mon 2020.05.11 at 10:24:38 AM IRDT
+ click for see sellable cards  Mon 2020.05.11 at 10:24:43 AM IRDT back to menu   Mon 2020.05.11 at 10:24:47 AM IRDT
+button default Mon 2020.05.11 at 10:24:57 AM IRDT
+you clicked to see hunters cards  Mon 2020.05.11 at 10:25:33 AM IRDT
+you clicked to see rouges cards  Mon 2020.05.11 at 10:25:37 AM IRDT
+you clicked to see neutrals cards  Mon 2020.05.11 at 10:25:43 AM IRDT
+you clicked to see warlocks cards  Mon 2020.05.11 at 10:25:47 AM IRDT
+you clicked to see all cards  Mon 2020.05.11 at 10:25:53 AM IRDT
+you clicked to see knocked cards  Mon 2020.05.11 at 10:25:54 AM IRDT
+you clicked to show cost cards with cost 5 Mon 2020.05.11 at 10:25:58 AM IRDT
+you clicked to show cost cards with cost 8 Mon 2020.05.11 at 10:26:01 AM IRDT
+you clicked to show cost cards with cost 10 Mon 2020.05.11 at 10:26:06 AM IRDT
+you search d Mon 2020.05.11 at 10:26:18 AM IRDT
+you change the name of deck defaultto  hunter Mon 2020.05.11 at 10:26:38 AM IRDT
+button hunter Mon 2020.05.11 at 10:26:43 AM IRDT
+you clicked to see warlocks cards  Mon 2020.05.11 at 10:26:56 AM IRDT
+you clicked to see rouges cards  Mon 2020.05.11 at 10:26:59 AM IRDT
+you clicked to see neutrals cards  Mon 2020.05.11 at 10:27:13 AM IRDT
+you clicked to see mages cards  Mon 2020.05.11 at 10:27:16 AM IRDT
+you clicked to see rouges cards  Mon 2020.05.11 at 10:27:19 AM IRDT
+you clicked to see warlocks cards  Mon 2020.05.11 at 10:27:23 AM IRDT
+you clicked to see priests cards  Mon 2020.05.11 at 10:27:29 AM IRDT
+back to menu Mon 2020.05.11 at 10:27:36 AM IRDT
+signed up at:Mon 2020.05.11 at 10:27:38 AM IRDT

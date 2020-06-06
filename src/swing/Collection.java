@@ -281,8 +281,8 @@ public class Collection extends JPanel implements MouseListener {
             center.setShowButton(showButton);
             repaint();
             revalidate();
-            String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
-            Controller.myLogger(st1,"you search "+value+" "+ utilities.time()+"\n",true);
+//            String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
+//            Controller.myLogger(st1,"you search "+value+" "+ utilities.time()+"\n",true);
         } else if (e.getSource() == exit) {
             controller.exitGame();
         } else if (e.getSource() == back) {

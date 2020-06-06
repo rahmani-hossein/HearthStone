@@ -1,0 +1,82 @@
+username: test
+Created_at: Thu 2020.05.28 at 01:01:11 PM IRDT
+password: 1
+ card  curioCollector in the shop clickedThu 2020.05.28 at 01:01:20 PM IRDT
+you buy curioCollector Thu 2020.05.28 at 01:01:28 PM IRDT
+ player see wallet  Thu 2020.05.28 at 01:01:32 PM IRDT
+ card  sprint in the shop clickedThu 2020.05.28 at 01:01:45 PM IRDT
+you buy sprint Thu 2020.05.28 at 01:01:49 PM IRDT
+ player see wallet  Thu 2020.05.28 at 01:01:59 PM IRDT
+ player see wallet  Thu 2020.05.28 at 01:02:00 PM IRDT
+ card  amberWatcher in the shop clickedThu 2020.05.28 at 01:02:01 PM IRDT
+you buy amberWatcher Thu 2020.05.28 at 01:02:07 PM IRDT
+ click for see sellable cards  Thu 2020.05.28 at 01:02:15 PM IRDT player see wallet  Thu 2020.05.28 at 01:02:16 PM IRDT
+ back to menu   Thu 2020.05.28 at 01:02:17 PM IRDT
+button default Thu 2020.05.28 at 01:02:20 PM IRDT
+back to menu Thu 2020.05.28 at 01:40:15 PM IRDT
+ back to menu   Thu 2020.05.28 at 01:40:24 PM IRDT
+you add  sprintto default Thu 2020.05.28 at 01:40:36 PM IRDT
+you add  amberWatcherto default Thu 2020.05.28 at 01:40:50 PM IRDT
+button default Thu 2020.05.28 at 01:40:53 PM IRDT
+back to menu Thu 2020.05.28 at 01:41:06 PM IRDT
+signed up at:Thu 2020.05.28 at 01:43:26 PM IRDTsigned in at:Thu 2020.05.28 at 01:43:55 PM IRDT
+button default Thu 2020.05.28 at 01:44:01 PM IRDT
+back to menu Thu 2020.05.28 at 01:44:15 PM IRDT
+ click for see sellable cards  Thu 2020.05.28 at 01:44:20 PM IRDT back to menu   Thu 2020.05.28 at 01:44:24 PM IRDT
+you add  curioCollectorto default Thu 2020.05.28 at 01:44:39 PM IRDT
+you cant add  curio  Collectorto  default Thu 2020.05.28 at 01:45:09 PM IRDT
+button default Thu 2020.05.28 at 01:45:12 PM IRDT
+button default Thu 2020.05.28 at 01:45:14 PM IRDT
+button default Thu 2020.05.28 at 01:45:15 PM IRDT
+you clicked to see all cards  Thu 2020.05.28 at 04:37:11 PM IRDT
+you clicked to see mages cards  Thu 2020.05.28 at 04:37:15 PM IRDT
+you clicked to see hunters cards  Thu 2020.05.28 at 04:37:18 PM IRDT
+you clicked to see hunters cards  Thu 2020.05.28 at 04:37:19 PM IRDT
+you clicked to see hunters cards  Thu 2020.05.28 at 04:37:20 PM IRDT
+you clicked to see hunters cards  Thu 2020.05.28 at 04:37:20 PM IRDT
+you clicked to see hunters cards  Thu 2020.05.28 at 04:37:20 PM IRDT
+you clicked to see hunters cards  Thu 2020.05.28 at 04:37:20 PM IRDT
+you clicked to see hunters cards  Thu 2020.05.28 at 04:37:21 PM IRDT
+you clicked to see warlocks cards  Thu 2020.05.28 at 04:37:32 PM IRDT
+you clicked to see rouges cards  Thu 2020.05.28 at 04:37:35 PM IRDT
+you clicked to see mages cards  Thu 2020.05.28 at 04:37:38 PM IRDT
+you clicked to see all cards  Thu 2020.05.28 at 04:37:39 PM IRDT
+you clicked to see mages cards  Thu 2020.05.28 at 04:37:42 PM IRDT
+you clicked to see hunters cards  Thu 2020.05.28 at 04:37:45 PM IRDT
+you clicked to see all cards  Thu 2020.05.28 at 04:37:47 PM IRDT
+you clicked to see knocked cards  Thu 2020.05.28 at 04:37:48 PM IRDT
+you clicked to see neutrals cards  Thu 2020.05.28 at 04:37:52 PM IRDT
+you clicked to see hunters cards  Thu 2020.05.28 at 04:37:56 PM IRDT
+you clicked to see hunters cards  Thu 2020.05.28 at 04:38:01 PM IRDT
+you clicked to show cost cards with cost 4 Thu 2020.05.28 at 04:38:04 PM IRDT
+you clicked to show cost cards with cost 4 Thu 2020.05.28 at 04:38:04 PM IRDT
+you clicked to show cost cards with cost 4 Thu 2020.05.28 at 04:38:05 PM IRDT
+you clicked to show cost cards with cost 4 Thu 2020.05.28 at 04:38:05 PM IRDT
+you clicked to see hunters cards  Thu 2020.05.28 at 04:38:10 PM IRDT
+you search gh Thu 2020.05.28 at 04:38:18 PM IRDT
+you search gh Thu 2020.05.28 at 04:38:20 PM IRDT
+you search am Thu 2020.05.28 at 04:38:32 PM IRDT
+you search am Thu 2020.05.28 at 04:38:33 PM IRDT
+you search am Thu 2020.05.28 at 04:38:33 PM IRDT
+you search am Thu 2020.05.28 at 04:38:34 PM IRDT
+you search am Thu 2020.05.28 at 04:38:34 PM IRDT
+you search am Thu 2020.05.28 at 04:38:34 PM IRDT
+you search am Thu 2020.05.28 at 04:38:34 PM IRDT
+you search am Thu 2020.05.28 at 04:38:34 PM IRDT
+you search am Thu 2020.05.28 at 04:38:35 PM IRDT
+you search am Thu 2020.05.28 at 04:38:35 PM IRDT
+you search am Thu 2020.05.28 at 04:38:35 PM IRDT
+you search am Thu 2020.05.28 at 04:38:52 PM IRDT
+signed up at:Thu 2020.05.28 at 04:40:06 PM IRDTsigned in at:Thu 2020.05.28 at 04:40:21 PM IRDT
+you clicked to show cost cards with cost 6 Thu 2020.05.28 at 04:40:49 PM IRDT
+you clicked to see knocked cards  Thu 2020.05.28 at 04:40:54 PM IRDT
+you clicked to see all cards  Thu 2020.05.28 at 04:40:56 PM IRDT
+you clicked to see rouges cards  Thu 2020.05.28 at 04:40:59 PM IRDT
+you clicked to see mages cards  Thu 2020.05.28 at 04:41:02 PM IRDT
+you clicked to see warlocks cards  Thu 2020.05.28 at 04:41:05 PM IRDT
+you clicked to see hunters cards  Thu 2020.05.28 at 04:41:09 PM IRDT
+button default Thu 2020.05.28 at 04:41:11 PM IRDT
+you clicked to see hunters cards  Thu 2020.05.28 at 04:41:15 PM IRDT
+you clicked to arcaneShot  and you go to shop Thu 2020.05.28 at 04:41:27 PM IRDT
+ back to menu   Thu 2020.05.28 at 04:41:33 PM IRDT
+signed up at:Thu 2020.05.28 at 04:41:43 PM IRDT
