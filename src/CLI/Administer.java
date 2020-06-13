@@ -3,6 +3,7 @@ package CLI;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import logic.CardManager;
 import logic.CollectionManager;
+import logic.DeckManager;
 import logic.ShopManager;
 import model.*;
 import swing.Collection;
@@ -27,7 +28,7 @@ public class Administer {
     private final static Administer AdministerInstance = new Administer();
 
     private ObjectMapper objectMapper = new ObjectMapper();
-
+ private DeckManager deckManager;
     private GameState gameState;
 
 //    public static Administer getAdministerInstance() {
@@ -51,65 +52,65 @@ public class Administer {
 //                return false;
 //            }
 
-                FileWriter fileWriter = null;
-                try {
-                    fileWriter = new FileWriter(st1, true);
+            FileWriter fileWriter = null;
+            try {
+                fileWriter = new FileWriter(st1, true);
 
-                    fileWriter.flush();
-                    fileWriter.write("username: " + user + "\n");
-                    fileWriter.write("Created_at: " + time() + "\n");
-                    fileWriter.write("password: " + pass + "\n");
-                    fileWriter.flush();
-                    fileWriter.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                //json file for users
+                fileWriter.flush();
+                fileWriter.write("username: " + user + "\n");
+                fileWriter.write("Created_at: " + time() + "\n");
+                fileWriter.write("password: " + pass + "\n");
+                fileWriter.flush();
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            //json file for users
 
 
-                String st = String.format("userJson\\%s.json", user + pass);
-                FileWriter fileWriter1 = null;
-                try {
-                    fileWriter1 = new FileWriter(st);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                // inicialize player
-                ArrayList<Minion> availableCardsM = new ArrayList<>();
-                ArrayList<spell> availableCardsS = new ArrayList<>();
-                ArrayList<weapen> availableCardsW = new ArrayList<>();
-                ArrayList<Hero> availableHeros = new ArrayList<>();
+            String st = String.format("userJson\\%s.json", user + pass);
+            FileWriter fileWriter1 = null;
+            try {
+                fileWriter1 = new FileWriter(st);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            // inicialize player
+            ArrayList<Minion> availableCardsM = new ArrayList<>();
+            ArrayList<spell> availableCardsS = new ArrayList<>();
+            ArrayList<weapen> availableCardsW = new ArrayList<>();
+            ArrayList<Hero> availableHeros = new ArrayList<>();
 
-                System.out.println("we randomly  choose your hero ");
+            System.out.println("we randomly  choose your hero ");
 
-                Random random = new Random();
-                int rand = random.nextInt(5);
-                Player player = initialPlayer(rand, user, pass);
-                gameState = new GameState(player);
+            Random random = new Random();
+            int rand = random.nextInt(5);
+            Player player = initialPlayer(rand, user, pass);
+            gameState = new GameState(player);
             ShopManager shopManager = new ShopManager(player);
             Controller.getInstance().setGameState(gameState);
             Controller.getInstance().setAdminister(this);
             Shop shop = new Shop(shopManager);
             Controller.getInstance().setShope(shop);
-            Controller.getInstance().getMyFrame().getMainpanel().add(shop,SHOP_PANEL);
-            CollectionManager collectionManager=new CollectionManager(player);
-            Collection collection=new Collection(collectionManager);
+            Controller.getInstance().getMyFrame().getMainpanel().add(shop, SHOP_PANEL);
+            CollectionManager collectionManager = new CollectionManager(player);
+            Collection collection = new Collection(collectionManager);
             Controller.getInstance().setCollection(collection);
-            Controller.getInstance().getMyFrame().getMainpanel().add(collection,COLLECTION_PANEL);
+            Controller.getInstance().getMyFrame().getMainpanel().add(collection, COLLECTION_PANEL);
 
 
             try {
-                    objectMapper.writeValue(fileWriter1, player);
+                objectMapper.writeValue(fileWriter1, player);
 
-                    fileWriter1.close();
+                fileWriter1.close();
 
 
-                    fileWriter.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-                return true;
+            return true;
 
         } else if (isaccount) {
             String user = username;
@@ -132,20 +133,19 @@ public class Administer {
                     Controller.getInstance().setAdminister(this);
                     ShopManager shopManager = new ShopManager(player);
                     Shop shop = new Shop(shopManager);
-                 //   Controller.getInstance().setShope(shop);
+                    //   Controller.getInstance().setShope(shop);
                     Controller.getInstance().setGameState(gameState);
-                    Controller.getInstance().getMyFrame().getMainpanel().add(shop,SHOP_PANEL);
-                    CollectionManager collectionManager=new CollectionManager(player);
-                    Collection collection=new Collection(collectionManager);
+                    Controller.getInstance().getMyFrame().getMainpanel().add(shop, SHOP_PANEL);
+                    CollectionManager collectionManager = new CollectionManager(player);
+                    Collection collection = new Collection(collectionManager);
                     Controller.getInstance().setCollection(collection);
-                    Controller.getInstance().getMyFrame().getMainpanel().add(collection,COLLECTION_PANEL);
+                    Controller.getInstance().getMyFrame().getMainpanel().add(collection, COLLECTION_PANEL);
 
 
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 return true;
-//                callMenu(player);
             } else {
                 System.out.println("you dont have account please try again and  build an account ");
                 return false;
@@ -206,7 +206,7 @@ public class Administer {
             hero = new Hero(30, "priest", " get 2 mana and restore 4 health", "double influence of restore cards");
 
         }
-        currentDeck = DeckBuilder(hero, availableCardsM, availableCardsS, availableCardsW);
+        currentDeck = deckManager.buildDeck("default",hero, availableCardsM, availableCardsS, availableCardsW);
         availableDecks.add(currentDeck);
 
         player = new Player(user, pass, 80, null, availableCardsS, availableCardsM, availableCardsW, availableDecks);
@@ -214,26 +214,7 @@ public class Administer {
         return player;
     }
 
-    private Deck DeckBuilder(Hero hero, ArrayList<Minion> availableCardsM, ArrayList<spell> availableCardsS, ArrayList<weapen> availableCardsW) {
-        ArrayList<Minion> minions = new ArrayList<>();
-        for (int i = 0; i < availableCardsM.size(); i++) {
-            minions.add(availableCardsM.get(i));
-            minions.add(availableCardsM.get(i));
-        }
-        ArrayList<spell> spells = new ArrayList<>();
-        for (int i = 0; i < availableCardsS.size(); i++) {
-            spells.add(availableCardsS.get(i));
-            spells.add(availableCardsS.get(i));
-        }
-        ArrayList<weapen> weapens = new ArrayList<>();
-        for (int i = 0; i < availableCardsW.size(); i++) {
-            weapens.add(availableCardsW.get(i));
-            weapens.add(availableCardsW.get(i));
-        }
-        Deck deck = new Deck("default", hero, minions, spells, weapens);
-        deck.updateDeckInfo();
-        return deck;
-    }
+
 
     public boolean contains(String[] st, String name) {
         for (int i = 0; i < st.length; i++) {

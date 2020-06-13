@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cb7ea98-0a12-4c97-9e27-432e4492f674" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Interfaces/Creatable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Interfaces/HasAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/DeckManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/HeroAbilities.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/HeroCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mahdirahmani.txt" beforeDir="false" afterPath="$PROJECT_DIR$/mahdirahmani.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/me.txt" beforeDir="false" afterPath="$PROJECT_DIR$/me.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/Collection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/Collection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/Collection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Collection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userJson/mahdirahmani.json" beforeDir="false" afterPath="$PROJECT_DIR$/userJson/mahdirahmani.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/CLI/Administer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/CLI/Administer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/PassivePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/PassivePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CLI/Administer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CLI/Administer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CLI/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swing/PassivePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/PassivePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +23,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -159,14 +165,14 @@
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
     <state x="580" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1620.1040@0.0.1620.1040" timestamp="1584271527297" />
-    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1588826382553">
+    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1592045193655">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1620.1040@0.0.1620.1040" timestamp="1588826382553" />
-    <state x="605" y="405" width="408" height="238" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1588922578035">
+    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1620.1040@0.0.1620.1040" timestamp="1592045193655" />
+    <state x="605" y="405" width="408" height="238" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1592045534944">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state x="605" y="405" width="408" height="238" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1620.1040@0.0.1620.1040" timestamp="1588922578035" />
+    <state x="605" y="405" width="408" height="238" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1620.1040@0.0.1620.1040" timestamp="1592045534944" />
     <state x="542" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584199054351">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
@@ -175,22 +181,22 @@
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
     <state x="514" y="262" key="FileChooserDialogImpl/0.0.1620.1040@0.0.1620.1040" timestamp="1590601324414" />
-    <state width="1578" height="279" key="GridCell.Tab.0.bottom" timestamp="1590741146841">
+    <state width="1578" height="279" key="GridCell.Tab.0.bottom" timestamp="1591699522835">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1578" height="279" key="GridCell.Tab.0.bottom/0.0.1620.1040@0.0.1620.1040" timestamp="1590741146841" />
-    <state width="1578" height="279" key="GridCell.Tab.0.center" timestamp="1590741146841">
+    <state width="1578" height="279" key="GridCell.Tab.0.bottom/0.0.1620.1040@0.0.1620.1040" timestamp="1591699522835" />
+    <state width="1578" height="279" key="GridCell.Tab.0.center" timestamp="1591699522835">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1578" height="279" key="GridCell.Tab.0.center/0.0.1620.1040@0.0.1620.1040" timestamp="1590741146841" />
-    <state width="1578" height="279" key="GridCell.Tab.0.left" timestamp="1590741146841">
+    <state width="1578" height="279" key="GridCell.Tab.0.center/0.0.1620.1040@0.0.1620.1040" timestamp="1591699522835" />
+    <state width="1578" height="279" key="GridCell.Tab.0.left" timestamp="1591699522835">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1578" height="279" key="GridCell.Tab.0.left/0.0.1620.1040@0.0.1620.1040" timestamp="1590741146841" />
-    <state width="1578" height="279" key="GridCell.Tab.0.right" timestamp="1590741146841">
+    <state width="1578" height="279" key="GridCell.Tab.0.left/0.0.1620.1040@0.0.1620.1040" timestamp="1591699522835" />
+    <state width="1578" height="279" key="GridCell.Tab.0.right" timestamp="1591699522835">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1578" height="279" key="GridCell.Tab.0.right/0.0.1620.1040@0.0.1620.1040" timestamp="1590741146841" />
+    <state width="1578" height="279" key="GridCell.Tab.0.right/0.0.1620.1040@0.0.1620.1040" timestamp="1591699522835" />
     <state width="1578" height="348" key="GridCell.Tab.1.bottom" timestamp="1589701336482">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
