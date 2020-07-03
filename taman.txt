@@ -1,0 +1,41 @@
+username: ta
+Created_at: Sun 2020.06.21 at 03:34:26 PM IRDT
+password: man
+ card  gearBlade in the shop clickedSun 2020.06.21 at 03:34:56 PM IRDT
+ player see wallet  Sun 2020.06.21 at 03:35:03 PM IRDT
+ click for see sellable cards  Sun 2020.06.21 at 03:35:05 PM IRDT click for see buyables cards  Sun 2020.06.21 at 03:35:07 PM IRDT
+ player see wallet  Sun 2020.06.21 at 03:35:08 PM IRDT
+ player see wallet  Sun 2020.06.21 at 03:35:08 PM IRDT
+ player see wallet  Sun 2020.06.21 at 03:35:09 PM IRDT
+ back to menu   Sun 2020.06.21 at 03:35:10 PM IRDT
+button default Sun 2020.06.21 at 03:35:18 PM IRDT
+signed up at:Sun 2020.06.21 at 03:38:42 PM IRDTsigned in at:Sun 2020.06.21 at 03:38:55 PM IRDT
+you clicked to see rouges cards  Sun 2020.06.21 at 03:39:06 PM IRDT
+button default Sun 2020.06.21 at 03:39:14 PM IRDT
+back to menu Sun 2020.06.21 at 03:39:26 PM IRDT
+signed up at:Sun 2020.06.21 at 03:39:44 PM IRDTsigned in at:Sun 2020.06.21 at 04:55:51 PM IRDT
+signed up at:Sun 2020.06.21 at 05:00:27 PM IRDTsigned in at:Sun 2020.06.21 at 05:00:38 PM IRDT
+signed up at:Sun 2020.06.21 at 05:21:30 PM IRDTsigned in at:Sun 2020.06.21 at 05:21:44 PM IRDT
+you make a deck with name javax.swing.JTextField[,1253,8,104x20,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=javax.swing.plaf.BorderUIResource$CompoundBorderUIResource@74dab785,flags=296,maximumSize=,minimumSize=,preferredSize=,caretColor=sun.swing.PrintColorUIResource[r=51,g=51,b=51],disabledTextColor=javax.swing.plaf.ColorUIResource[r=184,g=207,b=229],editable=true,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=sun.swing.PrintColorUIResource[r=51,g=51,b=51],selectionColor=javax.swing.plaf.ColorUIResource[r=184,g=207,b=229],columns=10,columnWidth=10,command=,horizontalAlignment=LEADING] Sun 2020.06.21 at 05:22:01 PM IRDT
+button myMage Sun 2020.06.21 at 05:22:03 PM IRDT
+you clicked to see all cards  Sun 2020.06.21 at 05:22:14 PM IRDT
+you add  blazingBattlemageto myMage Sun 2020.06.21 at 05:22:35 PM IRDT
+button myMage Sun 2020.06.21 at 05:22:43 PM IRDT
+back to menu Sun 2020.06.21 at 05:22:44 PM IRDT
+button myMage Sun 2020.06.21 at 05:22:57 PM IRDT
+back to menu Sun 2020.06.21 at 05:22:59 PM IRDT
+signed up at:Sun 2020.06.21 at 05:35:06 PM IRDTsigned in at:Sun 2020.06.21 at 05:35:21 PM IRDT
+you make a deck with name javax.swing.JTextField[,1257,8,104x20,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=javax.swing.plaf.BorderUIResource$CompoundBorderUIResource@4c55eadf,flags=296,maximumSize=,minimumSize=,preferredSize=,caretColor=sun.swing.PrintColorUIResource[r=51,g=51,b=51],disabledTextColor=javax.swing.plaf.ColorUIResource[r=184,g=207,b=229],editable=true,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=sun.swing.PrintColorUIResource[r=51,g=51,b=51],selectionColor=javax.swing.plaf.ColorUIResource[r=184,g=207,b=229],columns=10,columnWidth=10,command=,horizontalAlignment=LEADING] Sun 2020.06.21 at 05:35:45 PM IRDT
+you add  hotAirBallonto kheiliRouge Sun 2020.06.21 at 05:35:59 PM IRDT
+button kheiliRouge Sun 2020.06.21 at 05:36:02 PM IRDT
+back to menu Sun 2020.06.21 at 05:36:04 PM IRDT
+signed up at:Sun 2020.06.21 at 05:36:53 PM IRDTsigned in at:Sun 2020.06.21 at 05:37:07 PM IRDT
+you make a deck with name javax.swing.JTextField[,1268,8,104x20,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=javax.swing.plaf.BorderUIResource$CompoundBorderUIResource@58aa9f9b,flags=296,maximumSize=,minimumSize=,preferredSize=,caretColor=sun.swing.PrintColorUIResource[r=51,g=51,b=51],disabledTextColor=javax.swing.plaf.ColorUIResource[r=184,g=207,b=229],editable=true,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=sun.swing.PrintColorUIResource[r=51,g=51,b=51],selectionColor=javax.swing.plaf.ColorUIResource[r=184,g=207,b=229],columns=10,columnWidth=10,command=,horizontalAlignment=LEADING] Sun 2020.06.21 at 05:37:47 PM IRDT
+button hunter Sun 2020.06.21 at 05:37:49 PM IRDT
+you add  hotAirBallonto hunter Sun 2020.06.21 at 05:38:02 PM IRDT
+button hunter Sun 2020.06.21 at 05:38:04 PM IRDT
+signed up at:Sun 2020.06.21 at 05:39:06 PM IRDTsigned in at:Sun 2020.06.21 at 05:39:20 PM IRDT
+button hunter Sun 2020.06.21 at 05:39:25 PM IRDT
+you make a deck with name javax.swing.JTextField[,1268,8,104x20,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=javax.swing.plaf.BorderUIResource$CompoundBorderUIResource@20a25b08,flags=296,maximumSize=,minimumSize=,preferredSize=,caretColor=sun.swing.PrintColorUIResource[r=51,g=51,b=51],disabledTextColor=javax.swing.plaf.ColorUIResource[r=184,g=207,b=229],editable=true,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=sun.swing.PrintColorUIResource[r=51,g=51,b=51],selectionColor=javax.swing.plaf.ColorUIResource[r=184,g=207,b=229],columns=10,columnWidth=10,command=,horizontalAlignment=LEADING] Sun 2020.06.21 at 05:39:38 PM IRDT
+back to menu Sun 2020.06.21 at 05:39:40 PM IRDT
+signed up at:Sun 2020.06.21 at 05:39:49 PM IRDT
