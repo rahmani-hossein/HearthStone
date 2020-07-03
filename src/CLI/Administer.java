@@ -1,14 +1,9 @@
 package CLI;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import logic.CardManager;
-import logic.CollectionManager;
-import logic.DeckManager;
-import logic.ShopManager;
+import logic.*;
 import model.*;
-import swing.Collection;
-import swing.Controller;
-import swing.Shop;
+import swing.*;
 
 import javax.swing.*;
 import java.io.File;
@@ -21,14 +16,16 @@ import java.util.Random;
 import java.util.Scanner;
 
 import static CLI.utilities.time;
+import static swing.MyFrame.MENU_PANEL;
 
 public class Administer {
     public static final String SHOP_PANEL = "shop";
     public static final String COLLECTION_PANEL = "collection";
+    public static final String GAME_PANEL ="game";
     private final static Administer AdministerInstance = new Administer();
 
     private ObjectMapper objectMapper = new ObjectMapper();
- private DeckManager deckManager;
+ private DeckManager deckManager =new DeckManager();
     private GameState gameState;
 
 //    public static Administer getAdministerInstance() {
@@ -90,6 +87,9 @@ public class Administer {
             ShopManager shopManager = new ShopManager(player);
             Controller.getInstance().setGameState(gameState);
             Controller.getInstance().setAdminister(this);
+            Menu menu=new Menu(Controller.getInstance().getGameState().getPlayer());
+            Controller.getInstance().setMenu(menu);
+            Controller.getInstance().getMyFrame().getMainpanel().add(menu, MENU_PANEL);
             Shop shop = new Shop(shopManager);
             Controller.getInstance().setShope(shop);
             Controller.getInstance().getMyFrame().getMainpanel().add(shop, SHOP_PANEL);
@@ -97,6 +97,8 @@ public class Administer {
             Collection collection = new Collection(collectionManager);
             Controller.getInstance().setCollection(collection);
             Controller.getInstance().getMyFrame().getMainpanel().add(collection, COLLECTION_PANEL);
+//            GamePanel gamePanel=new GamePanel();
+//            Controller.getInstance().getMyFrame().getMainpanel().add(gamePanel,GAME_PANEL);
 
 
             try {
@@ -126,11 +128,13 @@ public class Administer {
                     fileWriter.flush();
                     fileWriter.close();
                     //  objectMapper.configure(JsonParser.Feature.AUTO_CLOSE_SOURCE, true);
-
                     Player player = objectMapper.readValue(file, Player.class);
                     gameState = new GameState(player);
                     Controller.getInstance().setGameState(gameState);
                     Controller.getInstance().setAdminister(this);
+                   Menu menu=new Menu(Controller.getInstance().getGameState().getPlayer());
+                    Controller.getInstance().setMenu(menu);
+                    Controller.getInstance().getMyFrame().getMainpanel().add(menu, MENU_PANEL);
                     ShopManager shopManager = new ShopManager(player);
                     Shop shop = new Shop(shopManager);
                     //   Controller.getInstance().setShope(shop);

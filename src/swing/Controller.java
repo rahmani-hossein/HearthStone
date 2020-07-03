@@ -31,6 +31,7 @@ public class Controller {
     private GameState gameState;
     private Administer administer;
     private Shop shop;
+    private Menu menu;
     private Collection collection;
 
     public Collection getCollection() {
@@ -41,6 +42,17 @@ public class Controller {
         this.collection = collection;
     }
 
+    public void setShop(Shop shop) {
+        this.shop = shop;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
 
     public Shop getShop() {
         return shop;

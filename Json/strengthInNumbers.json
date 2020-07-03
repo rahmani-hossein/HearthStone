@@ -1,5 +1,5 @@
 {
-  "name": "strengthInNumbres",
+  "name": "strengthInNumbers",
   "manaCost":1,
   "description": "SIDEQUEST:spend 10 mana on minions REWARD: summon a minion from your deck",
   "type":"spell" ,

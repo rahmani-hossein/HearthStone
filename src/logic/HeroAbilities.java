@@ -2,5 +2,5 @@ package logic;
 
 public class HeroAbilities {
 
-    //to write 10 methods of heros 
+    //to write 10 methods of heros
 }

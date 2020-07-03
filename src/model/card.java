@@ -1,6 +1,12 @@
 package model;
 
-public class card {
+import Interfaces.Visitable;
+import Interfaces.Visitor;
+
+import java.util.ArrayList;
+import java.util.Map;
+
+public abstract class card implements Visitable {
     int manaCost;
     String name;
     String description;
@@ -37,7 +43,7 @@ public class card {
         this.rush = rush;
     }
 
-    public card(int manaCost, String name, String description, String type, String heroClass, String rarity, boolean battleCry, boolean summon, boolean deathRattle, boolean turny, int cost, boolean poisonous, boolean discover, boolean rush,boolean taunt) {
+    public card(int manaCost, String name, String description, String type, String heroClass, String rarity, boolean battleCry, boolean summon, boolean deathRattle, boolean turny, int cost, boolean poisonous, boolean discover, boolean rush, boolean taunt) {
         this.manaCost = manaCost;
         this.name = name;
         this.description = description;
@@ -52,10 +58,28 @@ public class card {
         this.poisonous = poisonous;
         this.discover = discover;
         this.rush = rush;
-        this.taunt=taunt;
+        this.taunt = taunt;
     }
 
     public card() {
+    }
+
+    public card(Map<String, Object> map) {
+        this.name = (String) map.get("name");
+        this.cost = (int) map.get("cost");
+        this.manaCost = (int) map.get("manaCost");
+        this.type = (String) map.get("type");
+        this.description = (String) map.get("description");
+        this.rarity = (String) map.get("rarity");
+        this.battleCry = (boolean) map.get("battleCry");
+        this.summon = (boolean) map.get("summon");
+        this.turny = (boolean) map.get("turny");
+        this.deathRattle = (boolean) map.get("deathRattle");
+        this.heroClass = (String) map.get("heroClass");
+        this.poisonous = (boolean) map.get("poisonous");
+        this.discover = (boolean) map.get("discover");
+        this.rush = (boolean) map.get("rush");
+        this.taunt= (boolean) map.get("taunt");
     }
 
     public int getCost() {
@@ -161,6 +185,9 @@ public class card {
     public void setDiscover(boolean discover) {
         this.discover = discover;
     }
+
+
+    public abstract void accept(Visitor visitor, ArrayList<card> friendlyDeck, ArrayList<card> friendlyHand, ArrayList<card> enemyDeck, ArrayList<card> enemyHand, ArrayList<card> friendlyGround, ArrayList<card> enemyGround, card target) ;
 
 
 //    @Override

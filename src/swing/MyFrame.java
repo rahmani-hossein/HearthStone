@@ -34,8 +34,7 @@ public class MyFrame extends JFrame {
             setContentPane(mainpanel);
             login = new Login(this);
             mainpanel.add(login, LOGIN_PANEL);
-            menu=new Menu();
-            mainpanel.add(menu, MENU_PANEL);
+
 //            mainpanel.add(collection,COLLECTION_PANEL);
         } catch (Exception e) {
             e.printStackTrace();
@@ -49,7 +48,7 @@ public class MyFrame extends JFrame {
 
     public MyFrame() {
         super("HearthStone");
-        Constans.fill();
+        Constans.getInstance().fill();
         setSize(1778, 1000);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);

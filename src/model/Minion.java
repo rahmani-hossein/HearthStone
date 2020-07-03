@@ -1,6 +1,11 @@
 package model;
 
-public class Minion extends card {
+import Interfaces.Visitor;
+
+import java.util.ArrayList;
+import java.util.Map;
+
+public abstract class Minion extends card {
     int damage;
     int health;
 
@@ -13,6 +18,15 @@ public class Minion extends card {
     public Minion() {
         super();
     }
+
+    public Minion(Map<String,Object> map){
+        super(map);
+        this.damage= (int) map.get("damage");
+        this.health= (int) map.get("health");
+    }
+
+    @Override
+    public abstract void accept(Visitor visitor, ArrayList<card> friendlyDeck, ArrayList<card> friendlyHand, ArrayList<card> enemyDeck, ArrayList<card> enemyHand, ArrayList<card> friendlyGround, ArrayList<card> enemyGround, card target);
 
     @Override
     public String toString() {

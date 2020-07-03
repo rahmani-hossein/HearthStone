@@ -11,6 +11,7 @@ import static CLI.utilities.contains;
 public class ShopManager {
     private Player player;
     private CardManager cardManager =new CardManager();
+    private Constans constans=Constans.getInstance();
 
     public ShopManager(Player player ) {
         this.player = player;
@@ -25,14 +26,14 @@ public class ShopManager {
             cardManager.remove(player.getAvailableCardsS(), cardName);
             cardManager.remove(player.getAvailableCardsM(), cardName);
             cardManager.remove(player.getAvailableCardsW(), cardName);
-            player.setDiamond(player.getDiamond() + Constans.costsMap.get(cardName));
+            player.setDiamond(player.getDiamond() + constans.getCostsMap().get(cardName));
         }
 
     }
 
     public ArrayList<String> showBuyable() {
         ArrayList<String> buyable =new ArrayList<>();
-        for ( String  name: Constans.cardNames) {
+        for ( String  name: constans.getCardNames()) {
             if (canBuy(name)){
                 buyable.add(name);
             }
@@ -79,12 +80,12 @@ public class ShopManager {
     public void buy(String cardName) {
         if (canBuy(cardName)) {
             addToList(cardName);
-            player.setDiamond(player.getDiamond() - Constans.costsMap.get(cardName));
+            player.setDiamond(player.getDiamond() - constans.getCostsMap().get(cardName));
         }
     }
 
     public void addToList(String name) {
-        String type = Constans.types.get(name);
+        String type = constans.getTypes().get(name);
         if (type.equalsIgnoreCase("minion")) {
             player.getAvailableCardsM().add( cardManager.createM(name));
         } else if (type.equalsIgnoreCase("spell")) {

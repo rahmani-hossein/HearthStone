@@ -15,6 +15,7 @@ import java.awt.event.MouseListener;
 
 public class CardPanel extends JPanel implements MouseListener {
     ShopManager shopManager;
+    private Constans constans=Constans.getInstance();
     private CardManager cardManager;
     private String name;
     private int cost=0;
@@ -59,8 +60,8 @@ public class CardPanel extends JPanel implements MouseListener {
         this.shopManager=shopManager;
         this.name=name;
 //        System.out.println(Constans.costsMap);
-        this.cost= Constans.costsMap.get(name);
-        this.type=Constans.types.get(name);
+        this.cost= constans.getCostsMap().get(name);
+        this.type=constans.getTypes().get(name);
         this.rarity=cardManager.tellRarity(name);
         setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
         info1=new JLabel("name:"+name);

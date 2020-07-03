@@ -15,6 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Login extends JPanel {
+    Constans constans=Constans.getInstance();
     private BufferedImage backGround;
     private JLabel subject;
     private JLabel userNameLabel;
@@ -25,12 +26,12 @@ public class Login extends JPanel {
     private JButton create;
     private JButton exit;
     private MyFrame myFrame;
-    private int similiar=Constans.panelHeight;
+    private int similiar=constans.getPanelHeight();
 
     public Login(MyFrame frame) {
         this.myFrame = frame;
         Administer administer = new Administer();
-        setSize(Constans.panelWidth, Constans.panelHeight);
+        setSize(constans.getPanelWidth(), constans.getPanelHeight());
         subject = new JLabel("LoginForm");
         passwordLabel = new JLabel("password:");
         userNameLabel = new JLabel("userName:");

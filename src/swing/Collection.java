@@ -12,15 +12,18 @@ import swing.panel.FilterPanelCollection;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Collection extends JPanel implements MouseListener {
-    private int space = Constans.space;
-    private int sizeW = Constans.cardWidth;//200
-    private int sizeH = Constans.cardHeigth;//285
+    private Constans constans=Constans.getInstance();
+    private int space = constans.getSpace();
+    private int sizeW = constans.getCardWidth();//200
+    private int sizeH =constans.getCardHeigth();//285
 
     Converter converter = new Converter();
     private CollectionManager collectionManager;
@@ -123,7 +126,7 @@ public class Collection extends JPanel implements MouseListener {
     }
 
     private void initNorthButtons() {
-        comboBox = new JComboBox(Constans.HeroClass);
+        comboBox = new JComboBox(constans.getHeroClass());
         showClass = new JButton("showHero");
         allCard = new JButton("all");
         knocked = new JButton("knockedCards");
@@ -143,7 +146,18 @@ public class Collection extends JPanel implements MouseListener {
         north.add(search);
         north.add(exit);
         north.add(back);
-        showClass.addMouseListener(this);
+        showClass.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String value = (String) comboBox.getItemAt(comboBox.getSelectedIndex());
+                center.hidePanel();
+                fillShowButton(value);
+                repaint();
+                revalidate();
+                String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
+                Controller.myLogger(st1,"you clicked to see "+value+"s cards  "+ utilities.time()+"\n",true);
+            }
+        });
         allCard.addMouseListener(this);
         knocked.addMouseListener(this);
         showCost.addMouseListener(this);
@@ -238,13 +252,7 @@ public class Collection extends JPanel implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == showClass) {
-            String value = (String) comboBox.getItemAt(comboBox.getSelectedIndex());
-            center.hidePanel();
-            fillShowButton(value);
-            repaint();
-            revalidate();
-            String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
-            Controller.myLogger(st1,"you clicked to see "+value+"s cards  "+ utilities.time()+"\n",true);
+
         } else if (e.getSource() == allCard) {
             center.hidePanel();
             showCards = converter.convert(collectionManager.allCards());
@@ -286,6 +294,7 @@ public class Collection extends JPanel implements MouseListener {
         } else if (e.getSource() == exit) {
             controller.exitGame();
         } else if (e.getSource() == back) {
+            controller.getMenu().update();
             controller.getMyFrame().setPanel("menu");
             String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
             Controller.myLogger(st1,"back to menu"+" "+ utilities.time()+"\n",true);

@@ -32,7 +32,7 @@ public class DeckPanel extends JPanel {
     public DeckPanel(Collection collection) {
         parent=collection;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setPreferredSize(new Dimension(Constans.panelWidth/4, 2*Constans.panelHeight));
+        setPreferredSize(new Dimension(Constans.getInstance().getPanelWidth()/4, 2*Constans.getInstance().getPanelHeight()));
         this.collectionManager = parent.getCollectionManager();
         setLabel();
         Collections.sort(this.collectionManager.getPlayer().getAvailableDecks());

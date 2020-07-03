@@ -14,10 +14,11 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 public class FilterPanel extends JPanel implements MouseListener {
+    private Constans constans=Constans.getInstance();
     ArrayList<swing.button.Button> showButton;
-    private int width = Constans.cardWidth;
-    private int height = Constans.cardHeigth;
-    private int space = Constans.space;
+    private int width = constans.getCardWidth();
+    private int height = constans.getCardHeigth();
+    private int space = constans.getSpace();
     private int sizeW = width + space;
     private int sizeH = height + space;
     private ArrayList<CardPanel>cardPanels=new ArrayList<>();
@@ -51,7 +52,7 @@ public class FilterPanel extends JPanel implements MouseListener {
 
     public FilterPanel(ArrayList<Button> showButton) {
         this.showButton = showButton;
-        setPreferredSize(new Dimension(Constans.panelWidth,2*Constans.panelHeight+Constans.panelHeight));
+        setPreferredSize(new Dimension(constans.getPanelWidth(),2*constans.getPanelHeight()+constans.getPanelHeight()));
         addMouseListener(this);
 //        setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
 

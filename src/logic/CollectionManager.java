@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import static CLI.utilities.contains;
 
 public class CollectionManager {
-
+    Constans constans = Constans.getInstance();
     private Player player;
     private CardManager cardManager = new CardManager();
 
@@ -37,10 +37,10 @@ public class CollectionManager {
         Deck deck1 = null;
 
         if (allowChangeHero(deck)) {
-            Hero hero=makeHero(newHero);
+            Hero hero = makeHero(newHero);
             deck.setDeckHero(hero);
-            if (deck.getName().equals(player.getCurrentDeck().getName())){
-                deck1=player.getCurrentDeck();
+            if (deck.getName().equals(player.getCurrentDeck().getName())) {
+                deck1 = player.getCurrentDeck();
                 deck1.setDeckHero(hero);
             }
 
@@ -112,7 +112,7 @@ public class CollectionManager {
     }
 
     public void addToDeck(String name, Deck deck) {
-       // Deck deck1 = null;
+        // Deck deck1 = null;
 //        if (player.getCurrentDeck().getName().equals(deck.getName())) {
 //            deck1 = player.getCurrentDeck();
 //        }
@@ -162,7 +162,7 @@ public class CollectionManager {
 
     public ArrayList<String> allCards() {
         ArrayList<String> cards = new ArrayList<>();
-        for (String string : Constans.cardNames) {
+        for (String string : constans.getCardNames()) {
             cards.add(string);
         }
         return cards;
@@ -170,7 +170,7 @@ public class CollectionManager {
 
     public ArrayList<String> searchEngine(String string) {
         ArrayList<String> search = new ArrayList<>();
-        for (String string1 : Constans.cardNames) {
+        for (String string1 : constans.getCardNames()) {
             if (string1.toLowerCase().contains(string)) {
                 search.add(string1);
             }
@@ -180,7 +180,7 @@ public class CollectionManager {
 
     public ArrayList<String> knocked() {
         ArrayList<String> knocked = new ArrayList<>();
-        for (String name : Constans.cardNames) {
+        for (String name : constans.getCardNames()) {
             if (isKnocked(name)) {
                 knocked.add(name);
             }
@@ -221,7 +221,7 @@ public class CollectionManager {
 
     public ArrayList<String> findCost(int cost) {
         ArrayList<String> findCosts = new ArrayList<>();
-        for (String string : Constans.cardNames) {
+        for (String string : constans.getCardNames()) {
             if (costfinder(string) == cost) {
                 findCosts.add(string);
             }
@@ -230,13 +230,13 @@ public class CollectionManager {
     }
 
     public int costfinder(String name) {
-        int cost = Constans.costsMap.get(name);
+        int cost = constans.getCostsMap().get(name);
         return cost;
     }
 
     public ArrayList<String> types(String typeName) {
         ArrayList<String> type = new ArrayList<>();
-        for (String string : Constans.cardNames) {
+        for (String string : constans.getCardNames()) {
             if (showType(string).equalsIgnoreCase(typeName)) {
                 type.add(string);
             }
@@ -246,7 +246,7 @@ public class CollectionManager {
 
     public ArrayList<String> findHeroClass(String name) {
         ArrayList<String> heroType = new ArrayList<>();
-        for (String string : Constans.cardNames) {
+        for (String string : constans.getCardNames()) {
             if (showType(string).equalsIgnoreCase(name)) {
                 heroType.add(string);
             }
@@ -255,16 +255,16 @@ public class CollectionManager {
     }
 
     public String showType(String name) {
-        if (contains(Constans.priest, name)) {
+        if (contains(constans.getPriest(), name)) {
             return "priest";
-        } else if (contains(Constans.warlock, name)) {
+        } else if (contains(constans.getWarlock(), name)) {
             return "warlock";
 
-        } else if (contains(Constans.mage, name)) {
+        } else if (contains(constans.getMage(), name)) {
             return "mage";
-        } else if (contains(Constans.rouge, name)) {
+        } else if (contains(constans.getRouge(), name)) {
             return "rouge";
-        } else if (contains(Constans.hunter, name)) {
+        } else if (contains(constans.getHunter(), name)) {
             return "hunter";
         } else {
             return "neutral";
