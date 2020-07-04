@@ -138,7 +138,7 @@ public class Administer {
                     ShopManager shopManager = new ShopManager(player);
                     Shop shop = new Shop(shopManager);
                     //   Controller.getInstance().setShope(shop);
-                    Controller.getInstance().setGameState(gameState);
+                   // Controller.getInstance().setGameState(gameState);
                     Controller.getInstance().getMyFrame().getMainpanel().add(shop, SHOP_PANEL);
                     CollectionManager collectionManager = new CollectionManager(player);
                     Collection collection = new Collection(collectionManager);

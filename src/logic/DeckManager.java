@@ -8,6 +8,10 @@ public class DeckManager {
     private CardManager cardManager=new CardManager();
     private HeroCreator heroCreator =new HeroCreator();
 
+    public DeckManager(){
+
+    }
+
     public Deck buildDeck(String name,Hero hero, ArrayList<Minion> availableCardsM, ArrayList<spell> availableCardsS, ArrayList<weapen> availableCardsW) {
         ArrayList<Minion> minions = new ArrayList<>();
         for (int i = 0; i < availableCardsM.size(); i++) {

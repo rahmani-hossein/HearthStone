@@ -19,6 +19,7 @@ import java.io.IOException;
 
 public class Menu extends JPanel implements MouseListener {
 
+    public static final String GAME_PANEL = "play";
     private Player player;
     private Constans constans;
     private GameMaker gameMaker;
@@ -36,7 +37,7 @@ public class Menu extends JPanel implements MouseListener {
 
     public Menu(Player player) {
         this.controller = Controller.getInstance();
-        this.player =player;
+        this.player = player;
         constans = Constans.getInstance();
         this.setLayout(null);
         collection = new JButton("COLLECTION");
@@ -87,10 +88,11 @@ public class Menu extends JPanel implements MouseListener {
             e.printStackTrace();
         }
     }
-    public void update(){
+
+    public void update() {
 
         decks.removeAllItems();
-        for (Deck deck :player.getAvailableDecks()){
+        for (Deck deck : player.getAvailableDecks()) {
             decks.addItem(deck.getName());
         }
         repaint();
@@ -114,7 +116,7 @@ public class Menu extends JPanel implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        controller=Controller.getInstance();
+        controller = Controller.getInstance();
         if (e.getSource() == shop) {
             System.out.println("before go to shop");
             controller.getMyFrame().setPanel("shop");
@@ -123,14 +125,20 @@ public class Menu extends JPanel implements MouseListener {
             controller.getMyFrame().setPanel("collection");
         } else if (play == e.getSource()) {
             String cur = (String) decks.getItemAt(decks.getSelectedIndex());
-            String deckReader = reader.getText();
-            gameMaker = new GameMaker(player, deckReader, cur);
+            String deckReader = null;
+            deckReader = reader.getText();
+
+            gameMaker = new GameMaker(player, deckReader, cur,Controller.getInstance().getGameState());
+            //set Game state gamePlayers
+            gameMaker.buildGameState();
+            GamePanel gamePanel=new GamePanel(Controller.getInstance().getGameState());
+            controller.getMyFrame().getMainpanel().add(gamePanel,GAME_PANEL);
             controller.getMyFrame().setPanel("play");
         } else if (exit == e.getSource()) {
             controller.exitGame();
         } else if (delete == e.getSource()) {
             String text = JOptionPane.showInputDialog(getParent(), "please type your password", "Delete", JOptionPane.OK_CANCEL_OPTION);
-            if ((text!=null)&&text.equals(controller.getGameState().getPlayer().getPassword())) {
+            if ((text != null) && text.equals(controller.getGameState().getPlayer().getPassword())) {
                 controller.delete(text);
             }
         }

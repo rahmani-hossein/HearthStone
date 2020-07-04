@@ -2,110 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cb7ea98-0a12-4c97-9e27-432e4492f674" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/deck/deck1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CLI/GameMaker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Interfaces/ExactFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Interfaces/Execution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Interfaces/ObjectFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Interfaces/Playable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Interfaces/Visitable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Interfaces/Visitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/CardFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/DeckReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/minionPackage/amberWatcher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/minionPackage/blazingBattlemage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/minionPackage/curioCollector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/minionPackage/dreadScale.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/minionPackage/evasiveChimaera.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/minionPackage/fireHawk.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/minionPackage/highPriestAmet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/minionPackage/hotAirballon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/minionPackage/sathrovarr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/minionPackage/securityRover.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/minionPackage/swampKingDred.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/minionPackage/tombWarden.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/minionPackage/veranus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/spellPackage/arcaneShot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/spellPackage/bookOfSpecters.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/spellPackage/decimation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/spellPackage/divineHymn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/spellPackage/fireBlast.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/spellPackage/flamestrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/spellPackage/friendlySmith.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/spellPackage/learnDraconic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/spellPackage/malygosFireball.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/spellPackage/malygosFlamestrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/spellPackage/pharaohsBlessing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/spellPackage/polymorph.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/spellPackage/sprint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/spellPackage/strengthInNumbers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/spellPackage/swarmOfLocusts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/weapenPackage/arcaniteReaper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/weapenPackage/ashBringer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/weapenPackage/assassinBlade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/weapenPackage/bloodClaw.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/weapenPackage/bloodFury.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/weapenPackage/bloodRazor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/weapenPackage/cursedBlade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/weapenPackage/dragonClaw.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/weapenPackage/fierywaraxe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/weapenPackage/gearBlade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/swing/GamePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/GamePlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Json/strengthInNumbers.json" beforeDir="false" afterPath="$PROJECT_DIR$/Json/strengthInNumbers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/CLI/Administer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/CLI/Administer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/CLI/GameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/CLI/GameState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/Util/ConfigLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/Util/ConfigLoader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/Util/FrameConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/logic/CardManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/logic/CardManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/logic/CollectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/logic/CollectionManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/logic/Constans.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/logic/Constans.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/logic/DeckManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/logic/DeckManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/logic/ShopManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/logic/ShopManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/model/Minion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/model/Minion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/model/card.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/model/card.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/model/spell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/model/spell.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/model/weapen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/model/weapen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/Collection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/Collection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/Login$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/Login$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/Login$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/Login$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/Login$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/Login$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/MyFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/MyFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/PassivePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/Shop.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/Shop.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/panel/CardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/panel/CardPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/panel/CardPanelCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/panel/CardPanelCollection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/panel/DeckPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/panel/DeckPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/panel/FilterPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/panel/FilterPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/panel/FilterPanelCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/panel/FilterPanelCollection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CLI/Administer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CLI/Administer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CLI/GameMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CLI/GameMaker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CLI/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CLI/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Util/ConfigLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/ConfigLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Util/FrameConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/CardManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/CardManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/CollectionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/Constans.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Constans.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/HeroAbilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/HeroAbilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/ShopManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ShopManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Minion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Minion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/spell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/weapen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/weapen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/Collection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Collection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/DeckManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/DeckManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/DeckReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/DeckReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swing/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/swing/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/MyFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/MyFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/PassivePanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Shop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/panel/CardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/panel/CardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/panel/CardPanelCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/panel/CardPanelCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/panel/DeckPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/panel/DeckPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/panel/FilterPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/panel/FilterPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/panel/FilterPanelCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/panel/FilterPanelCollection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,6 +150,14 @@
       <option name="presentableId" value="Default" />
       <updated>1584098652439</updated>
     </task>
+    <task id="LOCAL-00001" summary="..">
+      <created>1593802162266</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1593802162266</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -257,15 +171,19 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value=".." />
+    <option name="LAST_COMMIT_MESSAGE" value=".." />
+  </component>
   <component name="WindowStateProjectService">
     <state x="403" y="178" key="#Notifications" timestamp="1588188151399">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
     <state x="403" y="178" key="#Notifications/0.0.1620.1040@0.0.1620.1040" timestamp="1588188151399" />
-    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1593792144121">
+    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1593862221853">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1620.1040@0.0.1620.1040" timestamp="1593792144121" />
+    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1620.1040@0.0.1620.1040" timestamp="1593862221853" />
     <state x="605" y="405" width="408" height="238" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1592045534944">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
@@ -326,6 +244,10 @@
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
     <state x="235" y="140" key="new project wizard/0.0.1620.1040@0.0.1620.1040" timestamp="1593770328076" />
+    <state x="517" y="148" key="refactoring.ChangeSignatureDialog" timestamp="1593853545091">
+      <screen x="0" y="0" width="1620" height="1040" />
+    </state>
+    <state x="517" y="148" key="refactoring.ChangeSignatureDialog/0.0.1620.1040@0.0.1620.1040" timestamp="1593853545091" />
     <state x="489" y="245" width="672" height="678" key="search.everywhere.popup" timestamp="1588920730036">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>

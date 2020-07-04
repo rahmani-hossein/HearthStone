@@ -27,10 +27,12 @@ public class Constans {
     private final int panelWidth = 1700;
 //    public static final int sizeW=200;
 //    public static final int sizeH=275;
-
+    private String[]minionEkhtiari=new String[]{"blazingBattlemage","hotAirballon","evasiveChimaera","amberWatcher","veranus","swampKingDred"};
+    private String[]spellEkhtiari=new String[]{"decimation","malygosFireball","malygosFlamestrike","learnDraconic","strengthInNumbers","divineHymn"};
+    private String[] weapenEkhtiari=new String[]{"bloodRazor","bloodClaw","assassinBlade","arcaniteReaper","cursedBlade","gearBlade","bloodFury","dragonClaw","ashBringer"};
     private String[] minions = new String[]{"blazingBattlemage", "hotAirballon", "fireHawk ", "evasiveChimaera", "amberWatcher", "dreadScale", "veranus", "curioCollector", "highPriestAmet", "sathrovarr", "securityRover", "swampKingDred", "tombWarden"};
    private String[] spells = new String[]{"decimation", "malygosFireball", "malygosFlamestrike", "friendlySmith", "fireBlast", "arcaneShot", "bookOfSpecters", "flamestrike", "learnDraconic", "pharaohsBlessing", "sprint", "strengthInNumbers", "swarmOfLocusts", "divineHymn"};
-    private String[] weapens = new String[]{"bloodRazor", "fieryWaraxe", "bloodClaw", "assassinBlade", "arcaniteReaper", "cursedBlade", "gearBlade", "bloodFury", "dragonClaw", "ashBringer"};
+    private String[] weapens = new String[]{"bloodRazor", "fierywaraxe", "bloodClaw", "assassinBlade", "arcaniteReaper", "cursedBlade", "gearBlade", "bloodFury", "dragonClaw", "ashBringer"};
     private String[] cardNames = new String[]{"blazingBattlemage", "hotAirballon", "fireHawk", "evasiveChimaera", "amberWatcher", "dreadScale", "veranus", "curioCollector", "highPriestAmet", "sathrovarr", "securityRover", "swampKingDred", "tombWarden", "decimation", "malygosFireball", "malygosFlamestrike", "friendlySmith", "fireBlast", "arcaneShot", "bookOfSpecters", "flamestrike", "learnDraconic", "pharaohsBlessing", "sprint", "strengthInNumbers", "swarmOfLocusts", "divineHymn", "bloodRazor", "fierywaraxe", "bloodClaw", "assassinBlade", "arcaniteReaper", "cursedBlade", "gearBlade", "bloodFury", "dragonClaw", "ashBringer"};
     private int[] cost = new int[]{4, 5, 5, 6, 9, 6, 10, 8, 9, 10, 6, 6, 8, 10, 7, 10, 6, 6, 5, 6, 10, 6, 10, 9, 6, 9, 7, 8, 8, 6, 8, 8, 5, 6, 10, 8, 8};
     private HashMap<String, Integer> costsMap = new HashMap<>();
@@ -61,6 +63,30 @@ public class Constans {
 
             }
         }
+    }
+
+    public String[] getMinionEkhtiari() {
+        return minionEkhtiari;
+    }
+
+    public void setMinionEkhtiari(String[] minionEkhtiari) {
+        this.minionEkhtiari = minionEkhtiari;
+    }
+
+    public String[] getSpellEkhtiari() {
+        return spellEkhtiari;
+    }
+
+    public void setSpellEkhtiari(String[] spellEkhtiari) {
+        this.spellEkhtiari = spellEkhtiari;
+    }
+
+    public String[] getWeapenEkhtiari() {
+        return weapenEkhtiari;
+    }
+
+    public void setWeapenEkhtiari(String[] weapenEkhtiari) {
+        this.weapenEkhtiari = weapenEkhtiari;
     }
 
     public int getCardWidth() {
