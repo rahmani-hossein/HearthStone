@@ -14,33 +14,25 @@ public class GameState {
 
     private GamePlayer freind;
     private GamePlayer enemy;
-//    private ArrayList<card>friendDeck;
-//    private ArrayList<card> enemyDeck;
-//    private ArrayList<card> enemyHand;
-//    private ArrayList<card> friendHand;
-//    private ArrayList<Minion> friendGround;
-//    private ArrayList<Minion> enemyGround;
-//    private Hero friendHero;
-//    private Hero enemyHero;
+
 
 
     private Player player;
     private boolean startGame=false;
     private Timer timer;
-   private boolean turn = false;
+   private boolean turn = false;//false means friend has the turn.
+   private int roundManaMax=1;
 
     public GameState() {
-//        friendDeck=new ArrayList<>();
-//        enemyDeck=new ArrayList<>();
-//        enemyHand=new ArrayList<>();
-//        friendHand=new ArrayList<>();
-//        friendGround=new ArrayList<>();
-//        enemyGround=new ArrayList<>();
 
-        if (startGame) {
-            timer = new Timer();
-            updateTime();
-        }
+    }
+
+    public int getRoundManaMax() {
+        return roundManaMax;
+    }
+
+    public void setRoundManaMax(int roundManaMax) {
+        this.roundManaMax = roundManaMax;
     }
 
     public GamePlayer getFreind() {

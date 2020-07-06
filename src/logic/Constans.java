@@ -22,6 +22,8 @@ public class Constans {
 
     private final int cardWidth = 200;
     private final int cardHeigth = 285;
+    private final int sizeX=100;
+    private final int sizeY=135;
     private final int space = 100;
     private final int panelHeight = 1000;
     private final int panelWidth = 1700;
@@ -46,7 +48,7 @@ public class Constans {
     private String[] hunter = {"arcaneShot", "swampKingDred"};
     private String[] priest = {"hightPriestAmet", "flamestrike"};
     private String[] heros = {"mage", "rouge", "warlock", "hunter", "priest"};
-    private String []passives={"twiceDraw","offCard","freePower","manaJump"};
+    private String []passives={"twiceDraw","offCard","freePower","manaJump","nurse"};
 
     public  void fill() {
         for (int i = 0; i < cardNames.length; i++) {
@@ -63,6 +65,14 @@ public class Constans {
 
             }
         }
+    }
+
+    public int getSizeX() {
+        return sizeX;
+    }
+
+    public int getSizeY() {
+        return sizeY;
     }
 
     public String[] getMinionEkhtiari() {
@@ -294,52 +304,52 @@ public class Constans {
 //
 //        try {
 //            amberWatcher = read(new File("resources\\Image\\cards\\amberWacher.png"));
-//            arcaneShot = read(new File("resources\\Image\\cards\\arcaneshot.png"));
+//            arcaneShot = read(new File("resources\\Image\\cards\\arcaneShot.png"));
 //
-//            arcanitereaper = read(new File("resources\\Image\\cards\\arcanitereaper.png"));
-//            assassinBlade = read(new File("resources\\Image\\cards\\assassinblade.png"));
-//            blazingBattlemage = read(new File("resources\\Image\\cards\\blazingbattlemage.png"));
-//            bloodClaw = read(new File("resources\\Image\\cards\\bloodclaw.png"));
-//            bloodRazor = read(new File("resources\\Image\\cards\\bloodrazor.png"));
+//            arcanitereaper = read(new File("resources\\Image\\cards\\arcaniteReaper.png"));
+//            assassinBlade = read(new File("resources\\Image\\cards\\assassinBlade.png"));
+//            blazingBattlemage = read(new File("resources\\Image\\cards\\blazingBattlemage.png"));
+//            bloodClaw = read(new File("resources\\Image\\cards\\bloodClaw.png"));
+//            bloodRazor = read(new File("resources\\Image\\cards\\bloodRazor.png"));
 //
-//            bloodFury = read(new File("resources\\Image\\cards\\bloodfury.png"));
-//            bookOfSpecters = read(new File("resources\\Image\\cards\\bookofspecters.png"));
+//            bloodFury = read(new File("resources\\Image\\cards\\bloodFury.png"));
+//            bookOfSpecters = read(new File("resources\\Image\\cards\\bookOfSpecters.png"));
 //            // cobaltspellkin = read(new File("resources\\Image\\cards\\cobaltspellkin.png"));
-//            curioCollector = read(new File("resources\\Image\\cards\\curiocollector.png"));
-//            cursedBlade = read(new File("resources\\Image\\cards\\cursedblade.png"));
+//            curioCollector = read(new File("resources\\Image\\cards\\curioCollector.png"));
+//            cursedBlade = read(new File("resources\\Image\\cards\\cursedBlade.png"));
 //            decimation = read(new File("resources\\Image\\cards\\decimation.png"));
-//            dragonClaw = read(new File("resources\\Image\\cards\\dragonclaw.png"));
-//            evasiveChimaera = read(new File("resources\\Image\\cards\\evasivechimaera.png"));
-//            fireBlast = read(new File("resources\\Image\\cards\\fireblast.png"));
-//            fireHawk = read(new File("resources\\Image\\cards\\firehawk.png"));
-//            divineHymn = read(new File("resources\\Image\\cards\\divinehymn.png"));
-//            dreadScale = read(new File("resources\\Image\\cards\\dreadscale.png"));
+//            dragonClaw = read(new File("resources\\Image\\cards\\dragonClaw.png"));
+//            evasiveChimaera = read(new File("resources\\Image\\cards\\evasiveChimaera.png"));
+//            fireBlast = read(new File("resources\\Image\\cards\\fireBlast.png"));
+//            fireHawk = read(new File("resources\\Image\\cards\\fireHawk.png"));
+//            divineHymn = read(new File("resources\\Image\\cards\\divineHymn.png"));
+//            dreadScale = read(new File("resources\\Image\\cards\\dreadScale.png"));
 //            fierywaraxe = read(new File("resources\\Image\\cards\\fierywaraxe.png"));
 //            flamestrike = read(new File("resources\\Image\\cards\\flamestrike.png"));
-//            friendlySmith = read(new File("resources\\Image\\cards\\friendlysmith.png"));
-//            gearBlade = read(new File("resources\\Image\\cards\\gearblade.png"));
+//            friendlySmith = read(new File("resources\\Image\\cards\\friendlySmith.png"));
+//            gearBlade = read(new File("resources\\Image\\cards\\gearBlade.png"));
 //            highPriestAmet = read(new File("resources\\Image\\cards\\highPriestAmet.png"));
-//            hotAirballon = read(new File("resources\\Image\\cards\\hotairballon.png"));
+//            hotAirballon = read(new File("resources\\Image\\cards\\hotAirballon.png"));
 //            // koboldstickyfinger = read(new File("resources\\Image\\cards\\koboldstickyfinger.png"));
-//            learnDraconic = read(new File("resources\\Image\\cards\\learndraconic.png"));
-//            malygosFireball = read(new File("resources\\Image\\cards\\malygosfireball.png"));
-//            malygosFlamestrike = read(new File("resources\\Image\\cards\\malygosflamestrike.png"));
+//            learnDraconic = read(new File("resources\\Image\\cards\\learnDraconic.png"));
+//            malygosFireball = read(new File("resources\\Image\\cards\\malygosFireball.png"));
+//            malygosFlamestrike = read(new File("resources\\Image\\cards\\malygosFlamestrike.png"));
 //
 //            // lightforgedblessing = read(new File("resources\\Image\\cards\\lightforgedblessing.png"));
-//            pharaohsBlessing = read(new File("resources\\Image\\cards\\pharaohsblessing.png"));
+//            pharaohsBlessing = read(new File("resources\\Image\\cards\\pharaohsBlessing.png"));
 //            polymorph = read(new File("resources\\Image\\cards\\polymorph.png"));
 //            //  sandbreath = read(new File("resources\\Image\\cards\\sandbreath.png"));
 //            sathrovarr = read(new File("resources\\Image\\cards\\sathrovarr.png"));
-//            securityRover = read(new File("resources\\Image\\cards\\securityrover.png"));
+//            securityRover = read(new File("resources\\Image\\cards\\securityRover.png"));
 //            // silversword = read(new File("resources\\Image\\cards\\silversword.png"));
 //            sprint = read(new File("resources\\Image\\cards\\sprint.png"));
-//            strengthInNumbers = read(new File("resources\\Image\\cards\\strengthinnumbers.png"));
-//            swampKingDred = read(new File("resources\\Image\\cards\\swampkingdred.png"));
-//            swarmOfLocusts = read(new File("resources\\Image\\cards\\swarmoflocusts.png"));
+//            strengthInNumbers = read(new File("resources\\Image\\cards\\strengthInNumbers.png"));
+//            swampKingDred = read(new File("resources\\Image\\cards\\swampKingDred.png"));
+//            swarmOfLocusts = read(new File("resources\\Image\\cards\\swarmOfLocusts.png"));
 //            // tastyflyfish = read(new File("resources\\Image\\cards\\tastyflyfish.png"));
-//            tombWarden = read(new File("resources\\Image\\cards\\tombwarden.png"));
+//            tombWarden = read(new File("resources\\Image\\cards\\tombWarden.png"));
 //            veranus = read(new File("resources\\Image\\cards\\veranus.png"));
-//            ashBringer = read(new File("resources\\Image\\cards\\ashbringer.png"));
+//            ashBringer = read(new File("resources\\Image\\cards\\ashBringer.png"));
 //            // truesilverchampion = read(new File("resources\\Image\\cards\\truesilverchampion.png"));
 //            //  umbralskulker = read(new File("resources\\Image\\cards\\umbralskulker.png"));
 //        } catch (IOException e) {

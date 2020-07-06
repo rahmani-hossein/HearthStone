@@ -187,11 +187,8 @@ public abstract class card implements Visitable {
     }
 
 
-    public abstract void accept(Visitor visitor, ArrayList<card> friendlyDeck, ArrayList<card> friendlyHand, ArrayList<card> enemyDeck, ArrayList<card> enemyHand, ArrayList<card> friendlyGround, ArrayList<card> enemyGround, card target) ;
+    public abstract void accept(Visitor visitor,GamePlayer freind,GamePlayer enemy, card target) ;
 
 
-//    @Override
-//    public int compareTo(card o) {
-//        return 0;
-//    }
+
 }

@@ -35,7 +35,7 @@ public abstract class weapen extends card {
     }
 
     @Override
-    public abstract void accept(Visitor visitor, ArrayList<card> friendlyDeck, ArrayList<card> friendlyHand, ArrayList<card> enemyDeck, ArrayList<card> enemyHand, ArrayList<card> friendlyGround, ArrayList<card> enemyGround, card target);
+    public abstract void accept(Visitor visitor, GamePlayer freind, GamePlayer enemy, card target) ;
 
 
     public weapen(int durability, int damage, int manaCost, String name, String description, String type, String heroClass, String rarity, boolean battleCry, boolean summon, boolean deathRattle,  boolean turny, int cost, boolean poisonous, boolean discover, boolean rush, boolean taunt) {

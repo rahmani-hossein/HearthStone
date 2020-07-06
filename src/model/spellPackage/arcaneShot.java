@@ -1,6 +1,7 @@
 package model.spellPackage;
 
 import Interfaces.Visitor;
+import model.GamePlayer;
 import model.card;
 import model.spell;
 
@@ -11,9 +12,10 @@ public class arcaneShot extends spell {
 
     public arcaneShot(Map<String,Object> map){super(map);}
 
-
     @Override
-    public void accept(Visitor visitor, ArrayList<card> friendlyDeck, ArrayList<card> friendlyHand, ArrayList<card> enemyDeck, ArrayList<card> enemyHand, ArrayList<card> friendlyGround, ArrayList<card> enemyGround, card target) {
-
+    public void accept(Visitor visitor, GamePlayer freind, GamePlayer enemy, card target) {
+        visitor.visitArcaneShot(this,freind,enemy,target);
     }
+
+
 }

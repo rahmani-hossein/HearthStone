@@ -8,6 +8,14 @@ public class GamePlayer {
     private ArrayList<card> hand;
     private ArrayList<Minion> ground;
     private Hero hero;
+    private int mana=1;
+    private int maxManaPerRound=1;
+    private int cardPerRound=1;
+    private int offCard=0;// badan -1 mishe
+    private boolean nurse=false;
+    private boolean heroPowerPassive=false;
+    private int heroPowerUse=1;
+
 
 
     public GamePlayer(ArrayList<card> deck, ArrayList<card> hand, ArrayList<Minion> ground, Hero hero) {
@@ -15,6 +23,63 @@ public class GamePlayer {
         this.hand = hand;
         this.ground = ground;
         this.hero = hero;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
+    public int getCardPerRound() {
+        return cardPerRound;
+    }
+
+
+    public int getMaxManaPerRound() {
+        return maxManaPerRound;
+    }
+
+    public void setMaxManaPerRound(int maxManaPerRound) {
+        this.maxManaPerRound = maxManaPerRound;
+    }
+
+    public boolean isHeroPowerPassive() {
+        return heroPowerPassive;
+    }
+
+    public void setHeroPowerPassive(boolean heroPowerPassive) {
+        this.heroPowerPassive = heroPowerPassive;
+    }
+
+    public void setCardPerRound(int cardPerRound) {
+        this.cardPerRound = cardPerRound;
+    }
+
+    public int getOffCard() {
+        return offCard;
+    }
+
+    public void setOffCard(int offCard) {
+        this.offCard = offCard;
+    }
+
+    public boolean isNurse() {
+        return nurse;
+    }
+
+    public void setNurse(boolean nurse) {
+        this.nurse = nurse;
+    }
+
+    public int getHeroPowerUse() {
+        return heroPowerUse;
+    }
+
+    public void setHeroPowerUse(int heroPowerUse) {
+        this.heroPowerUse = heroPowerUse;
     }
 
     public Hero getHero() {

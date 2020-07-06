@@ -4,6 +4,7 @@ import CLI.Administer;
 import CLI.GameState;
 import CLI.Player;
 import CLI.utilities;
+import logic.Constans;
 import logic.ShopManager;
 
 import javax.swing.*;
@@ -33,6 +34,17 @@ public class Controller {
     private Shop shop;
     private Menu menu;
     private Collection collection;
+    private Converter converter=new Converter();
+    private Constans constants=new Constans();
+
+
+    public Constans getConstants() {
+        return constants;
+    }
+
+    public void setConstants(Constans constants) {
+        this.constants = constants;
+    }
 
     public Collection getCollection() {
         return collection;
@@ -56,6 +68,14 @@ public class Controller {
 
     public Shop getShop() {
         return shop;
+    }
+
+    public Converter getConverter() {
+        return converter;
+    }
+
+    public void setConverter(Converter converter) {
+        this.converter = converter;
     }
 
     public void exitGame(){

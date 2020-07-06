@@ -21,6 +21,7 @@ public class GameMaker {
     private GamePlayer freind;
     private GamePlayer enemy;
     private GameState gameState;
+    private String passive;
 
     public DeckReader getDeckReader() {
         return deckReader;
@@ -70,19 +71,44 @@ public class GameMaker {
         this.deck = deck;
     }
 
-    public GameMaker(Player player, String deckReaderAddress, String deck, GameState gameState) {
+    public GameMaker(Player player, String deckReaderAddress, String deck, GameState gameState, String passive) {
         this.player = player;
         this.deckReaderAddress = deckReaderAddress;
         this.deck = deck;
-       this.gameState=gameState;
+        this.gameState = gameState;
+        this.passive = passive;
+
     }
-    public void buildGameState(){
+
+    public void buildGameState() {
         if (deckReaderAddress != null) {
             deckReader = new DeckReader(deckReaderAddress);
             makeFromDeckReader(gameState);
         } else {
             make(gameState);
         }
+    }
+
+    public void buildPassive() {
+        switch (passive) {
+            case "twiceDraw":
+                gameState.getFreind().setCardPerRound(2);
+                break;
+            case "offCard":
+                gameState.getFreind().setOffCard(-1);
+                break;
+            case "freePower":
+                gameState.getFreind().setHeroPowerPassive(true);
+                break;
+            case "manaJump":
+                gameState.getFreind().setMaxManaPerRound(2);
+                gameState.getFreind().setMana(2);
+                break;
+            case "nurse":
+                gameState.getFreind().setNurse(true);
+                break;
+        }
+
     }
 
     private void makeFromDeckReader(GameState gameState) {

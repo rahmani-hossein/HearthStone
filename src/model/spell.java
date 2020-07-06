@@ -20,7 +20,7 @@ public abstract class spell extends card {
     }
 
     @Override
-    public abstract void accept(Visitor visitor, ArrayList<card> friendlyDeck, ArrayList<card> friendlyHand, ArrayList<card> enemyDeck, ArrayList<card> enemyHand, ArrayList<card> friendlyGround, ArrayList<card> enemyGround, card target);
+    public abstract void accept(Visitor visitor, GamePlayer freind, GamePlayer enemy, card target) ;
 
 
     @Override

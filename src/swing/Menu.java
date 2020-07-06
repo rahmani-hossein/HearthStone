@@ -114,6 +114,21 @@ public class Menu extends JPanel implements MouseListener {
         g.drawImage(backGround, 0, 0, this.getWidth(), this.getHeight(), null);
     }
 
+    private void playClickAction(){
+        String cur = (String) decks.getItemAt(decks.getSelectedIndex());
+        String passive=(String) passives.getItemAt(passives.getSelectedIndex());
+        String deckReader = null;
+        deckReader = reader.getText();
+
+        gameMaker = new GameMaker(player, deckReader, cur,Controller.getInstance().getGameState(),passive);
+        //set Game state gamePlayers
+        gameMaker.buildGameState();
+        gameMaker.buildPassive();
+        GamePanel gamePanel=new GamePanel(Controller.getInstance().getGameState());
+        controller.getMyFrame().getMainpanel().add(gamePanel,GAME_PANEL);
+        controller.getMyFrame().setPanel("play");
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
         controller = Controller.getInstance();
@@ -124,16 +139,7 @@ public class Menu extends JPanel implements MouseListener {
         } else if (collection == e.getSource()) {
             controller.getMyFrame().setPanel("collection");
         } else if (play == e.getSource()) {
-            String cur = (String) decks.getItemAt(decks.getSelectedIndex());
-            String deckReader = null;
-            deckReader = reader.getText();
-
-            gameMaker = new GameMaker(player, deckReader, cur,Controller.getInstance().getGameState());
-            //set Game state gamePlayers
-            gameMaker.buildGameState();
-            GamePanel gamePanel=new GamePanel(Controller.getInstance().getGameState());
-            controller.getMyFrame().getMainpanel().add(gamePanel,GAME_PANEL);
-            controller.getMyFrame().setPanel("play");
+           playClickAction();
         } else if (exit == e.getSource()) {
             controller.exitGame();
         } else if (delete == e.getSource()) {
