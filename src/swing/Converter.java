@@ -31,7 +31,7 @@ public class Converter {
     }
 
     private BufferedImage find(String name) {
-        String url = String.format("resources\\image\\cards\\%s.png", name);
+        String url = String.format("resources/image/cards/%s.png", name);
         BufferedImage image = null;
         try {
             File file = new File(url);
@@ -81,7 +81,7 @@ public class Converter {
         imageMap.put("sathrovarr", find("sathrovarr"));
         imageMap.put("securityRover", find("securityRover"));
         imageMap.put("sprint", find("sprint"));
-        imageMap.put("stregthInNumbers", find("stregthInNumbers"));
+        imageMap.put("strengthInNumbers", find("strengthInNumbers"));
         imageMap.put("swampKingDred", find("swampKingDred"));
         imageMap.put("swarmOfLocusts", find("swarmOfLocusts"));
         imageMap.put("tombWarden", find("tombWarden"));

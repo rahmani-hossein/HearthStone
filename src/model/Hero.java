@@ -1,19 +1,26 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 //@JsonIgnoreProperties({})
-public class Hero {
+public abstract class Hero {
     private int HP;
     private String name;
     private String showHeroPower;
     private String showSpecialpower;
-    private boolean defence=false;
+    private int maxHp;
+    private boolean defence = false;
     public final static int vipCards = 2;
     static String[] namesHero = {"mage", "rouge", "warlock", "hunter", "priest"};
     String[] namesVipCards;
 
-    public Hero() {
+    public Hero(Map<String, Object> map) {
+        this.name = (String) map.get("name");
+        this.HP= (int) map.get("HP");
+        this.maxHp= (int) map.get("HP");
+        this.showSpecialpower= (String) map.get("showSpecialPower");
+        this.showHeroPower= (String) map.get("showHeroPower");
 
     }
 
@@ -27,9 +34,9 @@ public class Hero {
         } else if (this.name.equals("warlock")) {
             this.namesVipCards = new String[]{"dreadScale", "fireHawk"};
         } else if (this.name.equals("hunter")) {
-            this.namesVipCards = new String[]{"swampKingDred",};
+            this.namesVipCards = new String[]{"swampKingDred", "arcaneShot"};
         } else if (this.name.equals("priest")) {
-            this.namesVipCards = new String[]{};
+            this.namesVipCards = new String[]{"hightPriestAmet", "flamestrike"};
 
         } else if (this.name.equals("rouge")) {
             this.namesVipCards = new String[]{"friendlySmith", "fierryWaraxe"};
@@ -74,9 +81,7 @@ public class Hero {
     }
 
 
-    public void heroPower() {
-
-    }
+    public abstract void heroPower();
 
     public void specialPower() {
 

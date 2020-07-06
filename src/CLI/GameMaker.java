@@ -150,7 +150,7 @@ public class GameMaker {
         ArrayList<card> hand = new ArrayList<>();
         ArrayList<Minion> ground = new ArrayList<>();
         ArrayList<card> deck = new ArrayList<>();
-        GamePlayer gamePlayer = new GamePlayer(deck, hand, ground, new HeroCreator().create("mage"));
+        GamePlayer gamePlayer = new GamePlayer(deck, hand, ground, new HeroCreator().createHero("mage"));
         return gamePlayer;
     }
 

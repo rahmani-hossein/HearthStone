@@ -1,13 +1,14 @@
 package model.minionPackage;
 
 import Interfaces.Visitor;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import model.GamePlayer;
 import model.Minion;
 import model.card;
 
 import java.util.ArrayList;
 import java.util.Map;
-
+@JsonTypeName("sathrovarr")
 public class sathrovarr extends Minion {
 
     public sathrovarr(Map<String, Object> map) {

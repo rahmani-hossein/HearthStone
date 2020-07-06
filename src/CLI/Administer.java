@@ -27,6 +27,7 @@ public class Administer {
     private ObjectMapper objectMapper = new ObjectMapper();
  private DeckManager deckManager =new DeckManager();
     private GameState gameState;
+    private HeroCreator heroCreator=new HeroCreator();
 
 //    public static Administer getAdministerInstance() {
 //        return AdministerInstance;
@@ -184,31 +185,29 @@ public class Administer {
             //mage
             availableCardsS.add(cardManager.createS("polymorph"));
             availableCardsS.add(cardManager.createS("fireBlast"));
-            hero = new Hero(30, "mage", "spend 2 mana and can deal 1 damage from a chosen enemy ", "2 mana less than usual for spells");
+            hero=heroCreator.createHero("mage");
 
         } else if (rand == 1) {
             //rouge
             availableCardsS.add(cardManager.createS("friendlySmith"));
             availableCardsW.add(cardManager.createW("fierywaraxe"));
-            hero = new Hero(30, "rouge", "spend 3 mana and can get 1 card from enemy deck and add this to her hand.", "2 mana less than usual for cards that are not neutral or vip of herself ");
+            hero=heroCreator.createHero("rouge");
         } else if (rand == 2) {
             //warlock
             availableCardsM.add(cardManager.createM("fireHawk"));
             availableCardsM.add(cardManager.createM("dreadScale"));
-            hero = new Hero(35, "warlock", "cost 2hp and randomly do one of these 2 works  if we have minion in ground plus+1 attack and hp to it or get randomly one card from deck and add it to its hand", "he has 35 hp");
+            hero=heroCreator.createHero("warlock");
 
         } else if (rand == 3) {
             //hunter
             availableCardsS.add(cardManager.createS("arcaneShot"));
             availableCardsM.add(cardManager.createM("swampKingDred"));
-            hero = new Hero(30, "hunter", "PASSIVE after your opponent plays a minion deal 1 damage to it", "all minions have rush ");
-
+            hero=heroCreator.createHero("hunter");
         } else if (rand == 4) {
             //priest
             availableCardsS.add(cardManager.createS("flamestrike"));
             availableCardsM.add(cardManager.createM("highPriestAmet"));
-            hero = new Hero(30, "priest", " get 2 mana and restore 4 health", "double influence of restore cards");
-
+            hero=heroCreator.createHero("priest");
         }
         currentDeck = deckManager.buildDeck("default",hero, availableCardsM, availableCardsS, availableCardsW);
         availableDecks.add(currentDeck);

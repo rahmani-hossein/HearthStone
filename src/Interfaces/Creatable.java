@@ -1,5 +1,9 @@
 package Interfaces;
 
-public interface Creatable<T> {
-    public <T>T create();
+import model.Hero;
+
+import java.util.Map;
+
+public interface Creatable {
+    public Hero create(Map <String,Object>map);
 }

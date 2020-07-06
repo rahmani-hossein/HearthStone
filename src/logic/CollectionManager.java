@@ -11,6 +11,7 @@ public class CollectionManager {
     Constans constans = Constans.getInstance();
     private Player player;
     private CardManager cardManager = new CardManager();
+    private HeroCreator heroCreator=new HeroCreator();
 
     public Player getPlayer() {
         return player;
@@ -85,16 +86,16 @@ public class CollectionManager {
     public Hero makeHero(String nameHero) {
         Hero hero1 = null;
         if (nameHero.equalsIgnoreCase("priest")) {
-            hero1 = new Hero(30, "priest", " get 2 mana and restore 4 health", "double influence of restore cards");
+            hero1=heroCreator.createHero("priest");
         } else if (nameHero.equalsIgnoreCase("hunter")) {
-            hero1 = new Hero(30, "hunter", "PASSIVE after your opponent plays a minion deal 1 damage to it", "all minions have rush ");
+            hero1=heroCreator.createHero("hunter");
         } else if (nameHero.equalsIgnoreCase("warlock")) {
-            hero1 = new Hero(35, "warlock", "cost 2hp and randomly do one of these 2 works  if we have minion in ground plus+1 attack and hp to it or get randomly one card from deck and add it to its hand", "he has 35 hp");
+            hero1 =heroCreator.createHero("warlock");
         } else if (nameHero.equalsIgnoreCase("rouge")) {
-            hero1 = new Hero(30, "rouge", "spend 3 mana and can get 1 card from enemy deck and add this to her hand.", "2 mana less than usual for cards that are not neutral or vip of herself ");
+            hero1 = heroCreator.createHero("rouge");
 
         } else if (nameHero.equalsIgnoreCase("mage")) {
-            hero1 = new Hero(30, "mage", "spend 2 mana and can deal 1 damage from a chosen enemy ", "2 mana less than usual for spells");
+            hero1 = heroCreator.createHero("mage");
 
         }
         return hero1;

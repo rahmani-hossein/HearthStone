@@ -2,9 +2,13 @@ package model;
 
 import Interfaces.Visitable;
 import Interfaces.Visitor;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import java.util.ArrayList;
 import java.util.Map;
+
+
 
 public abstract class card implements Visitable {
     int manaCost;

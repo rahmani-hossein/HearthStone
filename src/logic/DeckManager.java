@@ -50,7 +50,7 @@ public class DeckManager {
         availableCardsS.add(cardManager.createS("polymorph"));
         availableCardsS.add(cardManager.createS("fireBlast"));
 
-        Deck deck=buildDeck(enemyName,heroCreator.create("mage"),availableCardsM,availableCardsS,availableCardsW);
+        Deck deck=buildDeck(enemyName,heroCreator.createHero("mage"),availableCardsM,availableCardsS,availableCardsW);
         return deck;
     }
 

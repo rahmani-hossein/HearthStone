@@ -1,10 +1,31 @@
 package model;
 
 import Interfaces.Visitor;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import model.minionPackage.*;
 
 import java.util.ArrayList;
 import java.util.Map;
-
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.MINIMAL_CLASS,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "availableCardsM")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = amberWatcher.class,name = "amberWatcher"),
+        @JsonSubTypes.Type(value = blazingBattlemage.class,name = "blazingBattlemage"),
+        @JsonSubTypes.Type(value = curioCollector.class,name = "curioCollector"),
+        @JsonSubTypes.Type(value = dreadScale.class,name = "dreadScale"),
+        @JsonSubTypes.Type(value = evasiveChimaera.class,name = "evasiveChimaera"),
+        @JsonSubTypes.Type(value = fireHawk.class,name = "fireHawk"),
+        @JsonSubTypes.Type(value = highPriestAmet.class,name = "highPriestAmet"),
+        @JsonSubTypes.Type(value = hotAirballon.class,name = "hotAirballon"),
+        @JsonSubTypes.Type(value = sathrovarr.class,name = "sathrovarr"),
+        @JsonSubTypes.Type(value = securityRover.class,name = "securityRover"),
+        @JsonSubTypes.Type(value = swampKingDred.class,name = "swampKingDred"),
+        @JsonSubTypes.Type(value = tombWarden.class,name = "tombWarden"),
+        @JsonSubTypes.Type(value = veranus.class,name = "veranus")
+})
 public abstract class Minion extends card {
     int damage;
     int health;

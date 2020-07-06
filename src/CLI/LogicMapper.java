@@ -16,12 +16,12 @@ public class LogicMapper {
         shopManager = new ShopManager(controller.getGameState().getPlayer());
     }
 
-    public <T> T execute(String request,) {
-        switch (request) {
-            case "getDeck":
-                collectionManager.getDeck()
-        }
-    }
+//    public <T> T execute(String request,) {
+//        switch (request) {
+//            case "getDeck":
+//                collectionManager.getDeck()
+//        }
+//    }
 }
 //    public  enum LogicRequest implements Execution  {
 //

@@ -22,7 +22,8 @@ public class CardFactory implements ExactFactory {
     public Minion createMinion(Map<String, Object> map) {
         Minion minion=null;
         try {
-            myClass=Class.forName("model.minionPackage"+(String)map.get("name"));
+            String st=String.format("model.minionPackage.%s",(String)map.get("name"));
+            myClass=Class.forName(st);
         } catch (ClassNotFoundException e) {
             System.out.println("sorry we cant load minion with name  "+map.get("name"));
             e.printStackTrace();
@@ -43,7 +44,8 @@ public class CardFactory implements ExactFactory {
     public spell createSpell(Map<String, Object> map) {
         spell spell=null;
         try {
-            myClass=Class.forName("model.spellPackage"+(String) map.get("name"));
+            String st=String.format("model.spellPackage.%s",(String)map.get("name"));
+            myClass=Class.forName(st);
         } catch (ClassNotFoundException e) {
             System.out.println("cant load spell with name "+map.get("name"));
             e.printStackTrace();
@@ -64,7 +66,8 @@ public class CardFactory implements ExactFactory {
     public weapen createWeapen(Map<String, Object> map) {
         weapen weapen=null;
         try {
-            myClass=Class.forName("model.weapenPackage"+(String)map.get("name"));
+            String st=String.format("model.weapenPackage.%s",(String)map.get("name"));
+            myClass=Class.forName(st);
         } catch (ClassNotFoundException e) {
             System.out.println("sorry we cant load weapen"+map.get("name"));
             e.printStackTrace();
