@@ -1,16 +1,19 @@
 package model;
 
+import Interfaces.Attackable;
 import Interfaces.Visitor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import model.minionPackage.*;
 
 import java.util.ArrayList;
 import java.util.Map;
 @JsonTypeInfo(
-        use = JsonTypeInfo.Id.MINIMAL_CLASS,
-        include = JsonTypeInfo.As.PROPERTY,
-        property = "availableCardsM")
+        use = JsonTypeInfo.Id.CLASS,
+        visible = true
+       )
 @JsonSubTypes({
         @JsonSubTypes.Type(value = amberWatcher.class,name = "amberWatcher"),
         @JsonSubTypes.Type(value = blazingBattlemage.class,name = "blazingBattlemage"),
@@ -26,7 +29,9 @@ import java.util.Map;
         @JsonSubTypes.Type(value = tombWarden.class,name = "tombWarden"),
         @JsonSubTypes.Type(value = veranus.class,name = "veranus")
 })
-public abstract class Minion extends card {
+@JsonTypeName("Minion")
+@JsonIgnoreProperties(ignoreUnknown = true)
+public abstract class Minion extends card implements Attackable {
     int damage;
     int health;
     int liveInRound=0;
@@ -48,7 +53,7 @@ public abstract class Minion extends card {
     }
 
     @Override
-    public abstract void accept(Visitor visitor,  GamePlayer freind, GamePlayer enemy, card target) ;
+    public abstract void accept(Visitor visitor,  GamePlayer freind, GamePlayer enemy, Attackable target) ;
 
 
     @Override
@@ -60,6 +65,15 @@ public abstract class Minion extends card {
         this.liveInRound++;
     }
 
+    @Override
+    public void minusHealth(int minus) {
+        this.health-=minus;
+    }
+
+    @Override
+    public void plusHealth(int plus) {
+        this.health+=plus;
+    }
     //getter& setter
 
 

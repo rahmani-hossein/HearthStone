@@ -2,84 +2,88 @@ package Interfaces;
 
 import model.GamePlayer;
 import model.card;
+import model.minionPackage.amberWatcher;
+import model.minionPackage.*;
+import model.spellPackage.*;
+import model.weapenPackage.*;
 
 public interface Visitor {
 
-    public void visitAmberWatcher( card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitAmberWatcher(amberWatcher amberWatcher, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitBlazingBattleMage( card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitBlazingBattleMage( blazingBattlemage blazingBattlemage, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitCurioCollector( card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitCurioCollector( curioCollector curioCollector, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitDreadScale( card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitDreadScale( dreadScale dreadScale, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitEvasiveChimaera( card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitEvasiveChimaera( evasiveChimaera evasiveChimaera, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitFireHawk( card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitFireHawk( fireHawk fireHawk, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitHighPriestAmet( card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitHighPriestAmet( highPriestAmet highPriestAmet, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitHotAirbaloon( card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitHotAirbaloon( hotAirballon hotAirballon, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitSathrovarr( card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitSathrovarr( sathrovarr sathrovarr, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitSecurityRover( card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitSecurityRover( securityRover securityRover, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitSwampKingDred( card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitSwampKingDred( swampKingDred swampKingDred, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitTombWarden( card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitTombWarden( tombWarden tombWarden, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitVeranus(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitVeranus(veranus veranus, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitArcaneShot(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitArcaneShot(arcaneShot arcaneShot, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitBookOfSpecters(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitBookOfSpecters(bookOfSpecters bookOfSpecters, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitDecimation(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitDecimation(decimation decimation, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitDivineHymn(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitDivineHymn(divineHymn divineHymn, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitFireBlast(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitFireBlast(fireBlast fireBlast, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitFlameStrike(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitFlameStrike(flamestrike flamestrike, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitFriendlySmith(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitFriendlySmith(friendlySmith friendlySmith, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitLearnDraconic(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitLearnDraconic(learnDraconic learnDraconic, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitMalygosFlamestrike(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitMalygosFlamestrike(malygosFlamestrike malygosFlamestrike, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitMalygosFireBall(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitMalygosFireBall(malygosFireball malygosFireball, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitPharaohsBlessing(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitPharaohsBlessing(pharaohsBlessing pharaohsBlessing, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitPolymorph(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitPolymorph(polymorph polymorph, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitSprint(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitSprint(sprint sprint, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitStrengthInNumbers(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitStrengthInNumbers(strengthInNumbers strengthInNumbers, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitSwarmOfLocusts(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitSwarmOfLocusts(swarmOfLocusts swarmOfLocusts, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitArcaniteReaper(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitArcaniteReaper(arcaniteReaper arcaniteReaper, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitAshBringer(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitAshBringer(ashBringer ashBringer, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitAssassinBlade(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitAssassinBlade(assassinBlade assassinBlade, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitBloodFury(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitBloodFury(bloodFury bloodFury, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitBloodClaw(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitBloodClaw(bloodClaw bloodClaw, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitBloodRazor(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitBloodRazor(bloodRazor bloodRazor, GamePlayer freind, GamePlayer enemy,Attackable target);
 
-    public void visitCursedBlade(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitCursedBlade(cursedBlade cursedBlade, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitDragonClaw(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitDragonClaw(dragonClaw dragonClaw, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitFierywaraxe(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitFierywaraxe(fierywaraxe fierywaraxe, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-    public void visitGearBlade(card card, GamePlayer freind, GamePlayer enemy, card target);
+    public void visitGearBlade(gearBlade gearBlade, GamePlayer freind, GamePlayer enemy, Attackable target);
 
 
 

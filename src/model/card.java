@@ -1,31 +1,45 @@
 package model;
 
+import Interfaces.Attackable;
 import Interfaces.Visitable;
 import Interfaces.Visitor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import model.minionPackage.*;
 
 import java.util.ArrayList;
 import java.util.Map;
 
 
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.CLASS,
+        visible = true
+        )
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Minion.class, name = "Minion"),
+        @JsonSubTypes.Type(value = spell.class, name = "spell"),
+        @JsonSubTypes.Type(value = weapen.class, name = "weapen"),
 
+})
+@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class card implements Visitable {
     int manaCost;
-    String name;
-    String description;
-    String type;
-    String heroClass;
-    String rarity;
-    boolean battleCry;
-    boolean summon;
-    boolean deathRattle;
-    boolean turny;
-    int cost;
-    boolean poisonous;
-    boolean discover;
-    boolean rush;
-    boolean taunt;
+   protected String name;
+    protected String description;
+    private String type;
+    private String heroClass;
+    private String rarity;
+    private boolean battleCry;
+    private boolean summon;
+    private boolean deathRattle;
+    private boolean turny;
+    private int cost;
+    private boolean poisonous;
+    private boolean discover;
+    private boolean rush;
+    private boolean taunt;
 
     public boolean isTaunt() {
         return taunt;
@@ -83,7 +97,7 @@ public abstract class card implements Visitable {
         this.poisonous = (boolean) map.get("poisonous");
         this.discover = (boolean) map.get("discover");
         this.rush = (boolean) map.get("rush");
-        this.taunt= (boolean) map.get("taunt");
+        this.taunt = (boolean) map.get("taunt");
     }
 
     public int getCost() {
@@ -191,8 +205,7 @@ public abstract class card implements Visitable {
     }
 
 
-    public abstract void accept(Visitor visitor,GamePlayer freind,GamePlayer enemy, card target) ;
-
+    public abstract void accept(Visitor visitor, GamePlayer freind, GamePlayer enemy, Attackable target);
 
 
 }

@@ -7,6 +7,6 @@ import java.util.ArrayList;
 
 public interface Visitable {
 
-    public void accept(Visitor visitor, GamePlayer freind, GamePlayer enemy, card target);
+    public void accept(Visitor visitor, GamePlayer freind, GamePlayer enemy, Attackable target);
 
 }

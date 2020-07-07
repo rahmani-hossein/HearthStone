@@ -1,10 +1,33 @@
 package model;
 
+
+
+
+
+import Interfaces.Attackable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import model.heroPackage.*;
+
 import java.util.ArrayList;
 import java.util.Map;
 
-//@JsonIgnoreProperties({})
-public abstract class Hero {
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.CLASS,
+        visible = true
+       )
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = hunter.class,name = "hunter"),
+        @JsonSubTypes.Type(value = mage.class,name = "mage"),
+        @JsonSubTypes.Type(value = warlock.class,name = "warlock"),
+        @JsonSubTypes.Type(value = priest.class,name = "priest"),
+        @JsonSubTypes.Type(value = rouge.class,name = "rouge")
+
+})
+@JsonIgnoreProperties(ignoreUnknown = true)
+public abstract class Hero implements Attackable {
     private int HP;
     private String name;
     private String showHeroPower;
@@ -21,6 +44,10 @@ public abstract class Hero {
         this.maxHp= (int) map.get("HP");
         this.showSpecialpower= (String) map.get("showSpecialPower");
         this.showHeroPower= (String) map.get("showHeroPower");
+
+    }
+
+    public Hero(){
 
     }
 
@@ -41,6 +68,16 @@ public abstract class Hero {
         } else if (this.name.equals("rouge")) {
             this.namesVipCards = new String[]{"friendlySmith", "fierryWaraxe"};
         }
+    }
+
+    @Override
+    public void minusHealth(int minus) {
+        this.HP-=minus;
+    }
+
+    @Override
+    public void plusHealth(int plus) {
+        this.HP+=plus;
     }
 
     public int getHP() {

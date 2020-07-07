@@ -82,7 +82,7 @@ public class CardPanelCollection extends JPanel implements MouseListener {
                     Controller.getInstance().getMyFrame().setPanel("shop");
                 }
             } else {
-                JOptionPane.showMessageDialog(getParent(), "you can not buy this card ", "Error", JOptionPane.ERROR);
+                JOptionPane.showMessageDialog(getParent(), "you can not buy this card ", "Error", JOptionPane.ERROR_MESSAGE);
                 String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() + Controller.getInstance().getGameState().getPlayer().getPassword());
                 Controller.myLogger(st1, "you clicked to " + name + "  but you cant buy" + utilities.time() + "\n", true);
             }

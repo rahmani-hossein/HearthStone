@@ -118,7 +118,7 @@ public class Administer {
         } else if (isaccount) {
             String user = username;
             String pass = password;
-            String st = String.format("userJson\\%s.json", user + pass);
+            String st = String.format("userJson/%s.json", user + pass);
             File file = new File(st);
 
             if (file.exists()) {
@@ -130,6 +130,9 @@ public class Administer {
                     fileWriter.close();
                     //  objectMapper.configure(JsonParser.Feature.AUTO_CLOSE_SOURCE, true);
                     Player player = objectMapper.readValue(file, Player.class);
+                    for (int i = 0; i < player.getAvailableCardsW().size(); i++) {
+                        System.out.println(player.getAvailableCardsW().get(i).toString());
+                    }
                     gameState = new GameState(player);
                     Controller.getInstance().setGameState(gameState);
                     Controller.getInstance().setAdminister(this);

@@ -14,5 +14,6 @@
   "cost": 10,
   "poisonous": false,
   "discover": false,
-  "rush": false
+  "rush": false,
+  "taunt":false
 }

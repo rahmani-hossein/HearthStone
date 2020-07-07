@@ -35,6 +35,7 @@ public class CardFactory implements ExactFactory {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
+
             e.printStackTrace();
         }
         return minion;
