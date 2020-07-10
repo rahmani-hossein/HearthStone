@@ -22,9 +22,37 @@ public class GameState {
     private Timer timer;
    private boolean turn = false;//false means friend has the turn.
    private int roundManaMax=1;
+   private ArrayList<String> note=new ArrayList<>();
 
     public GameState() {
 
+    }
+    public GameState(Player player) {
+        this.player = player;
+    }
+
+
+
+    public void updateTime() {
+        // mogeh shorou nobate
+        timer.scheduleAtFixedRate(new Ticker(), 0, 1000);
+    }
+
+
+    public ArrayList<String> getNote() {
+        return note;
+    }
+
+    public void setNote(ArrayList<String> note) {
+        this.note = note;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public int getRoundManaMax() {
@@ -65,25 +93,6 @@ public class GameState {
 
     public void setTurn(boolean turn) {
         this.turn = turn;
-    }
-
-    public void updateTime() {
-        // mogeh shorou nobate
-        timer.scheduleAtFixedRate(new Ticker(), 0, 1000);
-    }
-
-
-
-    public GameState(Player player) {
-        this.player = player;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
     }
 
     private class Ticker extends TimerTask {

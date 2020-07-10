@@ -1,9 +1,9 @@
 {
-  "name": "cursedBlade",
+  "name": "battleAxe",
   "manaCost":1,
   "damage": 2,
-  "durability":3,
-  "description": "double all damage dealt to your hero",
+  "durability":2,
+  "description": "",
   "type":"weapen" ,
   "heroClass": "neutral",
   "rarity": "common",

@@ -15,5 +15,6 @@
   "poisonous": false,
   "discover": false,
   "rush": false,
-  "taunt":false
+  "taunt":false,
+  "liveInRound": 0
 }

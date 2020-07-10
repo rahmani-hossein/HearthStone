@@ -22,7 +22,7 @@ import java.util.Map;
                 @JsonSubTypes.Type(value = bloodClaw.class,name = "bloodClaw"),
                 @JsonSubTypes.Type(value = bloodFury.class,name = "bloodFury"),
                 @JsonSubTypes.Type(value = bloodRazor.class,name = "bloodRazor"),
-                @JsonSubTypes.Type(value = cursedBlade.class,name = "cursedBlade"),
+                @JsonSubTypes.Type(value = battleAxe.class,name = "battleAxe"),
                 @JsonSubTypes.Type(value = dragonClaw.class,name = "dragonClaw"),
                 @JsonSubTypes.Type(value = fierywaraxe.class,name = "fierywaraxe"),
                 @JsonSubTypes.Type(value = gearBlade.class,name = "gearBlade")

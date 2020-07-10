@@ -1,12 +1,14 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class GamePlayer {
-
+private String nameOfPlayer;
     private ArrayList<card> deck;
     private ArrayList<card> hand;
-    private ArrayList<Minion> ground;
+    private LinkedList<Minion> ground;
+    private weapen myWeapen=null;
     private Hero hero;
     private int mana=1;
     private int maxManaPerRound=1;
@@ -18,11 +20,27 @@ public class GamePlayer {
 
 
 
-    public GamePlayer(ArrayList<card> deck, ArrayList<card> hand, ArrayList<Minion> ground, Hero hero) {
+    public GamePlayer(ArrayList<card> deck, ArrayList<card> hand, LinkedList<Minion> ground, Hero hero) {
         this.deck = deck;
         this.hand = hand;
         this.ground = ground;
         this.hero = hero;
+    }
+
+    public weapen getMyWeapen() {
+        return myWeapen;
+    }
+
+    public void setMyWeapen(weapen myWeapen) {
+        this.myWeapen = myWeapen;
+    }
+
+    public String getNameOfPlayer() {
+        return nameOfPlayer;
+    }
+
+    public void setNameOfPlayer(String nameOfPlayer) {
+        this.nameOfPlayer = nameOfPlayer;
     }
 
     public int getMana() {
@@ -106,11 +124,11 @@ public class GamePlayer {
         this.hand = hand;
     }
 
-    public ArrayList<Minion> getGround() {
+    public LinkedList<Minion> getGround() {
         return ground;
     }
 
-    public void setGround(ArrayList<Minion> ground) {
+    public void setGround(LinkedList<Minion> ground) {
         this.ground = ground;
     }
 }

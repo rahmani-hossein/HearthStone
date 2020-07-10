@@ -1,9 +1,6 @@
 package model;
 
 
-
-
-
 import Interfaces.Attackable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -17,37 +14,38 @@ import java.util.Map;
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.CLASS,
         visible = true
-       )
+)
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = hunter.class,name = "hunter"),
-        @JsonSubTypes.Type(value = mage.class,name = "mage"),
-        @JsonSubTypes.Type(value = warlock.class,name = "warlock"),
-        @JsonSubTypes.Type(value = priest.class,name = "priest"),
-        @JsonSubTypes.Type(value = rouge.class,name = "rouge")
+        @JsonSubTypes.Type(value = hunter.class, name = "hunter"),
+        @JsonSubTypes.Type(value = mage.class, name = "mage"),
+        @JsonSubTypes.Type(value = warlock.class, name = "warlock"),
+        @JsonSubTypes.Type(value = priest.class, name = "priest"),
+        @JsonSubTypes.Type(value = rouge.class, name = "rouge")
 
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class Hero implements Attackable {
-    private int HP;
-    private String name;
-    private String showHeroPower;
-    private String showSpecialpower;
-    private int maxHp;
-    private boolean defence = false;
+    protected int HP;
+    protected String name;
+    protected String showHeroPower;
+    protected String showSpecialpower;
+    protected int maxHp;
+    protected boolean defence = false;
     public final static int vipCards = 2;
+
     static String[] namesHero = {"mage", "rouge", "warlock", "hunter", "priest"};
     String[] namesVipCards;
 
     public Hero(Map<String, Object> map) {
         this.name = (String) map.get("name");
-        this.HP= (int) map.get("HP");
-        this.maxHp= (int) map.get("HP");
-        this.showSpecialpower= (String) map.get("showSpecialPower");
-        this.showHeroPower= (String) map.get("showHeroPower");
+        this.HP = (int) map.get("HP");
+        this.maxHp = (int) map.get("HP");
+        this.showSpecialpower = (String) map.get("showSpecialPower");
+        this.showHeroPower = (String) map.get("showHeroPower");
 
     }
 
-    public Hero(){
+    public Hero() {
 
     }
 
@@ -72,12 +70,37 @@ public abstract class Hero implements Attackable {
 
     @Override
     public void minusHealth(int minus) {
-        this.HP-=minus;
+        if (this.HP < minus) {
+            this.HP = 0;
+        } else {
+            this.HP -= minus;
+        }
     }
 
     @Override
     public void plusHealth(int plus) {
-        this.HP+=plus;
+        if (this.HP + plus > maxHp) {
+            this.HP = maxHp;
+        } else {
+            this.HP += plus;
+        }
+    }
+
+
+    public int getMaxHp() {
+        return maxHp;
+    }
+
+    public void setMaxHp(int maxHp) {
+        this.maxHp = maxHp;
+    }
+
+    public boolean isDefence() {
+        return defence;
+    }
+
+    public void setDefence(boolean defence) {
+        this.defence = defence;
     }
 
     public int getHP() {
@@ -86,6 +109,12 @@ public abstract class Hero implements Attackable {
 
     public void setHP(int HP) {
         this.HP = HP;
+    }
+
+
+    @Override
+    public String BedeName() {
+        return this.name;
     }
 
     public String getName() {
@@ -120,7 +149,5 @@ public abstract class Hero implements Attackable {
 
     public abstract void heroPower();
 
-    public void specialPower() {
-
-    }
+    public  abstract void specialPower() ;
 }

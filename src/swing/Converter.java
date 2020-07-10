@@ -59,7 +59,7 @@ public class Converter {
         imageMap.put("bloodRazor", find("bloodRazor"));
         imageMap.put("bookOfSpecters", find("bookOfSpecters"));
         imageMap.put("curioCollector", find("curioCollector"));
-        imageMap.put("cursedBlade", find("cursedBlade"));
+        imageMap.put("battleAxe", find("battleAxe"));
         imageMap.put("decimation", find("decimation"));
         imageMap.put("divineHymn", find("divineHymn"));
         imageMap.put("dragonClaw", find("dragonClaw"));
@@ -87,7 +87,7 @@ public class Converter {
         imageMap.put("tombWarden", find("tombWarden"));
         imageMap.put("veranus", find("veranus"));
         imageMap.put("skin", find("skin"));
-
+        imageMap.put("loctus",find("loctus"));
 
     }
 }

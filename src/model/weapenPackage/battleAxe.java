@@ -9,20 +9,20 @@ import model.weapen;
 
 import java.util.ArrayList;
 import java.util.Map;
-@JsonTypeName("cursedBlade")
-public class cursedBlade  extends weapen {
+@JsonTypeName("battleAxe")
+public class battleAxe  extends weapen {
 
 
-    public cursedBlade(Map<String, Object> map) {
+    public battleAxe(Map<String, Object> map) {
         super(map);
     }
 
-    public cursedBlade() {
+    public battleAxe() {
     }
 
     @Override
     public void accept(Visitor visitor, GamePlayer freind, GamePlayer enemy, Attackable target) {
-        visitor.visitCursedBlade(this,freind,enemy,target);
+        visitor.visitBattleAxe(this,freind,enemy,target);
     }
 
 

@@ -77,7 +77,7 @@ public interface Visitor {
 
     public void visitBloodRazor(bloodRazor bloodRazor, GamePlayer freind, GamePlayer enemy,Attackable target);
 
-    public void visitCursedBlade(cursedBlade cursedBlade, GamePlayer freind, GamePlayer enemy, Attackable target);
+    public void visitBattleAxe(battleAxe battleAxe, GamePlayer freind, GamePlayer enemy, Attackable target);
 
     public void visitDragonClaw(dragonClaw dragonClaw, GamePlayer freind, GamePlayer enemy, Attackable target);
 
@@ -85,7 +85,7 @@ public interface Visitor {
 
     public void visitGearBlade(gearBlade gearBlade, GamePlayer freind, GamePlayer enemy, Attackable target);
 
-
+public void visitLoctus(loctus loctus,GamePlayer freind, GamePlayer enemy,Attackable target);
 
 
 }

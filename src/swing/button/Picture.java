@@ -14,7 +14,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Picture {
+public class Picture implements Comparable<Picture>{
 
 
     private Constans constans=Controller.getInstance().getConstants();
@@ -29,6 +29,8 @@ public class Picture {
     private int damage;
     private int durability;
     private int liveInRound;
+    private boolean taunt;
+    private boolean divineSheild;
 
 
 
@@ -66,7 +68,7 @@ public class Picture {
         g.setColor(Color.BLACK);
         Font font = new Font("Helvetica", Font.BOLD, sizeY/9);
         g.setFont(font);
-        g.drawString(this.hp+"",this.x+(sizeY/9),this.y+(5*(sizeX/4)));
+        g.drawString(this.damage+"",this.x+(sizeY/9),this.y+(5*(sizeX/4)));
     }
     private void paintHp(Graphics g){
         g.setColor(Color.ORANGE);
@@ -106,7 +108,7 @@ public class Picture {
         this.mana=card.getManaCost();
         if (card instanceof Minion){
             type="minion";
-            loadFieldsMinion(((Minion) card).getHealth(),((Minion) card).getDamage(),((Minion) card).getLiveInRound());
+            loadFieldsMinion(((Minion) card).getHealth(),((Minion) card).getDamage(),((Minion) card).getLiveInRound(),card.isTaunt(),((Minion) card).isDivineSheild());
         }
         else if (card instanceof weapen){
             type="weapen";
@@ -118,10 +120,12 @@ public class Picture {
         }
     }
 
-    private  void loadFieldsMinion(int hp,int damage,int liveInRound){
+    private  void loadFieldsMinion(int hp,int damage,int liveInRound,boolean taunt, boolean divineSheild){
         this.hp=hp;
         this.damage=damage;
         this.liveInRound=liveInRound;
+        this.taunt=taunt;
+        this.divineSheild=divineSheild;
     }
     private void loadFieldsWeapen(int damage,int durability){
         this.damage=damage;
@@ -130,6 +134,31 @@ public class Picture {
 
 
     //getter & setter
+
+
+    public int getMana() {
+        return mana;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
+    public boolean isTaunt() {
+        return taunt;
+    }
+
+    public void setTaunt(boolean taunt) {
+        this.taunt = taunt;
+    }
+
+    public boolean isDivineSheild() {
+        return divineSheild;
+    }
+
+    public void setDivineSheild(boolean divineSheild) {
+        this.divineSheild = divineSheild;
+    }
 
     public BufferedImage getImage() {
         return image;
@@ -225,5 +254,18 @@ public class Picture {
 
     public void setLiveInRound(int liveInRound) {
         this.liveInRound = liveInRound;
+    }
+
+    @Override
+    public int compareTo(Picture o) {
+        if (this.x < o.getX()) {
+            return -1;
+        } else {
+            if (this.x == o.getX()) {
+                return 0;
+            } else  {
+                return 1;
+            }
+        }
     }
 }

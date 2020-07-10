@@ -18,4 +18,9 @@ public class hunter extends Hero {
     public void heroPower() {
 
     }
+
+    @Override
+    public void specialPower() {
+
+    }
 }

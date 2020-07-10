@@ -100,6 +100,7 @@ public abstract class card implements Visitable {
         this.taunt = (boolean) map.get("taunt");
     }
 
+
     public int getCost() {
         return cost;
     }

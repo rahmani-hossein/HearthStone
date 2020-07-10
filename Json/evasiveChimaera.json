@@ -3,7 +3,7 @@
   "manaCost":2,
   "damage": 2,
   "health":1,
-  "description": "POISONOUS cant be targeted by spells or hero powers ",
+  "description": " battlecry :deal 2 damage to hero ",
   "type":"minion" ,
   "heroClass": "neutral",
   "rarity": "rare",
@@ -12,8 +12,9 @@
   "deathRattle": false,
   "turny": false,
   "cost": 6,
-  "poisonous": true,
+  "poisonous": false,
   "discover": false,
   "rush": false,
-  "taunt": false
+  "taunt": false,
+  "liveInRound": 0
 }

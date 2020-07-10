@@ -19,4 +19,9 @@ public class mage extends Hero {
     public void heroPower() {
 
     }
+
+    @Override
+    public void specialPower() {
+
+    }
 }

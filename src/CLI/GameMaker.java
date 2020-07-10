@@ -9,6 +9,7 @@ import model.Minion;
 import model.card;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class GameMaker {
@@ -119,7 +120,7 @@ public class GameMaker {
     // making gameState gamePlayers when we do'nt have deckReader
     private void make(GameState gameState) {
         player.setCurrentDeck(findDeck());
-        gameState.setFreind(makeGamePlayer(player.getCurrentDeck()));
+        gameState.setFreind(makeGamePlayer(player));
         gameState.setEnemy(makeGamePlayer(new DeckManager().buildEnemy("myEnemy")));
 
     }
@@ -135,20 +136,32 @@ public class GameMaker {
     }
 
     //maybe we want to use it later too .in coclusion we set it here public.
+    public GamePlayer makeGamePlayer(Player player) {
+        ArrayList<card> hand = new ArrayList<>();
+       LinkedList<Minion> ground = new LinkedList<>();
+        ArrayList<card> deck = new ArrayList<>();
+        add(player.getCurrentDeck().getMinions(), deck);
+        add(player.getCurrentDeck().getSpells(), deck);
+        add(player.getCurrentDeck().getWeapens(), deck);
+        GamePlayer gamePlayer = new GamePlayer(deck, hand, ground, player.getCurrentDeck().getDeckHero());
+        gamePlayer.setNameOfPlayer("friend");
+        return gamePlayer;
+    }
+
     public GamePlayer makeGamePlayer(Deck currentDeck) {
         ArrayList<card> hand = new ArrayList<>();
-        ArrayList<Minion> ground = new ArrayList<>();
+        LinkedList<Minion> ground = new LinkedList<>();
         ArrayList<card> deck = new ArrayList<>();
         add(currentDeck.getMinions(), deck);
         add(currentDeck.getSpells(), deck);
         add(currentDeck.getWeapens(), deck);
         GamePlayer gamePlayer = new GamePlayer(deck, hand, ground, currentDeck.getDeckHero());
+        gamePlayer.setNameOfPlayer("enemy");
         return gamePlayer;
     }
-
     public GamePlayer makeGamePlayer(List<card> list) {
         ArrayList<card> hand = new ArrayList<>();
-        ArrayList<Minion> ground = new ArrayList<>();
+      LinkedList<Minion> ground = new LinkedList<>();
         ArrayList<card> deck = new ArrayList<>();
         GamePlayer gamePlayer = new GamePlayer(deck, hand, ground, new HeroCreator().createHero("mage"));
         return gamePlayer;
