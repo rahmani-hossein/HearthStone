@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.card;
+import swing.Controller;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -15,6 +16,7 @@ public class DeckReader {
     String address;
     ObjectMapper objectMapper;
     Random random = new Random(System.nanoTime());
+    Constans constans = Controller.getInstance().getConstants();
     private CardManager cardManager = new CardManager();
     private List<card> friendListCard=new ArrayList<>();
     private List<card> enemyListCard=new ArrayList<>();
@@ -83,24 +85,31 @@ public class DeckReader {
     private void addToDeck(String nameEkhtiari,List<card> newDeck) {
         switch (nameEkhtiari) {
             case "minion":
-                int rand1 = random.nextInt(Constans.getInstance().getMinionEkhtiari().length);
-                newDeck.add(cardManager.createM(Constans.getInstance().getMinionEkhtiari()[rand1]));
+                int rand1 = random.nextInt(constans.getMinionEkhtiari().length);
+                newDeck.add(cardManager.createM(constans.getMinionEkhtiari()[rand1]));
                 break;
             case "spell":
-                int rand2 = random.nextInt(Constans.getInstance().getSpellEkhtiari().length);
-                newDeck.add(cardManager.createS(Constans.getInstance().getSpellEkhtiari()[rand2]));
+                int rand2 = random.nextInt(constans.getSpellEkhtiari().length);
+                newDeck.add(cardManager.createS(constans.getSpellEkhtiari()[rand2]));
                 break;
             case "weapen":
-                int rand3 = random.nextInt(Constans.getInstance().getWeapenEkhtiari().length);
-                newDeck.add(cardManager.createW(Constans.getInstance().getWeapenEkhtiari()[rand3]));
+                int rand3 = random.nextInt(constans.getWeapenEkhtiari().length);
+                newDeck.add(cardManager.createW(constans.getWeapenEkhtiari()[rand3]));
+                break;
+            case "strengthInNumbers->reward:securityRover":
+                newDeck.add(cardManager.createS("strengthInNumbers"));
+                break;
+            case "specialHeroCard":
+                int rand5=random.nextInt(constans.getMage().length);
+                newDeck.add(cardManager.createS(constans.getMage()[rand5]));
                 break;
             default:
-                if (Arrays.asList(Constans.getInstance().getMinions()).contains(nameEkhtiari)) {
-                    add(nameEkhtiari,newDeck);
-                } else if (Arrays.asList(Constans.getInstance().getSpells()).contains(nameEkhtiari)) {
-                    add(nameEkhtiari,newDeck);
-                } else if (Arrays.asList(Constans.getInstance().getWeapens()).contains(nameEkhtiari)) {
-                    add(nameEkhtiari,newDeck);
+                if (Arrays.asList(constans.getMinions()).contains(nameEkhtiari)) {
+                    addM(nameEkhtiari,newDeck);
+                } else if (Arrays.asList(constans.getSpells()).contains(nameEkhtiari)) {
+                    addS(nameEkhtiari,newDeck);
+                } else if (Arrays.asList(constans.getWeapens()).contains(nameEkhtiari)) {
+                    addW(nameEkhtiari,newDeck);
                 }
         }
     }
@@ -112,7 +121,13 @@ public class DeckReader {
         }
     }
 
-    private void add(String name,List<card>newDeck) {
+    private void addM(String name,List<card>newDeck) {
+        newDeck.add(cardManager.createM(name));
+    }
+    private void addW(String name,List<card>newDeck){
+        newDeck.add(cardManager.createW(name));
+    }
+    private void addS(String name,List<card>newDeck){
         newDeck.add(cardManager.createS(name));
     }
 }

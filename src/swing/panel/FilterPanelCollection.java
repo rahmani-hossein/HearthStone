@@ -2,6 +2,7 @@ package swing.panel;
 
 import logic.CollectionManager;
 import logic.Constans;
+import swing.Controller;
 import swing.button.Button;
 import swing.button.ButtonC;
 
@@ -12,7 +13,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 public class FilterPanelCollection extends JPanel implements MouseListener {
-    Constans constans=Constans.getInstance();
+    Constans constans= Controller.getInstance().getConstants();
     ArrayList<ButtonC> showButton;
     private int width = constans.getCardWidth();
     private int height = constans.getCardHeigth();

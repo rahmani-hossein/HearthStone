@@ -22,7 +22,7 @@ public class Shop extends JPanel implements MouseListener {
     private JLabel wallet;
     private JButton exit;
     private JButton back;
-    private int space = Constans.getInstance().getSpace();
+    private int space = Controller.getInstance().getConstants().getSpace();
     private int sizeW = 200;
     private int sizeH = 275;
 

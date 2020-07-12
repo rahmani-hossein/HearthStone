@@ -17,6 +17,7 @@ public class DeckPanel extends JPanel {
     private CollectionManager collectionManager;
     private Collection parent;
     private ArrayList<JButton> buttons = new ArrayList<>();
+    private Constans constans =Controller.getInstance().getConstants();
     private JLabel deckName;
     private JLabel winAverage;
     private JLabel wins;
@@ -32,7 +33,7 @@ public class DeckPanel extends JPanel {
     public DeckPanel(Collection collection) {
         parent=collection;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setPreferredSize(new Dimension(Constans.getInstance().getPanelWidth()/4, 2*Constans.getInstance().getPanelHeight()));
+        setPreferredSize(new Dimension(constans.getPanelWidth()/4, 2*constans.getPanelHeight()));
         this.collectionManager = parent.getCollectionManager();
         setLabel();
         Collections.sort(this.collectionManager.getPlayer().getAvailableDecks());

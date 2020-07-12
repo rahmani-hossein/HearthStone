@@ -2,52 +2,76 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cb7ea98-0a12-4c97-9e27-432e4492f674" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/image/cards/battleAxe.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/image/cards/loctus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/ActionVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/BizareVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/DeathRattleVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/minionPackage/loctus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/swing/button/HeroView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/image/cards/hunter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/image/cards/mage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/image/cards/priest.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/image/cards/rouge.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/image/cards/warlock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/swing/panel/PlayPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Json/amberWatcher.json" beforeDir="false" afterPath="$PROJECT_DIR$/Json/amberWatcher.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Json/blazingBattlemage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Json/blazingBattlemage.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Json/curioCollector.json" beforeDir="false" afterPath="$PROJECT_DIR$/Json/curioCollector.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Json/cursedBlade.json" beforeDir="false" afterPath="$PROJECT_DIR$/Json/battleAxe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Json/dreadScale.json" beforeDir="false" afterPath="$PROJECT_DIR$/Json/dreadScale.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Json/evasiveChimaera.json" beforeDir="false" afterPath="$PROJECT_DIR$/Json/evasiveChimaera.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Json/fierywaraxe.json" beforeDir="false" afterPath="$PROJECT_DIR$/Json/fierywaraxe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Json/fireHawk.json" beforeDir="false" afterPath="$PROJECT_DIR$/Json/fireHawk.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Json/highPriestAmet.json" beforeDir="false" afterPath="$PROJECT_DIR$/Json/highPriestAmet.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Json/hotAirballon.json" beforeDir="false" afterPath="$PROJECT_DIR$/Json/hotAirballon.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Json/sathrovarr.json" beforeDir="false" afterPath="$PROJECT_DIR$/Json/sathrovarr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Json/securityRover.json" beforeDir="false" afterPath="$PROJECT_DIR$/Json/securityRover.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Json/swampKingDred.json" beforeDir="false" afterPath="$PROJECT_DIR$/Json/swampKingDred.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Json/tombWarden.json" beforeDir="false" afterPath="$PROJECT_DIR$/Json/tombWarden.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Json/veranus.json" beforeDir="false" afterPath="$PROJECT_DIR$/Json/veranus.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/image/cards/cursedBlade.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/image/cards/evasiveChimaera.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/image/cards/evasiveChimaera.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/CLI/Administer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/CLI/Administer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/CLI/GameMaker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/CLI/GameMaker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/CLI/GameState$Ticker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/CLI/GameState$Ticker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/CLI/GameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/CLI/GameState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/logic/CardManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/logic/CardManager$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/logic/CardManager$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/logic/CardManager$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/logic/CardManager$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/logic/CardManager$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/logic/CardManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/logic/CardManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/logic/CollectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/logic/CollectionManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/logic/Constans.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/logic/Constans.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/logic/DeckReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/logic/DeckReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/logic/HeroAbilities.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/logic/ShopManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/logic/ShopManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/model/Hero.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/model/Hero.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/model/Minion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/model/Minion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/model/card.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/model/card.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/model/weapen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/model/weapen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/Collection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/Collection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/Constants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/Converter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/Converter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/GamePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/MyFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/MyFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/Shop.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/Shop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/panel/CardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/panel/CardPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/panel/CardPanelCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/panel/CardPanelCollection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/panel/DeckPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/panel/DeckPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/panel/DeckPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/panel/DeckPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/panel/FilterPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/panel/FilterPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/panel/FilterPanelCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/panel/FilterPanelCollection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/deck/deck1.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/deck/deck1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CLI/Administer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CLI/Administer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CLI/GameMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CLI/GameMaker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CLI/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CLI/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interfaces/Attackable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interfaces/Attackable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interfaces/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interfaces/Visitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/BattlecryVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/BattlecryVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/CardManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/CardManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/CollectionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/Constans.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Constans.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/DeathRattleVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/DeathRattleVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/DeckReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/DeckReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/HeroAbilities.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/ShopManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ShopManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/GamePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GamePlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Minion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Minion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/heroPackage/hunter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/heroPackage/hunter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/heroPackage/mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/heroPackage/mage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/heroPackage/priest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/heroPackage/priest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/heroPackage/rouge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/heroPackage/rouge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/heroPackage/warlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/heroPackage/warlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/weapen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/weapen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/weapenPackage/cursedBlade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/weapenPackage/battleAxe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swing/Collection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Collection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swing/Constants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swing/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/swing/Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Converter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/swing/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swing/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swing/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swing/MyFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/MyFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swing/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swing/button/HeroView.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/swing/button/Picture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/button/Picture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swing/panel/CardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/panel/CardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swing/panel/CardPanelCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/panel/CardPanelCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swing/panel/DeckPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/panel/DeckPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swing/panel/FilterPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/panel/FilterPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/swing/panel/FilterPanelCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/panel/FilterPanelCollection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594115181871</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="before doing config">
+      <created>1594366669894</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1594366669894</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -245,49 +276,50 @@
     <MESSAGE value="GamePlayer" />
     <MESSAGE value="beforeJsonLast" />
     <MESSAGE value="afterBuildingSuccessfuly with Jackson" />
-    <option name="LAST_COMMIT_MESSAGE" value="afterBuildingSuccessfuly with Jackson" />
+    <MESSAGE value="before doing config" />
+    <option name="LAST_COMMIT_MESSAGE" value="before doing config" />
   </component>
   <component name="WindowStateProjectService">
     <state x="403" y="178" key="#Notifications" timestamp="1588188151399">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
     <state x="403" y="178" key="#Notifications/0.0.1620.1040@0.0.1620.1040" timestamp="1588188151399" />
-    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1594362157685">
+    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1594488678838">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1620.1040@0.0.1620.1040" timestamp="1594362157685" />
+    <state x="617" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1620.1040@0.0.1620.1040" timestamp="1594488678838" />
     <state x="605" y="405" width="408" height="238" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1592045534944">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
     <state x="605" y="405" width="408" height="238" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1620.1040@0.0.1620.1040" timestamp="1592045534944" />
-    <state x="541" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593619428379">
+    <state x="541" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594466708281">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state x="541" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1620.1040@0.0.1620.1040" timestamp="1593619428379" />
-    <state x="464" y="113" key="CommitChangelistDialog2" timestamp="1594115180026">
+    <state x="541" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1620.1040@0.0.1620.1040" timestamp="1594466708281" />
+    <state x="464" y="113" key="CommitChangelistDialog2" timestamp="1594366668327">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state x="464" y="113" key="CommitChangelistDialog2/0.0.1620.1040@0.0.1620.1040" timestamp="1594115180026" />
+    <state x="464" y="113" key="CommitChangelistDialog2/0.0.1620.1040@0.0.1620.1040" timestamp="1594366668327" />
     <state x="514" y="262" key="FileChooserDialogImpl" timestamp="1593770314782">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
     <state x="514" y="262" key="FileChooserDialogImpl/0.0.1620.1040@0.0.1620.1040" timestamp="1593770314782" />
-    <state width="1578" height="279" key="GridCell.Tab.0.bottom" timestamp="1594064003279">
+    <state width="1578" height="279" key="GridCell.Tab.0.bottom" timestamp="1594497309439">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1578" height="279" key="GridCell.Tab.0.bottom/0.0.1620.1040@0.0.1620.1040" timestamp="1594064003279" />
-    <state width="1578" height="279" key="GridCell.Tab.0.center" timestamp="1594064003279">
+    <state width="1578" height="279" key="GridCell.Tab.0.bottom/0.0.1620.1040@0.0.1620.1040" timestamp="1594497309439" />
+    <state width="1578" height="279" key="GridCell.Tab.0.center" timestamp="1594497309437">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1578" height="279" key="GridCell.Tab.0.center/0.0.1620.1040@0.0.1620.1040" timestamp="1594064003279" />
-    <state width="1578" height="279" key="GridCell.Tab.0.left" timestamp="1594064003279">
+    <state width="1578" height="279" key="GridCell.Tab.0.center/0.0.1620.1040@0.0.1620.1040" timestamp="1594497309437" />
+    <state width="1578" height="279" key="GridCell.Tab.0.left" timestamp="1594497309437">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1578" height="279" key="GridCell.Tab.0.left/0.0.1620.1040@0.0.1620.1040" timestamp="1594064003279" />
-    <state width="1578" height="279" key="GridCell.Tab.0.right" timestamp="1594064003279">
+    <state width="1578" height="279" key="GridCell.Tab.0.left/0.0.1620.1040@0.0.1620.1040" timestamp="1594497309437" />
+    <state width="1578" height="279" key="GridCell.Tab.0.right" timestamp="1594497309439">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1578" height="279" key="GridCell.Tab.0.right/0.0.1620.1040@0.0.1620.1040" timestamp="1594064003279" />
+    <state width="1578" height="279" key="GridCell.Tab.0.right/0.0.1620.1040@0.0.1620.1040" timestamp="1594497309439" />
     <state width="1578" height="348" key="GridCell.Tab.1.bottom" timestamp="1589701336482">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
@@ -316,10 +348,10 @@
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
     <state x="292" y="95" key="SettingsEditor/0.0.1620.1040@0.0.1620.1040" timestamp="1594041560450" />
-    <state x="403" y="253" key="Vcs.Push.Dialog.v2" timestamp="1594115194607">
+    <state x="403" y="253" key="Vcs.Push.Dialog.v2" timestamp="1594366689684">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state x="403" y="253" key="Vcs.Push.Dialog.v2/0.0.1620.1040@0.0.1620.1040" timestamp="1594115194607" />
+    <state x="403" y="253" key="Vcs.Push.Dialog.v2/0.0.1620.1040@0.0.1620.1040" timestamp="1594366689684" />
     <state x="503" y="256" width="613" height="526" key="find.popup" timestamp="1594041936313">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>

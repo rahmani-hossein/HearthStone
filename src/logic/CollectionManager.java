@@ -2,13 +2,14 @@ package logic;
 
 import CLI.Player;
 import model.*;
+import swing.Controller;
 
 import java.util.ArrayList;
 
 import static CLI.utilities.contains;
 
 public class CollectionManager {
-    Constans constans = Constans.getInstance();
+    Constans constans = Controller.getInstance().getConstants();
     private Player player;
     private CardManager cardManager = new CardManager();
     private HeroCreator heroCreator=new HeroCreator();

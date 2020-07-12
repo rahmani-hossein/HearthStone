@@ -8,6 +8,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.*;
+import swing.Controller;
 
 import java.awt.*;
 import java.io.FileNotFoundException;
@@ -22,7 +23,7 @@ import static CLI.utilities.contains;
 
 public class CardManager {
     ObjectMapper objectMapper = new ObjectMapper();
-    Constans constans = Constans.getInstance();
+    Constans constans = Controller.getInstance().getConstants();
     CardFactory cardFactory = new CardFactory();
 
 

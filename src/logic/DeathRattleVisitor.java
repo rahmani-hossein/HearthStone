@@ -18,6 +18,7 @@ public class DeathRattleVisitor implements Visitor {
         }
     }
 
+
     @Override
     public void visitAmberWatcher(amberWatcher amberWatcher, GamePlayer freind, GamePlayer enemy, Attackable target) {
 

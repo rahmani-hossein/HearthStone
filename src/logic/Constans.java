@@ -10,14 +10,18 @@ import static javax.imageio.ImageIO.read;
 
 public class Constans {
 
+     //we want to loadConfig;
+//    private static Constans constants;
+//
+//    public static Constans getInstance() {
+//        if (constants == null) {
+//            constants = new Constans();
+//        }
+//        return constants;
+//    }
 
-    private static Constans constants;
+    public Constans(){
 
-    public static Constans getInstance() {
-        if (constants == null) {
-            constants = new Constans();
-        }
-        return constants;
     }
 
     private int cardWidth = 200;
@@ -31,11 +35,14 @@ public class Constans {
     private int groundSize = 7;
     private int groundSpace = 50;
     private int handSpace = 35;
-    private int maxYGame = 850;
+    private int maxYGame = 800;
     private int minYGame = 150;
     private int friendHeroY=700;
     private int GroundX=300;
     private int friendGroundY =600;
+    private int freindHeroX = 1000;
+    private int enemyHeroY=150;
+    private int enemyHeroX=1000;
     private int enenmyGroundY=300;
 
     private String[] minionEkhtiari = new String[]{"blazingBattlemage", "hotAirballon", "evasiveChimaera", "amberWatcher", "veranus", "swampKingDred"};
@@ -76,6 +83,29 @@ public class Constans {
         }
     }
 
+    public int getFreindHeroX() {
+        return freindHeroX;
+    }
+
+    public void setFreindHeroX(int freindHeroX) {
+        this.freindHeroX = freindHeroX;
+    }
+
+    public int getEnemyHeroY() {
+        return enemyHeroY;
+    }
+
+    public void setEnemyHeroY(int enemyHeroY) {
+        this.enemyHeroY = enemyHeroY;
+    }
+
+    public int getEnemyHeroX() {
+        return enemyHeroX;
+    }
+
+    public void setEnemyHeroX(int enemyHeroX) {
+        this.enemyHeroX = enemyHeroX;
+    }
 
     public int getFriendHeroY() {
         return friendHeroY;

@@ -15,7 +15,7 @@ import java.awt.event.MouseListener;
 
 public class CardPanel extends JPanel implements MouseListener {
     ShopManager shopManager;
-    private Constans constans=Constans.getInstance();
+    private Constans constans=Controller.getInstance().getConstants();
     private CardManager cardManager;
     private String name;
     private int cost=0;

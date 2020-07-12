@@ -15,7 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Login extends JPanel {
-    Constans constans=Constans.getInstance();
+    Constans constans=Controller.getInstance().getConstants();
     private BufferedImage backGround;
     private JLabel subject;
     private JLabel userNameLabel;

@@ -88,6 +88,10 @@ public class Converter {
         imageMap.put("veranus", find("veranus"));
         imageMap.put("skin", find("skin"));
         imageMap.put("loctus",find("loctus"));
-
+        imageMap.put("mage",find("mage"));
+        imageMap.put("rouge",find("rouge"));
+        imageMap.put("hunter",find("hunter"));
+        imageMap.put("warlock",find("warlock"));
+        imageMap.put("priest",find("priest"));
     }
 }

@@ -82,7 +82,7 @@ public class GameMaker {
     }
 
     public void buildGameState() {
-        if (deckReaderAddress != null) {
+        if (deckReaderAddress != null && deckReaderAddress.length() >= 2) {
             deckReader = new DeckReader(deckReaderAddress);
             makeFromDeckReader(gameState);
         } else {
@@ -113,8 +113,8 @@ public class GameMaker {
     }
 
     private void makeFromDeckReader(GameState gameState) {
-        gameState.setFreind(makeGamePlayer(deckReader.getFriendListCard()));
-        gameState.setEnemy(makeGamePlayer(deckReader.getEnemyListCard()));
+        gameState.setFreind(makeGamePlayer(deckReader.getFriendListCard(), true));
+        gameState.setEnemy(makeGamePlayer(deckReader.getEnemyListCard(), false));
     }
 
     // making gameState gamePlayers when we do'nt have deckReader
@@ -138,12 +138,21 @@ public class GameMaker {
     //maybe we want to use it later too .in coclusion we set it here public.
     public GamePlayer makeGamePlayer(Player player) {
         ArrayList<card> hand = new ArrayList<>();
-       LinkedList<Minion> ground = new LinkedList<>();
+        LinkedList<Minion> ground = new LinkedList<>();
         ArrayList<card> deck = new ArrayList<>();
         add(player.getCurrentDeck().getMinions(), deck);
         add(player.getCurrentDeck().getSpells(), deck);
         add(player.getCurrentDeck().getWeapens(), deck);
+        ArrayList<card>init =new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            card card=deck.remove(0);
+            init.add(card);
+            System.out.println(card.toString());
+        }
         GamePlayer gamePlayer = new GamePlayer(deck, hand, ground, player.getCurrentDeck().getDeckHero());
+        gamePlayer.setInitCard(init);
+        System.out.println("we set successfully "+gamePlayer.getInitCard().size());
+
         gamePlayer.setNameOfPlayer("friend");
         return gamePlayer;
     }
@@ -151,23 +160,45 @@ public class GameMaker {
     public GamePlayer makeGamePlayer(Deck currentDeck) {
         ArrayList<card> hand = new ArrayList<>();
         LinkedList<Minion> ground = new LinkedList<>();
-        ArrayList<card> deck = new ArrayList<>();
+        List<card> deck = new ArrayList<>();
         add(currentDeck.getMinions(), deck);
         add(currentDeck.getSpells(), deck);
         add(currentDeck.getWeapens(), deck);
+        for (int i = 0; i < 3; i++) {
+            card card=deck.remove(0);
+            hand.add(card);
+        }
         GamePlayer gamePlayer = new GamePlayer(deck, hand, ground, currentDeck.getDeckHero());
         gamePlayer.setNameOfPlayer("enemy");
         return gamePlayer;
     }
-    public GamePlayer makeGamePlayer(List<card> list) {
+
+    public GamePlayer makeGamePlayer(List<card> list, boolean friend) {
         ArrayList<card> hand = new ArrayList<>();
-      LinkedList<Minion> ground = new LinkedList<>();
-        ArrayList<card> deck = new ArrayList<>();
-        GamePlayer gamePlayer = new GamePlayer(deck, hand, ground, new HeroCreator().createHero("mage"));
-        return gamePlayer;
+        LinkedList<Minion> ground = new LinkedList<>();
+        if (!friend) {
+            for (int i = 0; i < 3; i++) {
+                card card=list.remove(0);
+                hand.add(card);
+            }
+            GamePlayer gamePlayer = new GamePlayer(list, hand, ground, new HeroCreator().createHero("mage"));
+            gamePlayer.setNameOfPlayer("enemy");
+            return gamePlayer;
+        } else {
+            ArrayList<card> init = new ArrayList<>();
+            for (int i = 0; i < 3; i++) {
+                card card=list.remove(0);
+                init.add(card);
+            }
+            GamePlayer gamePlayer = new GamePlayer(list, hand, ground, new HeroCreator().createHero("mage"));
+            gamePlayer.setInitCard(init);
+            System.out.println("we set successfully "+gamePlayer.getInitCard().size());
+            gamePlayer.setNameOfPlayer("friend");
+            return gamePlayer;
+        }
     }
 
-    public void add(ArrayList<? extends card> types, ArrayList<card> deck) {
+    public void add(List<? extends card> types, List<card> deck) {
         for (int i = 0; i < types.size(); i++) {
             deck.add(types.get(i));
         }

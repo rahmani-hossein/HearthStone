@@ -22,6 +22,7 @@ public class GameState {
     private Timer timer;
    private boolean turn = false;//false means friend has the turn.
    private int roundManaMax=1;
+   private boolean gameOver = false;
    private ArrayList<String> note=new ArrayList<>();
 
     public GameState() {
@@ -38,6 +39,14 @@ public class GameState {
         timer.scheduleAtFixedRate(new Ticker(), 0, 1000);
     }
 
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
+    }
 
     public ArrayList<String> getNote() {
         return note;

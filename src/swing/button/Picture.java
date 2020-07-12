@@ -2,10 +2,7 @@ package swing.button;
 
 import CLI.utilities;
 import logic.Constans;
-import model.Minion;
-import model.card;
-import model.spell;
-import model.weapen;
+import model.*;
 import swing.Controller;
 
 import javax.imageio.ImageIO;
@@ -14,16 +11,16 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Picture implements Comparable<Picture>{
+public class Picture implements Comparable<Picture> {
 
 
-    private Constans constans=Controller.getInstance().getConstants();
+    private Constans constans = Controller.getInstance().getConstants();
     private BufferedImage image;
     private BufferedImage skin;
     private String name;
     private String type;
     private int x, y;
-    private int sizeX=constans.getSizeX(),sizeY=constans.getSizeY();//sizeX=100, sizeY=135;
+    private int sizeX = constans.getSizeX(), sizeY = constans.getSizeY();//sizeX=100, sizeY=135;
     private int hp;
     private int mana;
     private int damage;
@@ -33,103 +30,125 @@ public class Picture implements Comparable<Picture>{
     private boolean divineSheild;
 
 
+    public Picture(int x, int y, card card) {
+        this.name = card.getName();
+        this.x = x;
+        this.y = y;
+        setImage();
+        handleType(card);
+    }
 
-
-
-    public Picture(int x , int y, card card) {
-        this.name=card.getName();
+    public Picture(int x, int y, GamePlayer gamePlayer) {
+        this.name = gamePlayer.getHero().getName();
+        this.hp = gamePlayer.getHero().getHP();
+        this.mana = gamePlayer.getMana();
         this.x=x;
         this.y=y;
         setImage();
-       handleType(card);
     }
-    private void setImage(){
-       image= Controller.getInstance().getConverter().getImage(this.name);
-       skin=Controller.getInstance().getConverter().getImage("skin");
+
+    private void setImage() {
+        image = Controller.getInstance().getConverter().getImage(this.name);
+        skin = Controller.getInstance().getConverter().getImage("skin");
         System.out.println("finish loading picture");
     }
-    public void paint(Graphics g){
-        g.drawImage(image,this.x,this.y,sizeX,sizeY,null);
+
+    public void paintHero(Graphics g) {
+        g.drawImage(image, this.x, this.y, sizeX, sizeY, null);
+        paintHeroHp(g);
+    }
+
+    public void paint(Graphics g) {
+        g.drawImage(image, this.x, this.y, sizeX, sizeY, null);
         paintMana(g);
-        if (type.equals("minion")){
+        if (type.equals("minion")) {
             paintHp(g);
             paintDamage(g);
-        }
-        else if (type.equals("weapen")){
+        } else if (type.equals("weapen")) {
             paintDamage(g);
             paintDurability(g);
         }
 
     }
 
-    private void paintDamage(Graphics g){
+    private void paintDamage(Graphics g) {
         g.setColor(Color.ORANGE);
-        g.fillRect(x+(sizeY/9),y+(8*(sizeY/9)),sizeX/10,sizeX/10);
+        g.fillRect(x + (sizeY / 9), y + (8 * (sizeY / 9)), sizeX / 10, sizeX / 10);
         g.setColor(Color.BLACK);
-        Font font = new Font("Helvetica", Font.BOLD, sizeY/9);
+        Font font = new Font("Helvetica", Font.BOLD, sizeY / 9);
         g.setFont(font);
-        g.drawString(this.damage+"",this.x+(sizeY/9),this.y+(5*(sizeX/4)));
+        g.drawString(this.damage + "", this.x + (sizeY / 9), this.y + (5 * (sizeX / 4)));
     }
-    private void paintHp(Graphics g){
+
+    private void paintHp(Graphics g) {
         g.setColor(Color.ORANGE);
-        g.fillRect(x+(8*(sizeX/10)),y+(11*(sizeX/10)),sizeY/9,sizeY/9);
+        g.fillRect(x + (8 * (sizeX / 10)), y + (11 * (sizeX / 10)), sizeY / 9, sizeY / 9);
         g.setColor(Color.BLACK);
-        Font font = new Font("Helvetica", Font.BOLD, sizeY/9);
+        Font font = new Font("Helvetica", Font.BOLD, sizeY / 9);
         g.setFont(font);
-        g.drawString(this.hp+"",this.x+(17*(sizeX/20)),this.y+(5*sizeX/4));
-        System.out.println("we draw "+hp+" in the ");
+        g.drawString(this.hp + "", this.x + (17 * (sizeX / 20)), this.y + (5 * sizeX / 4));
+        System.out.println("we draw " + hp + " in the ");
     }
-    private void paintDurability(Graphics g){
+
+    private void paintDurability(Graphics g) {
         g.setColor(Color.ORANGE);
-        g.fillRect(x+(8*(sizeX/10)),y+(11*(sizeX/10)),sizeY/9,sizeY/9);
+        g.fillRect(x + (8 * (sizeX / 10)), y + (11 * (sizeX / 10)), sizeY / 9, sizeY / 9);
         g.setColor(Color.BLACK);
-        Font font = new Font("Helvetica", Font.BOLD, sizeY/9);
+        Font font = new Font("Helvetica", Font.BOLD, sizeY / 9);
         g.setFont(font);
-        g.drawString(this.durability+"",this.x+(17*(sizeX/20)),this.y+(5*(sizeX/4)));
-        System.out.println("we draw "+durability+" in the ");
+        g.drawString(this.durability + "", this.x + (17 * (sizeX / 20)), this.y + (5 * (sizeX / 4)));
+        System.out.println("we draw " + durability + " in the ");
     }
-    private void paintMana(Graphics g){
+
+    private void paintMana(Graphics g) {
         g.setColor(Color.ORANGE);
-        g.fillRect(x+(sizeX/10),y+(sizeX/10),sizeY/9,sizeY/9);
+        g.fillRect(x + (sizeX / 10), y + (sizeX / 10), sizeY / 9, sizeY / 9);
         g.setColor(Color.BLACK);
         Font font = new Font("Helvetica", Font.BOLD, 15);
         g.setFont(font);
-        g.drawString(this.mana+"",this.x+(sizeY/9),this.y+(sizeX/5));
-        System.out.println("we draw "+mana+" in the ");
+        g.drawString(this.mana + "", this.x + (sizeY / 9), this.y + (sizeX / 5));
+        System.out.println("we draw " + mana + " in the ");
     }
 
-    public void paintSkin(Graphics g){
-        g.drawImage(skin,this.x,this.y,sizeX,sizeY,null);
+    public void paintSkin(Graphics g) {
+        g.drawImage(skin, this.x, this.y, sizeX, sizeY, null);
     }
 
+    private void paintHeroHp(Graphics g) {
+        g.setColor(Color.ORANGE);
+        g.fillRect(x + (sizeY / 9), y + (8 * (sizeY / 9)), sizeX / 10, sizeX / 10);
+        g.setColor(Color.BLACK);
+        Font font = new Font("Helvetica", Font.BOLD, sizeY / 9);
+        g.setFont(font);
+        g.drawString(this.hp + "", this.x + (sizeY / 9), this.y + (5 * (sizeX / 4)));
+    }
 
     //for handle if &else in constructor
-    private void handleType(card card){
-        this.mana=card.getManaCost();
-        if (card instanceof Minion){
-            type="minion";
-            loadFieldsMinion(((Minion) card).getHealth(),((Minion) card).getDamage(),((Minion) card).getLiveInRound(),card.isTaunt(),((Minion) card).isDivineSheild());
-        }
-        else if (card instanceof weapen){
-            type="weapen";
-            loadFieldsWeapen(((weapen) card).getDamage(),((weapen) card).getDurability());
-        }
-        else if (card instanceof spell){
-            type="spell";
+    private void handleType(card card) {
+        this.mana = card.getManaCost();
+        if (card instanceof Minion) {
+            type = "minion";
+            loadFieldsMinion(((Minion) card).getHealth(), ((Minion) card).getDamage(), ((Minion) card).getLiveInRound(), card.isTaunt(), ((Minion) card).isDivineSheild());
+        } else if (card instanceof weapen) {
+            type = "weapen";
+            loadFieldsWeapen(((weapen) card).getDamage(), ((weapen) card).getDurability());
+        } else if (card instanceof spell) {
+            type = "spell";
 
         }
     }
 
-    private  void loadFieldsMinion(int hp,int damage,int liveInRound,boolean taunt, boolean divineSheild){
-        this.hp=hp;
-        this.damage=damage;
-        this.liveInRound=liveInRound;
-        this.taunt=taunt;
-        this.divineSheild=divineSheild;
+    private void loadFieldsMinion(int hp, int damage, int liveInRound, boolean taunt, boolean divineSheild) {
+        this.hp = hp;
+        this.damage = damage;
+        this.liveInRound = liveInRound;
+        this.taunt = taunt;
+        this.divineSheild = divineSheild;
     }
-    private void loadFieldsWeapen(int damage,int durability){
-        this.damage=damage;
-        this.durability=durability;
+
+    private void loadFieldsWeapen(int damage, int durability) {
+        this.damage = damage;
+        this.durability = durability;
     }
 
 
@@ -263,7 +282,7 @@ public class Picture implements Comparable<Picture>{
         } else {
             if (this.x == o.getX()) {
                 return 0;
-            } else  {
+            } else {
                 return 1;
             }
         }

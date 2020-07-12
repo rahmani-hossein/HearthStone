@@ -4,6 +4,7 @@ import CLI.Administer;
 import CLI.GameState;
 import CLI.Player;
 import CLI.utilities;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import logic.Constans;
 import logic.ShopManager;
 
@@ -24,6 +25,21 @@ public class Controller {
 
     private static Controller instance = new Controller();
 
+    //constructor
+    private Controller(){
+//        administer= new Administer();
+//        ObjectMapper objectMapper =new ObjectMapper();
+//        File file =new File("resources/configFiles/config.json");
+//        try {
+//            constants = objectMapper.readValue(file,Constans.class);
+//        } catch (IOException e) {
+//            System.out.println(" cant load constans");
+//            e.printStackTrace();
+//        }
+        constants =new Constans();
+
+    }
+
     public static Controller getInstance() {
         return instance;
     }
@@ -35,7 +51,7 @@ public class Controller {
     private Menu menu;
     private Collection collection;
     private Converter converter=new Converter();
-    private Constans constants=new Constans();
+    private Constans constants;
 
 
     public Constans getConstants() {
@@ -107,15 +123,8 @@ public class Controller {
     public GameState getGameState() {
         return gameState;
     }
-   //constructor
-    private Controller(){
-        administer= new Administer();
 
-//        ShopManager shopManager=new ShopManager(this.getGameState().getPlayer());
-//        shop=new Shop(shopManager);
-//        myFrame.getMainpanel().add(shop, SHOP_PANEL);
 
-    }
 
     public MyFrame getMyFrame() {
         return myFrame;

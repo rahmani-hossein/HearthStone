@@ -21,6 +21,6 @@ public class warlock extends Hero {
 
     @Override
     public void specialPower() {
-
+// we do it . we increase the health;
     }
 }

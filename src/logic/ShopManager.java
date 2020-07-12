@@ -3,6 +3,7 @@ package logic;
 import CLI.Administer;
 import CLI.Player;
 import model.*;
+import swing.Controller;
 
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ import static CLI.utilities.contains;
 public class ShopManager {
     private Player player;
     private CardManager cardManager =new CardManager();
-    private Constans constans=Constans.getInstance();
+    private Constans constans= Controller.getInstance().getConstants();
 
     public ShopManager(Player player ) {
         this.player = player;

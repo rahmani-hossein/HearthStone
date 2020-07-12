@@ -2,10 +2,11 @@ package model;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class GamePlayer {
 private String nameOfPlayer;
-    private ArrayList<card> deck;
+    private List<card> deck;
     private ArrayList<card> hand;
     private LinkedList<Minion> ground;
     private weapen myWeapen=null;
@@ -17,14 +18,24 @@ private String nameOfPlayer;
     private boolean nurse=false;
     private boolean heroPowerPassive=false;
     private int heroPowerUse=1;
+    private ArrayList<card>initCard = new ArrayList<>();
 
 
 
-    public GamePlayer(ArrayList<card> deck, ArrayList<card> hand, LinkedList<Minion> ground, Hero hero) {
+    public GamePlayer(List<card> deck, ArrayList<card> hand, LinkedList<Minion> ground, Hero hero) {
         this.deck = deck;
         this.hand = hand;
         this.ground = ground;
         this.hero = hero;
+    }
+
+
+    public ArrayList<card> getInitCard() {
+        return initCard;
+    }
+
+    public void setInitCard(ArrayList<card> initCard) {
+        this.initCard = initCard;
     }
 
     public weapen getMyWeapen() {
@@ -108,11 +119,11 @@ private String nameOfPlayer;
         this.hero = hero;
     }
 
-    public ArrayList<card> getDeck() {
+    public List<card> getDeck() {
         return deck;
     }
 
-    public void setDeck(ArrayList<card> deck) {
+    public void setDeck(List<card> deck) {
         this.deck = deck;
     }
 

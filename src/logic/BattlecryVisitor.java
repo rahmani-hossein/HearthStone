@@ -84,7 +84,7 @@ public class BattlecryVisitor implements Visitor {
 
     @Override
     public void visitBlazingBattleMage(blazingBattlemage blazingBattlemage, GamePlayer freind, GamePlayer enemy, Attackable target) {
-//nothing to do in battlecry we do it in action
+//it doesnt have any battlecry;
 
     }
 

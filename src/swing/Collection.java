@@ -20,7 +20,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Collection extends JPanel implements MouseListener {
-    private Constans constans=Constans.getInstance();
+    private Constans constans=Controller.getInstance().getConstants();
     private int space = constans.getSpace();
     private int sizeW = constans.getCardWidth();//200
     private int sizeH =constans.getCardHeigth();//285

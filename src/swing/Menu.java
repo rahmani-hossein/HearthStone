@@ -38,12 +38,12 @@ public class Menu extends JPanel implements MouseListener {
     public Menu(Player player) {
         this.controller = Controller.getInstance();
         this.player = player;
-        constans = Constans.getInstance();
+        constans = Controller.getInstance().getConstants();
         this.setLayout(null);
         collection = new JButton("COLLECTION");
         shop = new JButton("SHOP");
         play = new JButton("PLAY");
-        reader = new JTextField();
+        reader = new JTextField(20);
         exit = new JButton("exit");
         delete = new JButton("delete");
         decks = new JComboBox(deckNames());
@@ -124,7 +124,10 @@ public class Menu extends JPanel implements MouseListener {
         //set Game state gamePlayers
         gameMaker.buildGameState();
         gameMaker.buildPassive();
-        GamePanel gamePanel=new GamePanel(Controller.getInstance().getGameState());
+        for (int i = 0; i < Controller.getInstance().getGameState().getFreind().getInitCard().size(); i++) {
+            System.out.println(Controller.getInstance().getGameState().getFreind().getInitCard().get(i).toString());
+        }
+        GamePanel gamePanel=new GamePanel(constans.getPanelWidth(),constans.getPanelHeight(),Controller.getInstance().getGameState());
         controller.getMyFrame().getMainpanel().add(gamePanel,GAME_PANEL);
         controller.getMyFrame().setPanel("play");
     }
