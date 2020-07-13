@@ -26,15 +26,15 @@ public class Controller {
     //constructor
     private Controller(){
 //        administer= new Administer();
-//        ObjectMapper objectMapper =new ObjectMapper();
-//        File file =new File("resources/configFiles/config.json");
-//        try {
-//            constants = objectMapper.readValue(file,Constans.class);
-//        } catch (IOException e) {
-//            System.out.println(" cant load constans");
-//            e.printStackTrace();
-//        }
-        constants =new Constans();
+        ObjectMapper objectMapper =new ObjectMapper();
+        File file =new File("resources/configFiles/config.json");
+        try {
+            constants = objectMapper.readValue(file,Constans.class);
+        } catch (IOException e) {
+            System.out.println(" cant load constans");
+            e.printStackTrace();
+        }
+       // constants =new Constans();
 
 
     }

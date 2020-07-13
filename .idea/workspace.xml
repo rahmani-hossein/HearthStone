@@ -2,33 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cb7ea98-0a12-4c97-9e27-432e4492f674" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/configFiles/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/CLI/Administer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/CLI/Administer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/CLI/GameMaker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/CLI/GameMaker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/CLI/LogicMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/CLI/LogicMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/apgame/logic/Constans.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/logic/Constans.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/model/Minion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/model/Minion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/model/card.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/model/card.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/Converter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/Converter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/GamePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/apgame/swing/MyFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/apgame/swing/MyFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CLI/Administer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CLI/Administer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CLI/GameMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CLI/GameMaker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CLI/LogicMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CLI/LogicMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/configFiles/graphicConfigFiles/LoginPanelConfigFile.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/configFiles/graphicConfigFiles/MyFrameConfigFile.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/configFiles/logicConfigFiles/MainConfigFile.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/pics/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/pics/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/pics/BackGround2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/pics/button.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/pics/game/main.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/pics/game/rogue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/pics/game/warlock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/pics/hero/hunter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/pics/hero/mage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/pics/hero/priest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/pics/hero/rogue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/pics/hero/warlock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/pics/rogue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/pics/warlock.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/Constans.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Constans.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/GamePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GamePlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Minion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Minion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/swing/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Converter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/MyFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/MyFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/button/Picture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/button/Picture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/panel/PlayPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/panel/PlayPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594528737354</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="goodResultOfFaze3">
+      <created>1594666212151</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1594666212151</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -242,7 +246,8 @@
     <MESSAGE value="afterBuildingSuccessfuly with Jackson" />
     <MESSAGE value="before doing config" />
     <MESSAGE value="before mouseclicked" />
-    <option name="LAST_COMMIT_MESSAGE" value="before mouseclicked" />
+    <MESSAGE value="goodResultOfFaze3" />
+    <option name="LAST_COMMIT_MESSAGE" value="goodResultOfFaze3" />
   </component>
   <component name="WindowStateProjectService">
     <state x="403" y="178" key="#Notifications" timestamp="1588188151399">
@@ -261,30 +266,30 @@
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
     <state x="541" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1620.1040@0.0.1620.1040" timestamp="1594466708281" />
-    <state x="464" y="113" key="CommitChangelistDialog2" timestamp="1594528735225">
+    <state x="464" y="113" key="CommitChangelistDialog2" timestamp="1594666210567">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state x="464" y="113" key="CommitChangelistDialog2/0.0.1620.1040@0.0.1620.1040" timestamp="1594528735225" />
+    <state x="464" y="113" key="CommitChangelistDialog2/0.0.1620.1040@0.0.1620.1040" timestamp="1594666210567" />
     <state x="514" y="262" key="FileChooserDialogImpl" timestamp="1593770314782">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
     <state x="514" y="262" key="FileChooserDialogImpl/0.0.1620.1040@0.0.1620.1040" timestamp="1593770314782" />
-    <state width="1578" height="279" key="GridCell.Tab.0.bottom" timestamp="1594664033426">
+    <state width="1578" height="279" key="GridCell.Tab.0.bottom" timestamp="1594667518476">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1578" height="279" key="GridCell.Tab.0.bottom/0.0.1620.1040@0.0.1620.1040" timestamp="1594664033426" />
-    <state width="1578" height="279" key="GridCell.Tab.0.center" timestamp="1594664033425">
+    <state width="1578" height="279" key="GridCell.Tab.0.bottom/0.0.1620.1040@0.0.1620.1040" timestamp="1594667518476" />
+    <state width="1578" height="279" key="GridCell.Tab.0.center" timestamp="1594667518475">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1578" height="279" key="GridCell.Tab.0.center/0.0.1620.1040@0.0.1620.1040" timestamp="1594664033425" />
-    <state width="1578" height="279" key="GridCell.Tab.0.left" timestamp="1594664033424">
+    <state width="1578" height="279" key="GridCell.Tab.0.center/0.0.1620.1040@0.0.1620.1040" timestamp="1594667518475" />
+    <state width="1578" height="279" key="GridCell.Tab.0.left" timestamp="1594667518475">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1578" height="279" key="GridCell.Tab.0.left/0.0.1620.1040@0.0.1620.1040" timestamp="1594664033424" />
-    <state width="1578" height="279" key="GridCell.Tab.0.right" timestamp="1594664033425">
+    <state width="1578" height="279" key="GridCell.Tab.0.left/0.0.1620.1040@0.0.1620.1040" timestamp="1594667518475" />
+    <state width="1578" height="279" key="GridCell.Tab.0.right" timestamp="1594667518475">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state width="1578" height="279" key="GridCell.Tab.0.right/0.0.1620.1040@0.0.1620.1040" timestamp="1594664033425" />
+    <state width="1578" height="279" key="GridCell.Tab.0.right/0.0.1620.1040@0.0.1620.1040" timestamp="1594667518475" />
     <state width="1578" height="348" key="GridCell.Tab.1.bottom" timestamp="1589701336482">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
@@ -313,10 +318,10 @@
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
     <state x="292" y="95" key="SettingsEditor/0.0.1620.1040@0.0.1620.1040" timestamp="1594041560450" />
-    <state x="403" y="253" key="Vcs.Push.Dialog.v2" timestamp="1594528748249">
+    <state x="403" y="253" key="Vcs.Push.Dialog.v2" timestamp="1594667616012">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
-    <state x="403" y="253" key="Vcs.Push.Dialog.v2/0.0.1620.1040@0.0.1620.1040" timestamp="1594528748249" />
+    <state x="403" y="253" key="Vcs.Push.Dialog.v2/0.0.1620.1040@0.0.1620.1040" timestamp="1594667616012" />
     <state x="503" y="256" width="613" height="526" key="find.popup" timestamp="1594041936313">
       <screen x="0" y="0" width="1620" height="1040" />
     </state>
