@@ -28,18 +28,18 @@ public abstract class card implements Visitable {
     int manaCost;
    protected String name;
     protected String description;
-    private String type;
-    private String heroClass;
-    private String rarity;
-    private boolean battleCry;
-    private boolean summon;
-    private boolean deathRattle;
-    private boolean turny;
-    private int cost;
-    private boolean poisonous;
-    private boolean discover;
-    private boolean rush;
-    private boolean taunt;
+    protected String type;
+   protected String heroClass;
+    protected String rarity;
+   protected boolean battleCry;
+    protected boolean summon;
+    protected boolean deathRattle;
+    protected boolean turny;
+    protected int cost;
+    protected boolean poisonous;
+    protected  boolean discover;
+    protected boolean rush;
+    protected boolean taunt;
 
     public boolean isTaunt() {
         return taunt;

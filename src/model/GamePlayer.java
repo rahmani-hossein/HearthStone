@@ -30,6 +30,8 @@ private String nameOfPlayer;
     }
 
 
+
+
     public ArrayList<card> getInitCard() {
         return initCard;
     }

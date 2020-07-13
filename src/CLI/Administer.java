@@ -98,8 +98,8 @@ public class Administer {
             Collection collection = new Collection(collectionManager);
             Controller.getInstance().setCollection(collection);
             Controller.getInstance().getMyFrame().getMainpanel().add(collection, COLLECTION_PANEL);
-//            GamePanel gamePanel=new GamePanel();
-//            Controller.getInstance().getMyFrame().getMainpanel().add(gamePanel,GAME_PANEL);
+            LogicMapper logicMapper =new LogicMapper(Controller.getInstance());
+            Controller.getInstance().setLogicMapper(logicMapper);
 
 
             try {
@@ -145,6 +145,8 @@ public class Administer {
                     Collection collection = new Collection(collectionManager);
                     Controller.getInstance().setCollection(collection);
                     Controller.getInstance().getMyFrame().getMainpanel().add(collection, COLLECTION_PANEL);
+                    LogicMapper logicMapper =new LogicMapper(Controller.getInstance());
+                    Controller.getInstance().setLogicMapper(logicMapper);
 
 
                 } catch (IOException e) {

@@ -1,7 +1,7 @@
 package swing.panel;
 
-import model.GamePlayer;
-import model.card;
+import logic.CardManager;
+import model.*;
 import swing.Controller;
 import swing.GamePanel;
 
@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
+import java.util.List;
 
 public class PlayPanel extends JPanel {
 
@@ -25,6 +26,7 @@ public class PlayPanel extends JPanel {
     private int sizeX;
     private int sizeY;
     private GamePanel parent;
+    private CardManager cardManager = new CardManager();
 
     public PlayPanel(int x, int y, int lastX, int lastY, GamePlayer friend, GamePanel parent) {
         this.friend = friend;
@@ -42,12 +44,13 @@ public class PlayPanel extends JPanel {
 
     private void setExit() {
         exit = new JButton("exit");
-        exit.setBounds(8 * (x / 10), 8 * (y / 10), 4*x / 10, 4*y / 10);
+        exit.setBounds(8 * (x / 10), 8 * (y / 10), 3*x / 10, 2*y / 10);
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (int i = 0; i < friend.getInitCard().size(); i++) {
-                    friend.getHand().add(friend.getInitCard().remove(i));
+               int number =friend.getInitCard().size();
+                for (int i = 0; i < number; i++) {
+                    handleAdd(friend.getInitCard().remove(0),friend.getHand());
                 }
                 setVisible(false);
                 parent.repaint();
@@ -88,8 +91,8 @@ public class PlayPanel extends JPanel {
                 if (findClickedNumber(jLabel) == 0) {
                     card card5 = friend.getDeck().remove(0);
                     card card4 = friend.getInitCard().remove(findCard(card.getName()));
-                    friend.getDeck().add(card4);
-                    friend.getHand().add(card5);
+                   handleAdd(card4,friend.getDeck());
+                    handleAdd(card5,friend.getHand());
                     findClickedAndIncrease(jLabel);
                    setImage(jLabel,card5);
                     jLabel.setText(card5.getName());
@@ -102,6 +105,18 @@ public class PlayPanel extends JPanel {
 
     }
 
+
+    private void handleAdd(card card5, List<card> list){
+        if (card5 instanceof Minion) {
+            list.add(cardManager.createM(card5.getName()));
+        }
+        if (card5 instanceof spell){
+            list.add(cardManager.createS(card5.getName()));
+        }
+        if (card5 instanceof weapen){
+            list.add(cardManager.createW(card5.getName()));
+        }
+    }
 
     private int findCard(String name) {
         int i = -1;

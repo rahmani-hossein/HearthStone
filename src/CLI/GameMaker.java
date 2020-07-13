@@ -149,7 +149,7 @@ public class GameMaker {
             init.add(card);
             System.out.println(card.toString());
         }
-        GamePlayer gamePlayer = new GamePlayer(deck, hand, ground, player.getCurrentDeck().getDeckHero());
+        GamePlayer gamePlayer = new GamePlayer(deck, hand, ground, new HeroCreator().createHero(player.getCurrentDeck().getDeckHero().getName()));
         gamePlayer.setInitCard(init);
         System.out.println("we set successfully "+gamePlayer.getInitCard().size());
 
@@ -168,7 +168,7 @@ public class GameMaker {
             card card=deck.remove(0);
             hand.add(card);
         }
-        GamePlayer gamePlayer = new GamePlayer(deck, hand, ground, currentDeck.getDeckHero());
+        GamePlayer gamePlayer = new GamePlayer(deck, hand, ground, new HeroCreator().createHero(currentDeck.getDeckHero().getName()));
         gamePlayer.setNameOfPlayer("enemy");
         return gamePlayer;
     }

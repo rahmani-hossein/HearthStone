@@ -28,6 +28,7 @@ public class Picture implements Comparable<Picture> {
     private int liveInRound;
     private boolean taunt;
     private boolean divineSheild;
+    private int attackInRound;
 
 
     public Picture(int x, int y, card card) {
@@ -50,7 +51,6 @@ public class Picture implements Comparable<Picture> {
     private void setImage() {
         image = Controller.getInstance().getConverter().getImage(this.name);
         skin = Controller.getInstance().getConverter().getImage("skin");
-        System.out.println("finish loading picture");
     }
 
     public void paintHero(Graphics g) {
@@ -87,7 +87,7 @@ public class Picture implements Comparable<Picture> {
         Font font = new Font("Helvetica", Font.BOLD, sizeY / 9);
         g.setFont(font);
         g.drawString(this.hp + "", this.x + (17 * (sizeX / 20)), this.y + (5 * sizeX / 4));
-        System.out.println("we draw " + hp + " in the ");
+      //  System.out.println("we draw " + hp + " in the ");
     }
 
     private void paintDurability(Graphics g) {
@@ -97,7 +97,7 @@ public class Picture implements Comparable<Picture> {
         Font font = new Font("Helvetica", Font.BOLD, sizeY / 9);
         g.setFont(font);
         g.drawString(this.durability + "", this.x + (17 * (sizeX / 20)), this.y + (5 * (sizeX / 4)));
-        System.out.println("we draw " + durability + " in the ");
+       // System.out.println("we draw " + durability + " in the ");
     }
 
     private void paintMana(Graphics g) {
@@ -107,7 +107,7 @@ public class Picture implements Comparable<Picture> {
         Font font = new Font("Helvetica", Font.BOLD, 15);
         g.setFont(font);
         g.drawString(this.mana + "", this.x + (sizeY / 9), this.y + (sizeX / 5));
-        System.out.println("we draw " + mana + " in the ");
+     //   System.out.println("we draw " + mana + " in the ");
     }
 
     public void paintSkin(Graphics g) {
@@ -116,11 +116,11 @@ public class Picture implements Comparable<Picture> {
 
     private void paintHeroHp(Graphics g) {
         g.setColor(Color.ORANGE);
-        g.fillRect(x + (sizeY / 9), y + (8 * (sizeY / 9)), sizeX / 10, sizeX / 10);
+        g.fillRect(x + (8 * (sizeX / 10)), y + (11 * (sizeX / 10)), sizeY / 9, sizeY / 9);
         g.setColor(Color.BLACK);
         Font font = new Font("Helvetica", Font.BOLD, sizeY / 9);
         g.setFont(font);
-        g.drawString(this.hp + "", this.x + (sizeY / 9), this.y + (5 * (sizeX / 4)));
+        g.drawString(this.hp + "", this.x + (17 * (sizeX / 20)), this.y + (5 * sizeX / 4));
     }
 
     //for handle if &else in constructor
@@ -128,7 +128,7 @@ public class Picture implements Comparable<Picture> {
         this.mana = card.getManaCost();
         if (card instanceof Minion) {
             type = "minion";
-            loadFieldsMinion(((Minion) card).getHealth(), ((Minion) card).getDamage(), ((Minion) card).getLiveInRound(), card.isTaunt(), ((Minion) card).isDivineSheild());
+            loadFieldsMinion(((Minion) card).getHealth(), ((Minion) card).getDamage(), ((Minion) card).getLiveInRound(), card.isTaunt(), ((Minion) card).isDivineSheild(), ((Minion) card).getAttackInRound());
         } else if (card instanceof weapen) {
             type = "weapen";
             loadFieldsWeapen(((weapen) card).getDamage(), ((weapen) card).getDurability());
@@ -138,12 +138,13 @@ public class Picture implements Comparable<Picture> {
         }
     }
 
-    private void loadFieldsMinion(int hp, int damage, int liveInRound, boolean taunt, boolean divineSheild) {
+    private void loadFieldsMinion(int hp, int damage, int liveInRound, boolean taunt, boolean divineSheild, int attackInRound) {
         this.hp = hp;
         this.damage = damage;
         this.liveInRound = liveInRound;
         this.taunt = taunt;
         this.divineSheild = divineSheild;
+        this.attackInRound=attackInRound;
     }
 
     private void loadFieldsWeapen(int damage, int durability) {

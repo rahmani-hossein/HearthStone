@@ -48,7 +48,7 @@ public class MyFrame extends JFrame {
 
     public MyFrame() {
         super("HearthStone");
-        Controller.getInstance().getConstants().fill();
+        Controller.getInstance().getConstants().initFill();
         setSize(1778, 1000);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);

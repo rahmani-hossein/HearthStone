@@ -1,10 +1,8 @@
 package swing;
 
-import CLI.Administer;
-import CLI.GameState;
-import CLI.Player;
-import CLI.utilities;
+import CLI.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import logic.CardManager;
 import logic.Constans;
 import logic.ShopManager;
 
@@ -38,6 +36,7 @@ public class Controller {
 //        }
         constants =new Constans();
 
+
     }
 
     public static Controller getInstance() {
@@ -52,7 +51,26 @@ public class Controller {
     private Collection collection;
     private Converter converter=new Converter();
     private Constans constants;
+    private LogicMapper logicMapper;
+    private GamePanel gamePanel;
 
+
+
+    public GamePanel getGamePanel() {
+        return gamePanel;
+    }
+
+    public void setGamePanel(GamePanel gamePanel) {
+        this.gamePanel = gamePanel;
+    }
+
+    public LogicMapper getLogicMapper() {
+        return logicMapper;
+    }
+
+    public void setLogicMapper(LogicMapper logicMapper) {
+        this.logicMapper = logicMapper;
+    }
 
     public Constans getConstants() {
         return constants;

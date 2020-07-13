@@ -129,6 +129,7 @@ public class Menu extends JPanel implements MouseListener {
         }
         GamePanel gamePanel=new GamePanel(constans.getPanelWidth(),constans.getPanelHeight(),Controller.getInstance().getGameState());
         controller.getMyFrame().getMainpanel().add(gamePanel,GAME_PANEL);
+        controller.setGamePanel(gamePanel);
         controller.getMyFrame().setPanel("play");
     }
 

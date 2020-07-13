@@ -93,5 +93,6 @@ public class Converter {
         imageMap.put("hunter",find("hunter"));
         imageMap.put("warlock",find("warlock"));
         imageMap.put("priest",find("priest"));
+
     }
 }

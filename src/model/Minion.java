@@ -39,6 +39,7 @@ public abstract class Minion extends card implements Attackable {
     protected int liveInRound = 0;
     protected int maxHp;
     protected boolean divineSheild=false;
+    protected int attackInRound=0;
 
     public Minion(int damage, int health, int manaCost, String name, String description, String type, String heroClass, String rarity, boolean battleCry, boolean summon, boolean deathRattle, boolean turny, int cost, boolean poisonous, boolean discover, boolean rush, boolean taunt) {
         super(manaCost, name, description, type, heroClass, rarity, battleCry, summon, deathRattle, turny, cost, poisonous, discover, rush, taunt);
@@ -56,6 +57,9 @@ public abstract class Minion extends card implements Attackable {
         this.health = (int) map.get("health");
         this.maxHp= (int) map.get("health");
        this.liveInRound= (int) map.get("liveInRound");
+       if (rush){
+           this.liveInRound++;
+       }
     }
 
     @Override
@@ -100,6 +104,14 @@ public abstract class Minion extends card implements Attackable {
 
     //getter& setter
 
+
+    public int getAttackInRound() {
+        return attackInRound;
+    }
+
+    public void setAttackInRound(int attackInRound) {
+        this.attackInRound = attackInRound;
+    }
 
     public boolean isDivineSheild() {
         return divineSheild;

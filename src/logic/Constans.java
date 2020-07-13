@@ -10,15 +10,8 @@ import static javax.imageio.ImageIO.read;
 
 public class Constans {
 
-     //we want to loadConfig;
-//    private static Constans constants;
-//
-//    public static Constans getInstance() {
-//        if (constants == null) {
-//            constants = new Constans();
-//        }
-//        return constants;
-//    }
+     //we want to loadConfig; and then we dont design this class singelton;
+
 
     public Constans(){
 
@@ -44,6 +37,10 @@ public class Constans {
     private int enemyHeroY=150;
     private int enemyHeroX=1000;
     private int enenmyGroundY=300;
+    private int manaX=800;
+    private int friendManaY=750;
+    private int enemyManaY=200;
+    private int noteSize=70;
 
     private String[] minionEkhtiari = new String[]{"blazingBattlemage", "hotAirballon", "evasiveChimaera", "amberWatcher", "veranus", "swampKingDred"};
     private String[] spellEkhtiari = new String[]{"decimation", "malygosFireball", "malygosFlamestrike", "learnDraconic", "strengthInNumbers", "divineHymn"};
@@ -55,7 +52,7 @@ public class Constans {
     private int[] cost = new int[]{4, 5, 5, 6, 9, 6, 10, 8, 9, 10, 6, 6, 8, 10, 7, 10, 6, 6, 5, 6, 10, 6, 10, 9, 6, 9, 7, 8, 8, 6, 8, 8, 5, 6, 10, 8, 8};
     private HashMap<String, Integer> costsMap = new HashMap<>();
     private HashMap<String, String> types = new HashMap<>();
-    private HashMap<String, BufferedImage> images = new HashMap<>();
+    private HashMap<String,Integer> target = new HashMap<>();
     private String[] rarity = {"common", "rare", "epic", "legendary"};
     private String[] HeroClass = new String[]{"mage", "rouge", "warlock", "hunter", "priest", "neutral"};
     private String[] warlock = {"fireHawk", "dreadScale"};
@@ -66,7 +63,11 @@ public class Constans {
     private String[] heros = {"mage", "rouge", "warlock", "hunter", "priest"};
     private String[] passives = {"twiceDraw", "offCard", "freePower", "manaJump", "nurse"};
 
-    public void fill() {
+    public void initFill() {
+       fillCostMap();
+       fillTargetMap();
+    }
+    public void fillCostMap(){
         for (int i = 0; i < cardNames.length; i++) {
             costsMap.put(cardNames[i], cost[i]);
         }
@@ -81,6 +82,88 @@ public class Constans {
 
             }
         }
+    }
+
+    public void fillTargetMap(){
+        target.put("blazingBattlemage",0);
+        target.put("hotAirballon",0);
+        target.put("fireHawk",0);
+        target.put("evasiveChimaera",0);
+        target.put("amberWatcher",0);
+        target.put("dreadScale",0);
+        target.put("veranus",0);
+        target.put("curioCollector",0);
+        target.put("highPriestAmet",0);
+        target.put("sathrovarr",1);
+        target.put("securityRover",0);
+        target.put("swampKingDred",0);
+        target.put("tombWarden",0);
+        target.put("decimation",0);
+        target.put("malygosFireball",2);
+        target.put("malygosFlamestrike",0);
+        target.put("friendlySmith",0);
+        target.put("fireBlast",2);
+        target.put("arcaneShot",2);
+        target.put("bookOfSpecters",0);
+        target.put("flamestrike",0);
+        target.put("learnDraconic",0);
+        target.put("pharaohsBlessing",1);
+        target.put("polymorph",2);
+        target.put("sprint",0);
+        target.put("strengthInNumbers",0);
+        target.put("swarmOfLocusts",0);
+        target.put("divineHymn",0);
+        target.put("bloodRazor",0);
+        target.put("fierywaraxe",0);
+        target.put("bloodClaw",0);
+        target.put("assassinBlade",0);
+        target.put("arcaniteReaper",0);
+        target.put("battleAxe",0);
+        target.put("gearBlade",0);
+        target.put("bloodFury",0);
+        target.put("dragonClaw",0);
+        target.put("ashBringer",0);
+    }
+
+
+    public int getNoteSize() {
+        return noteSize;
+    }
+
+    public void setNoteSize(int noteSize) {
+        this.noteSize = noteSize;
+    }
+
+    public int getManaX() {
+        return manaX;
+    }
+
+    public void setManaX(int manaX) {
+        this.manaX = manaX;
+    }
+
+    public int getFriendManaY() {
+        return friendManaY;
+    }
+
+    public void setFriendManaY(int friendManaY) {
+        this.friendManaY = friendManaY;
+    }
+
+    public int getEnemyManaY() {
+        return enemyManaY;
+    }
+
+    public void setEnemyManaY(int enemyManaY) {
+        this.enemyManaY = enemyManaY;
+    }
+
+    public HashMap<String, Integer> getTarget() {
+        return target;
+    }
+
+    public void setTarget(HashMap<String, Integer> target) {
+        this.target = target;
     }
 
     public int getFreindHeroX() {
@@ -321,14 +404,6 @@ public class Constans {
 
     public void setTypes(HashMap<String, String> types) {
         this.types = types;
-    }
-
-    public HashMap<String, BufferedImage> getImages() {
-        return images;
-    }
-
-    public void setImages(HashMap<String, BufferedImage> images) {
-        this.images = images;
     }
 
     public String[] getRarity() {
