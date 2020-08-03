@@ -1,0 +1,7 @@
+{
+  "name": "priest",
+  "HP": 30,
+  "showSpecialPower": "double influence of restore cards",
+  "showHeroPower": " get 2 mana and restore 4 health"
+
+}

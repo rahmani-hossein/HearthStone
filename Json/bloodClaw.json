@@ -1,0 +1,19 @@
+{
+  "name": "bloodClaw",
+  "manaCost":1,
+  "damage": 2,
+  "durability":2,
+  "description": "BATTLECRY deal 5 damage to your hero",
+  "type":"weapen" ,
+  "heroClass": "neutral",
+  "rarity": "rare",
+  "battleCry": true,
+  "summon": false,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 6,
+  "poisonous": false,
+  "discover": false,
+  "rush": false,
+  "taunt": false
+}

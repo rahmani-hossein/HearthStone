@@ -1,0 +1,17 @@
+{
+  "name": "friendlySmith",
+  "manaCost":1,
+  "description": "DISCOVER a wepean from any class add it to your adventure deck by +2/+2",
+  "type":"spell" ,
+  "heroClass": "rouge",
+  "rarity": "rare",
+  "battleCry": false,
+  "summon": false,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 6,
+  "poisonous": false,
+  "discover": true,
+  "rush": false,
+  "taunt": false
+}

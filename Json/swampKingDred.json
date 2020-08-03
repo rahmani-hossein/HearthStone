@@ -1,0 +1,20 @@
+{
+  "name": "swampKingDred",
+  "manaCost":7,
+  "damage": 9,
+  "health":9,
+  "description": "after your opponent plays a minion, attack it ",
+  "type":"minion" ,
+  "heroClass": "hunter",
+  "rarity": "legendary",
+  "battleCry": false,
+  "summon": false,
+  "deathRattle": false,
+  "turny": true,
+  "cost": 6,
+  "poisonous": false,
+  "discover": false,
+  "rush": false,
+  "taunt": false,
+  "liveInRound": 0
+}

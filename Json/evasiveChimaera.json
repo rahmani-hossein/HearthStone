@@ -1,0 +1,20 @@
+{
+  "name": "evasiveChimaera",
+  "manaCost":2,
+  "damage": 2,
+  "health":1,
+  "description": " battlecry :deal 2 damage to hero ",
+  "type":"minion" ,
+  "heroClass": "neutral",
+  "rarity": "rare",
+  "battleCry": false,
+  "summon": false,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 6,
+  "poisonous": false,
+  "discover": false,
+  "rush": false,
+  "taunt": false,
+  "liveInRound": 0
+}

@@ -1,0 +1,17 @@
+{
+  "name": "swarmOfLocusts",
+  "manaCost":6,
+  "description": "Summon seven 1/1 locusts with Rush",
+  "type":"spell" ,
+  "heroClass": "neutral",
+  "rarity": "epic",
+  "battleCry": true,
+  "summon": true,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 9,
+  "poisonous": false,
+  "discover": false,
+  "rush": true,
+  "taunt": false
+}

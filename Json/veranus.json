@@ -1,0 +1,20 @@
+{
+  "name": "veranus",
+  "manaCost":6,
+  "damage": 7,
+  "health":6,
+  "description": "change the health of all enemy minions to 1",
+  "type":"minion" ,
+  "heroClass": "neutral",
+  "rarity": "legendary",
+  "battleCry": true,
+  "summon": false,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 10,
+  "poisonous": false,
+  "discover": false,
+  "rush": false,
+  "taunt":false,
+  "liveInRound": 0
+}

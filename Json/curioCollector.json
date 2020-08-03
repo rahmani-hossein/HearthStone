@@ -1,0 +1,20 @@
+{
+  "name": "curioCollector",
+  "manaCost":5,
+  "damage": 4,
+  "health":4,
+  "description": " whenever you draw a card ,gain +1/+1",
+  "type":"minion" ,
+  "heroClass": "neutral",
+  "rarity": "epic",
+  "battleCry": false,
+  "summon": false,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 8,
+  "poisonous": false,
+  "discover": false,
+  "rush": false,
+  "taunt": false,
+  "liveInRound": 0
+}

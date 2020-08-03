@@ -1,0 +1,20 @@
+{
+  "name": "highPriestAmet",
+  "manaCost":4,
+  "damage": 2,
+  "health":7,
+  "description": "whenever you summon a minion,set its health equal to its minions",
+  "type":"minion" ,
+  "heroClass": "priest",
+  "rarity": "legendary",
+  "battleCry": false,
+  "summon": true,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 9,
+  "poisonous": false,
+  "discover":false,
+  "rush": false,
+  "taunt": false,
+  "liveInRound": 0
+}

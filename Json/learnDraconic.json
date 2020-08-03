@@ -1,0 +1,17 @@
+{
+  "name": "learnDraconic",
+  "manaCost":1,
+  "description": "SIDEQUEST: spend 8 mana on spells REWARD:summon a 6/6 dragon",
+  "type":"spell" ,
+  "heroClass": "neutral",
+  "rarity": "rare",
+  "battleCry": false,
+  "summon": false,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 6,
+  "poisonous": false,
+  "discover": false,
+  "rush": false,
+  "taunt": false
+}

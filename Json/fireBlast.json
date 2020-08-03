@@ -1,0 +1,17 @@
+{
+  "name": "fireBlast",
+  "manaCost":2,
+  "description": "deal 1 damage",
+  "type":"spell" ,
+  "heroClass": "mage",
+  "rarity": "rare",
+  "battleCry": false,
+  "summon": false,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 6,
+  "poisonous": false,
+  "discover": false,
+  "rush": false,
+  "taunt": false
+}

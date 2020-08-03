@@ -1,0 +1,19 @@
+{
+  "name": "dragonClaw",
+  "manaCost":5,
+  "damage": 5,
+  "durability":2,
+  "description": "",
+  "type":"weapen" ,
+  "heroClass": "neutral",
+  "rarity": "epic",
+  "battleCry": false,
+  "summon": false,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 8,
+  "poisonous": false,
+  "discover": false,
+  "rush": false,
+  "taunt": false
+}

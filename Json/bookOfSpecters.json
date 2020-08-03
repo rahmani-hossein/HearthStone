@@ -1,0 +1,17 @@
+{
+  "name": "bookOfSpecters",
+  "manaCost":2,
+  "description": "Draw 3 cards Discard any spells",
+  "type":"spell" ,
+  "heroClass": "neutral",
+  "rarity": "rare",
+  "battleCry": true,
+  "summon": false,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 6,
+  "poisonous": false,
+  "discover": false,
+  "rush": false,
+  "taunt": false
+}

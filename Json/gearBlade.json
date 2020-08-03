@@ -1,0 +1,19 @@
+{
+  "name": "gearBlade",
+  "manaCost":2,
+  "damage": 2,
+  "durability":3,
+  "description": "",
+  "type":"weapen" ,
+  "heroClass": "neutral",
+  "rarity": "rare",
+  "battleCry": false,
+  "summon": false,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 6,
+  "poisonous": false,
+  "discover": false,
+  "rush": false,
+  "taunt": false
+}

@@ -1,0 +1,21 @@
+
+{
+  "name": "sathrovarr",
+  "manaCost":9,
+  "damage": 5,
+  "health":5,
+  "description": "Battlecry:Chose a friendly minion .add a copy of it to your hand ,deck,and battlefield ",
+  "type":"minion" ,
+  "heroClass": "neutral",
+  "rarity": "legendary",
+  "battleCry": true,
+  "summon": false,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 10,
+  "poisonous": false,
+  "discover": false,
+  "rush": false,
+  "taunt": false,
+  "liveInRound": 0
+}

@@ -1,0 +1,20 @@
+{
+  "name": "securityRover",
+  "manaCost":6,
+  "damage": 2,
+  "health":6,
+  "description": " Whenever this minion takes damage ,summon a 2/3 Mech with Taunt ",
+  "type":"minion" ,
+  "heroClass": "neutral",
+  "rarity": "rare",
+  "battleCry": false,
+  "summon": true,
+  "deathRattle": false,
+  "turny": false,
+  "cost": 6,
+  "poisonous": false,
+  "discover": false,
+  "rush": false,
+  "taunt": true,
+  "liveInRound": 0
+}
