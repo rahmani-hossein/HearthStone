@@ -13,6 +13,7 @@ public class Deck implements Comparable<Deck> {
     private ArrayList<weapen>weapens=new ArrayList<>();
     private int wins=0;
     private int numbreOfUse=0;
+    private int cup=0;
     private String rarest="";
     private double winAverage=0;
     private double manaAverage=0;
@@ -28,6 +29,15 @@ public class Deck implements Comparable<Deck> {
     }
     public Deck(){
 
+    }
+
+
+    public int getCup() {
+        return cup;
+    }
+
+    public void setCup(int cup) {
+        this.cup = cup;
     }
 
     public String getName() {
@@ -110,11 +120,11 @@ public class Deck implements Comparable<Deck> {
         this.manaAverage = manaAverage;
     }
 
-    public void updateDeckInfo(){
+    public void updateDeckInfo(CardManager cardManager){
         findManaAverage();
         findWinAverage();
         findCostAverage();
-        findRarest();
+        findRarest(cardManager);
         System.out.println(rarest);
 
     }
@@ -162,7 +172,7 @@ public class Deck implements Comparable<Deck> {
         }
         return average;
     }
-    private void findRarest() {
+    private void findRarest(CardManager cardManager) {
         int totalSize = minions.size() + spells.size() + weapens.size();
         card[] myArray=builtList();
         if (totalSize == 0) {

@@ -1,6 +1,6 @@
 package swing;
 
-import CLI.GameState;
+import model.GameState;
 import CLI.LogicMapper;
 import CLI.utilities;
 import client.Controller;
@@ -506,13 +506,13 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 
     private void doLog(String log) {
         String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() + Controller.getInstance().getGameState().getPlayer().getPassword());
-        Controller.myLogger(st1, log + " " + utilities.time() + "\n", true);
+        Controller.getInstance().myLogger(st1, log + " " + utilities.time() + "\n", true);
 
     }
 
     private void doLog(String log, GamePlayer gamePlayer) {
         String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() + Controller.getInstance().getGameState().getPlayer().getPassword());
-        Controller.myLogger(st1, gamePlayer.getNameOfPlayer() + " " + log + " " + utilities.time() + "\n", true);
+        Controller.getInstance().myLogger(st1, gamePlayer.getNameOfPlayer() + " " + log + " " + utilities.time() + "\n", true);
     }
     //getter& setter
 

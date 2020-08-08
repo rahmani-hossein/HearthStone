@@ -1,6 +1,6 @@
 package logic;
 
-import CLI.Player;
+import model.Player;
 import client.Controller;
 import model.*;
 
@@ -109,7 +109,7 @@ public class CollectionManager {
         Hero hero1 = makeHero(hero);
         Deck deck = new Deck(nameDeck, hero1, minions, spells, weapens);
         player.getAvailableDecks().add(deck);
-        deck.updateDeckInfo();
+        deck.updateDeckInfo(cardManager);
         return deck;
     }
 
@@ -122,15 +122,15 @@ public class CollectionManager {
             if (cardManager.tellType(name).equalsIgnoreCase("Minion")) {
                 Minion minion = cardManager.createM(name);
                 deck.getMinions().add(minion);
-                deck.updateDeckInfo();
+                deck.updateDeckInfo(cardManager);
             } else if (cardManager.tellType(name).equalsIgnoreCase("spell")) {
                 spell spell = cardManager.createS(name);
                 deck.getSpells().add(spell);
-                deck.updateDeckInfo();
+                deck.updateDeckInfo(cardManager);
             } else if (cardManager.tellType(name).equalsIgnoreCase("weapen")) {
                 weapen weapen = cardManager.createW(name);
                 deck.getWeapens().add(weapen);
-                deck.updateDeckInfo();
+                deck.updateDeckInfo(cardManager);
             }
             // update the current Deck
 
@@ -142,15 +142,15 @@ public class CollectionManager {
         if (cardManager.tellType(name).equalsIgnoreCase("Minion")) {
             Minion minion = cardManager.createM(name);
             deck.getMinions().remove(minion);
-            deck.updateDeckInfo();
+            deck.updateDeckInfo(cardManager);
         } else if (cardManager.tellType(name).equalsIgnoreCase("spell")) {
             spell spell = cardManager.createS(name);
             deck.getSpells().remove(spell);
-            deck.updateDeckInfo();
+            deck.updateDeckInfo(cardManager);
         } else if (cardManager.tellType(name).equalsIgnoreCase("weapen")) {
             weapen weapen = cardManager.createW(name);
             deck.getWeapens().remove(weapen);
-            deck.updateDeckInfo();
+            deck.updateDeckInfo(cardManager);
         }
     }
 

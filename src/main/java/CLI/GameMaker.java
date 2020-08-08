@@ -3,10 +3,7 @@ package CLI;
 import logic.DeckManager;
 import logic.DeckReader;
 import logic.HeroCreator;
-import model.Deck;
-import model.GamePlayer;
-import model.Minion;
-import model.card;
+import model.*;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

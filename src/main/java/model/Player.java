@@ -1,4 +1,4 @@
-package CLI;
+package model;
 
 import model.Deck;
 import model.Minion;
@@ -8,10 +8,11 @@ import model.weapen;
 import java.util.ArrayList;
 
 public class Player {
-    String username;
-    String password;
+    private String username;
+    private String password;
     public int diamond = 80;
-    Deck currentDeck;
+    private Deck currentDeck;
+    private String state ="offline";
     private ArrayList<Minion> availableCardsM = new ArrayList<>();
     private ArrayList<weapen> availableCardsW = new ArrayList<>();
     private ArrayList<spell> availableCardsS = new ArrayList<>();
@@ -30,6 +31,14 @@ public class Player {
 
     public Player() {
 
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getUsername() {

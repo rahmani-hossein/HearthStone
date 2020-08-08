@@ -7,23 +7,12 @@ import java.awt.*;
 
 public class MyFrame extends JFrame {
 
-    public static final String LOGIN_PANEL = "login";
+    public static final String CONNECT_PANEL = "connect";
     public static final String MENU_PANEL = "menu";
 
     private CardLayout cardLayout;
-    private Controller controller;
-    private Login login;
-    private Menu menu;
-
-    public JPanel getMainpanel() {
-        return mainpanel;
-    }
-
-    public void setMainpanel(JPanel mainpanel) {
-        this.mainpanel = mainpanel;
-    }
-
     private JPanel mainpanel;
+    private Connect connect;
 
 
     private void createPanel() {
@@ -32,10 +21,8 @@ public class MyFrame extends JFrame {
             cardLayout = new CardLayout();
             mainpanel = new JPanel(cardLayout);
             setContentPane(mainpanel);
-            login = new Login(this);
-            mainpanel.add(login, LOGIN_PANEL);
-
-//            mainpanel.add(collection,COLLECTION_PANEL);
+             connect= new Connect();
+            mainpanel.add(connect, CONNECT_PANEL);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -49,7 +36,7 @@ public class MyFrame extends JFrame {
     public MyFrame() {
         super("HearthStone");
         Controller.getInstance().getConstants().initFill();
-        setSize(1778, 1000);
+        setSize(Controller.getInstance().getClientConstants().getPanelWidth(), Controller.getInstance().getClientConstants().getPanelHeight());
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -57,5 +44,13 @@ public class MyFrame extends JFrame {
         setVisible(true);
 
 
+    }
+
+    public JPanel getMainpanel() {
+        return mainpanel;
+    }
+
+    public void setMainpanel(JPanel mainpanel) {
+        this.mainpanel = mainpanel;
     }
 }

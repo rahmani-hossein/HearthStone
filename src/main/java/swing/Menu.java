@@ -1,7 +1,7 @@
 package swing;
 
 import CLI.GameMaker;
-import CLI.Player;
+import model.Player;
 import client.Controller;
 import logic.Constans;
 import model.Deck;
@@ -79,7 +79,7 @@ public class Menu extends JPanel implements MouseListener {
 
     private void init() {
         try {
-            String url = String.format("resources\\Image\\MenuBackground.jpg");
+            String url = String.format("src/main/resources/image/MenuBackground.jpg");
             File file = new File(url);
             backGround = ImageIO.read(file);
         } catch (IOException e) {

@@ -1,6 +1,6 @@
 package logic;
 
-import CLI.GameState;
+import model.GameState;
 import CLI.utilities;
 import Interfaces.Attackable;
 import client.Controller;
@@ -288,7 +288,7 @@ public class GameManager {
     public void doLog(String log, GamePlayer gamePlayer) {
         gameState.getNote().add(gamePlayer.getNameOfPlayer() + log);
         String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() + Controller.getInstance().getGameState().getPlayer().getPassword());
-        Controller.myLogger(st1, gamePlayer.getNameOfPlayer() + " " + log + " " + utilities.time() + "\n", true);
+        Controller.getInstance().myLogger(st1, gamePlayer.getNameOfPlayer() + " " + log + " " + utilities.time() + "\n", true);
     }
 
 

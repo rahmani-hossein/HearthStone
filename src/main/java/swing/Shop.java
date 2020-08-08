@@ -4,6 +4,7 @@ import CLI.utilities;
 import client.Controller;
 import client.Converter;
 import logic.ShopManager;
+import model.Request;
 import swing.button.Button;
 import swing.panel.FilterPanel;
 
@@ -15,7 +16,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Shop extends JPanel implements MouseListener {
-    private ShopManager shopManager;
+
     private JPanel north;
     private FilterPanel center;
     private JButton sellable;
@@ -33,16 +34,13 @@ public class Shop extends JPanel implements MouseListener {
     private Controller controller;
 
 
-    public Shop(ShopManager shopManager) {
+    public Shop() {
         controller = Controller.getInstance();
         BorderLayout borderLayout = new BorderLayout();
         setLayout(borderLayout);
-        this.shopManager = shopManager;
         north = new JPanel(new FlowLayout());
         add(north, BorderLayout.NORTH);
         initNorthButtons();
-        showCards = converter.convert(shopManager.showBuyable());
-        showButton = initButton(showCards, shopManager.showBuyable());
         center = new FilterPanel(showButton);
         JScrollPane scrollPane = new JScrollPane();
        scrollPane.setViewportView(center);
@@ -51,9 +49,6 @@ public class Shop extends JPanel implements MouseListener {
         add( BorderLayout.CENTER,scrollPane);
 
         center.setBackground(Color.YELLOW);
-
-    }
-    public void init(){
 
     }
 
@@ -76,10 +71,11 @@ public class Shop extends JPanel implements MouseListener {
     }
 
 
-    private ArrayList<Button> initButton(ArrayList<BufferedImage> showCards, ArrayList<String> buyable) {
+    private ArrayList<Button> initButton(ArrayList<String> madenazar) {
         ArrayList<Button> showButton = new ArrayList<>();
+        showCards = converter.convert(madenazar);
         for (int i = 0; i < showCards.size(); i++) {
-            swing.button.Button button = new Button(showCards.get(i), buyable.get(i), ((i % 5) + 1) * space + ((i%5) * sizeW), ((i / 5) + 1) * space + ((i/5) * sizeH));
+            swing.button.Button button = new Button(showCards.get(i), madenazar.get(i), ((i % 5) + 1) * space + ((i%5) * sizeW), ((i / 5) + 1) * space + ((i/5) * sizeH));
             addMouseListener(button);
             showButton.add(button);
         }
@@ -105,17 +101,16 @@ public class Shop extends JPanel implements MouseListener {
                // center.getCardPanels().get(i).remove();
                 center.remove( center.getCardPanels().get(i));
             }
-            showCards = converter.convert(shopManager.showSellable());
-            showButton = initButton(showCards, shopManager.showSellable());
+            showButton = initButton( shopManager.showSellable());
             center.setShowButton(showButton);
             String st1 = String.format("%s.txt", controller.getGameState().getPlayer().getUsername() +  controller.getGameState().getPlayer().getPassword());
-            Controller.myLogger(st1," click for see sellable cards  "+ utilities.time(),true);
+            Controller.getInstance().myLogger(st1," click for see sellable cards  "+ utilities.time(),true);
 
             repaint();
             revalidate();
         } else if (e.getSource() == buyable) {
-            showCards = converter.convert(shopManager.showBuyable());
-            showButton = initButton(showCards, shopManager.showBuyable());
+
+            showButton = initButton(shopManager.showBuyable());
             center.setShowButton(showButton);
             String st1 = String.format("%s.txt", controller.getGameState().getPlayer().getUsername() +  controller.getGameState().getPlayer().getPassword());
             Controller.myLogger(st1," click for see buyables cards  "+ utilities.time()+"\n",true);
@@ -145,7 +140,7 @@ public class Shop extends JPanel implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent e) {
         if (e.getSource() == wallet) {
-            wallet.setText(shopManager.seeWallet() + "");
+            Controller.getInstance().getShop(). getWallet().setText(Controller.getInstance().getGameState().getPlayer().getDiamond()+"");
             repaint();
             revalidate();
         }
@@ -155,10 +150,65 @@ public class Shop extends JPanel implements MouseListener {
     public void mouseExited(MouseEvent e) {
         if (e.getSource() == wallet) {
             wallet.setText("Wallet");
-            String st1 = String.format("%s.txt", controller.getGameState().getPlayer().getUsername() +  controller.getGameState().getPlayer().getPassword());
-            Controller.myLogger(st1," player see wallet  "+ utilities.time()+"\n",true);
+            Controller.getInstance().myLogger(Controller.getInstance().getTxtAddress()," player see wallet  "+ utilities.time()+"\n",true);
             repaint();
             revalidate();
         }
+    }
+
+    public JPanel getNorth() {
+        return north;
+    }
+
+    public void setNorth(JPanel north) {
+        this.north = north;
+    }
+
+    public FilterPanel getCenter() {
+        return center;
+    }
+
+    public void setCenter(FilterPanel center) {
+        this.center = center;
+    }
+
+    public JButton getSellable() {
+        return sellable;
+    }
+
+    public void setSellable(JButton sellable) {
+        this.sellable = sellable;
+    }
+
+    public JButton getBuyable() {
+        return buyable;
+    }
+
+    public void setBuyable(JButton buyable) {
+        this.buyable = buyable;
+    }
+
+    public JLabel getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(JLabel wallet) {
+        this.wallet = wallet;
+    }
+
+    public ArrayList<BufferedImage> getShowCards() {
+        return showCards;
+    }
+
+    public void setShowCards(ArrayList<BufferedImage> showCards) {
+        this.showCards = showCards;
+    }
+
+    public ArrayList<Button> getShowButton() {
+        return showButton;
+    }
+
+    public void setShowButton(ArrayList<Button> showButton) {
+        this.showButton = showButton;
     }
 }

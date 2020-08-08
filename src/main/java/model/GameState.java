@@ -1,6 +1,7 @@
-package CLI;
+package model;
 
 import model.GamePlayer;
+import model.Player;
 
 import java.util.ArrayList;
 import java.util.Timer;

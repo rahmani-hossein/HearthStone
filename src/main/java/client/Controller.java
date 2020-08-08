@@ -1,40 +1,23 @@
 package client;
 
 import CLI.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import logic.Constans;
+import model.GameState;
+import model.Request;
 import swing.*;
 
 import javax.swing.*;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.ArrayList;
 
 
 public class Controller {
 
-
-
-
     private static Controller instance = new Controller();
-
-    //constructor
-    private Controller(){
-//        administer= new Administer();
-        ObjectMapper objectMapper =new ObjectMapper();
-        File file =new File("src/main/resources/configFiles/config.json");
-        try {
-            constants = objectMapper.readValue(file, Constans.class);
-        } catch (IOException e) {
-            System.out.println(" cant load constans");
-            e.printStackTrace();
-        }
-       // constants =new Constans();
-
-
-    }
 
     public static Controller getInstance() {
         return instance;
@@ -42,14 +25,110 @@ public class Controller {
 
     private MyFrame myFrame;
     private GameState gameState;
-    private Administer administer;
     private Shop shop;
     private Menu menu;
+    private Login login;
     private Collection collection;
-    private Converter converter=new Converter();
+    private Converter converter = new Converter();
     private Constans constants;
+    private ClientConstants clientConstants;
     private LogicMapper logicMapper;
     private GamePanel gamePanel;
+    private String txtAddress;
+    private ObjectMapper objectMapper;
+    private Client client;
+    private boolean haveOpponent=false;
+
+    //constructor
+    private Controller() {
+        clientConstants = new ClientConstants();
+        objectMapper = new ObjectMapper();
+        File file = new File("src/main/resources/configFiles/config.json");
+        try {
+            constants = objectMapper.readValue(file, Constans.class);
+        } catch (IOException e) {
+            System.out.println(" cant load constans");
+            e.printStackTrace();
+        }
+        // constants =new Constans();
+
+
+    }
+
+
+    public String getStringValueOfGameState(GameState gameState) {
+        try {
+            String message = objectMapper.writeValueAsString(gameState);
+            return message;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public void exitGame() {
+        int action = JOptionPane.showConfirmDialog(this.getMyFrame(), "do you really want to exit?", "Exit Title", JOptionPane.OK_CANCEL_OPTION);
+        if (action == JOptionPane.OK_OPTION) {
+            ArrayList<String> parameters = new ArrayList<>();
+            String playerString = null;
+            try {
+                playerString = objectMapper.writeValueAsString(gameState.getPlayer());
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+            Request request = new Request(client.getToken(), "logout", parameters, playerString);
+            client.getSender().send(request);
+//            try {
+//                Thread.sleep(3000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+
+        }
+    }
+
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public String getTxtAddress() {
+        return txtAddress;
+    }
+
+    public void setTxtAddress(String txtAddress) {
+        this.txtAddress = txtAddress;
+    }
+
+
+    public  void myLogger(String fileName, String write, boolean append) {
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter(fileName, append);
+            fileWriter.write(write);
+            fileWriter.flush();
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+    public void delete(String text) {
+        System.out.println("you will delete your account  if you want type your password else type something");
+        ArrayList<String>parameters= new ArrayList<>();
+        parameters.add(text);
+        String gameStateString = getStringValueOfGameState(Controller.getInstance().getGameState());
+        Request request = new Request(Controller.getInstance().getClient().getToken(),"delete",parameters,gameStateString);
+        client.getSender().send(request);
+
+    }
 
 
 
@@ -109,28 +188,6 @@ public class Controller {
         this.converter = converter;
     }
 
-    public void exitGame(){
-        int action= JOptionPane.showConfirmDialog(this.getMyFrame(),"do you really want to exit?","Exit Title",JOptionPane.OK_CANCEL_OPTION);
-        if (action==JOptionPane.OK_OPTION) {
-            try {
-                administer.exit(gameState.getPlayer());
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
-    public static void myLogger(String fileName, String write, boolean append)  {
-        FileWriter fileWriter = null;
-        try {
-            fileWriter = new FileWriter(fileName, append);
-            fileWriter.write(write);
-            fileWriter.flush();
-            fileWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
     }
@@ -139,58 +196,39 @@ public class Controller {
         return gameState;
     }
 
-
-
     public MyFrame getMyFrame() {
         return myFrame;
-    }
-
-    public Administer getAdminister() {
-        return administer;
-    }
-
-    public void setAdminister(Administer administer) {
-        this.administer = administer;
     }
 
     public void setMyFrame(MyFrame myFrame) {
         this.myFrame = myFrame;
     }
 
-    public void delete(String text ) {
-        System.out.println("you will delete your account  if you want type your password else type something");
-        if (text.equals(gameState.getPlayer().getPassword())) {
-            String info=gameState.getPlayer().getUsername()+gameState.getPlayer().getPassword();
-            String st = String.format("src/main/userJson/%s.json", info);
-            String st1 = String.format("%s.txt", info);
-            String st2 = String.format("src/main/trash users/%s.txt", info);
-            File file = new File(st);
-            File file1 = new File(st1);
-            Scanner scanner = null;
-            try {
-                scanner = new Scanner(file1);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            for (int i = 0; i < 3; i++) {
-                String temp = scanner.nextLine();
-                myLogger(st2, temp + "\n", true);
-            }
-            myLogger(st2, "DELETED_AT:" + utilities.time() + "\n" + "\n", true);
-            while (scanner.hasNext()) {
-                String temp = scanner.nextLine();
-                myLogger(st2, temp + "\n", true);
-            }
-            file.delete();
-            scanner.close();
-            file1.delete();
-            System.exit(0);
-        } else {
-            System.out.println("something went wrong or you dont want to delete your account");
-        }
+    public void setShope(Shop shop) {
+        this.shop = shop;
     }
 
-    public void setShope(Shop shop) {
-        this.shop=shop;
+    public ClientConstants getClientConstants() {
+        return clientConstants;
+    }
+
+    public void setClientConstants(ClientConstants clientConstants) {
+        this.clientConstants = clientConstants;
+    }
+
+    public boolean isHaveOpponent() {
+        return haveOpponent;
+    }
+
+    public void setHaveOpponent(boolean haveOpponent) {
+        this.haveOpponent = haveOpponent;
+    }
+
+    public Login getLogin() {
+        return login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
     }
 }

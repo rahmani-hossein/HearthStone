@@ -1,6 +1,6 @@
 package logic;
 
-import CLI.Player;
+import model.Player;
 import client.Controller;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,6 +1,6 @@
 package logic;
 
-import CLI.Player;
+import model.Player;
 import client.Controller;
 import model.Deck;
 import model.Minion;

@@ -20,8 +20,6 @@ import static swing.MyFrame.MENU_PANEL;
 public class Administer {
     public static final String SHOP_PANEL = "shop";
     public static final String COLLECTION_PANEL = "collection";
-    public static final String GAME_PANEL ="game";
-    private final static Administer AdministerInstance = new Administer();
 
     private ObjectMapper objectMapper = new ObjectMapper();
  private DeckManager deckManager =new DeckManager();
@@ -161,96 +159,4 @@ public class Administer {
         return false;
 
     }
-
-    private Player initialPlayer(int rand, String user, String pass) {
-        Hero hero = null;
-        Player player = null;
-        Deck currentDeck = null;
-        CardManager cardManager = new CardManager();
-        ArrayList<Minion> availableCardsM = new ArrayList<>();
-        ArrayList<spell> availableCardsS = new ArrayList<>();
-        ArrayList<weapen> availableCardsW = new ArrayList<>();
-        ArrayList<Deck> availableDecks = new ArrayList<>();
-
-        availableCardsM.add(cardManager.createM("hotAirballon"));
-        availableCardsM.add(cardManager.createM("blazingBattlemage"));
-        availableCardsM.add(cardManager.createM("evasiveChimaera"));
-        availableCardsS.add(cardManager.createS("malygosFireball"));
-        availableCardsW.add(cardManager.createW("arcaniteReaper"));
-        availableCardsW.add(cardManager.createW("bloodRazor"));
-        availableCardsW.add(cardManager.createW("assassinBlade"));
-        availableCardsW.add(cardManager.createW("dragonClaw"));
-
-
-        if (rand == 0) {
-            //mage
-            availableCardsS.add(cardManager.createS("polymorph"));
-            availableCardsS.add(cardManager.createS("fireBlast"));
-            hero=heroCreator.createHero("mage");
-
-        } else if (rand == 1) {
-            //rouge
-            availableCardsS.add(cardManager.createS("friendlySmith"));
-            availableCardsW.add(cardManager.createW("fierywaraxe"));
-            hero=heroCreator.createHero("rouge");
-        } else if (rand == 2) {
-            //warlock
-            availableCardsM.add(cardManager.createM("fireHawk"));
-            availableCardsM.add(cardManager.createM("dreadScale"));
-            hero=heroCreator.createHero("warlock");
-
-        } else if (rand == 3) {
-            //hunter
-            availableCardsS.add(cardManager.createS("arcaneShot"));
-            availableCardsM.add(cardManager.createM("swampKingDred"));
-            hero=heroCreator.createHero("hunter");
-        } else if (rand == 4) {
-            //priest
-            availableCardsS.add(cardManager.createS("flamestrike"));
-            availableCardsM.add(cardManager.createM("highPriestAmet"));
-            hero=heroCreator.createHero("priest");
-        }
-        currentDeck = deckManager.buildDeck("default",hero, availableCardsM, availableCardsS, availableCardsW);
-        availableDecks.add(currentDeck);
-
-        player = new Player(user, pass, 80, null, availableCardsS, availableCardsM, availableCardsW, availableDecks);
-
-        return player;
-    }
-
-
-
-    public boolean contains(String[] st, String name) {
-        for (int i = 0; i < st.length; i++) {
-            if (st[i].equalsIgnoreCase(name)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-    //    public static void remove(ArrayList<card> myCard, String name) {
-//
-//    }
-//
-
-
-    public void exit(Player player) throws IOException {
-        System.out.println("wait for update");
-        ObjectMapper objectMapper = new ObjectMapper();
-        String account = String.format("src/main/userJson/%s.json", player.username + player.password);
-        FileWriter fileWriter = new FileWriter(account, false);
-        objectMapper.writeValue(fileWriter, player);
-        fileWriter.close();
-        String account2 = String.format("src/main/userText/%s.txt", player.username + player.password);
-        FileWriter file2 = new FileWriter(account2, true);
-        file2.write("signed up at:" + time());
-        file2.flush();
-        file2.close();
-        System.out.println("see you soon");
-        System.exit(0);
-    }
-
-
 }
