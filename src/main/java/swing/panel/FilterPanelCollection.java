@@ -1,5 +1,6 @@
 package swing.panel;
 
+import client.ClientConstants;
 import client.Controller;
 import logic.CollectionManager;
 import logic.Constans;
@@ -12,14 +13,15 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 public class FilterPanelCollection extends JPanel implements MouseListener {
-    Constans constans= Controller.getInstance().getConstants();
+    private ClientConstants constans = Controller.getInstance().getClientConstants();
     ArrayList<ButtonC> showButton;
+    private ButtonC onclick;
     private int width = constans.getCardWidth();
     private int height = constans.getCardHeigth();
     private int space = constans.getSpace();
     private int sizeW = width + space;
     private int sizeH = height + space;
-    private ArrayList<CardPanelCollection> cardPanelCollections=new ArrayList<>();
+    private ArrayList<CardPanelCollection> cardPanelCollections = new ArrayList<>();
     private CollectionManager collectionManager;
 
     public ArrayList<CardPanelCollection> getCardPanelCollections() {
@@ -46,50 +48,57 @@ public class FilterPanelCollection extends JPanel implements MouseListener {
         repaint();
         revalidate();
     }
-    public void hidePanel(){
-        for (int i=0;i<cardPanelCollections.size();i++){
+
+    public void hidePanel() {
+        for (int i = 0; i < cardPanelCollections.size(); i++) {
             cardPanelCollections.get(i).setVisible(false);
         }
     }
 
     public FilterPanelCollection(ArrayList<ButtonC> showButton, CollectionManager collectionManager) {
         this.showButton = showButton;
-        this.collectionManager=collectionManager;
-        setPreferredSize(new Dimension(constans.getPanelWidth(),2*constans.getPanelHeight()+constans.getPanelHeight()));
+        this.collectionManager = collectionManager;
+        setPreferredSize(new Dimension(constans.getPanelWidth(), 2 * constans.getPanelHeight() + constans.getPanelHeight()));
         addMouseListener(this);
-//        setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
-
-
-        //
         repaint();
         revalidate();
         setLayout(null);
+    }
+
+    public ButtonC getOnclick() {
+        return onclick;
+    }
+
+    public void setOnclick(ButtonC onclick) {
+        this.onclick = onclick;
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (int i = 0; i < showButton.size(); i++) {
-            if (collectionManager.isKnocked(showButton.get(i).getName())){
+            if (collectionManager.isKnocked(showButton.get(i).getName())) {
                 g.setColor(Color.DARK_GRAY);
-                g.fillRect(showButton.get(i).getWidth(),showButton.get(i).getHeight(),showButton.get(i).getSizeW(), showButton.get(i).getSizeH());
+                g.fillRect(showButton.get(i).getWidth(), showButton.get(i).getHeight(), showButton.get(i).getSizeW(), showButton.get(i).getSizeH());
                 g.setColor(Color.WHITE);
             }
             showButton.get(i).paint(g);
-
-            //  System.out.println(showButton.get(i).getName());
-
-            // g.drawImage(showButton.get(i).getImage(), space*(i%5+1) + (i%5)*width , (i/5 + 1)*space + (i/5)*height, null);
         }
+
+    }
+
+    private void create(int i) {
+        onclick = showButton.get(i);
+        onclick.makePanel(this);
 
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         for (int i = 0; i < showButton.size(); i++) {
-            if ((e.getX()>=showButton.get(i).getWidth())&&(e.getX()<=showButton.get(i).getWidth()+width)&&(e.getY()>=showButton.get(i).getHeight())&&(e.getY()<=showButton.get(i).getHeight()+height)){
+            if ((e.getX() >= showButton.get(i).getWidth()) && (e.getX() <= showButton.get(i).getWidth() + width) && (e.getY() >= showButton.get(i).getHeight()) && (e.getY() <= showButton.get(i).getHeight() + height)) {
                 // System.out.println("button "+i+"clicked");
-                showButton.get(i).makePanel(this);
+                create(i);
                 repaint();
                 revalidate();
             }

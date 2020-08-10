@@ -242,7 +242,7 @@ public class PlayerManager {
         System.exit(0);
     }
 
-    public void delete(String pass, Player player){
+    public boolean delete(String pass, Player player){
         if (pass.equals(player.getPassword())) {
             String info = player.getUsername() + player.getPassword();
             String st = String.format("src/main/userJson/%s.json", info);
@@ -269,8 +269,10 @@ public class PlayerManager {
             scanner.close();
             file1.delete();
             //  System.exit(0);
+            return true;
         } else {
             System.out.println("something went wrong or you dont want to delete your account");
+            return false;
         }
     }
 

@@ -1,5 +1,6 @@
 package swing.button;
 
+import client.ClientConstants;
 import client.Controller;
 import logic.Constans;
 import model.*;
@@ -10,7 +11,7 @@ import java.awt.image.BufferedImage;
 public class Picture implements Comparable<Picture> {
 
 
-    private Constans constans = Controller.getInstance().getConstants();
+    private ClientConstants constans = Controller.getInstance().getClientConstants();
     private BufferedImage image;
     private BufferedImage skin;
     private String name;

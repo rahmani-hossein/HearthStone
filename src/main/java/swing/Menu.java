@@ -1,6 +1,7 @@
 package swing;
 
 import CLI.GameMaker;
+import client.ClientConstants;
 import model.Player;
 import client.Controller;
 import logic.Constans;
@@ -19,7 +20,7 @@ public class Menu extends JPanel implements MouseListener {
 
     public static final String GAME_PANEL = "play";
     private Player player;
-    private Constans constans;
+    private ClientConstants constans;
     private GameMaker gameMaker;
     private JButton collection;
     private JButton shop;
@@ -36,7 +37,7 @@ public class Menu extends JPanel implements MouseListener {
     public Menu(Player player) {
         this.controller = Controller.getInstance();
         this.player = player;
-        constans = Controller.getInstance().getConstants();
+        constans = Controller.getInstance().getClientConstants();
         this.setLayout(null);
         collection = new JButton("COLLECTION");
         shop = new JButton("SHOP");

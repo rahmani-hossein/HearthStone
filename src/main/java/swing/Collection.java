@@ -6,6 +6,7 @@ import client.Converter;
 import logic.CollectionManager;
 import logic.Constans;
 import model.Deck;
+import model.Request;
 import swing.button.ButtonC;
 import swing.panel.DeckPanel;
 import swing.panel.FilterPanelCollection;
@@ -59,11 +60,11 @@ public class Collection extends JPanel implements MouseListener {
     private JTextField text;
     private JButton search;
 
-    public Collection(CollectionManager collectionManager) {
+    public Collection() {
         controller = Controller.getInstance();
         BorderLayout borderLayout = new BorderLayout();
         setLayout(borderLayout);
-        this.collectionManager = collectionManager;
+
         south = new JPanel(new FlowLayout());
         north = new JPanel(new FlowLayout());
         east=new DeckPanel(this);
@@ -73,20 +74,12 @@ public class Collection extends JPanel implements MouseListener {
         add(east,BorderLayout.EAST);
         initNorthButtons();
         initSouthButtons();
-        showCards = converter.convert(collectionManager.findHeroClass("neutral"));
-        showButton = initButton(showCards, collectionManager.findHeroClass("neutral"));
+//        showButton = initButton(collectionManager.findHeroClass("neutral"));
         center = new FilterPanelCollection(showButton, collectionManager);
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setViewportView(center);
-        Controller.getInstance().setCollection(this);
-        // controller.getShop().add(scrollPane);
         add(BorderLayout.CENTER, scrollPane);
-
         center.setBackground(Color.YELLOW);
-//
-//        showCards = converter.convert(shopManager.showSellable());
-//        showButton = initButton(showCards, shopManager.showSellable());
-//        center = new FilterPanel(showButton);
     }
 
     private void initSouthButtons() {
@@ -155,7 +148,7 @@ public class Collection extends JPanel implements MouseListener {
                 repaint();
                 revalidate();
                 String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
-                Controller.myLogger(st1,"you clicked to see "+value+"s cards  "+ utilities.time()+"\n",true);
+                Controller.getInstance().myLogger(st1,"you clicked to see "+value+"s cards  "+ utilities.time()+"\n",true);
             }
         });
         allCard.addMouseListener(this);
@@ -166,10 +159,8 @@ public class Collection extends JPanel implements MouseListener {
         back.addMouseListener(this);
     }
 
-    private void fillShowButton(String value) {
-
-        showCards = converter.convert(collectionManager.findHeroClass(value));
-        showButton = initButton(showCards, collectionManager.findHeroClass(value));
+    public void fillShowButton(String value) {
+        showButton = initButton(collectionManager.findHeroClass(value));
         center.setShowButton(showButton);
 
     }
@@ -238,44 +229,37 @@ public class Collection extends JPanel implements MouseListener {
         this.center = center;
     }
 
-    public ArrayList<swing.button.ButtonC> initButton(ArrayList<BufferedImage> showCards, ArrayList<String> buyable) {
+    public ArrayList<swing.button.ButtonC> initButton(ArrayList<String> madenazar) {
         ArrayList<swing.button.ButtonC> showButton = new ArrayList<>();
+        showCards = converter.convert(madenazar);
         for (int i = 0; i < showCards.size(); i++) {
-            swing.button.ButtonC button = new ButtonC(showCards.get(i), buyable.get(i), ((i % 5) + 1) * space + ((i % 5) * sizeW), ((i / 5) + 1) * space + ((i / 5) * sizeH));
+            swing.button.ButtonC button = new ButtonC(showCards.get(i), madenazar.get(i), ((i % 5) + 1) * space + ((i % 5) * sizeW), ((i / 5) + 1) * space + ((i / 5) * sizeH));
             addMouseListener(button);
             showButton.add(button);
         }
-        //makePanel(showButton);
         return showButton;
     }
-
+    ArrayList<String> list =new ArrayList<>();
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == showClass) {
 
         } else if (e.getSource() == allCard) {
             center.hidePanel();
-            showCards = converter.convert(collectionManager.allCards());
-            showButton = initButton(showCards, collectionManager.allCards());
-            center.setShowButton(showButton);
-            String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
-            Controller.myLogger(st1,"you clicked to see all cards  "+ utilities.time()+"\n",true);
-            repaint();
-            revalidate();
+            Request request =new Request(Controller.getInstance().getClient().getToken(),"allCard",null,"");
+            Controller.getInstance().getClient().getSender().send(request);
+
         } else if (e.getSource() == knocked) {
             center.hidePanel();
-            showCards = converter.convert(collectionManager.knocked());
-            showButton = initButton(showCards, collectionManager.knocked());
-            center.setShowButton(showButton);
-            String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
-            Controller.myLogger(st1,"you clicked to see knocked cards  "+ utilities.time()+"\n",true);
-            repaint();
-            revalidate();
+            Request request =new Request(Controller.getInstance().getClient().getToken(),"knocked",null,"");
+            Controller.getInstance().getClient().getSender().send(request);
+
         } else if (e.getSource() == showCost) {
             String value = (String) cost.getItemAt(cost.getSelectedIndex());
             center.hidePanel();
-            showCards = converter.convert(collectionManager.findCost(Integer.valueOf(value)));
-            showButton = initButton(showCards, collectionManager.findCost(Integer.valueOf(value)));
+            Request request =new Request(Controller.getInstance().getClient().getToken(),"showCost",null,value);
+            Controller.getInstance().getClient().getSender().send(request);
+            showButton = initButton( collectionManager.findCost(Integer.parseInt(value)));
             center.setShowButton(showButton);
             repaint();
             revalidate();
@@ -285,7 +269,7 @@ public class Collection extends JPanel implements MouseListener {
             String value = text.getText();
             center.hidePanel();
             showCards = converter.convert(collectionManager.searchEngine(value));
-            showButton = initButton(showCards, collectionManager.searchEngine(value));
+            showButton = initButton( collectionManager.searchEngine(value));
             center.setShowButton(showButton);
             repaint();
             revalidate();

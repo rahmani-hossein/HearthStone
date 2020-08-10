@@ -1,18 +1,21 @@
 package swing.panel;
 
 import CLI.utilities;
+import client.ClientConstants;
 import client.Controller;
 import logic.CardManager;
 import logic.Constans;
 import logic.ShopManager;
+import model.Request;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 public class CardPanelCollection extends JPanel implements MouseListener {
-    private Constans constans = Controller.getInstance().getConstants();
-    ShopManager shopManager;
+    private ClientConstants constans = Controller.getInstance().getClientConstants();
+
     private CardManager cardManager;
     private String name;
     private int cost = 0;
@@ -43,49 +46,43 @@ public class CardPanelCollection extends JPanel implements MouseListener {
         this.buy = buy;
     }
 
-    public CardPanelCollection(String name, ShopManager shopManager) {
+    public CardPanelCollection(String name) {
         cardManager = new CardManager();
-        this.shopManager = shopManager;
         this.name = name;
-//        System.out.println(Constans.costsMap);
-        this.cost = constans.getCostsMap().get(name);
-        this.type = constans.getTypes().get(name);
-        this.rarity = cardManager.tellRarity(name);
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        info1 = new JLabel("name:" + name);
-        info2 = new JLabel("cost:" + cost);
-        info3 = new JLabel("type:" + type);
-        info4 = new JLabel("rarity:" + rarity);
+
         buy = new JButton("buy");
         exit = new JButton("exit");
         exit.addMouseListener(this);
         buy.addMouseListener(this);
-        add(info1);
-        add(info2);
-        add(info3);
-        add(info4);
         add(buy);
         add(exit);
 
     }
 
+    public void createLabels(String name, String rarity, String type, int cost) {
+        info1 = new JLabel("name:" + name);
+        info2 = new JLabel("cost:" + cost);
+        info3 = new JLabel("type:" + type);
+        info4 = new JLabel("rarity:" + rarity);
+        add(info1);
+        add(info2);
+        add(info3);
+        add(info4);
+    }
+
+    ArrayList<String> parameters = new ArrayList<>();
 
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == buy) {
-            if (shopManager.canBuy(name)) {
-                int action = JOptionPane.showConfirmDialog(getParent(), "do you want to buy?", "buy Title", JOptionPane.OK_CANCEL_OPTION);
-                if (action == JOptionPane.OK_OPTION) {
-                    this.setVisible(false);
-                    String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() + Controller.getInstance().getGameState().getPlayer().getPassword());
-                    Controller.myLogger(st1, "you clicked to " + name + "  and you go to shop " + utilities.time() + "\n", true);
-                    Controller.getInstance().getMyFrame().setPanel("shop");
-                }
-            } else {
-                JOptionPane.showMessageDialog(getParent(), "you can not buy this card ", "Error", JOptionPane.ERROR_MESSAGE);
-                String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() + Controller.getInstance().getGameState().getPlayer().getPassword());
-                Controller.myLogger(st1, "you clicked to " + name + "  but you cant buy" + utilities.time() + "\n", true);
+            Controller.getInstance().setBuy(this);
+            int action = JOptionPane.showConfirmDialog(Controller.getInstance().getMyFrame(), "do you want to buy?", "buy Title", JOptionPane.OK_CANCEL_OPTION);
+            if (action == JOptionPane.OK_OPTION) {
+                Request request = new Request(Controller.getInstance().getClient().getToken(), "buyCollection", parameters, name);
+                Controller.getInstance().getClient().getSender().send(request);
             }
+
         } else if (e.getSource() == exit) {
             this.setVisible(false);
         }

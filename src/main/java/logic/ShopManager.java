@@ -100,9 +100,4 @@ public class ShopManager {
         }
         return false;
     }
-
-
-//                    for (Hero hero2 : player.availableHeroes) {
-//                        if (administer.number(hero1, sell) >= 1 && administer.number(hero2, sell) >= 1) {
-//                            player.diamond += administer.create(sell).getCost();
 }

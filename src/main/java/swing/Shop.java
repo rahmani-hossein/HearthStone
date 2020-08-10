@@ -24,7 +24,7 @@ public class Shop extends JPanel implements MouseListener {
     private JLabel wallet;
     private JButton exit;
     private JButton back;
-    private int space = Controller.getInstance().getConstants().getSpace();
+    private int space = Controller.getInstance().getClientConstants().getSpace();
     private int sizeW = 200;
     private int sizeH = 275;
 
@@ -44,8 +44,6 @@ public class Shop extends JPanel implements MouseListener {
         center = new FilterPanel(showButton);
         JScrollPane scrollPane = new JScrollPane();
        scrollPane.setViewportView(center);
-        Controller.getInstance().setShope(this);
-       // controller.getShop().add(scrollPane);
         add( BorderLayout.CENTER,scrollPane);
 
         center.setBackground(Color.YELLOW);
@@ -71,7 +69,7 @@ public class Shop extends JPanel implements MouseListener {
     }
 
 
-    private ArrayList<Button> initButton(ArrayList<String> madenazar) {
+    public ArrayList<Button> initButton(ArrayList<String> madenazar) {
         ArrayList<Button> showButton = new ArrayList<>();
         showCards = converter.convert(madenazar);
         for (int i = 0; i < showCards.size(); i++) {
@@ -91,38 +89,25 @@ public class Shop extends JPanel implements MouseListener {
         }
 
     }
+    ArrayList<String> list =new ArrayList<>();
 
     @Override
     public void mouseClicked(MouseEvent e) {
 
-
         if (e.getSource() == sellable) {
-            for (int i = 0; i < center.getCardPanels().size(); i++) {
-               // center.getCardPanels().get(i).remove();
-                center.remove( center.getCardPanels().get(i));
-            }
-            showButton = initButton( shopManager.showSellable());
-            center.setShowButton(showButton);
-            String st1 = String.format("%s.txt", controller.getGameState().getPlayer().getUsername() +  controller.getGameState().getPlayer().getPassword());
-            Controller.getInstance().myLogger(st1," click for see sellable cards  "+ utilities.time(),true);
-
-            repaint();
-            revalidate();
+            Request request= new Request(Controller.getInstance().getClient().getToken(),"sellable",null,"");
+            Controller.getInstance().getClient().getSender().send(request);
+            Controller.getInstance().myLogger(Controller.getInstance().getTxtAddress()," click for see sellable cards  "+ utilities.time(),true);
         } else if (e.getSource() == buyable) {
+            Request request= new Request(Controller.getInstance().getClient().getToken(),"sellable",null,"");
+            Controller.getInstance().getClient().getSender().send(request);
+            Controller.getInstance().myLogger(Controller.getInstance().getTxtAddress()," click for see buyables cards  "+ utilities.time()+"\n",true);
 
-            showButton = initButton(shopManager.showBuyable());
-            center.setShowButton(showButton);
-            String st1 = String.format("%s.txt", controller.getGameState().getPlayer().getUsername() +  controller.getGameState().getPlayer().getPassword());
-            Controller.myLogger(st1," click for see buyables cards  "+ utilities.time()+"\n",true);
-
-            repaint();
-            revalidate();
         } else if (e.getSource() == exit) {
             controller.exitGame();
         } else if (e.getSource() == back) {
             controller.getMyFrame().setPanel("menu");
-            String st1 = String.format("%s.txt", controller.getGameState().getPlayer().getUsername() +  controller.getGameState().getPlayer().getPassword());
-            Controller.myLogger(st1," back to menu   "+ utilities.time()+"\n",true);
+            Controller.getInstance().myLogger(Controller.getInstance().getTxtAddress()," back to menu   "+ utilities.time()+"\n",true);
         }
 
     }

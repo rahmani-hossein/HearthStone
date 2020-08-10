@@ -2,6 +2,7 @@ package swing.button;
 
 import client.Controller;
 import logic.ShopManager;
+import model.Request;
 import swing.panel.CardPanel;
 import swing.panel.FilterPanel;
 
@@ -9,12 +10,12 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class Button implements MouseListener {
 
     private BufferedImage image;
     private String name;
-    private ShopManager shopManager = new ShopManager(Controller.getInstance().getGameState().getPlayer());
     private int width;
     private int height;
     private int sizeW=200;
@@ -78,16 +79,16 @@ public class Button implements MouseListener {
 
     public void paint(Graphics g){
         g.drawImage(this.image,this.width,this.height,this.sizeW,this.sizeH,null);
-       // System.out.println(this.name+"painted");
     }
 
     public void hidePanel(){
         cardPanel.setVisible(false);
     }
 
+    ArrayList<String> parameters=new ArrayList<>();
     public void makePanel(FilterPanel filterPanel) {
 
-         cardPanel = new CardPanel(this.getName(), shopManager);
+         cardPanel = new CardPanel(this.getName());
         int cardWidth = this.width;
         int cardHeight =this.height ;
         cardPanel.setSize(cardWidth, cardHeight);
@@ -95,53 +96,21 @@ public class Button implements MouseListener {
         filterPanel.add(cardPanel);
         cardPanel.setBounds(width,height,sizeW,sizeH);
         filterPanel.getCardPanels().add(cardPanel);
+        Request request= new Request(Controller.getInstance().getClient().getToken(),"information",parameters,this.name);
+        Controller.getInstance().getClient().getSender().send(request);
+    }
 
+    public CardPanel getCardPanel() {
+        return cardPanel;
+    }
 
-
-//            showButton.get(i).addMouseListener(new MouseListener() {
-//                @Override
-//                public void mouseClicked(MouseEvent e) {
-//
-//                }
-//
-//                @Override
-//                public void mousePressed(MouseEvent e) {
-//
-//                }
-//
-//                @Override
-//                public void mouseReleased(MouseEvent e) {
-//
-//                }
-//
-//                @Override
-//                public void mouseEntered(MouseEvent e) {
-//                    cardPanel.setBounds(e.getX(), e.getY() - cardWidth, cardWidth, cardHeight);
-//                    setVisible(true);
-//                    repaint();
-//                    revalidate();
-//                }
-//
-//                @Override
-//                public void mouseExited(MouseEvent e) {
-//                    setVisible(false);
-//                    repaint();
-//                    revalidate();
-//                }
-//            });
-//        }
-//
-//
-
-
+    public void setCardPanel(CardPanel cardPanel) {
+        this.cardPanel = cardPanel;
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-//        if ((e.getX()>=width)&&(e.getX()<=width+sizeW)&&(e.getY()>=height)&&(e.getY()<=height+sizeH)){
-//            System.out.println("button clicked");
-//            makePanel();
-//        }
+
     }
 
     @Override

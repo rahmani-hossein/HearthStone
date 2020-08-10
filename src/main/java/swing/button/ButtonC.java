@@ -2,6 +2,7 @@ package swing.button;
 
 import client.Controller;
 import logic.ShopManager;
+import model.Request;
 import swing.panel.CardPanelCollection;
 import swing.panel.FilterPanelCollection;
 
@@ -9,11 +10,11 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class ButtonC implements MouseListener {
     private BufferedImage image;
     private String name;
-    private ShopManager shopManager = new ShopManager(Controller.getInstance().getGameState().getPlayer());
     private int width;
     private int height;
     private int sizeW = 200;
@@ -79,16 +80,15 @@ public class ButtonC implements MouseListener {
 
     public void paint(Graphics g) {
         g.drawImage(this.image, this.width, this.height, this.sizeW, this.sizeH, null);
-        // System.out.println(this.name+"painted");
     }
 
     public void hidePanel() {
         cardPanelCollection.setVisible(false);
     }
 
-
+ArrayList<String> parameters=null;
     public void makePanel(FilterPanelCollection filterPanelCollection) {
-        cardPanelCollection = new CardPanelCollection(this.getName(), shopManager);
+        cardPanelCollection = new CardPanelCollection(this.getName());
         int cardWidth = this.width;
         int cardHeight = this.height;
         cardPanelCollection.setSize(cardWidth, cardHeight);
@@ -96,7 +96,16 @@ public class ButtonC implements MouseListener {
         filterPanelCollection.add(cardPanelCollection);
         cardPanelCollection.setBounds(width, height, sizeW, sizeH);
         filterPanelCollection.getCardPanelCollections().add(cardPanelCollection);
+        Request request= new Request(Controller.getInstance().getClient().getToken(),"infoCollection",parameters,this.name);
+        Controller.getInstance().getClient().getSender().send(request);
+    }
 
+    public CardPanelCollection getCardPanelCollection() {
+        return cardPanelCollection;
+    }
+
+    public void setCardPanelCollection(CardPanelCollection cardPanelCollection) {
+        this.cardPanelCollection = cardPanelCollection;
     }
 
     @Override

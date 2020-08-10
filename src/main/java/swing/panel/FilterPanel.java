@@ -1,8 +1,10 @@
 package swing.panel;
 
 import CLI.utilities;
+import client.ClientConstants;
 import client.Controller;
 import logic.Constans;
+import model.Request;
 import swing.button.Button;
 
 import javax.swing.*;
@@ -12,8 +14,9 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 public class FilterPanel extends JPanel implements MouseListener {
-    private Constans constans=Controller.getInstance().getConstants();
+    private ClientConstants constans=Controller.getInstance().getClientConstants();
     ArrayList<Button> showButton;
+    private Button onclick;
     private int width = constans.getCardWidth();
     private int height = constans.getCardHeigth();
     private int space = constans.getSpace();
@@ -52,10 +55,6 @@ public class FilterPanel extends JPanel implements MouseListener {
         this.showButton = showButton;
         setPreferredSize(new Dimension(constans.getPanelWidth(),2*constans.getPanelHeight()+constans.getPanelHeight()));
         addMouseListener(this);
-//        setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
-
-
-      //
         repaint();
         revalidate();
         setLayout(null);
@@ -65,10 +64,14 @@ public class FilterPanel extends JPanel implements MouseListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (int i = 0; i < showButton.size(); i++) {
-          //  System.out.println(showButton.get(i).getName());
             showButton.get(i).paint(g);
-           // g.drawImage(showButton.get(i).getImage(), space*(i%5+1) + (i%5)*width , (i/5 + 1)*space + (i/5)*height, null);
         }
+
+    }
+    ArrayList<String> parameters;
+    private void create(int i){
+        onclick = showButton.get(i);
+        onclick.makePanel(this);
 
     }
 
@@ -77,9 +80,8 @@ public class FilterPanel extends JPanel implements MouseListener {
         for (int i = 0; i < showButton.size(); i++) {
             if ((e.getX()>=showButton.get(i).getWidth())&&(e.getX()<=showButton.get(i).getWidth()+width)&&(e.getY()>=showButton.get(i).getHeight())&&(e.getY()<=showButton.get(i).getHeight()+height)){
                // System.out.println("button "+i+"clicked");
-                showButton.get(i).makePanel(this);
-                String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
-                Controller.myLogger(st1," card  "+showButton.get(i).getName()+" in the shop clicked"+ utilities.time()+"\n",true);
+              create(i);
+                Controller.getInstance().myLogger(Controller.getInstance().getTxtAddress()," card  "+showButton.get(i).getName()+" in the shop clicked"+ utilities.time()+"\n",true);
                 repaint();
                 revalidate();
             }
@@ -104,5 +106,13 @@ public class FilterPanel extends JPanel implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
 
+    }
+
+    public Button getOnclick() {
+        return onclick;
+    }
+
+    public void setOnclick(Button onclick) {
+        this.onclick = onclick;
     }
 }

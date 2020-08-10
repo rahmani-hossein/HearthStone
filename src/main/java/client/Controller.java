@@ -7,6 +7,7 @@ import logic.Constans;
 import model.GameState;
 import model.Request;
 import swing.*;
+import swing.panel.CardPanelCollection;
 
 import javax.swing.*;
 import java.io.File;
@@ -86,7 +87,15 @@ public class Controller {
 
         }
     }
+    private CardPanelCollection buy;
 
+    public CardPanelCollection getBuy() {
+        return buy;
+    }
+
+    public void setBuy(CardPanelCollection buy) {
+        this.buy = buy;
+    }
 
     public Client getClient() {
         return client;
@@ -204,9 +213,6 @@ public class Controller {
         this.myFrame = myFrame;
     }
 
-    public void setShope(Shop shop) {
-        this.shop = shop;
-    }
 
     public ClientConstants getClientConstants() {
         return clientConstants;

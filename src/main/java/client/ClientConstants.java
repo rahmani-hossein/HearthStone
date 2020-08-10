@@ -27,6 +27,7 @@ public class ClientConstants {
     private int friendManaY=750;
     private int enemyManaY=200;
     private int noteSize=70;
+    private String[] passives = {"twiceDraw", "offCard", "freePower", "manaJump", "nurse"};
 
 
     public ClientConstants(){
@@ -34,6 +35,16 @@ public class ClientConstants {
     }
 
     //getter & setter
+
+
+    public String[] getPassives() {
+        return passives;
+    }
+
+    public void setPassives(String[] passives) {
+        this.passives = passives;
+    }
+
     public int getCardWidth() {
         return cardWidth;
     }
