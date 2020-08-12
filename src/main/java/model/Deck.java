@@ -13,12 +13,11 @@ public class Deck implements Comparable<Deck> {
     private ArrayList<weapen>weapens=new ArrayList<>();
     private int wins=0;
     private int numbreOfUse=0;
-    private int cup=0;
+    private int cup=1;
     private String rarest="";
     private double winAverage=0;
     private double manaAverage=0;
     private double costAverage=0;
-    private CardManager cardManager=new CardManager();
 
     public Deck(String name, Hero deckHero, ArrayList<Minion> minions, ArrayList<spell> spells, ArrayList<weapen> weapens) {
         this.name=name;
@@ -217,66 +216,55 @@ public class Deck implements Comparable<Deck> {
 
     @Override
     public int compareTo(Deck o) {
-        if (winAverage!=o.getWinAverage()) {
-            if (winAverage > o.getWinAverage()) {
+        if (cup != o.getCup()) {
+            if (cup>o.getCup()){
                 return 1;
-            } else {
+            }
+            else {
                 return -1;
             }
-        }
-        else {
-            if (wins!=o.getWins()) {
-                if (wins > o.getWins()) {
+        } else {
+            if (winAverage != o.getWinAverage()) {
+                if (winAverage > o.getWinAverage()) {
                     return 1;
                 } else {
                     return -1;
                 }
-            }
-            else {
-                if (numbreOfUse!=o.getNumbreOfUse()){
-                    if (numbreOfUse>o.getNumbreOfUse()){
+            } else {
+                if (wins != o.getWins()) {
+                    if (wins > o.getWins()) {
                         return 1;
-                    }
-                    else {
+                    } else {
                         return -1;
                     }
-                }
-                else {
-                    if (costAverage!=o.getCostAverage()){
-                        if (costAverage>o.getCostAverage()){
+                } else {
+                    if (numbreOfUse != o.getNumbreOfUse()) {
+                        if (numbreOfUse > o.getNumbreOfUse()) {
                             return 1;
-                        }
-                        else {
+                        } else {
                             return -1;
                         }
-                    }
-                    else {
-                        Random random=new Random();
-                        int rand=random.nextInt(2);
-                        if (rand==1){
-                            return 1;
+                    } else {
+                        if (costAverage != o.getCostAverage()) {
+                            if (costAverage > o.getCostAverage()) {
+                                return 1;
+                            } else {
+                                return -1;
+                            }
+                        } else {
+                            Random random = new Random();
+                            int rand = random.nextInt(2);
+                            if (rand == 1) {
+                                return 1;
+                            } else {
+                                return -1;
+                            }
                         }
-                        else {
-                            return -1;
-                        }
-                    }
 
+                    }
                 }
             }
         }
     }
-
-
-//it is not comlete
-//    private int findNum(ArrayList<?extends card>cards,String name){
-//        int number=0;
-//        for (card card:cards) {
-//            if (card.getName().equals(name)){
-//
-//            }
-//
-//        }
-//
-//    }
 
 }

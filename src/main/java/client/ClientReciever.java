@@ -62,35 +62,13 @@ public class ClientReciever extends Thread {
                     System.out.println("we execute successfully token request");
                     break;
                 case "login":
-                    try {
-                        GameState gameState = objectMapper.readValue(request.getBody(), GameState.class);
-                        Controller.getInstance().setGameState(gameState);
-                        Controller.getInstance().setTxtAddress(String.format("src/main/userText/%s.txt", gameState.getPlayer().getUsername() + gameState.getPlayer().getPassword()));
-                        Menu menu = new Menu(Controller.getInstance().getGameState().getPlayer());
-                        Controller.getInstance().setMenu(menu);
-                        Controller.getInstance().getMyFrame().add(menu, "menu");
-                        Shop shop = new Shop();
-                        Controller.getInstance().setShop(shop);
-                        Collection collection = new Collection();
-                        Controller.getInstance().setCollection(collection);
-                        Controller.getInstance().getMyFrame().add(shop, "shop");
-                        Controller.getInstance().getMyFrame().add(collection, "collection");
-                        Controller.getInstance().getMyFrame().setPanel("menu");
-
-                    } catch (JsonProcessingException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-
+                   clientLogic.receiveLogin(request);
+                   break;
                 case "logout":
                     System.exit(0);
                     break;
                 case "delete":
-                    if (request.getBody().equalsIgnoreCase("true")) {
-                        System.exit(0);
-                    } else {
-                        JOptionPane.showMessageDialog(Controller.getInstance().getMyFrame(), "Error", "wrong password", JOptionPane.ERROR_MESSAGE);
-                    }
+                    clientLogic.receiveDelete(request);
                     break;
                 case "move":
                     GameState myGameState = getObject(GameState.class, request.getBody());
@@ -118,62 +96,47 @@ public class ClientReciever extends Thread {
                     }
                     break;
                 case "sellable":
-                    // System.out.println(request.getBody());
-                    ArrayList<String> sellable = new ArrayList<>();
-                    try {
-                        sellable = objectMapper.readValue(request.getBody(), new TypeReference<ArrayList<String>>() {
-                        });
-                        for (int i = 0; i < Controller.getInstance().getShop().getCenter().getCardPanels().size(); i++) {
-                            // center.getCardPanels().get(i).remove();
-                            Controller.getInstance().getShop().getCenter().remove(Controller.getInstance().getShop().getCenter().getCardPanels().get(i));
-                        }
-                        Controller.getInstance().getShop().setShowButton(Controller.getInstance().getShop().initButton(sellable));
-                        Controller.getInstance().getShop().getCenter().setShowButton(Controller.getInstance().getShop().getShowButton());
-                        Controller.getInstance().getShop().repaint();
-                        Controller.getInstance().getShop().revalidate();
-                    } catch (JsonProcessingException e) {
-                        e.printStackTrace();
-                    }
+                  clientLogic.receiveSellable(request);
                     break;
                 case "buyable":
-                    ArrayList<String> buyable = new ArrayList<>();
-                    System.out.println("we show buyable");
-                    try {
-                        buyable = objectMapper.readValue(request.getBody(), new TypeReference<ArrayList<String>>() {
-                        });
-                        for (int i = 0; i < Controller.getInstance().getShop().getCenter().getCardPanels().size(); i++) {
-                            // center.getCardPanels().get(i).remove();
-                            Controller.getInstance().getShop().getCenter().remove(Controller.getInstance().getShop().getCenter().getCardPanels().get(i));
-                        }
-                        Controller.getInstance().getShop().setShowButton(Controller.getInstance().getShop().initButton(buyable));
-                        Controller.getInstance().getShop().getCenter().setShowButton(Controller.getInstance().getShop().getShowButton());
-                        Controller.getInstance().getShop().repaint();
-                        Controller.getInstance().getShop().revalidate();
-                    } catch (JsonProcessingException e) {
-                        e.printStackTrace();
-                    }
+                   clientLogic.receiveBuyable(request);
                     break;
                 case "allCard":
                 case "knocked":
-                    ArrayList<String> allCards = new ArrayList<>();
-                    System.out.println("we show allCards");
-                    try {
-                        allCards = objectMapper.readValue(request.getBody(), new TypeReference<ArrayList<String>>() {
-                        });
-                        Controller.getInstance().getCollection().setShowButton(Controller.getInstance().getCollection().initButton(allCards));
-                        Controller.getInstance().getCollection().getCenter().setShowButton(Controller.getInstance().getCollection().getShowButton());
-                        Controller.getInstance().getCollection().repaint();
-                        Controller.getInstance().getCollection().revalidate();
-                    } catch (JsonProcessingException e) {
-                        e.printStackTrace();
-                    }
+                case "showCost":
+                case "showClass":
+                case "search":
+                  clientLogic.receiveCards(request);
                     break;
-                case
                 case "buy":
                     clientLogic.recieveBuy(request);
                     break;
                 case "sell":
                     clientLogic.receiveSell(request);
+                    break;
+                case "add":
+                    clientLogic.receiveAdd(request);
+                    break;
+                case "remove":
+                    clientLogic.receiveRemove(request);
+                    break;
+                case "changeName":
+                    clientLogic.recieveChangeName(request);
+                    break;
+                case "changeHero":
+                    clientLogic.receiveChangeHero(request);
+                    break;
+                case "makeDeck":
+                    clientLogic.recieveMakeDeck(request);
+                    break;
+                case "removeDeck":
+                    clientLogic.receiveRemoveDeck(request);
+                    break;
+                case "deckButton":
+                    clientLogic.receiveDeckButton(request);
+                    break;
+                case "deckNames":
+                    clientLogic.receiveDeckNames(request);
                     break;
                 case "information":
 

@@ -2,6 +2,7 @@ package swing.panel;
 
 import client.ClientConstants;
 import client.Controller;
+import client.LogicManagerClient;
 import logic.CollectionManager;
 import logic.Constans;
 import swing.button.ButtonC;
@@ -22,7 +23,8 @@ public class FilterPanelCollection extends JPanel implements MouseListener {
     private int sizeW = width + space;
     private int sizeH = height + space;
     private ArrayList<CardPanelCollection> cardPanelCollections = new ArrayList<>();
-    private CollectionManager collectionManager;
+    private LogicManagerClient logicManagerClient=new LogicManagerClient(Controller.getInstance().getGameState().getPlayer());
+
 
     public ArrayList<CardPanelCollection> getCardPanelCollections() {
         return cardPanelCollections;
@@ -55,9 +57,8 @@ public class FilterPanelCollection extends JPanel implements MouseListener {
         }
     }
 
-    public FilterPanelCollection(ArrayList<ButtonC> showButton, CollectionManager collectionManager) {
+    public FilterPanelCollection(ArrayList<ButtonC> showButton) {
         this.showButton = showButton;
-        this.collectionManager = collectionManager;
         setPreferredSize(new Dimension(constans.getPanelWidth(), 2 * constans.getPanelHeight() + constans.getPanelHeight()));
         addMouseListener(this);
         repaint();
@@ -77,7 +78,7 @@ public class FilterPanelCollection extends JPanel implements MouseListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (int i = 0; i < showButton.size(); i++) {
-            if (collectionManager.isKnocked(showButton.get(i).getName())) {
+            if (logicManagerClient.isKnocked(showButton.get(i).getName())) {
                 g.setColor(Color.DARK_GRAY);
                 g.fillRect(showButton.get(i).getWidth(), showButton.get(i).getHeight(), showButton.get(i).getSizeW(), showButton.get(i).getSizeH());
                 g.setColor(Color.WHITE);
@@ -97,7 +98,6 @@ public class FilterPanelCollection extends JPanel implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         for (int i = 0; i < showButton.size(); i++) {
             if ((e.getX() >= showButton.get(i).getWidth()) && (e.getX() <= showButton.get(i).getWidth() + width) && (e.getY() >= showButton.get(i).getHeight()) && (e.getY() <= showButton.get(i).getHeight() + height)) {
-                // System.out.println("button "+i+"clicked");
                 create(i);
                 repaint();
                 revalidate();

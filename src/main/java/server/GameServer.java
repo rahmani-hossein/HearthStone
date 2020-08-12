@@ -31,13 +31,14 @@ public class GameServer extends Thread{
 
 
 
-    public GameServer(int serverPort){
+    public GameServer(int serverPort,ServerConstants serverConstants){
         try {
             serverSocket = new ServerSocket(serverPort);
         } catch (IOException e) {
             System.out.println(" there is error in running server");
             e.printStackTrace();
         }
+        this.serverConstants=serverConstants;
         clients = new ArrayList<>();
         serverConstants.initFill();
         loadPlayers();
@@ -64,11 +65,11 @@ public class GameServer extends Thread{
     }
     private void loadPlayers(){
         players=new ArrayList<>();
-                String st = " src/main/resources/userJson";
+                String st = " src/main/userJson";
                 File file = new File(st);
         for (File directoryFile:file.listFiles()) {
             try {
-                Player player=objectMapper.readValue(file,Player.class);
+                Player player=objectMapper.readValue(directoryFile,Player.class);
                 players.add(player);
             } catch (IOException e) {
                 e.printStackTrace();

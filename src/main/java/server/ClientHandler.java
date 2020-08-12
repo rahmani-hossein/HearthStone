@@ -158,7 +158,6 @@ public class ClientHandler extends Thread {
                 case "buyable":
                    logicHandler.handleBuyable(request);
                     break;
-
                 case "allCard":
                   logicHandler.handleAllCard(request);
                     break;
@@ -167,6 +166,36 @@ public class ClientHandler extends Thread {
                     break;
                 case "showCost":
                     logicHandler.handleShowCost(request);
+                    break;
+                case "showClass":
+                    logicHandler.handleShowClass(request);
+                    break;
+                case "search":
+                    logicHandler.handleSearch(request);
+                    break;
+                case "add":
+                    logicHandler.handleAdd(request);
+                    break;
+                case "remove":
+                    logicHandler.handleRemove(request);
+                    break;
+                case "changeName":
+                    logicHandler.handleChangeName(request);
+                    break;
+                case "changeHero":
+                    logicHandler.handleChangeHero(request);
+                    break;
+                case "makeDeck":
+                    logicHandler.handleMakeDeck(request);
+                    break;
+                case "removeDeck":
+                    logicHandler.handleRemoveDeck(request);
+                    break;
+                case "deckButton":
+                    logicHandler.handleDeckButton(request);
+                    break;
+                case "deckNames":
+                    logicHandler.handleDeckNames(request);
                     break;
                 case "buy":
                     String buyName = request.getBody();

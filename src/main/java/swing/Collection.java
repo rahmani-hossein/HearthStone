@@ -20,14 +20,13 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class Collection extends JPanel implements MouseListener {
-    private Constans constans= Controller.getInstance().getConstants();
+public class Collection extends JPanel  {
+    private Constans constans = Controller.getInstance().getConstants();
     private int space = constans.getSpace();
     private int sizeW = constans.getCardWidth();//200
-    private int sizeH =constans.getCardHeigth();//285
+    private int sizeH = constans.getCardHeigth();//285
 
     Converter converter = new Converter();
-    private CollectionManager collectionManager;
     private ArrayList<BufferedImage> showCards = null;
     private ArrayList<swing.button.ButtonC> showButton = null;
     private Controller controller;
@@ -53,7 +52,7 @@ public class Collection extends JPanel implements MouseListener {
     private JButton makeDeck;
     private JLabel hero;
     private JTextField heroName;
-    private  JLabel deckName;
+    private JLabel deckName;
     private JTextField nameText;
     private JButton removeDeck;
 
@@ -67,15 +66,14 @@ public class Collection extends JPanel implements MouseListener {
 
         south = new JPanel(new FlowLayout());
         north = new JPanel(new FlowLayout());
-        east=new DeckPanel(this);
+        east = new DeckPanel(this);
         east.setBackground(Color.pink);
         add(north, BorderLayout.NORTH);
         add(south, BorderLayout.SOUTH);
-        add(east,BorderLayout.EAST);
+        add(east, BorderLayout.EAST);
         initNorthButtons();
         initSouthButtons();
-//        showButton = initButton(collectionManager.findHeroClass("neutral"));
-        center = new FilterPanelCollection(showButton, collectionManager);
+        center = new FilterPanelCollection(showButton);
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setViewportView(center);
         add(BorderLayout.CENTER, scrollPane);
@@ -83,90 +81,297 @@ public class Collection extends JPanel implements MouseListener {
     }
 
     private void initSouthButtons() {
-        decks = new JComboBox(collectionManager.getdeck());
-        add = new JButton("add to deck");
-        remove = new JButton("remove");
-        deck = new JTextField(10);
-        changeName = new JButton("change the name of this deck");
-        changeHero = new JButton("change hero of this deck");
-        name = new JTextField(10);
-        makeDeck=new JButton("makeDeck");
-        hero=new JLabel("hero");
-        heroName=new JTextField(10);
-        deckName=new JLabel("name:");
-        nameText=new JTextField(10);
-        removeDeck=new JButton("remove current deck");
+        initDecks();
+        initAdd();
+        initDeck();
+        initRemove();
+        initChangeName();
+        initName();
+        initChangeHero();
+        initMakeDeck();
+        initHero();
+        initHeroName();
+        initDeckName();
+        initNameText();
+        initRemoveDeck();
+    }
+
+    public DeckPanel getEast() {
+        return east;
+    }
+
+    public void setEast(DeckPanel east) {
+        this.east = east;
+    }
+
+    private void initDecks() {
+        Request request =new Request(Controller.getInstance().getClient().getToken(),"deckNames",null,"");
+        Controller.getInstance().getClient().getSender().send(request);
+
+    }
+    public void innerInitDecks(ArrayList<String> parameters){
+        decks = new JComboBox((ComboBoxModel) parameters);
         south.add(decks);
+    }
+
+    private void initAdd() {
+        add = new JButton("add to deck");
+        add.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<String> list = new ArrayList<>();
+                String deckName = (String) decks.getItemAt(decks.getSelectedIndex());
+                String card = deck.getText();
+                list.add(deckName);
+                list.add(card);
+                Request request = new Request(Controller.getInstance().getClient().getToken(), "add", list, "");
+                Controller.getInstance().getClient().getSender().send(request);
+
+            }
+        });
         south.add(add);
+    }
+
+    private void initDeck() {
+        deck = new JTextField(10);
         south.add(deck);
+    }
+
+    private void initRemove() {
+        remove = new JButton("remove");
+        remove.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<String> list = new ArrayList<>();
+                String deckName = (String) decks.getItemAt(decks.getSelectedIndex());
+                String card = deck.getText();
+                list.add(deckName);
+                list.add(card);
+                Request request = new Request(Controller.getInstance().getClient().getToken(), "remove", list, "");
+                Controller.getInstance().getClient().getSender().send(request);
+            }
+        });
         south.add(remove);
+    }
+
+    private void initChangeName() {
+        changeName = new JButton("change the name of this deck");
+        changeName.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<String> list = new ArrayList<>();
+                String deckOldName = (String) decks.getItemAt(decks.getSelectedIndex());
+                String newName = name.getText();
+                list.add(deckOldName);
+                list.add(newName);
+                Request request = new Request(Controller.getInstance().getClient().getToken(), "changeName", list, "");
+                Controller.getInstance().getClient().getSender().send(request);
+            }
+        });
         south.add(changeName);
+
+    }
+
+    private void initName() {
+        name = new JTextField(10);
         south.add(name);
+    }
+
+    private void initChangeHero() {
+        changeHero = new JButton("change hero of this deck");
+        changeHero.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String deckOldName = (String) decks.getItemAt(decks.getSelectedIndex());
+                String heroName = name.getText();
+                ArrayList<String> list = new ArrayList<>();
+                list.add(deckOldName);
+                list.add(heroName);
+                Request request = new Request(Controller.getInstance().getClient().getToken(), "changeHero", list, "");
+                Controller.getInstance().getClient().getSender().send(request);
+            }
+        });
         south.add(changeHero);
+
+    }
+
+    private void initMakeDeck() {
+        makeDeck = new JButton("makeDeck");
+        makeDeck.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String h = heroName.getText();
+                String dN = nameText.getText();
+                ArrayList<String> list = new ArrayList<>();
+                list.add(dN);
+                list.add(h);
+                Request request = new Request(Controller.getInstance().getClient().getToken(), "makeDeck", list, "");
+                Controller.getInstance().getClient().getSender().send(request);
+            }
+        });
         south.add(makeDeck);
+
+    }
+
+    private void initHero() {
+        hero = new JLabel("hero");
         south.add(hero);
+
+    }
+
+    private void initHeroName() {
+        heroName = new JTextField(10);
         south.add(heroName);
+
+    }
+
+    private void initDeckName() {
+        deckName = new JLabel("name:");
         south.add(deckName);
+
+    }
+
+    private void initNameText() {
+        nameText = new JTextField(10);
         south.add(nameText);
+    }
+
+    private void initRemoveDeck() {
+        removeDeck = new JButton("remove current deck");
+        removeDeck.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String delete = (String) decks.getItemAt(decks.getSelectedIndex());
+                Request request = new Request(Controller.getInstance().getClient().getToken(), "removeDeck", null, delete);
+                Controller.getInstance().getClient().getSender().send(request);
+            }
+        });
         south.add(removeDeck);
-        remove.addMouseListener(this);
-        add.addMouseListener(this);
-        changeName.addMouseListener(this);
-        changeHero.addMouseListener(this);
-        makeDeck.addMouseListener(this);
-        removeDeck.addMouseListener(this);
 
     }
 
     private void initNorthButtons() {
-        comboBox = new JComboBox(constans.getHeroClass());
-        showClass = new JButton("showHero");
-        allCard = new JButton("all");
+        initComboBox();
+        initShowClass();
+        initAllCard();
+        initKnocked();
+        initCost();
+        initShowCost();
+        initText();
+        initSearch();
+        initExit();
+        initBack();
+    }
+
+    private void initKnocked() {
         knocked = new JButton("knockedCards");
-        cost = new JComboBox(new String[]{1 + "", 2 + "", String.valueOf(3), 4 + "", 5 + "", 6 + "", 7 + "", 8 + "", 9 + "", 10 + ""});
-        showCost = new JButton("cost");
-        text = new JTextField(15);
-        search = new JButton("search");
-        exit = new JButton("exit");
-        back = new JButton("back");
-        north.add(comboBox);
-        north.add(showClass);
-        north.add(allCard);
+        knocked.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                center.hidePanel();
+                Request request = new Request(Controller.getInstance().getClient().getToken(), "knocked", null, "");
+                Controller.getInstance().getClient().getSender().send(request);
+            }
+        });
         north.add(knocked);
+    }
+
+    private void initAllCard() {
+        allCard = new JButton("all");
+        allCard.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                center.hidePanel();
+                Request request = new Request(Controller.getInstance().getClient().getToken(), "allCard", null, "");
+                Controller.getInstance().getClient().getSender().send(request);
+            }
+        });
+        north.add(allCard);
+    }
+
+    private void initCost() {
+        cost = new JComboBox(new String[]{1 + "", 2 + "", String.valueOf(3), 4 + "", 5 + "", 6 + "", 7 + "", 8 + "", 9 + "", 10 + ""});
         north.add(cost);
+
+    }
+
+    private void initShowCost() {
+        showCost = new JButton("cost");
+        showCost.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String value = (String) cost.getItemAt(cost.getSelectedIndex());
+                center.hidePanel();
+                Request request = new Request(Controller.getInstance().getClient().getToken(), "showCost", null, value);
+                Controller.getInstance().getClient().getSender().send(request);
+            }
+        });
         north.add(showCost);
-        north.add(text);
-        north.add(search);
-        north.add(exit);
-        north.add(back);
+    }
+
+    private void initShowClass() {
+        showClass = new JButton("showHero");
         showClass.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String value = (String) comboBox.getItemAt(comboBox.getSelectedIndex());
                 center.hidePanel();
-                fillShowButton(value);
-                repaint();
-                revalidate();
-                String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
-                Controller.getInstance().myLogger(st1,"you clicked to see "+value+"s cards  "+ utilities.time()+"\n",true);
+                Request request = new Request(Controller.getInstance().getClient().getToken(), "showClass", null, value);
+                Controller.getInstance().getClient().getSender().send(request);
             }
         });
-        allCard.addMouseListener(this);
-        knocked.addMouseListener(this);
-        showCost.addMouseListener(this);
-        search.addMouseListener(this);
-        exit.addMouseListener(this);
-        back.addMouseListener(this);
-    }
-
-    public void fillShowButton(String value) {
-        showButton = initButton(collectionManager.findHeroClass(value));
-        center.setShowButton(showButton);
+        north.add(showClass);
 
     }
 
-    public CollectionManager getCollectionManager() {
-        return collectionManager;
+    private void initText() {
+        text = new JTextField(15);
+        north.add(text);
+    }
+
+    private void initComboBox() {
+        comboBox = new JComboBox(constans.getHeroClass());
+        north.add(comboBox);
+
+    }
+
+    private void initSearch() {
+        search = new JButton("search");
+        search.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String value = text.getText();
+                center.hidePanel();
+                Request request = new Request(Controller.getInstance().getClient().getToken(), "search", null, value);
+                Controller.getInstance().getClient().getSender().send(request);
+            }
+        });
+        north.add(search);
+
+    }
+
+    private void initExit() {
+        exit = new JButton("exit");
+        exit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.exitGame();
+            }
+        });
+        north.add(exit);
+    }
+
+    private void initBack() {
+        back = new JButton("back");
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.getMenu().update();
+                controller.getMyFrame().setPanel("menu");
+                Controller.getInstance().myLogger(Controller.getInstance().getTxtAddress(), "back to menu" + " " + utilities.time() + "\n", true);
+            }
+        });
+        north.add(back);
     }
 
     public Converter getConverter() {
@@ -177,9 +382,7 @@ public class Collection extends JPanel implements MouseListener {
         this.converter = converter;
     }
 
-    public void setCollectionManager(CollectionManager collectionManager) {
-        this.collectionManager = collectionManager;
-    }
+
 
     public ArrayList<BufferedImage> getShowCards() {
         return showCards;
@@ -239,141 +442,38 @@ public class Collection extends JPanel implements MouseListener {
         }
         return showButton;
     }
-    ArrayList<String> list =new ArrayList<>();
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        if (e.getSource() == showClass) {
 
-        } else if (e.getSource() == allCard) {
-            center.hidePanel();
-            Request request =new Request(Controller.getInstance().getClient().getToken(),"allCard",null,"");
-            Controller.getInstance().getClient().getSender().send(request);
-
-        } else if (e.getSource() == knocked) {
-            center.hidePanel();
-            Request request =new Request(Controller.getInstance().getClient().getToken(),"knocked",null,"");
-            Controller.getInstance().getClient().getSender().send(request);
-
-        } else if (e.getSource() == showCost) {
-            String value = (String) cost.getItemAt(cost.getSelectedIndex());
-            center.hidePanel();
-            Request request =new Request(Controller.getInstance().getClient().getToken(),"showCost",null,value);
-            Controller.getInstance().getClient().getSender().send(request);
-            showButton = initButton( collectionManager.findCost(Integer.parseInt(value)));
-            center.setShowButton(showButton);
-            repaint();
-            revalidate();
-            String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
-            Controller.myLogger(st1,"you clicked to show cost cards with cost "+value+" "+ utilities.time()+"\n",true);
-        } else if (e.getSource() == search) {
-            String value = text.getText();
-            center.hidePanel();
-            showCards = converter.convert(collectionManager.searchEngine(value));
-            showButton = initButton( collectionManager.searchEngine(value));
-            center.setShowButton(showButton);
-            repaint();
-            revalidate();
-//            String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
-//            Controller.myLogger(st1,"you search "+value+" "+ utilities.time()+"\n",true);
-        } else if (e.getSource() == exit) {
-            controller.exitGame();
-        } else if (e.getSource() == back) {
-            controller.getMenu().update();
-            controller.getMyFrame().setPanel("menu");
-            String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
-            Controller.myLogger(st1,"back to menu"+" "+ utilities.time()+"\n",true);
-        } else if (e.getSource() == add) {
-            String deckName = (String) decks.getItemAt(decks.getSelectedIndex());
-            String card = deck.getText();
-            Deck deck = collectionManager.getDeck(deckName);
-            if (collectionManager.allowAdd(card, deck)) {
-                collectionManager.addToDeck(card, deck);
-                String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
-                Controller.myLogger(st1,"you add  "+card+"to "+deckName+" "+ utilities.time()+"\n",true);
-            } else {
-                JOptionPane.showMessageDialog(getParent(), "you can not add it to this deck", "add to deck error", JOptionPane.ERROR_MESSAGE);
-                String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
-                Controller.myLogger(st1,"you cant add  "+card+"to  "+deckName+" "+ utilities.time()+"\n",true);
-            }
-        } else if (e.getSource() == remove) {
-            String deckName = (String) decks.getItemAt(decks.getSelectedIndex());
-            String card = deck.getText();
-            Deck deck = collectionManager.getDeck(deckName);
-            collectionManager.removeFromDeck(card, deck);
-            JOptionPane.showMessageDialog(getParent(), "you remove " + card, "remove", JOptionPane.INFORMATION_MESSAGE);
-            String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
-            Controller.myLogger(st1,"you remove card  "+card+" from deck "+deckName+" "+ utilities.time()+"\n",true);
-        } else if (e.getSource() == changeName) {
-            String deckOldName = (String) decks.getItemAt(decks.getSelectedIndex());
-            String newName = name.getText();
-            collectionManager.changeDeckName(collectionManager.getDeck(deckOldName), newName);
-            decks.removeItem(deckOldName);
-            decks.insertItemAt(newName,0);
-            east.removeButton(deckOldName);
-            east.addButton(newName);
-          //  decks = new JComboBox(collectionManager.getdeck());
-            System.out.println("renaming is done");
-            repaint();
-            revalidate();
-            String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
-            Controller.myLogger(st1,"you change the name of deck "+deckOldName+"to  "+newName+" "+ utilities.time()+"\n",true);
-        } else if (e.getSource() == changeHero) {
-            String deckOldName = (String) decks.getItemAt(decks.getSelectedIndex());
-            String heroName = name.getText();
-            Deck deck1 = collectionManager.getDeck(deckOldName);
-            if (collectionManager.allowChangeHero(deck1)) {
-                collectionManager.changeHero(deck1, heroName);
-                decks = new JComboBox(collectionManager.getdeck());
-                repaint();
-                revalidate();
-                String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
-                Controller.myLogger(st1,"you change hero of deck "+deckOldName+" to "+heroName+" "+ utilities.time()+"\n",true);
-            }
-
-        }
-        else if(e.getSource()==makeDeck){
-            Deck deck1=null;
-            String h= heroName.getText();
-            String dN= nameText.getText();
-            deck1=collectionManager.makeDeck(dN,h);
-            //decks.addItem();
-            decks.insertItemAt(deck1.getName(),0);
-            east.addButton(deck1.getName());
-            repaint();
-            revalidate();
-            String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
-            Controller.myLogger(st1,"you make a deck with name "+nameText+" "+ utilities.time()+"\n",true);
-        }
-        else if (e.getSource()==removeDeck){
-            String delete = (String) decks.getItemAt(decks.getSelectedIndex());
-            east.removeButton(delete);
-            decks.removeItem(delete);
-            collectionManager.deleteDeck(collectionManager.getDeck(delete));
-           repaint();
-           revalidate();
-            String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
-            Controller.myLogger(st1,"you removed "+delete+" "+ utilities.time()+"\n",true);
-        }
+    public void setGraphicOfDeck(String deckOldName, String newName) {
+        decks.removeItem(deckOldName);
+        decks.insertItemAt(newName, 0);
+        east.removeButton(deckOldName);
+        east.addButton(newName);
+        //  decks = new JComboBox(collectionManager.getdeck());
+        System.out.println("renaming is done");
+        repaint();
+        revalidate();
+    }
+    public void setGraphicOfMakeDeck(String name) {
+        decks.insertItemAt(name, 0);
+        east.addButton(name);
+        repaint();
+        revalidate();
+    }
+    public void setGraphicRemoveDeck(String delete){
+        east.removeButton(delete);
+        decks.removeItem(delete);
+        repaint();
+        revalidate();
     }
 
 
-    @Override
-    public void mousePressed(MouseEvent e) {
 
+
+    public JComboBox getDecks() {
+        return decks;
     }
 
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
+    public void setDecks(JComboBox decks) {
+        this.decks = decks;
     }
 }

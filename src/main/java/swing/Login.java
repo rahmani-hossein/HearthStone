@@ -1,11 +1,9 @@
 package swing;
 
-import CLI.Administer;
+
 import client.ClientConstants;
 import client.Controller;
-import logic.Constans;
 import model.Request;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -33,7 +31,6 @@ public class Login extends JPanel {
 
     public Login() {
         this.myFrame = Controller.getInstance().getMyFrame();
-        Administer administer = new Administer();
         setSize(constans.getPanelWidth(), constans.getPanelHeight());
         setLayout(null);
         init();

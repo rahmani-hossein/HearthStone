@@ -1,10 +1,13 @@
 package swing.panel;
 
 import CLI.utilities;
+import client.ClientConstants;
 import client.Controller;
 import logic.CollectionManager;
 import logic.Constans;
 import model.Deck;
+import model.Player;
+import model.Request;
 import swing.Collection;
 
 import javax.swing.*;
@@ -15,11 +18,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class DeckPanel extends JPanel {
-    private CollectionManager collectionManager;
     private Collection parent;
     private ArrayList<JButton> buttons = new ArrayList<>();
-    private Constans constans =Controller.getInstance().getConstants();
+    private ClientConstants constans =Controller.getInstance().getClientConstants();
     private JLabel deckName;
+    private JLabel cup;
     private JLabel winAverage;
     private JLabel wins;
     private JLabel numberOfUse;
@@ -28,46 +31,29 @@ public class DeckPanel extends JPanel {
     private JLabel heroName;
     private JLabel rarest;
     private JPanel panel;
-    private Deck clickedDeck=new Deck();
+    private Deck clickedDeck;
 
 
     public DeckPanel(Collection collection) {
         parent=collection;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setPreferredSize(new Dimension(constans.getPanelWidth()/4, 2*constans.getPanelHeight()));
-        this.collectionManager = parent.getCollectionManager();
         setLabel();
-        Collections.sort(this.collectionManager.getPlayer().getAvailableDecks());
-        int n =this. collectionManager.getPlayer().getAvailableDecks().size();
-        for (int i = 0; i < this.collectionManager.getPlayer().getAvailableDecks().size(); i++) {
-            addButton(this.collectionManager.getPlayer().getAvailableDecks().get(n-i-1).getName());
-            //Deck deck=this.collectionManager.getPlayer().getAvailableDecks().get(n - i - 1);
-//            JButton button = new JButton(this.collectionManager.getPlayer().getAvailableDecks().get(n - i - 1).getName());
-//            button.setName(this.collectionManager.getPlayer().getAvailableDecks().get(n - i - 1).getName());
-//            buttons.add(button);
-//            add(button);
-//            button.addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                     clickedDeck=collectionManager.getDeck(button.getName());
-//                    parent.setShowCards(parent.getConverter().convert(collectionManager.DeckCards(clickedDeck.getName())));
-//                   parent.setShowButton(parent.initButton(parent.getShowCards(),collectionManager.DeckCards(clickedDeck.getName())));
-//                    parent.getCenter().setShowButton(parent.getShowButton());
-//                    deckName.setText("name: "+clickedDeck.getName());
-//                    winAverage.setText("winAverage: "+clickedDeck.getWinAverage());
-//                    wins.setText("wins: "+clickedDeck.getWins());
-//                    numberOfUse.setText("numberOfUse: "+clickedDeck.getNumbreOfUse());
-//                    averageCost.setText("averageCost: "+clickedDeck.getCostAverage());
-//                    averageMana.setText("averageMana: "+clickedDeck.getManaAverage());
-//                    heroName.setText("heroName: "+clickedDeck.getDeckHero().getName());
-//                    rarest.setText("rarestCard: "+clickedDeck.getRarest());
-//                }
-//            });
-
-        }
+       update();
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setViewportView(this);
     }
+
+    public void update(){
+        Player player = Controller.getInstance().getGameState().getPlayer();
+        Collections.sort(player.getAvailableDecks());
+        int n =player.getAvailableDecks().size();
+        for (int i = 0; i < player.getAvailableDecks().size(); i++) {
+            addButton(player.getAvailableDecks().get(n-i-1).getName());
+
+        }
+    }
+
     public void addButton(String name){
         JButton button = new JButton(name);
         button.setName(name);
@@ -76,22 +62,25 @@ public class DeckPanel extends JPanel {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                clickedDeck=collectionManager.getDeck(button.getName());
-                parent.setShowCards(parent.getConverter().convert(collectionManager.DeckCards(clickedDeck.getName())));
-                parent.setShowButton(parent.initButton(parent.getShowCards(),collectionManager.DeckCards(clickedDeck.getName())));
-                parent.getCenter().setShowButton(parent.getShowButton());
-                deckName.setText("name: "+clickedDeck.getName());
-                winAverage.setText("winAverage: "+clickedDeck.getWinAverage());
-                wins.setText("wins: "+clickedDeck.getWins());
-                numberOfUse.setText("numberOfUse: "+clickedDeck.getNumbreOfUse());
-                averageCost.setText("averageCost: "+clickedDeck.getCostAverage());
-                averageMana.setText("averageMana: "+clickedDeck.getManaAverage());
-                heroName.setText("heroName: "+clickedDeck.getDeckHero().getName());
-                rarest.setText("rarestCard: "+clickedDeck.getRarest());
-                String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() +  Controller.getInstance().getGameState().getPlayer().getPassword());
-                Controller.myLogger(st1,"button "+clickedDeck.getName()+" "+ utilities.time()+"\n",true);
+                Request request = new Request(Controller.getInstance().getClient().getToken(),"deckButton",null,name);
+                Controller.getInstance().getClient().getSender().send(request);
+
+
             }
         });
+    }
+
+    public void setThings(Deck deck){
+        clickedDeck=deck;
+        deckName.setText("name: "+clickedDeck.getName());
+        cup.setText("cup: "+clickedDeck.getCup());
+        winAverage.setText("winAverage: "+clickedDeck.getWinAverage());
+        wins.setText("wins: "+clickedDeck.getWins());
+        numberOfUse.setText("numberOfUse: "+clickedDeck.getNumbreOfUse());
+        averageCost.setText("averageCost: "+clickedDeck.getCostAverage());
+        averageMana.setText("averageMana: "+clickedDeck.getManaAverage());
+        heroName.setText("heroName: "+clickedDeck.getDeckHero().getName());
+        rarest.setText("rarestCard: "+clickedDeck.getRarest());
     }
     public void removeButton(String name){
         int k=findButton(name);
@@ -114,6 +103,7 @@ public class DeckPanel extends JPanel {
 
     private void setLabel() {
         deckName = new JLabel("name: ");
+        cup =new JLabel("cup: ");
         winAverage = new JLabel("winAverage: ");
         wins = new JLabel("wins: ");
         numberOfUse = new JLabel("numberOfUse: ");
@@ -128,6 +118,7 @@ public class DeckPanel extends JPanel {
         panel.setSize(400,400);
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         panel.add(deckName);
+        panel.add(cup);
         panel.add(winAverage);
         panel.add(wins);
         panel.add(numberOfUse);
@@ -137,3 +128,4 @@ public class DeckPanel extends JPanel {
         panel.add(rarest);
     }
 }
+

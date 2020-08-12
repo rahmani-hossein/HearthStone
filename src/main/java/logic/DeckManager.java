@@ -29,7 +29,7 @@ public class DeckManager {
             weapens.add(availableCardsW.get(i));
         }
         Deck deck = new Deck(name, hero, minions, spells, weapens);
-        deck.updateDeckInfo();
+        deck.updateDeckInfo(cardManager);
         return deck;
     }
 
