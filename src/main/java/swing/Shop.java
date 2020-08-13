@@ -29,8 +29,8 @@ public class Shop extends JPanel implements MouseListener {
     private int sizeH = 275;
 
     Converter converter = new Converter();
-    private ArrayList<BufferedImage> showCards = null;
-    private ArrayList<Button> showButton = null;
+    private ArrayList<BufferedImage> showCards = new ArrayList<>();
+    private ArrayList<Button> showButton =new ArrayList<>();
     private Controller controller;
 
 
@@ -99,7 +99,7 @@ public class Shop extends JPanel implements MouseListener {
             Controller.getInstance().getClient().getSender().send(request);
             Controller.getInstance().myLogger(Controller.getInstance().getTxtAddress()," click for see sellable cards  "+ utilities.time(),true);
         } else if (e.getSource() == buyable) {
-            Request request= new Request(Controller.getInstance().getClient().getToken(),"sellable",null,"");
+            Request request= new Request(Controller.getInstance().getClient().getToken(),"buyable",null,"");
             Controller.getInstance().getClient().getSender().send(request);
             Controller.getInstance().myLogger(Controller.getInstance().getTxtAddress()," click for see buyables cards  "+ utilities.time()+"\n",true);
 

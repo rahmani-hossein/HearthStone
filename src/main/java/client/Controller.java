@@ -30,6 +30,7 @@ public class Controller {
     private Menu menu;
     private Login login;
     private Collection collection;
+    private Rank rank;
     private Converter converter = new Converter();
     private Constans constants;
     private ClientConstants clientConstants;
@@ -139,7 +140,18 @@ public class Controller {
 
     }
 
+    public void exitDirectly(){
+        System.exit(0);
+    }
 
+
+    public Rank getRank() {
+        return rank;
+    }
+
+    public void setRank(Rank rank) {
+        this.rank = rank;
+    }
 
     public GamePanel getGamePanel() {
         return gamePanel;

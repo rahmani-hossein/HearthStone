@@ -18,6 +18,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -121,7 +122,6 @@ public class PlayerManager {
                     fileWriter.write("signed in at:" + time() + "\n");
                     fileWriter.flush();
                     fileWriter.close();
-                    //  objectMapper.configure(JsonParser.Feature.AUTO_CLOSE_SOURCE, true);
                     Player player = objectMapper.readValue(file, Player.class);
                     gameState = new GameState(player);
                    currentGameState=gameState;
@@ -145,12 +145,13 @@ public class PlayerManager {
 
             }
         }
+        System.out.println("asdfghj");
         return false;
 
     }
 
     private Player initialPlayer(int rand, String user, String pass) {
-        Hero hero = null;
+
         Player player = null;
         Deck currentDeck = null;
         CardManager cardManager = new CardManager();
@@ -161,7 +162,7 @@ public class PlayerManager {
 
       addPrimaryCards(cardManager,availableCardsS,availableCardsM,availableCardsW);
 
-        setHero(rand,cardManager,availableCardsS,availableCardsM,availableCardsW,hero);
+        Hero hero = setHero(rand,cardManager,availableCardsS,availableCardsM,availableCardsW);
 
         currentDeck = deckManager.buildDeck("default",hero, availableCardsM, availableCardsS, availableCardsW);
         availableDecks.add(currentDeck);
@@ -171,7 +172,8 @@ public class PlayerManager {
         return player;
     }
 
-    private void setHero(int  rand,CardManager cardManager,ArrayList<spell> availableCardsS,ArrayList<Minion> availableCardsM,ArrayList<weapen> availableCardsW,Hero hero){
+    private Hero setHero(int  rand,CardManager cardManager,ArrayList<spell> availableCardsS,ArrayList<Minion> availableCardsM,ArrayList<weapen> availableCardsW){
+        Hero hero=null;
         if (rand == 0) {
             //mage
             availableCardsS.add(cardManager.createS("polymorph"));
@@ -200,6 +202,8 @@ public class PlayerManager {
             availableCardsM.add(cardManager.createM("highPriestAmet"));
             hero=heroCreator.createHero("priest");
         }
+        System.out.println(hero.getName()+ hero.getHP()+hero.getShowHeroPower());
+        return hero;
     }
 
     private void addPrimaryCards(CardManager cardManager,ArrayList<spell> availableCardsS,ArrayList<Minion> availableCardsM,ArrayList<weapen> availableCardsW){
@@ -239,7 +243,7 @@ public class PlayerManager {
         file2.flush();
         file2.close();
         System.out.println("see you soon");
-        System.exit(0);
+
     }
 
     public boolean delete(String pass, Player player){
@@ -294,7 +298,26 @@ public class PlayerManager {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+    }
+    public ArrayList<Score> getMe(Player player){
+        ArrayList<Score> scores = new ArrayList<>();
+        Collections.sort(gameServer.getPlayers());
+        int index = gameServer.getIndex(gameServer.getPlayers(),player);
+        for (int i = Math.max(0,index-5); i <Math.min(gameServer.getPlayers().size(),index+5) ; i++) {
+            Player player1=gameServer.getPlayers().get(i);
+            scores.add(new Score(player1.getUsername(),player1.getState(),player1.sumCup()));
+        }
+        return scores;
+    }
 
+    public ArrayList<Score> getTop10(){
+        ArrayList<Score> scores = new ArrayList<>();
+        Collections.sort(gameServer.getPlayers());
 
+        for (int i = Math.max(0,gameServer.getPlayers().size()-10); i <gameServer.getPlayers().size() ; i++) {
+            Player player1=gameServer.getPlayers().get(i);
+            scores.add(new Score(player1.getUsername(),player1.getState(),player1.sumCup()));
+        }
+        return scores;
     }
 }

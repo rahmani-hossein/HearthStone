@@ -49,8 +49,8 @@ public class Connect extends JPanel {
         add(portField);
     }
     private void createPortLabel(){
-        portLabel = new JLabel("password:");
-        portLabel.setBounds(2*ten, 25*ten, 9*ten, 2*ten);
+        portLabel = new JLabel("port:");
+        portLabel.setBounds(5*ten, 25*ten, 9*ten, 2*ten);
         portLabel.setForeground(Color.WHITE);
         add(portLabel);
     }

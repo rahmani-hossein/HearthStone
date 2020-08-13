@@ -65,7 +65,7 @@ public class GameServer extends Thread{
     }
     private void loadPlayers(){
         players=new ArrayList<>();
-                String st = " src/main/userJson";
+                String st = "src/main/userJson";
                 File file = new File(st);
         for (File directoryFile:file.listFiles()) {
             try {
@@ -80,8 +80,8 @@ public class GameServer extends Thread{
     public void changeState(Player player){
         int i= getIndex(players,player);
         if (i!=-1) {
-            players.get(i).setState(player.getState());
-            players.get(i).getAvailableDecks().get(getDeck(player)).setCup(player.getCurrentDeck().getCup());
+//            players.get(i).setState(player.getState());
+//            players.get(i).getAvailableDecks().get(getDeck(player)).setCup(player.getCurrentDeck().getCup());
             players.set(getIndex(players,player),player);
         }
         else {
@@ -98,7 +98,7 @@ public class GameServer extends Thread{
         return -1;
     }
 
-    private int getIndex(ArrayList<Player>players,Player player){
+    public int getIndex(ArrayList<Player>players,Player player){
         int i=-1;
         for (int j = 0; j < players.size(); j++) {
             if (players.get(j).getUsername().equalsIgnoreCase(player.getUsername())){

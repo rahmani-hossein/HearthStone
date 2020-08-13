@@ -9,14 +9,15 @@ import logic.ShopManager;
 import model.Request;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 public class CardPanelCollection extends JPanel implements MouseListener {
-    private ClientConstants constans = Controller.getInstance().getClientConstants();
 
-    private CardManager cardManager;
+    private ClientConstants constans = Controller.getInstance().getClientConstants();
     private String name;
     private int cost = 0;
     private String type = "";
@@ -47,10 +48,8 @@ public class CardPanelCollection extends JPanel implements MouseListener {
     }
 
     public CardPanelCollection(String name) {
-        cardManager = new CardManager();
         this.name = name;
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-
         buy = new JButton("buy");
         exit = new JButton("exit");
         exit.addMouseListener(this);
@@ -59,6 +58,7 @@ public class CardPanelCollection extends JPanel implements MouseListener {
         add(exit);
 
     }
+
 
     public void createLabels(String name, String rarity, String type, int cost) {
         info1 = new JLabel("name:" + name);

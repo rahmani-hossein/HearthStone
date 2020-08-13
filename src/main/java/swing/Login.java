@@ -57,7 +57,7 @@ public class Login extends JPanel {
 
     private void initPasswordLabel(){
         passwordLabel = new JLabel("password:");
-        passwordLabel.setBounds(2*ten, 25*ten, 9*ten, 2*ten);
+        passwordLabel.setBounds(5*ten, 25*ten, 9*ten, 2*ten);
         passwordLabel.setForeground(Color.WHITE);
         add(passwordLabel);
     }

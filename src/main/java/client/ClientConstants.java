@@ -10,8 +10,6 @@ public class ClientConstants {
     private int space = 100;
     private int panelHeight = 1000;
     private int panelWidth = 1700;
-    private int handSize = 12;
-    private int groundSize = 7;
     private int groundSpace = 50;
     private int handSpace = 35;
     private int maxYGame = 800;
@@ -27,6 +25,9 @@ public class ClientConstants {
     private int friendManaY=750;
     private int enemyManaY=200;
     private int noteSize=70;
+    private int sizeBoardX=450;
+    private int sizeBoardY=500;
+    private int sad=100;
     private String[] passives = {"twiceDraw", "offCard", "freePower", "manaJump", "nurse"};
 
 
@@ -99,22 +100,6 @@ public class ClientConstants {
 
     public void setPanelWidth(int panelWidth) {
         this.panelWidth = panelWidth;
-    }
-
-    public int getHandSize() {
-        return handSize;
-    }
-
-    public void setHandSize(int handSize) {
-        this.handSize = handSize;
-    }
-
-    public int getGroundSize() {
-        return groundSize;
-    }
-
-    public void setGroundSize(int groundSize) {
-        this.groundSize = groundSize;
     }
 
     public int getGroundSpace() {
@@ -243,5 +228,29 @@ public class ClientConstants {
 
     public void setPort(int port) {
         this.port = port;
+    }
+
+    public int getSizeBoardX() {
+        return sizeBoardX;
+    }
+
+    public void setSizeBoardX(int sizeBoardX) {
+        this.sizeBoardX = sizeBoardX;
+    }
+
+    public int getSizeBoardY() {
+        return sizeBoardY;
+    }
+
+    public void setSizeBoardY(int sizeBoardY) {
+        this.sizeBoardY = sizeBoardY;
+    }
+
+    public int getSad() {
+        return sad;
+    }
+
+    public void setSad(int sad) {
+        this.sad = sad;
     }
 }

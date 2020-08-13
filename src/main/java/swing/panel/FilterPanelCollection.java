@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class FilterPanelCollection extends JPanel implements MouseListener {
     private ClientConstants constans = Controller.getInstance().getClientConstants();
-    ArrayList<ButtonC> showButton;
+    ArrayList<ButtonC> showButton= new ArrayList<>();
     private ButtonC onclick;
     private int width = constans.getCardWidth();
     private int height = constans.getCardHeigth();

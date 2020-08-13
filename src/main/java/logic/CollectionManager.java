@@ -3,13 +3,15 @@ package logic;
 import model.Player;
 import client.Controller;
 import model.*;
+import server.ConstantsLoader;
+import server.ServerConstants;
 
 import java.util.ArrayList;
 
 import static CLI.utilities.contains;
 
 public class CollectionManager {
-    Constans constans = Controller.getInstance().getConstants();
+    ServerConstants constans = ConstantsLoader.getInstance().getServerConstants();
     private Player player;
     private CardManager cardManager = new CardManager();
     private HeroCreator heroCreator=new HeroCreator();

@@ -4,13 +4,15 @@ import model.Player;
 import client.Controller;
 import model.Deck;
 import model.Minion;
+import server.ConstantsLoader;
+import server.ServerConstants;
 
 import java.util.ArrayList;
 
 public class ShopManager {
     private Player player;
     private CardManager cardManager =new CardManager();
-    private Constans constans= Controller.getInstance().getConstants();
+    private ServerConstants constans= ConstantsLoader.getInstance().getServerConstants();
 
     public ShopManager(Player player ) {
         this.player = player;

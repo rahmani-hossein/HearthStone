@@ -5,6 +5,8 @@ import CLI.utilities;
 import Interfaces.Attackable;
 import client.Controller;
 import model.*;
+import server.ConstantsLoader;
+import server.ServerConstants;
 
 import javax.swing.*;
 import java.util.LinkedList;
@@ -14,7 +16,7 @@ public class GameManager {
 
     private CardManager cardManager= new CardManager();
     private GameState gameState;
-    private Constans constans = Controller.getInstance().getConstants();
+    private ServerConstants constans = ConstantsLoader.getInstance().getServerConstants();
 
     public GameManager(GameState gameState) {
         this.gameState = gameState;

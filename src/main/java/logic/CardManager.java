@@ -5,6 +5,8 @@ import client.Controller;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.*;
+import server.ConstantsLoader;
+import server.ServerConstants;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -17,7 +19,7 @@ import static CLI.utilities.contains;
 
 public class CardManager {
     ObjectMapper objectMapper = new ObjectMapper();
-    Constans constans = Controller.getInstance().getConstants();
+    ServerConstants serverConstants = ConstantsLoader.getInstance().getServerConstants();
     CardFactory cardFactory = new CardFactory();
 
 
@@ -53,11 +55,11 @@ public class CardManager {
     public String tellType(String name) {
         if (name.equalsIgnoreCase("dreadScale") || name.equalsIgnoreCase("fireHawk")) {
             return "minion";
-        } else if (contains(constans.getMinions(), name)) {
+        } else if (contains(serverConstants.getMinions(), name)) {
             return "minion";
-        } else if (contains(constans.getSpells(), name)) {
+        } else if (contains(serverConstants.getSpells(), name)) {
             return "spell";
-        } else if ((contains(constans.getWeapens(), name))) {
+        } else if ((contains(serverConstants.getWeapens(), name))) {
             return "weapen";
         } else {
             return null;
@@ -152,19 +154,19 @@ public class CardManager {
 
     public int number(Player player, String name) {
         int k = 0;
-        if (contains(constans.getMinions(), name)) {
+        if (contains(serverConstants.getMinions(), name)) {
             for (model.card card : player.getAvailableCardsM()) {
                 if (card.getName().equalsIgnoreCase(name)) {
                     k++;
                 }
             }
-        } else if (contains(constans.getSpells(), name)) {
+        } else if (contains(serverConstants.getSpells(), name)) {
             for (model.card card : player.getAvailableCardsS()) {
                 if (card.getName().equalsIgnoreCase(name)) {
                     k++;
                 }
             }
-        } else if (contains(constans.getWeapens(), name)) {
+        } else if (contains(serverConstants.getWeapens(), name)) {
             for (model.card card : player.getAvailableCardsW()) {
                 if (card.getName().equalsIgnoreCase(name)) {
                     k++;
@@ -178,19 +180,19 @@ public class CardManager {
 
     public int number(Deck deck, String name) {
         int k = 0;
-        if (contains(constans.getMinions(), name)) {
+        if (contains(serverConstants.getMinions(), name)) {
             for (model.card card : deck.getMinions()) {
                 if (card.getName().equalsIgnoreCase(name)) {
                     k++;
                 }
             }
-        } else if (contains(constans.getSpells(), name)) {
+        } else if (contains(serverConstants.getSpells(), name)) {
             for (model.card card : deck.getSpells()) {
                 if (card.getName().equalsIgnoreCase(name)) {
                     k++;
                 }
             }
-        } else if (contains(constans.getWeapens(), name)) {
+        } else if (contains(serverConstants.getWeapens(), name)) {
             for (model.card card : deck.getWeapens()) {
                 if (card.getName().equalsIgnoreCase(name)) {
                     k++;

@@ -47,6 +47,7 @@ public class ClientHandler extends Thread {
                 String message = scanner.nextLine();
                 Request request = getRequest(message);
                 executeRequestServer(request);
+                System.out.println("we receive a request");
                 //  System.out.println("Client at " + socket.getRemoteSocketAddress().toString() + " sent " + message + ".");
 
             }
@@ -69,7 +70,7 @@ public class ClientHandler extends Thread {
     }
 
     private void executeRequestServer(Request request) {
-        if (request.isResult()) {
+
             switch (request.getName()) {
 
                 case "token":
@@ -82,7 +83,11 @@ public class ClientHandler extends Thread {
                 case "login":
                     String username = request.getParameters().get(0);
                     String password = request.getParameters().get(1);
-                    boolean isAccount = request.getParameters().get(2).equals("true");
+                    boolean isAccount =false;
+                    if(request.getParameters().get(2).equals("true")){
+                        isAccount=true;
+                }
+                    System.out.println(isAccount);
                     if (logicHandler.getPlayerManager().login(username, password, isAccount)) {
                         GameState gameState = logicHandler.getPlayerManager().getCurrentGameState();
                         this.gameState = gameState;
@@ -136,8 +141,9 @@ public class ClientHandler extends Thread {
                         gameServer.changeState(player);
                         logicHandler.getPlayerManager().exit(player);
                         request.setResult(true);
-                        send(convertRequest(request));
                         alive = false;
+                        send(convertRequest(request));
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -283,10 +289,13 @@ public class ClientHandler extends Thread {
                         logicHandler.myLogger(txtAddress, "you can not buy " + buyNameCollection + " " + utilities.time() + "\n", true);
                     }
                     break;
+                case "top10":
+                    logicHandler.handleTop10(request);
+                    break;
+                case "me":
+                    logicHandler.handleMe(request);
             }
-        } else {
-            JOptionPane.showMessageDialog(Controller.getInstance().getMyFrame(), "error of recieved request result is false", "result", JOptionPane.ERROR_MESSAGE);
-        }
+
 
     }
 

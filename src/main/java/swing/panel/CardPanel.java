@@ -61,6 +61,7 @@ public class CardPanel extends JPanel implements MouseListener {
 
         sell=new JButton("sell");
         buy=new JButton("buy");
+        exit =new JButton("exit");
         exit.addMouseListener(this);
         sell.addMouseListener(this);
         buy.addMouseListener(this);

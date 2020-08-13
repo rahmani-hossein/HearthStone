@@ -62,9 +62,10 @@ public class ClientReciever extends Thread {
                     System.out.println("we execute successfully token request");
                     break;
                 case "login":
-                   clientLogic.receiveLogin(request);
-                   break;
+                    clientLogic.receiveLogin(request);
+                    break;
                 case "logout":
+                    Controller.getInstance().exitDirectly();
                     System.exit(0);
                     break;
                 case "delete":
@@ -96,20 +97,26 @@ public class ClientReciever extends Thread {
                     }
                     break;
                 case "sellable":
-                  clientLogic.receiveSellable(request);
+                    clientLogic.receiveSellable(request);
                     break;
                 case "buyable":
-                   clientLogic.receiveBuyable(request);
+                    clientLogic.receiveBuyable(request);
                     break;
                 case "allCard":
                 case "knocked":
                 case "showCost":
                 case "showClass":
                 case "search":
-                  clientLogic.receiveCards(request);
+                    clientLogic.receiveCards(request);
                     break;
                 case "buy":
                     clientLogic.recieveBuy(request);
+                    break;
+                case "me":
+                    clientLogic.receiveMe(request);
+                    break;
+                case "top10":
+                    clientLogic.receiveTop10(request);
                     break;
                 case "sell":
                     clientLogic.receiveSell(request);
@@ -139,19 +146,13 @@ public class ClientReciever extends Thread {
                     clientLogic.receiveDeckNames(request);
                     break;
                 case "information":
-
-                    Controller.getInstance().getShop().getCenter().getOnclick().getCardPanel().createLabels(request.getParameters().get(0), request.getParameters().get(3), request.getParameters().get(2), Integer.parseInt(request.getParameters().get(1)));
+                    clientLogic.receiveInformation(request);
                     break;
                 case "infoCollection":
-                    Controller.getInstance().getCollection().getCenter().getOnclick().getCardPanelCollection().createLabels(request.getParameters().get(0), request.getParameters().get(3), request.getParameters().get(2), Integer.parseInt(request.getParameters().get(1)));
+                    clientLogic.receiveInfoCollection(request);
                     break;
                 case "buyCollection":
-                    if (request.getParameters().size() >= 1 && request.getParameters().contains("you can not buy")) {
-                        Controller.getInstance().getBuy().setVisible(false);
-                        Controller.getInstance().getMyFrame().setPanel("shop");
-                    } else {
-                        JOptionPane.showMessageDialog(Controller.getInstance().getMyFrame(), "you can not buy this card ", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
+                    clientLogic.receiveBuyCollection(request);
                     break;
 
             }

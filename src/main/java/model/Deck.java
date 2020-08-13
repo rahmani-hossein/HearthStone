@@ -214,6 +214,7 @@ public class Deck implements Comparable<Deck> {
         this.costAverage = costAverage;
     }
 
+
     @Override
     public int compareTo(Deck o) {
         if (cup != o.getCup()) {

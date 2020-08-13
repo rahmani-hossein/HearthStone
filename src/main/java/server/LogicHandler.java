@@ -10,6 +10,7 @@ import logic.PlayerManager;
 import logic.ShopManager;
 import model.Deck;
 import model.Request;
+import model.Score;
 
 import javax.swing.*;
 import java.io.FileWriter;
@@ -183,7 +184,7 @@ public class LogicHandler {
         if (collectionManager.allowChangeHero(deck1)) {
             collectionManager.changeHero(deck1, heroName);
             setBody(request,clientHandler.getGameState().getPlayer());
-            ArrayList<String> decks= (ArrayList<String>) Arrays.asList(collectionManager.getdeck());
+            ArrayList<String> decks= arratToList(collectionManager.getdeck());
             request.setParameters(decks);
             myLogger(clientHandler.getTxtAddress(), "you change hero of deck " + deckOldName + " to " + heroName + " " + utilities.time() + "\n", true);
         }
@@ -226,11 +227,35 @@ public class LogicHandler {
         myLogger(clientHandler.getTxtAddress(), "you add deckButton" + name + " " + utilities.time() + "\n", true);
     }
     void handleDeckNames(Request request){
-        ArrayList<String> parameters= (ArrayList<String>) Arrays.asList(collectionManager.getdeck());
+        ArrayList<String> parameters= arratToList(collectionManager.getdeck());
         request.setParameters(parameters);
         request.setResult(true);
         clientHandler.send(clientHandler.convertRequest(request));
         myLogger(clientHandler.getTxtAddress(), "you get all decks" + utilities.time() + "\n", true);
+    }
+    void handleTop10(Request request){
+        ArrayList<Score> scores=playerManager.getTop10();
+        String top10String = null;
+        try {
+            top10String = objectMapper.writeValueAsString(scores);
+            request.setBody(top10String);
+            request.setResult(true);
+            clientHandler.send(clientHandler.convertRequest(request));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
+    void handleMe(Request request){
+        ArrayList<Score> scores=playerManager.getMe(clientHandler.getGameState().getPlayer());
+        String top10String = null;
+        try {
+            top10String = objectMapper.writeValueAsString(scores);
+            request.setBody(top10String);
+            request.setResult(true);
+            clientHandler.send(clientHandler.convertRequest(request));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 
     private <A>void setBody(Request request,A Object){
@@ -240,6 +265,13 @@ public class LogicHandler {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+    }
+    private ArrayList<String> arratToList(String[]strings){
+        ArrayList<String> list=new ArrayList<>();
+        for (int i = 0; i < strings.length; i++) {
+            list.add(strings[i]);
+        }
+        return list;
     }
 
     public void myLogger(String fileName, String write, boolean append) {

@@ -6,6 +6,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.card;
+import server.ConstantsLoader;
+import server.ServerConstants;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -16,7 +18,7 @@ public class DeckReader {
     String address;
     ObjectMapper objectMapper;
     Random random = new Random(System.nanoTime());
-    Constans constans = Controller.getInstance().getConstants();
+    ServerConstants constans = ConstantsLoader.getInstance().getServerConstants();
     private CardManager cardManager = new CardManager();
     private List<card> friendListCard=new ArrayList<>();
     private List<card> enemyListCard=new ArrayList<>();

@@ -7,7 +7,7 @@ import model.weapen;
 
 import java.util.ArrayList;
 
-public class Player {
+public class Player implements Comparable<Player> {
     private String username;
     private String password;
     public int diamond = 80;
@@ -21,7 +21,7 @@ public class Player {
     public Player(String username, String password, int diamond, Deck currentDeck, ArrayList<spell> availableCardsS, ArrayList<Minion> availableCardsM, ArrayList<weapen> availableCardsW, ArrayList<Deck> availableDecks) {
         this.username = username;
         this.password = password;
-        this.diamond = 80;
+        this.diamond = diamond;
         this.currentDeck = currentDeck;
         this.availableCardsW = availableCardsW;
         this.availableCardsM = availableCardsM;
@@ -32,6 +32,7 @@ public class Player {
     public Player() {
 
     }
+
 
     public String getState() {
         return state;
@@ -103,5 +104,26 @@ public class Player {
 
     public void setAvailableDecks(ArrayList<Deck> availableDecks) {
         this.availableDecks = availableDecks;
+    }
+
+    public int sumCup(){
+        int i=0;
+        for (int j = 0; j < availableDecks.size(); j++) {
+           i+=availableDecks.get(i).getCup();
+        }
+        return i;
+    }
+
+    @Override
+    public int compareTo(Player o) {
+        if (sumCup()>o.sumCup()){
+            return 1;
+        }
+        else if (sumCup()<o.sumCup()){
+            return -1;
+        }
+        else {
+            return 0;
+        }
     }
 }

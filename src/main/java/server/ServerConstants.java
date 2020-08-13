@@ -10,6 +10,8 @@ public class ServerConstants {
 
     }
 
+    private int handSize = 12;
+    private int groundSize = 7;
     private String[] minionEkhtiari = new String[]{"blazingBattlemage", "hotAirballon", "evasiveChimaera", "amberWatcher", "veranus", "swampKingDred"};
     private String[] spellEkhtiari = new String[]{"decimation", "malygosFireball", "malygosFlamestrike", "learnDraconic", "strengthInNumbers", "divineHymn"};
     private String[] weapenEkhtiari = new String[]{"bloodRazor", "bloodClaw", "assassinBlade", "arcaniteReaper", "battleAxe", "gearBlade", "bloodFury", "dragonClaw", "ashBringer"};
@@ -186,6 +188,22 @@ public class ServerConstants {
 
     public void setTarget(HashMap<String, Integer> target) {
         this.target = target;
+    }
+
+    public int getHandSize() {
+        return handSize;
+    }
+
+    public void setHandSize(int handSize) {
+        this.handSize = handSize;
+    }
+
+    public int getGroundSize() {
+        return groundSize;
+    }
+
+    public void setGroundSize(int groundSize) {
+        this.groundSize = groundSize;
     }
 
     public String[] getRarity() {

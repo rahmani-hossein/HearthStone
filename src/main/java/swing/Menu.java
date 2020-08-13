@@ -6,6 +6,7 @@ import model.Player;
 import client.Controller;
 import logic.Constans;
 import model.Deck;
+import swing.Listener.MenuListener;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -16,15 +17,18 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Menu extends JPanel implements MouseListener {
+public class Menu extends JPanel  {
 
     public static final String GAME_PANEL = "play";
+    private MenuListener menuListener;
     private Player player;
     private ClientConstants constans;
     private GameMaker gameMaker;
     private JButton collection;
     private JButton shop;
-    private JButton play;
+    private JButton online;
+    private JButton offline;
+    private JButton rank;
     private Controller controller;
     private BufferedImage backGround;
     private JTextField reader;
@@ -39,9 +43,12 @@ public class Menu extends JPanel implements MouseListener {
         this.player = player;
         constans = Controller.getInstance().getClientConstants();
         this.setLayout(null);
+        menuListener= new MenuListener(this);
         collection = new JButton("COLLECTION");
         shop = new JButton("SHOP");
-        play = new JButton("PLAY");
+        online = new JButton("Online");
+        offline= new JButton("Offline");
+        rank =new JButton("rank");
         reader = new JTextField(20);
         exit = new JButton("exit");
         delete = new JButton("delete");
@@ -53,30 +60,38 @@ public class Menu extends JPanel implements MouseListener {
     }
 
     private void setLayout() {
+        rank.setBounds(800,220,150,50);
         collection.setBounds(800, 300, 150, 50);
         shop.setBounds(800, 380, 150, 50);
-        play.setBounds(800, 460, 150, 50);
+        offline.setBounds(800, 460, 150, 50);
         reader.setBounds(800, 540, 150, 50);
         decks.setBounds(800, 620, 150, 50);
         passives.setBounds(800, 700, 150, 50);
+        online.setBounds(800,780,150,50);
         exit.setBounds(1200, 100, 150, 50);
-        exit.addMouseListener(this);
-        delete.addMouseListener(this);
+        exit.addMouseListener(menuListener);
+        delete.addMouseListener(menuListener);
         delete.setBounds(1400, 100, 150, 50);
         add(collection);
         add(shop);
         add(reader);
         add(decks);
-        add(play);
         add(passives);
         add(exit);
         add(delete);
-        shop.addMouseListener(this);
-        collection.addMouseListener(this);
+        add(online);
+        add(offline);
+        add(rank);
+        shop.addMouseListener(menuListener);
+        collection.addMouseListener(menuListener);
         // status.addMouseListener(this);
-        play.addMouseListener(this);
+        offline.addMouseListener(menuListener);
+        online.addMouseListener(menuListener);
+        rank.addMouseListener(menuListener);
 
     }
+
+
 
     private void init() {
         try {
@@ -113,7 +128,7 @@ public class Menu extends JPanel implements MouseListener {
         g.drawImage(backGround, 0, 0, this.getWidth(), this.getHeight(), null);
     }
 
-    private void playClickAction(){
+    public void playClickAction(){
         String cur = (String) decks.getItemAt(decks.getSelectedIndex());
         String passive=(String) passives.getItemAt(passives.getSelectedIndex());
         String deckReader = null;
@@ -132,46 +147,127 @@ public class Menu extends JPanel implements MouseListener {
         controller.getMyFrame().setPanel("play");
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        controller = Controller.getInstance();
-        if (e.getSource() == shop) {
-            System.out.println("before go to shop");
-            controller.getMyFrame().setPanel("shop");
-            System.out.println("welcome to shop");
-        } else if (collection == e.getSource()) {
-            controller.getMyFrame().setPanel("collection");
-        } else if (play == e.getSource()) {
-           playClickAction();
-        } else if (exit == e.getSource()) {
-            controller.exitGame();
-        } else if (delete == e.getSource()) {
-            String text = JOptionPane.showInputDialog(getParent(), "please type your password", "Delete", JOptionPane.OK_CANCEL_OPTION);
-            if ((text != null) && text.equals(controller.getGameState().getPlayer().getPassword())) {
-                controller.delete(text);
-            }
-        }
+    public Player getPlayer() {
+        return player;
     }
 
-    @Override
-    public void mousePressed(MouseEvent e) {
-
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
+    public ClientConstants getConstans() {
+        return constans;
     }
 
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
+    public void setConstans(ClientConstants constans) {
+        this.constans = constans;
     }
 
-    @Override
-    public void mouseExited(MouseEvent e) {
-
+    public GameMaker getGameMaker() {
+        return gameMaker;
     }
+
+    public void setGameMaker(GameMaker gameMaker) {
+        this.gameMaker = gameMaker;
+    }
+
+    public JButton getCollection() {
+        return collection;
+    }
+
+    public void setCollection(JButton collection) {
+        this.collection = collection;
+    }
+
+    public JButton getShop() {
+        return shop;
+    }
+
+    public void setShop(JButton shop) {
+        this.shop = shop;
+    }
+
+    public JButton getOnline() {
+        return online;
+    }
+
+    public void setOnline(JButton online) {
+        this.online = online;
+    }
+
+    public JButton getOffline() {
+        return offline;
+    }
+
+    public void setOffline(JButton offline) {
+        this.offline = offline;
+    }
+
+    public JButton getRank() {
+        return rank;
+    }
+
+    public void setRank(JButton rank) {
+        this.rank = rank;
+    }
+
+    public Controller getController() {
+        return controller;
+    }
+
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
+
+    public BufferedImage getBackGround() {
+        return backGround;
+    }
+
+    public void setBackGround(BufferedImage backGround) {
+        this.backGround = backGround;
+    }
+
+    public JTextField getReader() {
+        return reader;
+    }
+
+    public void setReader(JTextField reader) {
+        this.reader = reader;
+    }
+
+    public JButton getExit() {
+        return exit;
+    }
+
+    public void setExit(JButton exit) {
+        this.exit = exit;
+    }
+
+    public JButton getDelete() {
+        return delete;
+    }
+
+    public void setDelete(JButton delete) {
+        this.delete = delete;
+    }
+
+    public JComboBox getDecks() {
+        return decks;
+    }
+
+    public void setDecks(JComboBox decks) {
+        this.decks = decks;
+    }
+
+    public JComboBox getPassives() {
+        return passives;
+    }
+
+    public void setPassives(JComboBox passives) {
+        this.passives = passives;
+    }
+
 }
+
 //
 

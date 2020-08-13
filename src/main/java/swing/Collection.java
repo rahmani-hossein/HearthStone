@@ -1,12 +1,14 @@
 package swing;
 
 import CLI.utilities;
+import client.ClientConstants;
 import client.Controller;
 import client.Converter;
 import logic.CollectionManager;
 import logic.Constans;
 import model.Deck;
 import model.Request;
+import server.ConstantsLoader;
 import swing.button.ButtonC;
 import swing.panel.DeckPanel;
 import swing.panel.FilterPanelCollection;
@@ -21,14 +23,14 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Collection extends JPanel  {
-    private Constans constans = Controller.getInstance().getConstants();
+    private ClientConstants constans = Controller.getInstance().getClientConstants();
     private int space = constans.getSpace();
     private int sizeW = constans.getCardWidth();//200
     private int sizeH = constans.getCardHeigth();//285
 
     Converter converter = new Converter();
-    private ArrayList<BufferedImage> showCards = null;
-    private ArrayList<swing.button.ButtonC> showButton = null;
+    private ArrayList<BufferedImage> showCards = new ArrayList<>();
+    private ArrayList<swing.button.ButtonC> showButton =new ArrayList<>() ;
     private Controller controller;
     private JPanel north;
     private JPanel south;
@@ -109,10 +111,11 @@ public class Collection extends JPanel  {
         Controller.getInstance().getClient().getSender().send(request);
 
     }
-    public void innerInitDecks(ArrayList<String> parameters){
-        decks = new JComboBox((ComboBoxModel) parameters);
+    public void innerInitDecks(String[] parameters){
+        decks = new JComboBox( parameters);
         south.add(decks);
     }
+
 
     private void initAdd() {
         add = new JButton("add to deck");
@@ -330,7 +333,7 @@ public class Collection extends JPanel  {
     }
 
     private void initComboBox() {
-        comboBox = new JComboBox(constans.getHeroClass());
+        comboBox = new JComboBox(ConstantsLoader.getInstance().getServerConstants().getHeroClass());
         north.add(comboBox);
 
     }
