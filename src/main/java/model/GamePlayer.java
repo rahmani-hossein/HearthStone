@@ -19,6 +19,7 @@ private String nameOfPlayer;
     private boolean heroPowerPassive=false;
     private int heroPowerUse=1;
     private ArrayList<card>initCard = new ArrayList<>();
+    private int cup;
 
 
 
@@ -143,5 +144,13 @@ private String nameOfPlayer;
 
     public void setGround(LinkedList<Minion> ground) {
         this.ground = ground;
+    }
+
+    public int getCup() {
+        return cup;
+    }
+
+    public void setCup(int cup) {
+        this.cup = cup;
     }
 }

@@ -249,4 +249,12 @@ public class Controller {
     public void setLogin(Login login) {
         this.login = login;
     }
+
+    public ObjectMapper getObjectMapper() {
+        return objectMapper;
+    }
+
+    public void setObjectMapper(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
 }

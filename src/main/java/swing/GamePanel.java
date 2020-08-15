@@ -1,11 +1,16 @@
 package swing;
 
+import client.ClientConstants;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import model.GameState;
 import CLI.LogicMapper;
 import CLI.utilities;
 import client.Controller;
 import logic.Constans;
 import model.*;
+import swing.Listener.GameListener;
+import swing.Listener.OnlineListener;
+import swing.Listener.TrainingListener;
 import swing.button.Picture;
 import swing.panel.PlayPanel;
 
@@ -15,11 +20,12 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class GamePanel extends JPanel implements MouseListener, MouseMotionListener {
+public class GamePanel extends JPanel  {
 
     private GameState gameState;
-    private Constans constans = Controller.getInstance().getConstants();
+    private ClientConstants constans = Controller.getInstance().getClientConstants();
     private Controller controller = Controller.getInstance();
+    private GameListener gameListener;
     private LogicMapper logicMapper = controller.getLogicMapper();
     //graphic items
     private PlayPanel init;
@@ -38,11 +44,12 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
     private Picture target = null;
 
 
-    public GamePanel(int x, int y, GameState gameState) {
+    public GamePanel(int x, int y, GameState gameState, GameListener gameListener) {
         this.gameState = gameState;
+        this.gameListener=gameListener;
+        addMouseListener(gameListener);
         this.setPreferredSize(new Dimension(x, y));
         setLayout(null);
-        addMouseListener(this);
         setTurnButton();
         setBackButton();
         setExitButton();
@@ -138,12 +145,21 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
             @Override
             public void actionPerformed(ActionEvent e) {
                 // nextTurn method in gameManager
-                logicMapper.responce(LogicMapper.LogicRequest.TURN);
-                repaint();
-                revalidate();
+                if (gameListener instanceof OnlineListener){
+                    if (!gameState.isTurn()){
+                        sendTurnRequest();
+                    }
+                }
+                if (gameListener instanceof TrainingListener){
+                    sendTurnRequest();
+                }
             }
         });
         add(nextTurn);
+    }
+    private void sendTurnRequest(){
+        Request request =new Request(Controller.getInstance().getClient().getToken(),"turn",null,"");
+        Controller.getInstance().getClient().getSender().send(request);
     }
 
     private void paintMana(Graphics g, GamePlayer gamePlayer, boolean freind) {
@@ -234,62 +250,53 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
         }
     }
 
-    private void exclusiveRepaint() {
+    public void exclusiveRepaint() {
         selected = null;
         target = null;
         repaint();
         revalidate();
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        if (!gameState.isTurn()) {// nobat friend
-            freindClicked(e);
+    private void sendDrawHandRequest(GamePacket gamePacket){
+        try {
+            String gamePacketString = Controller.getInstance().getObjectMapper().writeValueAsString(gamePacket);
+            Request request = new Request(Controller.getInstance().getClient().getToken(),"drawHand",null,gamePacketString);
+            Controller.getInstance().getClient().getSender().send(request);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
 
-        } else {//nobat enemy
-            enemyClicked(e);
+    }
+    private void sendAttackWithMinionRequest(GamePacket gamePacket){
+        try {
+            String gamePacketString = Controller.getInstance().getObjectMapper().writeValueAsString(gamePacket);
+            Request request = new Request(Controller.getInstance().getClient().getToken(),"attackWithMinion",null,gamePacketString);
+            Controller.getInstance().getClient().getSender().send(request);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
+    private void sendAttackWeapenRequest(GamePacket gamePacket){
+        try {
+            String gamePacketString = Controller.getInstance().getObjectMapper().writeValueAsString(gamePacket);
+            Request request = new Request(Controller.getInstance().getClient().getToken(),"attackWeapen",null,gamePacketString);
+            Controller.getInstance().getClient().getSender().send(request);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
         }
 
     }
 
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-
-    }
-
-    private void enemyClicked(MouseEvent e) {
+    public void enemyClicked(MouseEvent e) {
         //hand
         for (int i = 0; i < enemyHand.size(); i++) {
             if ((enemyHand.get(i).getX() <= e.getX()) && (enemyHand.get(i).getX() + enemyHand.get(i).getSizeX() >= e.getX()) && (enemyHand.get(i).getY() <= e.getY()) && (enemyHand.get(i).getSizeY() + enemyHand.get(i).getY() >= e.getY())) {
                 selected = enemyHand.get(i);
                 if (constans.getTarget().get(selected.getName()) == 0) {
-                    logicMapper.responce(LogicMapper.LogicRequest.DRAWHAND, gameState.getEnemy(), gameState.getFreind(), returnCard(selected, gameState.getEnemy().getHand()), null);
-                    exclusiveRepaint();
+                    GamePacket gamePacket= new GamePacket(null,returnCard(selected, gameState.getEnemy().getHand()),gameState.getEnemy(), gameState.getFreind());
+                    sendDrawHandRequest(gamePacket);
+                   // logicMapper.responce(LogicMapper.LogicRequest.DRAWHAND, , , null);
+
                 }
             }
         }
@@ -299,8 +306,10 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
                 if (selected != null) {
                     if (constans.getTarget().get(selected.getName()) == 1) {
                         target = enemyGround.get(i);
-                        logicMapper.responce(LogicMapper.LogicRequest.DRAWHAND, gameState.getEnemy(), gameState.getFreind(), returnCard(selected, gameState.getEnemy().getHand()), returnCard(target, gameState.getEnemy().getGround()));
-                        exclusiveRepaint();
+                        GamePacket gamePacket = new GamePacket(returnCard(target, gameState.getEnemy().getGround()),returnCard(selected, gameState.getEnemy().getHand()),gameState.getEnemy(), gameState.getFreind());
+                        sendDrawHandRequest(gamePacket);
+                       // logicMapper.responce(LogicMapper.LogicRequest.DRAWHAND, gameState.getEnemy(), gameState.getFreind(), returnCard(selected, gameState.getEnemy().getHand()), returnCard(target, gameState.getEnemy().getGround()));
+                       // exclusiveRepaint();
                     }
                 } else {
                     selected = enemyGround.get(i);
@@ -324,21 +333,27 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
                         target = freindGround.get(i);
                         if (enemyHand.contains(selected)) {
                             if (constans.getTarget().get(selected.getName()) == 2) {
-                                logicMapper.responce(LogicMapper.LogicRequest.DRAWHAND, gameState.getEnemy(), gameState.getFreind(), returnCard(selected, gameState.getEnemy().getHand()), returnCard(target, gameState.getFreind().getGround()));
-                                exclusiveRepaint();
+                                GamePacket gamePacket= new GamePacket(returnCard(target, gameState.getFreind().getGround()),returnCard(selected, gameState.getEnemy().getHand()),gameState.getEnemy(), gameState.getFreind());
+                                sendDrawHandRequest(gamePacket);
+//                                logicMapper.responce(LogicMapper.LogicRequest.DRAWHAND, gameState.getEnemy(), gameState.getFreind(), returnCard(selected, gameState.getEnemy().getHand()), returnCard(target, gameState.getFreind().getGround()));
+//                                exclusiveRepaint();
                             }
                         } else if (enemyGround.contains(selected)) {
                             Minion minion = returnCard(selected, gameState.getEnemy().getGround());
                             if (minion.getAttackInRound() == 0 && minion.getLiveInRound() >= 1) {
-                                logicMapper.responce(LogicMapper.LogicRequest.ATTACKWITHMINION, gameState.getEnemy(), gameState.getFreind(), minion, returnCard(target, gameState.getFreind().getGround()));
-                                minion.setAttackInRound(1);
-                                exclusiveRepaint();
+                                GamePacket gamePacket= new GamePacket(returnCard(target, gameState.getFreind().getGround()),minion,gameState.getEnemy(), gameState.getFreind());
+                                sendAttackWithMinionRequest(gamePacket);
+//                                logicMapper.responce(LogicMapper.LogicRequest.ATTACKWITHMINION, gameState.getEnemy(), gameState.getFreind(), minion, returnCard(target, gameState.getFreind().getGround()));
+//                                minion.setAttackInRound(1);
+//                                exclusiveRepaint();
                             } else {
                                 JOptionPane.showMessageDialog(controller.getMyFrame(), "you use this minion in this turn or it isnt available in this turn", "attackError", JOptionPane.ERROR_MESSAGE);
                             }
                         } else if (gameState.getEnemy().getMyWeapen() != null && gameState.getEnemy().getMyWeapen().getName().equalsIgnoreCase(selected.getName())) {
-                            logicMapper.responce(LogicMapper.LogicRequest.ATTACKWEAPEN, gameState.getEnemy(), gameState.getFreind(), returnCard(selected, gameState.getEnemy()), returnCard(target, gameState.getFreind().getGround()));
-                            exclusiveRepaint();
+                            GamePacket gamePacket= new GamePacket(returnCard(target, gameState.getFreind().getGround()),returnCard(selected, gameState.getEnemy()),gameState.getEnemy(), gameState.getFreind());
+                            sendAttackWeapenRequest(gamePacket);
+//                            logicMapper.responce(LogicMapper.LogicRequest.ATTACKWEAPEN, gameState.getEnemy(), gameState.getFreind(), returnCard(selected, gameState.getEnemy()), returnCard(target, gameState.getFreind().getGround()));
+//                            exclusiveRepaint();
                         }
                     }
                 }
@@ -352,35 +367,43 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
                     target = freind;
                     if (enemyHand.contains(selected)) {
                         if (constans.getTarget().get(selected.getName()) == 2) {
-                            logicMapper.responce(LogicMapper.LogicRequest.DRAWHAND, gameState.getEnemy(), gameState.getFreind(), returnCard(selected, gameState.getEnemy().getHand()), returnHero(target, gameState.getFreind()));
-                            exclusiveRepaint();
+                            GamePacket gamePacket= new GamePacket(returnHero(target, gameState.getFreind()), returnCard(selected, gameState.getEnemy().getHand()),gameState.getEnemy(), gameState.getFreind());
+                            sendDrawHandRequest(gamePacket);
+//                            logicMapper.responce(LogicMapper.LogicRequest.DRAWHAND, gameState.getEnemy(), gameState.getFreind(), returnCard(selected, gameState.getEnemy().getHand()), returnHero(target, gameState.getFreind()));
+//                            exclusiveRepaint();
                         }
                     } else if (enemyGround.contains(selected)) {
                         Minion minion = returnCard(selected, gameState.getEnemy().getGround());
                         if (minion.getAttackInRound() == 0 && minion.getLiveInRound() >= 1) {
-                            logicMapper.responce(LogicMapper.LogicRequest.ATTACKWITHMINION, gameState.getEnemy(), gameState.getFreind(), minion, returnHero(target, gameState.getFreind()));
-                            minion.setAttackInRound(1);
-                            exclusiveRepaint();
+                            GamePacket gamePacket= new GamePacket(returnHero(target, gameState.getFreind()),minion,gameState.getEnemy(), gameState.getFreind());
+                            sendAttackWithMinionRequest(gamePacket);
+//                            logicMapper.responce(LogicMapper.LogicRequest.ATTACKWITHMINION, gameState.getEnemy(), gameState.getFreind(), minion, returnHero(target, gameState.getFreind()));
+//                            minion.setAttackInRound(1);
+//                            exclusiveRepaint();
                         } else {
                             JOptionPane.showMessageDialog(controller.getMyFrame(), "you use this minion in this turn or it isnt available in this turn", "attackError", JOptionPane.ERROR_MESSAGE);
                         }
                     } else if (gameState.getEnemy().getMyWeapen() != null && gameState.getEnemy().getMyWeapen().getName().equalsIgnoreCase(selected.getName())) {
-                        logicMapper.responce(LogicMapper.LogicRequest.ATTACKWEAPEN, gameState.getEnemy(), gameState.getFreind(), returnCard(selected, gameState.getEnemy()), returnHero(target, gameState.getFreind()));
-                        exclusiveRepaint();
+                        GamePacket gamePacket= new GamePacket(returnHero(target, gameState.getFreind()),returnCard(selected, gameState.getEnemy()),gameState.getEnemy(), gameState.getFreind());
+                        sendAttackWeapenRequest(gamePacket);
+//                        logicMapper.responce(LogicMapper.LogicRequest.ATTACKWEAPEN, gameState.getEnemy(), gameState.getFreind(), returnCard(selected, gameState.getEnemy()), returnHero(target, gameState.getFreind()));
+//                        exclusiveRepaint();
                     }
                 }
             }
         }
     }
 
-    private void freindClicked(MouseEvent e) {
+    public void freindClicked(MouseEvent e) {
         //hand
         for (int i = 0; i < freindHand.size(); i++) {
             if ((freindHand.get(i).getX() <= e.getX()) && (freindHand.get(i).getX() + freindHand.get(i).getSizeX() >= e.getX()) && (freindHand.get(i).getY() <= e.getY()) && (freindHand.get(i).getSizeY() + freindHand.get(i).getY() >= e.getY())) {
                 selected = freindHand.get(i);
                 if (constans.getTarget().get(selected.getName()) == 0) {
-                    logicMapper.responce(LogicMapper.LogicRequest.DRAWHAND, gameState.getFreind(), gameState.getEnemy(), returnCard(selected, gameState.getFreind().getHand()), null);
-                    exclusiveRepaint();
+                    GamePacket gamePacket= new GamePacket(null,returnCard(selected, gameState.getFreind().getHand()),gameState.getFreind(), gameState.getEnemy());
+                    sendDrawHandRequest(gamePacket);
+//                    logicMapper.responce(LogicMapper.LogicRequest.DRAWHAND, gameState.getFreind(), gameState.getEnemy(), returnCard(selected, gameState.getFreind().getHand()), null);
+//                    exclusiveRepaint();
                 }
             }
         }
@@ -390,8 +413,10 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
                 if (selected != null) {
                     if (constans.getTarget().get(selected.getName()) == 1) {
                         target = freindGround.get(i);
-                        logicMapper.responce(LogicMapper.LogicRequest.DRAWHAND, gameState.getFreind(), gameState.getEnemy(), returnCard(selected, gameState.getFreind().getHand()), returnCard(target, gameState.getFreind().getGround()));
-                        exclusiveRepaint();
+                        GamePacket gamePacket= new GamePacket(returnCard(target, gameState.getFreind().getGround()),returnCard(selected, gameState.getFreind().getHand()),gameState.getFreind(), gameState.getEnemy());
+                        sendDrawHandRequest(gamePacket);
+//                        logicMapper.responce(LogicMapper.LogicRequest.DRAWHAND, gameState.getFreind(), gameState.getEnemy(), returnCard(selected, gameState.getFreind().getHand()), returnCard(target, gameState.getFreind().getGround()));
+//                        exclusiveRepaint();
                     }
                 } else {
                     selected = freindGround.get(i);
@@ -417,21 +442,27 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
                         target = enemyGround.get(i);
                         if (freindHand.contains(selected)) {
                             if (constans.getTarget().get(selected.getName()) == 2) {
-                                logicMapper.responce(LogicMapper.LogicRequest.DRAWHAND, gameState.getFreind(), gameState.getEnemy(), returnCard(selected, gameState.getFreind().getHand()), returnCard(target, gameState.getEnemy().getGround()));
-                                exclusiveRepaint();
+                                GamePacket gamePacket =new GamePacket(returnCard(target, gameState.getEnemy().getGround()),returnCard(selected, gameState.getFreind().getHand()),gameState.getFreind(), gameState.getEnemy());
+                                sendDrawHandRequest(gamePacket);
+//                                logicMapper.responce(LogicMapper.LogicRequest.DRAWHAND, gameState.getFreind(), gameState.getEnemy(), returnCard(selected, gameState.getFreind().getHand()), returnCard(target, gameState.getEnemy().getGround()));
+//                                exclusiveRepaint();
                             }
                         } else if (freindGround.contains(selected)) {
                             Minion minion = returnCard(selected, gameState.getFreind().getGround());
                             if (minion.getLiveInRound() >= 1 && minion.getAttackInRound() == 0) {
-                                logicMapper.responce(LogicMapper.LogicRequest.ATTACKWITHMINION, gameState.getFreind(), gameState.getEnemy(), minion, returnCard(target, gameState.getEnemy().getGround()));
-                                minion.setAttackInRound(1);
-                                exclusiveRepaint();
+                                GamePacket gamePacket= new GamePacket(returnCard(target, gameState.getEnemy().getGround()),minion,gameState.getFreind(), gameState.getEnemy());
+                                sendAttackWithMinionRequest(gamePacket);
+//                                logicMapper.responce(LogicMapper.LogicRequest.ATTACKWITHMINION, gameState.getFreind(), gameState.getEnemy(), minion, returnCard(target, gameState.getEnemy().getGround()));
+//                                minion.setAttackInRound(1);
+//                                exclusiveRepaint();
                             } else {
                                 JOptionPane.showMessageDialog(controller.getMyFrame(), "you use this minion in this turn or it isnt available in this turn", "attackError", JOptionPane.ERROR_MESSAGE);
                             }
                         } else if (gameState.getFreind().getMyWeapen() != null && gameState.getFreind().getMyWeapen().getName().equalsIgnoreCase(selected.getName())) {
-                            logicMapper.responce(LogicMapper.LogicRequest.ATTACKWEAPEN, gameState.getFreind(), gameState.getEnemy(), returnCard(selected, gameState.getFreind()), returnCard(target, gameState.getEnemy().getGround()));
-                            exclusiveRepaint();
+                            GamePacket gamePacket =new GamePacket(returnCard(target, gameState.getEnemy().getGround()),returnCard(selected, gameState.getFreind()),gameState.getFreind(), gameState.getEnemy());
+                            sendAttackWeapenRequest(gamePacket);
+//                            logicMapper.responce(LogicMapper.LogicRequest.ATTACKWEAPEN, gameState.getFreind(), gameState.getEnemy(), returnCard(selected, gameState.getFreind()), returnCard(target, gameState.getEnemy().getGround()));
+//                            exclusiveRepaint();
                         }
                     }
                 }
@@ -445,22 +476,28 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
                     target = enemy;
                     if (freindHand.contains(selected)) {
                         if (constans.getTarget().get(selected.getName()) == 2) {
-                            logicMapper.responce(LogicMapper.LogicRequest.DRAWHAND, gameState.getFreind(), gameState.getEnemy(), returnCard(selected, gameState.getFreind().getHand()), returnHero(target, gameState.getEnemy()));
-                            exclusiveRepaint();
+                            GamePacket gamePacket =new GamePacket(returnHero(target, gameState.getEnemy()),returnCard(selected, gameState.getFreind().getHand()),gameState.getFreind(), gameState.getEnemy());
+                            sendDrawHandRequest(gamePacket);
+//                            logicMapper.responce(LogicMapper.LogicRequest.DRAWHAND, gameState.getFreind(), gameState.getEnemy(), returnCard(selected, gameState.getFreind().getHand()), returnHero(target, gameState.getEnemy()));
+//                            exclusiveRepaint();
                         }
                     } else if (freindGround.contains(selected)) {
                         Minion minion = returnCard(selected, gameState.getFreind().getGround());
                         if (minion.getLiveInRound() >= 1 && minion.getAttackInRound() == 0) {
-                            logicMapper.responce(LogicMapper.LogicRequest.ATTACKWITHMINION, gameState.getFreind(), gameState.getEnemy(), minion, returnHero(target, gameState.getEnemy()));
-                            minion.setAttackInRound(1);
-                            exclusiveRepaint();
+                            GamePacket gamePacket =new GamePacket( returnHero(target, gameState.getEnemy()),minion,gameState.getFreind(), gameState.getEnemy());
+                            sendAttackWithMinionRequest(gamePacket);
+//                            logicMapper.responce(LogicMapper.LogicRequest.ATTACKWITHMINION, gameState.getFreind(), gameState.getEnemy(), minion, returnHero(target, gameState.getEnemy()));
+//                            minion.setAttackInRound(1);
+//                            exclusiveRepaint();
                         } else {
                             JOptionPane.showMessageDialog(controller.getMyFrame(), "you use this minion in this turn or it isnt available in this turn", "attackError", JOptionPane.ERROR_MESSAGE);
                         }
 
                     } else if (gameState.getFreind().getMyWeapen() != null && gameState.getFreind().getMyWeapen().getName().equalsIgnoreCase(selected.getName())) {
-                        logicMapper.responce(LogicMapper.LogicRequest.ATTACKWEAPEN, gameState.getFreind(), gameState.getEnemy(), returnCard(selected, gameState.getFreind()), returnHero(target, gameState.getEnemy()));
-                        exclusiveRepaint();
+                        GamePacket gamePacket =new GamePacket(returnHero(target, gameState.getEnemy()),returnCard(selected, gameState.getFreind()),gameState.getFreind(), gameState.getEnemy());
+                        sendAttackWeapenRequest(gamePacket);
+//                        logicMapper.responce(LogicMapper.LogicRequest.ATTACKWEAPEN, gameState.getFreind(), gameState.getEnemy(), returnCard(selected, gameState.getFreind()), returnHero(target, gameState.getEnemy()));
+//                        exclusiveRepaint();
                     }
                 }
             }
@@ -505,7 +542,7 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
     }
 
     private void doLog(String log) {
-        String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() + Controller.getInstance().getGameState().getPlayer().getPassword());
+        String st1 = String.format("src/main/userText/%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() + Controller.getInstance().getGameState().getPlayer().getPassword());
         Controller.getInstance().myLogger(st1, log + " " + utilities.time() + "\n", true);
 
     }
@@ -524,11 +561,11 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
         this.gameState = gameState;
     }
 
-    public Constans getConstans() {
+    public ClientConstants getConstans() {
         return constans;
     }
 
-    public void setConstans(Constans constans) {
+    public void setConstans(ClientConstants constans) {
         this.constans = constans;
     }
 

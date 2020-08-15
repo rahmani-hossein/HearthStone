@@ -10,6 +10,8 @@ import swing.panel.FilterPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -30,7 +32,7 @@ public class Shop extends JPanel implements MouseListener {
 
     Converter converter = new Converter();
     private ArrayList<BufferedImage> showCards = new ArrayList<>();
-    private ArrayList<Button> showButton =new ArrayList<>();
+    private ArrayList<Button> showButton = new ArrayList<>();
     private Controller controller;
 
 
@@ -43,8 +45,8 @@ public class Shop extends JPanel implements MouseListener {
         initNorthButtons();
         center = new FilterPanel(showButton);
         JScrollPane scrollPane = new JScrollPane();
-       scrollPane.setViewportView(center);
-        add( BorderLayout.CENTER,scrollPane);
+        scrollPane.setViewportView(center);
+        add(BorderLayout.CENTER, scrollPane);
 
         center.setBackground(Color.YELLOW);
 
@@ -52,28 +54,72 @@ public class Shop extends JPanel implements MouseListener {
 
     private void initNorthButtons() {
         wallet = new JLabel("Wallet");
-        sellable = new JButton("sellable");
-        buyable = new JButton("buyable");
-        exit = new JButton("exit");
-        back = new JButton("back");
-        north.add(buyable);
-        north.add(sellable);
         north.add(wallet);
-        north.add(exit);
-        north.add(back);
-        buyable.addMouseListener(this);
-        sellable.addMouseListener(this);
         wallet.addMouseListener(this);
-        exit.addMouseListener(this);
-        back.addMouseListener(this);
+        initBack();
+        initBuyable();
+        initExit();
+        initSellable();
     }
 
+    private void initBuyable() {
+        buyable = new JButton("buyable");
+        buyable.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Request request = new Request(Controller.getInstance().getClient().getToken(), "buyable", null, "");
+                Controller.getInstance().getClient().getSender().send(request);
+                Controller.getInstance().myLogger(Controller.getInstance().getTxtAddress(), " click for see buyables cards  " + utilities.time() + "\n", true);
+
+            }
+        });
+        north.add(buyable);
+    }
+
+    private void initSellable() {
+        sellable = new JButton("sellable");
+        sellable.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Request request = new Request(Controller.getInstance().getClient().getToken(), "sellable", null, "");
+                Controller.getInstance().getClient().getSender().send(request);
+                Controller.getInstance().myLogger(Controller.getInstance().getTxtAddress(), " click for see sellable cards  " + utilities.time(), true);
+            }
+        });
+        north.add(sellable);
+
+    }
+
+    private void initExit() {
+        exit = new JButton("exit");
+        exit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.exitGame();
+            }
+        });
+        north.add(exit);
+
+    }
+
+    private void initBack() {
+        back = new JButton("back");
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.getMyFrame().setPanel("menu");
+                Controller.getInstance().myLogger(Controller.getInstance().getTxtAddress(), " back to menu   " + utilities.time() + "\n", true);
+            }
+        });
+        north.add(back);
+
+    }
 
     public ArrayList<Button> initButton(ArrayList<String> madenazar) {
         ArrayList<Button> showButton = new ArrayList<>();
         showCards = converter.convert(madenazar);
         for (int i = 0; i < showCards.size(); i++) {
-            swing.button.Button button = new Button(showCards.get(i), madenazar.get(i), ((i % 5) + 1) * space + ((i%5) * sizeW), ((i / 5) + 1) * space + ((i/5) * sizeH));
+            swing.button.Button button = new Button(showCards.get(i), madenazar.get(i), ((i % 5) + 1) * space + ((i % 5) * sizeW), ((i / 5) + 1) * space + ((i / 5) * sizeH));
             addMouseListener(button);
             showButton.add(button);
         }
@@ -89,26 +135,9 @@ public class Shop extends JPanel implements MouseListener {
         }
 
     }
-    ArrayList<String> list =new ArrayList<>();
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
-        if (e.getSource() == sellable) {
-            Request request= new Request(Controller.getInstance().getClient().getToken(),"sellable",null,"");
-            Controller.getInstance().getClient().getSender().send(request);
-            Controller.getInstance().myLogger(Controller.getInstance().getTxtAddress()," click for see sellable cards  "+ utilities.time(),true);
-        } else if (e.getSource() == buyable) {
-            Request request= new Request(Controller.getInstance().getClient().getToken(),"buyable",null,"");
-            Controller.getInstance().getClient().getSender().send(request);
-            Controller.getInstance().myLogger(Controller.getInstance().getTxtAddress()," click for see buyables cards  "+ utilities.time()+"\n",true);
-
-        } else if (e.getSource() == exit) {
-            controller.exitGame();
-        } else if (e.getSource() == back) {
-            controller.getMyFrame().setPanel("menu");
-            Controller.getInstance().myLogger(Controller.getInstance().getTxtAddress()," back to menu   "+ utilities.time()+"\n",true);
-        }
 
     }
 
@@ -125,7 +154,7 @@ public class Shop extends JPanel implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent e) {
         if (e.getSource() == wallet) {
-            Controller.getInstance().getShop(). getWallet().setText(Controller.getInstance().getGameState().getPlayer().getDiamond()+"");
+            Controller.getInstance().getShop().getWallet().setText(Controller.getInstance().getGameState().getPlayer().getDiamond() + "");
             repaint();
             revalidate();
         }
@@ -135,7 +164,7 @@ public class Shop extends JPanel implements MouseListener {
     public void mouseExited(MouseEvent e) {
         if (e.getSource() == wallet) {
             wallet.setText("Wallet");
-            Controller.getInstance().myLogger(Controller.getInstance().getTxtAddress()," player see wallet  "+ utilities.time()+"\n",true);
+            Controller.getInstance().myLogger(Controller.getInstance().getTxtAddress(), " player see wallet  " + utilities.time() + "\n", true);
             repaint();
             revalidate();
         }

@@ -27,7 +27,7 @@ public class Menu extends JPanel  {
     private JButton collection;
     private JButton shop;
     private JButton online;
-    private JButton offline;
+    private JButton training;
     private JButton rank;
     private Controller controller;
     private BufferedImage backGround;
@@ -47,7 +47,7 @@ public class Menu extends JPanel  {
         collection = new JButton("COLLECTION");
         shop = new JButton("SHOP");
         online = new JButton("Online");
-        offline= new JButton("Offline");
+        training= new JButton("training");
         rank =new JButton("rank");
         reader = new JTextField(20);
         exit = new JButton("exit");
@@ -63,7 +63,7 @@ public class Menu extends JPanel  {
         rank.setBounds(800,220,150,50);
         collection.setBounds(800, 300, 150, 50);
         shop.setBounds(800, 380, 150, 50);
-        offline.setBounds(800, 460, 150, 50);
+        training.setBounds(800, 460, 150, 50);
         reader.setBounds(800, 540, 150, 50);
         decks.setBounds(800, 620, 150, 50);
         passives.setBounds(800, 700, 150, 50);
@@ -80,12 +80,12 @@ public class Menu extends JPanel  {
         add(exit);
         add(delete);
         add(online);
-        add(offline);
+        add(training);
         add(rank);
         shop.addMouseListener(menuListener);
         collection.addMouseListener(menuListener);
         // status.addMouseListener(this);
-        offline.addMouseListener(menuListener);
+        training.addMouseListener(menuListener);
         online.addMouseListener(menuListener);
         rank.addMouseListener(menuListener);
 
@@ -128,24 +128,7 @@ public class Menu extends JPanel  {
         g.drawImage(backGround, 0, 0, this.getWidth(), this.getHeight(), null);
     }
 
-    public void playClickAction(){
-        String cur = (String) decks.getItemAt(decks.getSelectedIndex());
-        String passive=(String) passives.getItemAt(passives.getSelectedIndex());
-        String deckReader = null;
-        deckReader = reader.getText();
 
-        gameMaker = new GameMaker(player, deckReader, cur,Controller.getInstance().getGameState(),passive);
-        //set Game state gamePlayers
-        gameMaker.buildGameState();
-        gameMaker.buildPassive();
-        for (int i = 0; i < Controller.getInstance().getGameState().getFreind().getInitCard().size(); i++) {
-            System.out.println(Controller.getInstance().getGameState().getFreind().getInitCard().get(i).toString());
-        }
-        GamePanel gamePanel=new GamePanel(constans.getPanelWidth(),constans.getPanelHeight(),Controller.getInstance().getGameState());
-        controller.getMyFrame().getMainpanel().add(gamePanel,GAME_PANEL);
-        controller.setGamePanel(gamePanel);
-        controller.getMyFrame().setPanel("play");
-    }
 
     public Player getPlayer() {
         return player;
@@ -195,12 +178,12 @@ public class Menu extends JPanel  {
         this.online = online;
     }
 
-    public JButton getOffline() {
-        return offline;
+    public JButton getTraining() {
+        return training;
     }
 
-    public void setOffline(JButton offline) {
-        this.offline = offline;
+    public void setTraining(JButton training) {
+        this.training = training;
     }
 
     public JButton getRank() {

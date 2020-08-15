@@ -12,9 +12,6 @@ public class GameState {
 
     private GamePlayer freind;
     private GamePlayer enemy;
-
-
-
     private Player player;
     private boolean startGame=false;
     private Timer timer;

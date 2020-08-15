@@ -1,11 +1,13 @@
 package swing.Listener;
 
 import client.Controller;
+import model.Request;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 public class MenuListener implements MouseListener {
 
@@ -23,12 +25,36 @@ public class MenuListener implements MouseListener {
         if (e.getSource() == menu.getShop()) {
             controller.getMyFrame().setPanel("shop");
             System.out.println("welcome to shop");
-        } else if (menu.getCollection() == e.getSource()) {
+        }
+        else if (menu.getCollection() == e.getSource()) {
             controller.getMyFrame().setPanel("collection");
             System.out.println("welcome to collection");
-        } else if (menu.getOffline() == e.getSource()) {
-            menu.playClickAction();
-        } else if (menu.getExit() == e.getSource()) {
+        }
+        else if (menu.getTraining() == e.getSource()) {
+            String cur = (String) menu.getDecks().getItemAt(menu.getDecks().getSelectedIndex());
+            String passive=(String) menu.getPassives().getItemAt(menu.getPassives().getSelectedIndex());
+           String  deckReader = menu.getReader().getText();
+            ArrayList<String> parameters= new ArrayList<>();
+            parameters.add(deckReader);
+            parameters.add(cur);
+            parameters.add(passive);
+            Request request = new Request(Controller.getInstance().getClient().getToken(),"training",parameters,Controller.getInstance().getStringValueOfGameState(Controller.getInstance().getGameState()));
+            Controller.getInstance().getClient().getSender().send(request);
+          //  menu.playClickAction();
+        }
+        else if (menu.getOnline()==e.getSource()){
+            String cur = (String) menu.getDecks().getItemAt(menu.getDecks().getSelectedIndex());
+            String passive=(String) menu.getPassives().getItemAt(menu.getPassives().getSelectedIndex());
+            String  deckReader = menu.getReader().getText();
+            ArrayList<String> parameters= new ArrayList<>();
+            parameters.add(deckReader);
+            parameters.add(cur);
+            parameters.add(passive);
+            parameters.add(Controller.getInstance().getGameState().getPlayer().getCurrentDeck().getCup()+"");
+            Request request = new Request(Controller.getInstance().getClient().getToken(),"online",parameters,Controller.getInstance().getStringValueOfGameState(Controller.getInstance().getGameState()));
+            Controller.getInstance().getClient().getSender().send(request);
+        }
+        else if (menu.getExit() == e.getSource()) {
             controller.exitGame();
         } else if (menu.getDelete() == e.getSource()) {
             String text = JOptionPane.showInputDialog(controller.getMyFrame(), "please type your password", "Delete", JOptionPane.OK_CANCEL_OPTION);
@@ -59,4 +85,6 @@ public class MenuListener implements MouseListener {
     public void mouseExited(MouseEvent e) {
 
     }
+
+
 }

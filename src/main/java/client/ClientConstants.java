@@ -1,5 +1,7 @@
 package client;
 
+import java.util.HashMap;
+
 public class ClientConstants {
 
     private int port=8000;
@@ -29,14 +31,64 @@ public class ClientConstants {
     private int sizeBoardY=500;
     private int sad=100;
     private String[] passives = {"twiceDraw", "offCard", "freePower", "manaJump", "nurse"};
+    private HashMap<String,Integer> target = new HashMap<>();
 
 
     public ClientConstants(){
-
+        fill();
     }
 
     //getter & setter
 
+
+    private void fill(){
+        target.put("blazingBattlemage",0);
+        target.put("hotAirballon",0);
+        target.put("fireHawk",0);
+        target.put("evasiveChimaera",0);
+        target.put("amberWatcher",0);
+        target.put("dreadScale",0);
+        target.put("veranus",0);
+        target.put("curioCollector",0);
+        target.put("highPriestAmet",0);
+        target.put("sathrovarr",1);
+        target.put("securityRover",0);
+        target.put("swampKingDred",0);
+        target.put("tombWarden",0);
+        target.put("decimation",0);
+        target.put("malygosFireball",2);
+        target.put("malygosFlamestrike",0);
+        target.put("friendlySmith",0);
+        target.put("fireBlast",2);
+        target.put("arcaneShot",2);
+        target.put("bookOfSpecters",0);
+        target.put("flamestrike",0);
+        target.put("learnDraconic",0);
+        target.put("pharaohsBlessing",1);
+        target.put("polymorph",2);
+        target.put("sprint",0);
+        target.put("strengthInNumbers",0);
+        target.put("swarmOfLocusts",0);
+        target.put("divineHymn",0);
+        target.put("bloodRazor",0);
+        target.put("fierywaraxe",0);
+        target.put("bloodClaw",0);
+        target.put("assassinBlade",0);
+        target.put("arcaniteReaper",0);
+        target.put("battleAxe",0);
+        target.put("gearBlade",0);
+        target.put("bloodFury",0);
+        target.put("dragonClaw",0);
+        target.put("ashBringer",0);
+    }
+
+    public HashMap<String, Integer> getTarget() {
+        return target;
+    }
+
+    public void setTarget(HashMap<String, Integer> target) {
+        this.target = target;
+    }
 
     public String[] getPassives() {
         return passives;

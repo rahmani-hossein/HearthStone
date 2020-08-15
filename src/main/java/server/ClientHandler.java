@@ -23,11 +23,13 @@ public class ClientHandler extends Thread {
     private boolean alive = true;
     private Socket socket;
     private GameServer gameServer;
+    private Game game;
     private String clientName;
     private PrintStream printer;
     private ObjectMapper objectMapper = new ObjectMapper();
     private LogicHandler logicHandler;
     private GameState gameState;
+    private boolean acceptPlay;
     private String txtAddress;
 
     ClientHandler(GameServer gameServer, Socket socket) {
@@ -74,92 +76,64 @@ public class ClientHandler extends Thread {
             switch (request.getName()) {
 
                 case "token":
-                    int token = logicHandler.getPlayerManager().createToken();
-                    request.setToken(token);
-                    request.setResult(true);
-                    send(convertRequest(request));
-                    System.out.println("we send token");
+                   logicHandler.handleToken(request);
                     break;
                 case "login":
-                    String username = request.getParameters().get(0);
-                    String password = request.getParameters().get(1);
-                    boolean isAccount =false;
-                    if(request.getParameters().get(2).equals("true")){
-                        isAccount=true;
-                }
-                    System.out.println(isAccount);
-                    if (logicHandler.getPlayerManager().login(username, password, isAccount)) {
-                        GameState gameState = logicHandler.getPlayerManager().getCurrentGameState();
-                        this.gameState = gameState;
-                        if (!isAccount) {
-                            gameServer.getPlayers().add(gameState.getPlayer());
-                        }
-                        gameServer.changeState(gameState.getPlayer());
-                        ShopManager shopManager = new ShopManager(this.gameState.getPlayer());
-                        CollectionManager collectionManager = new CollectionManager(this.gameState.getPlayer());
-                        logicHandler.setShopManager(shopManager);
-                        logicHandler.setCollectionManager(collectionManager);
-                        txtAddress = String.format("src/main/userText/%s.txt", gameState.getPlayer().getUsername() + gameState.getPlayer().getPassword());
-
-                        try {
-                            String gameStateString = objectMapper.writeValueAsString(this.gameState);
-                            Request request2 = new Request(request.getToken(), "login", new ArrayList<>(), gameStateString);
-                            request2.setResult(true);
-                            send(convertRequest(request2));
-                        } catch (JsonProcessingException e) {
-                            e.printStackTrace();
-                        }
-                        System.out.println("we login player");
-                    } else {
-                        Request request2 = new Request(request.getToken(), "login", new ArrayList<>(), "");
-                        request2.setResult(false);
-                        send(convertRequest(request));
-                    }
+                 logicHandler.handleLogin(request);
                     break;
                 case "delete":
-                    try {
-                        String givenPassword = request.getParameters().get(0);
-                        Player player = objectMapper.readValue(request.getBody(), Player.class);
-                        gameServer.changeState(player);
-                        if (logicHandler.getPlayerManager().delete(givenPassword,player)){
-                            request.setBody("true");
-                            alive = false;
-                        }
-                        else {
-                            request.setBody("false");
-                        }
-                        request.setResult(true);
-                        send(convertRequest(request));
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                  logicHandler.handleDelete(request);
                     break;
                 case "logout":
-                    try {
-                        Player player = objectMapper.readValue(request.getBody(), Player.class);
-                        gameServer.changeState(player);
-                        logicHandler.getPlayerManager().exit(player);
-                        request.setResult(true);
-                        alive = false;
-                        send(convertRequest(request));
+                   logicHandler.handleLogout(request);
+                    break;
+                case "online":
+                    if (game!=null){
+                        //nothing to do
+                    }
+                    else {
+                        acceptPlay=true;
+                        checkGame(request);
+                    }
+                    break;
+                case "training":
+                    logicHandler.handleTraining(request);
+                    break;
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                case "turn":
+                    if (game!=null){
+                        game.handleTurn(request);
+                    }
+                    else {//training
+                        logicHandler.handleTurn(request);
+                    }
+                    break;
+                case "drawHand":
+                    if (game!=null){
+                        game.handleDrawHand(request);
+                    }
+                    else {// training
+                        logicHandler.handleDrawHand(request);
+                    }
+                    break;
+                case "attackWithMinion":
+                    if (game!=null){
+                        game.handleAttackWithMinion(request);
+                    }
+                    else {//training
+                        logicHandler.handleAttackWithMinion(request);
+                    }
+                    break;
+                case "attackWeapen":
+                    if (game!=null){
+                        game.handleAttackWeapen(request);
+                    }
+                    else {
+                        logicHandler.handleAttackWeapen(request);
                     }
                     break;
                 case "sellable":
-                    ArrayList<String> listSell = logicHandler.getShopManager().showSellable();
-                    String scoreBoardString = null;
-                    try {
-                        scoreBoardString = objectMapper.writeValueAsString(listSell);
-                        request.setBody(scoreBoardString);
-                        request.setResult(true);
-                        send(convertRequest(request));
-                    } catch (JsonProcessingException e) {
-                        e.printStackTrace();
-                    }
-
+                  logicHandler.handleSellable(request);
                     break;
                 case "buyable":
                    logicHandler.handleBuyable(request);
@@ -204,90 +178,20 @@ public class ClientHandler extends Thread {
                     logicHandler.handleDeckNames(request);
                     break;
                 case "buy":
-                    String buyName = request.getBody();
-                    if (logicHandler.getShopManager().canBuy(buyName)) {
-
-                        logicHandler.getShopManager().buy(buyName);
-                        try {
-                            String playerString = objectMapper.writeValueAsString(gameState.getPlayer());
-                            request.setBody(playerString);
-                            request.setResult(true);
-                            send(convertRequest(request));
-                            logicHandler.myLogger(txtAddress, "you buy " + buyName + " " + utilities.time() + "\n", true);
-                        } catch (JsonProcessingException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        ArrayList<String> parameters = new ArrayList<>();
-                        parameters.add("you can not buy");
-                        request.setParameters(parameters);
-                        request.setResult(true);
-                        send(convertRequest(request));
-                        logicHandler.myLogger(txtAddress, "you can not buy " + buyName + " " + utilities.time() + "\n", true);
-                    }
+                  logicHandler.handleBuy(request);
                     break;
                 case "sell":
-                    String name = request.getBody();
-                    if (logicHandler.getShopManager().canSell(name)) {
-
-                        logicHandler.getShopManager().sell(name);
-                        try {
-                            String playerString = objectMapper.writeValueAsString(gameState.getPlayer());
-                            request.setBody(playerString);
-                            request.setResult(true);
-                            send(convertRequest(request));
-                            logicHandler.myLogger(txtAddress, "you sell " + name + " " + utilities.time() + "\n", true);
-                        } catch (JsonProcessingException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        ArrayList<String> parameters = new ArrayList<>();
-                        parameters.add("you can not sell");
-                        request.setParameters(parameters);
-                        request.setResult(true);
-                        send(convertRequest(request));
-                        logicHandler.myLogger(txtAddress, "you can not sell " + name + " " + utilities.time() + "\n", true);
-                    }
+                   logicHandler.handleSell(request);
                     break;
                 case "information":
-                    ArrayList<String> infoForHandle = new ArrayList<>();
-                    String cardName = request.getBody();
-                    infoForHandle.add(cardName);
-                    infoForHandle.add("" + gameServer.getServerConstants().getCostsMap().get(cardName));
-                    infoForHandle.add(gameServer.getServerConstants().getTypes().get(cardName));
-                    infoForHandle.add(logicHandler.getCardManager().tellRarity(cardName));
-                    request.setParameters(infoForHandle);
-                    request.setResult(true);
-                    send(convertRequest(request));
+                   logicHandler.handleInformation(request);
                     break;
 
                 case "infoCollection":
-                    ArrayList<String> info = new ArrayList<>();
-                    cardName = request.getBody();
-                    info.add(cardName);
-                    info.add("" + gameServer.getServerConstants().getCostsMap().get(cardName));
-                    info.add(gameServer.getServerConstants().getTypes().get(cardName));
-                    info.add(logicHandler.getCardManager().tellRarity(cardName));
-                    request.setParameters(info);
-                    request.setResult(true);
-                    send(convertRequest(request));
+                   logicHandler.handleInfoCollection(request);
                     break;
                 case "buyCollection":
-                    String buyNameCollection = request.getBody();
-                    if (logicHandler.getShopManager().canBuy(buyNameCollection)) {
-                        request.setBody("true");
-                        request.setResult(true);
-                        send(convertRequest(request));
-                        logicHandler.myLogger(txtAddress, "you can  buy " + buyNameCollection + "  go to shop " + utilities.time() + "\n", true);
-
-                    } else {
-                        ArrayList<String> parameters = new ArrayList<>();
-                        parameters.add("you can not buy");
-                        request.setParameters(parameters);
-                        request.setResult(true);
-                        send(convertRequest(request));
-                        logicHandler.myLogger(txtAddress, "you can not buy " + buyNameCollection + " " + utilities.time() + "\n", true);
-                    }
+                   logicHandler.handleBuyCollection(request);
                     break;
                 case "top10":
                     logicHandler.handleTop10(request);
@@ -298,7 +202,37 @@ public class ClientHandler extends Thread {
 
 
     }
+    private void checkGame(Request request) {
+        try {
+            gameServer.getSemaphore().acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if (logicHandler.validForGame(request)) {
+            gameServer.getAcceptForPlay().add(this);
+            if (gameServer.getAcceptForPlay().size() == 2) {
+                ClientHandler waited = gameServer.getAcceptForPlay().remove(0);
+                request.setResult(true);
+                Game game = new Game(waited, gameServer.getAcceptForPlay().remove(0), request, gameServer.getUnhandled(), gameServer);
+                this.game = game;
+                waited.setGame(game);
+                gameServer.getAvailableGames().add(game);
+            }
+            if (gameServer.getAcceptForPlay().size() == 1) {
 
+                Request request1 = new Request(request.getToken(), "waiting", null, request.getBody());
+                request1.setResult(true);
+                gameServer.setUnhandled(request1);
+                send(convertRequest(request1));
+            }
+        }
+        else {
+            Request request1 = new Request(request.getToken(), "notValid", null, request.getBody());
+            request1.setResult(true);
+            send(convertRequest(request1));
+        }
+        gameServer.getSemaphore().release();
+    }
 
     private <A> A getObject(Class<A> aClass, String jsonValue) {
         try {
@@ -366,5 +300,25 @@ public class ClientHandler extends Thread {
 
     public void setTxtAddress(String txtAddress) {
         this.txtAddress = txtAddress;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
+
+    public boolean isAcceptPlay() {
+        return acceptPlay;
+    }
+
+    public void setAcceptPlay(boolean acceptPlay) {
+        this.acceptPlay = acceptPlay;
     }
 }

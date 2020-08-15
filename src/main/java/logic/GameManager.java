@@ -210,6 +210,7 @@ public class GameManager {
                 checkGameState();
             }
         }
+        minion.setAttackInRound(1);
     }
 
     public void drawMinion(Minion minion, GamePlayer freind, GamePlayer enemy, Attackable target) {

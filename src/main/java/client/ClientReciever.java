@@ -9,6 +9,8 @@ import model.Player;
 import model.Request;
 import swing.Collection;
 import swing.GamePanel;
+import swing.Listener.OnlineListener;
+import swing.Listener.TrainingListener;
 import swing.Menu;
 import swing.Shop;
 
@@ -71,27 +73,52 @@ public class ClientReciever extends Thread {
                 case "delete":
                     clientLogic.receiveDelete(request);
                     break;
-                case "move":
-                    GameState myGameState = getObject(GameState.class, request.getBody());
 
-                    Controller.getInstance().getGamePanel().repaint();
-                    Controller.getInstance().getGamePanel().revalidate();
-                    System.out.println("after repainting");
-
-                    break;
                 case "waiting":
-                    Controller.getInstance().setHaveOpponent(true);
-                    JOptionPane.showMessageDialog(Controller.getInstance().getMyFrame(), "wait for enother client ", "play waiting", JOptionPane.INFORMATION_MESSAGE);
+
+                        Controller.getInstance().setHaveOpponent(true);
+                        JOptionPane.showMessageDialog(Controller.getInstance().getMyFrame(), "wait for another client ", "play waiting", JOptionPane.INFORMATION_MESSAGE);
+
                     break;
-                case "play":
+                case "notValid":
+                    JOptionPane.showMessageDialog(Controller.getInstance().getMyFrame(), " you are not allowed", "error", JOptionPane.ERROR_MESSAGE);
+                    break;
+                case "online":
                     GameState gameState = getObject(GameState.class, request.getBody());
                     if (gameState != null) {
                         Controller.getInstance().setGameState(gameState);
-                        // Controller.getInstance().getMyFrame().getLock().notify();
-                        GamePanel gamePanel = new GamePanel(Controller.getInstance().getClientConstants().getPanelWidth(), Controller.getInstance().getClientConstants().getPanelHeight(), Controller.getInstance().getGameState());
+                        OnlineListener onlineListener=new OnlineListener();
+                        GamePanel gamePanel = new GamePanel(Controller.getInstance().getClientConstants().getPanelWidth(), Controller.getInstance().getClientConstants().getPanelHeight(), Controller.getInstance().getGameState(),onlineListener);
+                        onlineListener.setGamePanel(gamePanel);
                         Controller.getInstance().setGamePanel(gamePanel);
                         Controller.getInstance().getMyFrame().getMainpanel().add(gamePanel, "gamepanel");
                         Controller.getInstance().getMyFrame().setPanel("gamepanel");
+                    } else {
+                        JOptionPane.showMessageDialog(Controller.getInstance().getMyFrame(), "error getting gamestate", "networkError", JOptionPane.ERROR_MESSAGE);
+                    }
+                    break;
+                case "training":
+                    GameState gameState1 = getObject(GameState.class, request.getBody());
+                    if (gameState1 != null) {
+                        Controller.getInstance().setGameState(gameState1);
+                       TrainingListener trainingListener= new TrainingListener();
+                        GamePanel gamePanel = new GamePanel(Controller.getInstance().getClientConstants().getPanelWidth(), Controller.getInstance().getClientConstants().getPanelHeight(), Controller.getInstance().getGameState(),trainingListener);
+                        trainingListener.setGamePanel(gamePanel);
+                        Controller.getInstance().setGamePanel(gamePanel);
+                        Controller.getInstance().getMyFrame().getMainpanel().add(gamePanel, "gamepanel");
+                        Controller.getInstance().getMyFrame().setPanel("gamepanel");
+                    } else {
+                        JOptionPane.showMessageDialog(Controller.getInstance().getMyFrame(), "error getting gamestate", "networkError", JOptionPane.ERROR_MESSAGE);
+                    }
+                    break;
+                case "drawHand":
+                case "attackWithMinion":
+                case "attackWeapen":
+                case "turn":
+                    GameState gameState2= getObject(GameState.class, request.getBody());
+                    if (gameState2 != null) {
+                        Controller.getInstance().setGameState(gameState2);
+                       Controller.getInstance().getGamePanel().exclusiveRepaint();
                     } else {
                         JOptionPane.showMessageDialog(Controller.getInstance().getMyFrame(), "error getting gamestate", "networkError", JOptionPane.ERROR_MESSAGE);
                     }

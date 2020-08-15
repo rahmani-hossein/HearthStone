@@ -1,17 +1,11 @@
 package logic;
 
 import model.GameState;
-import CLI.LogicMapper;
 import model.Player;
 import CLI.utilities;
-import client.Controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.*;
 import server.GameServer;
-import swing.Collection;
-import swing.Menu;
-import swing.Shop;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -21,9 +15,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
-
 import static CLI.utilities.time;
-import static swing.MyFrame.MENU_PANEL;
 
 public class PlayerManager {
 

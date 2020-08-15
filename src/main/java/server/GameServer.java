@@ -18,13 +18,9 @@ public class GameServer extends Thread{
     private ServerConstants serverConstants;
     private ServerSocket serverSocket;
     private ArrayList<ClientHandler> clients;
-
-
-
-
+    private ArrayList<Game> availableGames =new ArrayList<>();
     private ArrayList<Player> players ;
     private ArrayList<ClientHandler> acceptForPlay=new ArrayList<>();
-   // private ArrayList<Game> availableGames =new ArrayList<>();
     private ObjectMapper objectMapper= new ObjectMapper();
     private Semaphore semaphore=new Semaphore(1);
     private Request unhandled=null;
@@ -82,7 +78,7 @@ public class GameServer extends Thread{
         if (i!=-1) {
 //            players.get(i).setState(player.getState());
 //            players.get(i).getAvailableDecks().get(getDeck(player)).setCup(player.getCurrentDeck().getCup());
-            players.set(getIndex(players,player),player);
+            players.set(i,player);
         }
         else {
             System.out.println("unvalid index");
@@ -138,5 +134,29 @@ public class GameServer extends Thread{
 
     public void setUnhandled(Request unhandled) {
         this.unhandled = unhandled;
+    }
+
+    public ArrayList<Game> getAvailableGames() {
+        return availableGames;
+    }
+
+    public void setAvailableGames(ArrayList<Game> availableGames) {
+        this.availableGames = availableGames;
+    }
+
+    public ArrayList<ClientHandler> getAcceptForPlay() {
+        return acceptForPlay;
+    }
+
+    public void setAcceptForPlay(ArrayList<ClientHandler> acceptForPlay) {
+        this.acceptForPlay = acceptForPlay;
+    }
+
+    public Semaphore getSemaphore() {
+        return semaphore;
+    }
+
+    public void setSemaphore(Semaphore semaphore) {
+        this.semaphore = semaphore;
     }
 }
