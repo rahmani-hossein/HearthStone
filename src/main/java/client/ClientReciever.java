@@ -115,10 +115,18 @@ public class ClientReciever extends Thread {
                 case "attackWithMinion":
                 case "attackWeapen":
                 case "turn":
+                case "playPanel":
                     GameState gameState2= getObject(GameState.class, request.getBody());
                     if (gameState2 != null) {
                         Controller.getInstance().setGameState(gameState2);
+                        Controller.getInstance().getGamePanel().setGameState(Controller.getInstance().getGameState());
                        Controller.getInstance().getGamePanel().exclusiveRepaint();
+                        System.out.println("****");
+                        System.out.println(Controller.getInstance().getGamePanel().getGameState().getFreind().getGround().size());
+                        for (int i = 0; i < gameState2.getFreind().getGround().size(); i++) {
+                            gameState2.getFreind().getGround().get(i);
+                        }
+                        System.out.println("****");
                     } else {
                         JOptionPane.showMessageDialog(Controller.getInstance().getMyFrame(), "error getting gamestate", "networkError", JOptionPane.ERROR_MESSAGE);
                     }

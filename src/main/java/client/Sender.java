@@ -21,6 +21,7 @@ public class Sender {
         printWriter.println(message);
         System.out.println("we send "+message);
 
+
     }
 
     private String convertRequest(Request request){

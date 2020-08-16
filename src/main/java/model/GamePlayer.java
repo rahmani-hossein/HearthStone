@@ -30,8 +30,8 @@ private String nameOfPlayer;
         this.hero = hero;
     }
 
-
-
+    public GamePlayer() {
+    }
 
     public ArrayList<card> getInitCard() {
         return initCard;

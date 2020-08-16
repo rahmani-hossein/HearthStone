@@ -1,6 +1,8 @@
 package swing.Listener;
 
 import client.Controller;
+import model.Deck;
+import model.Player;
 import model.Request;
 
 import javax.swing.*;
@@ -46,8 +48,13 @@ public class MenuListener implements MouseListener {
             String cur = (String) menu.getDecks().getItemAt(menu.getDecks().getSelectedIndex());
             String passive=(String) menu.getPassives().getItemAt(menu.getPassives().getSelectedIndex());
             String  deckReader = menu.getReader().getText();
+            Controller.getInstance().getGameState().getPlayer().setCurrentDeck(findDeck(Controller.getInstance().getGameState().getPlayer(),cur));
             ArrayList<String> parameters= new ArrayList<>();
-            parameters.add(deckReader);
+            if (deckReader!=null&&deckReader.length()>=2){
+                parameters.add(deckReader);
+            }else {
+                parameters.add(" ");
+            }
             parameters.add(cur);
             parameters.add(passive);
             parameters.add(Controller.getInstance().getGameState().getPlayer().getCurrentDeck().getCup()+"");
@@ -86,5 +93,13 @@ public class MenuListener implements MouseListener {
 
     }
 
-
+    private Deck findDeck(Player player, String deck) {
+        for (int i = 0; i < player.getAvailableDecks().size(); i++) {
+            Deck Mydeck = player.getAvailableDecks().get(i);
+            if (Mydeck.getName().equalsIgnoreCase(deck)) {
+                return Mydeck;
+            }
+        }
+        return null;
+    }
 }

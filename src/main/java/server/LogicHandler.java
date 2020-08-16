@@ -1,7 +1,6 @@
 package server;
 
 import CLI.GameMaker;
-import CLI.LogicMapper;
 import CLI.utilities;
 import Interfaces.Attackable;
 import client.Controller;
@@ -9,6 +8,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import logic.*;
 import model.*;
+
 import javax.swing.*;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -384,17 +384,16 @@ public class LogicHandler {
         }
     }
 
-    void handleDelete(Request request){
+    void handleDelete(Request request) {
         try {
             String givenPassword = request.getParameters().get(0);
             Player player = objectMapper.readValue(request.getBody(), Player.class);
             gameServer.changeState(player);
             fileWriter.close();
-            if (playerManager.delete(givenPassword,player)){
+            if (playerManager.delete(givenPassword, player)) {
                 request.setBody("true");
                 clientHandler.setAlive(false);
-            }
-            else {
+            } else {
                 request.setBody("false");
             }
             request.setResult(true);
@@ -408,9 +407,9 @@ public class LogicHandler {
     void handleLogin(Request request) {
         String username = request.getParameters().get(0);
         String password = request.getParameters().get(1);
-        boolean isAccount =false;
-        if(request.getParameters().get(2).equals("true")){
-            isAccount=true;
+        boolean isAccount = false;
+        if (request.getParameters().get(2).equals("true")) {
+            isAccount = true;
         }
         System.out.println(isAccount);
         if (playerManager.login(username, password, isAccount)) {
@@ -451,27 +450,42 @@ public class LogicHandler {
         System.out.println("we send token");
     }
 
-    void handleTraining(Request request){
-        clientHandler.setGameState(getObject(GameState.class,request.getBody()));
-        gameManager= new GameManager(clientHandler.getGameState());
-        gameMaker=new GameMaker(clientHandler.getGameState().getPlayer(),request.getParameters().get(0),request.getParameters().get(1),clientHandler.getGameState(),request.getParameters().get(2));
+    void handleTraining(Request request) {
+        GameState gameState = getObject(GameState.class, request.getBody());
+        gameMaker = new GameMaker(gameState.getPlayer(), request.getParameters().get(0), request.getParameters().get(1), clientHandler.getGameState(), request.getParameters().get(2));
         gameMaker.buildGameState1();
         gameMaker.buildPassive1();
-       setBody(request,clientHandler.getGameState());
+        gameManager = new GameManager(gameMaker.getGameState1());
+        gameManager.setTxtAddress(clientHandler.getTxtAddress());
+        setBody(request, gameManager.getGameState());
+        System.out.println("asdfghjkl");
+        System.out.println(request.getBody());
+        System.out.println("deohu;jm");
         request.setResult(true);
         clientHandler.send(clientHandler.convertRequest(request));
         myLogger(clientHandler.getTxtAddress(), "you start training game" + " " + utilities.time() + "\n", true);
     }
 
     void handleDrawHand(Request request) {
-       handleDrawAction(request);
+        handleDrawAction(request);
         clientHandler.send(clientHandler.convertRequest(request));
     }
-    void handleDrawAction(Request request){
+
+    void handleDrawAction(Request request) {
+        // gameManager.setGameState(getObject(GameState.class,request.getParameters().get(0)));
+        // clientHandler.setGameState(getObject(GameState.class,request.getParameters().get(0)));
         GamePacket gamePacket = getObject(GamePacket.class, request.getBody());
+        int nobat= getNobat(gamePacket.getHasTurn());
         if (gamePacket != null) {
-            gameManager.drawCardFromHand(gamePacket.getHasTurn(), gamePacket.getNoTurn(), gamePacket.getCard(), gamePacket.getTarget());
+            System.out.println(getCard(gamePacket.getCard(),nobat));
+            gameManager.drawCardFromHand(getGamePlayer(gamePacket.getHasTurn()), getGamePlayer(gamePacket.getNoTurn()), getCard(gamePacket.getCard(),nobat), getTarget(gamePacket.getTarget(),nobat));
             setBody(request, gameManager.getGameState());
+
+            System.out.println("****");
+            for (Minion minion : gameManager.getGameState().getFreind().getGround()) {
+                System.out.println(minion);
+            }
+            System.out.println("*****");
             request.setResult(true);
             myLogger(clientHandler.getTxtAddress(), "you draw  a card from hand" + " " + utilities.time() + "\n", true);
         } else {
@@ -481,13 +495,17 @@ public class LogicHandler {
     }
 
     void handleAttackWithMinion(Request request) {
-      handleAttackMinionAction(request);
+        handleAttackMinionAction(request);
         clientHandler.send(clientHandler.convertRequest(request));
     }
-    void handleAttackMinionAction(Request request){
+
+    void handleAttackMinionAction(Request request) {
+        // gameManager.setGameState(getObject(GameState.class,request.getParameters().get(0)));
+        // clientHandler.setGameState(getObject(GameState.class,request.getParameters().get(0)));
         GamePacket gamePacket = getObject(GamePacket.class, request.getBody());
+        int nobat= getNobat(gamePacket.getHasTurn());
         if (gamePacket != null) {
-            gameManager.attackWithMinion((Minion) gamePacket.getCard(), gamePacket.getHasTurn(), gamePacket.getNoTurn(), gamePacket.getTarget());
+            gameManager.attackWithMinion((Minion) getCard((Minion) gamePacket.getCard(),nobat), getGamePlayer(gamePacket.getHasTurn()),getGamePlayer( gamePacket.getNoTurn()), getTarget(gamePacket.getTarget(),nobat));
             setBody(request, gameManager.getGameState());
             request.setResult(true);
             myLogger(clientHandler.getTxtAddress(), "you draw  a card from hand" + " " + utilities.time() + "\n", true);
@@ -498,9 +516,12 @@ public class LogicHandler {
     }
 
     void handleAttackWeapen(Request request) {
+        //  gameManager.setGameState(getObject(GameState.class,request.getParameters().get(0)));
+        //  clientHandler.setGameState(getObject(GameState.class,request.getParameters().get(0)));
         GamePacket gamePacket = getObject(GamePacket.class, request.getBody());
         if (gamePacket != null) {
-            gameManager.attackWithWeapen(gamePacket.getHasTurn(), gamePacket.getNoTurn(), gamePacket.getTarget());
+            int nobat=getNobat(gamePacket.getHasTurn());
+            gameManager.attackWithWeapen(getGamePlayer(gamePacket.getHasTurn()), getGamePlayer(gamePacket.getNoTurn()), getTarget(gamePacket.getTarget(),nobat));
             setBody(request, gameManager.getGameState());
             request.setResult(true);
             myLogger(clientHandler.getTxtAddress(), "you attack with weapen" + " " + utilities.time() + "\n", true);
@@ -510,23 +531,204 @@ public class LogicHandler {
         }
         clientHandler.send(clientHandler.convertRequest(request));
     }
-    void handleTurn(Request request){
+
+    void handleTurn(Request request) {
+        //  gameManager.setGameState(getObject(GameState.class,request.getBody()));
+        // clientHandler.setGameState(getObject(GameState.class,request.getBody()));
         gameManager.nextRound();
-        setBody(request,gameManager.getGameState());
+        setBody(request, gameManager.getGameState());
         request.setResult(true);
         myLogger(clientHandler.getTxtAddress(), " next round" + " " + utilities.time() + "\n", true);
         clientHandler.send(clientHandler.convertRequest(request));
     }
 
 
+    public boolean validForGame(Request request) {
+        int integer = Integer.parseInt(request.getParameters().get(3));
+        if (integer <= 0) {
+            return false;
+        }
+        return true;
+    }
 
 
-    public boolean validForGame(Request request){
-      int integer =Integer.parseInt(request.getParameters().get(3));
-      if (integer<=0){
-          return false;
-      }
-      return true;
+    GamePlayer getGamePlayer(GamePlayer gamePlayer) {
+        if (gamePlayer.getNameOfPlayer().equalsIgnoreCase(gameManager.getGameState().getFreind().getNameOfPlayer())) {
+            return gameManager.getGameState().getFreind();
+        }
+        if (gamePlayer.getNameOfPlayer().equalsIgnoreCase(gameManager.getGameState().getEnemy().getNameOfPlayer())) {
+            return gameManager.getGameState().getEnemy();
+        }
+        return null;
+    }
+
+    int getNobat(GamePlayer gamePlayer) {
+        if (gamePlayer.getNameOfPlayer().equalsIgnoreCase(gameManager.getGameState().getFreind().getNameOfPlayer())) {
+            return 1;
+        }
+//        else {
+//            (gamePlayer.getNameOfPlayer().equalsIgnoreCase(gameManager.getGameState().getEnemy().getNameOfPlayer()))
+//        }
+            return 2;
+
+    }
+
+    Attackable getTarget(Attackable target, int  nobat){
+        if (target!=null&&nobat>0){
+           if (nobat==1){//nobat friend hast
+               if (target instanceof Hero){
+                    return gameManager.getGameState().getEnemy().getHero();
+               }
+               else if (target instanceof Minion) {
+                   if (gameManager.getGameState().getEnemy().getGround()!=null) {
+                       for (Minion minion : gameManager.getGameState().getEnemy().getGround()) {
+                           if (((Minion) target).getName().equalsIgnoreCase(minion.getName()) && ((Minion) target).getManaCost() == minion.getManaCost() &&
+                                   ((Minion) target).getLiveInRound() == minion.getLiveInRound() && ((Minion) target).getDamage() == minion.getDamage() &&
+                                   (((Minion) target).getHealth() == minion.getHealth())) {
+                               return minion;
+                           }
+                       }
+                   }
+                    if (gameManager.getGameState().getFreind().getGround()!=null) {
+                        for (Minion minion : gameManager.getGameState().getFreind().getGround()) {
+                            if (((Minion) target).getName().equalsIgnoreCase(minion.getName()) && ((Minion) target).getManaCost() == minion.getManaCost() &&
+                                    ((Minion) target).getLiveInRound() == minion.getLiveInRound() && ((Minion) target).getDamage() == minion.getDamage() &&
+                                    (((Minion) target).getHealth() == minion.getHealth())) {
+                                return minion;
+                            }
+                        }
+                    }
+                    if(gameManager.getGameState().getEnemy().getHand()!=null) {
+                        for (card card : gameManager.getGameState().getEnemy().getHand()) {
+                            if (card instanceof Minion) {
+                                if (((Minion) target).getName().equalsIgnoreCase(card.getName()) && ((Minion) target).getManaCost() == card.getManaCost() &&
+                                        ((Minion) target).getLiveInRound() == ((Minion) card).getLiveInRound() && ((Minion) target).getDamage() == ((Minion) card).getDamage() &&
+                                        (((Minion) target).getHealth() == ((Minion) card).getHealth())) {
+                                    return (Attackable) card;
+                                }
+                            }
+                        }
+                    }
+               }
+           }
+           else {//nobat enemy
+               if (target instanceof Hero){
+                   return gameManager.getGameState().getFreind().getHero();
+               }
+               else if (target instanceof Minion) {
+                   if (gameManager.getGameState().getFreind().getGround()!=null) {
+                       for (Minion minion : gameManager.getGameState().getFreind().getGround()) {
+                           if (((Minion) target).getName().equalsIgnoreCase(minion.getName()) && ((Minion) target).getManaCost() == minion.getManaCost() &&
+                                   ((Minion) target).getLiveInRound() == minion.getLiveInRound() && ((Minion) target).getDamage() == minion.getDamage() &&
+                                   (((Minion) target).getHealth() == minion.getHealth())) {
+                               return minion;
+                           }
+                       }
+                   }
+                    if (gameManager.getGameState().getEnemy().getGround()!=null) {
+                        for (Minion minion : gameManager.getGameState().getEnemy().getGround()) {
+                            if (((Minion) target).getName().equalsIgnoreCase(minion.getName()) && ((Minion) target).getManaCost() == minion.getManaCost() &&
+                                    ((Minion) target).getLiveInRound() == minion.getLiveInRound() && ((Minion) target).getDamage() == minion.getDamage() &&
+                                    (((Minion) target).getHealth() == minion.getHealth())) {
+                                return minion;
+                            }
+                        }
+                    }
+                    if (gameManager.getGameState().getFreind().getHand()!=null) {
+                        for (card card : gameManager.getGameState().getFreind().getHand()) {
+                            if (card instanceof Minion) {
+                                if (((Minion) target).getName().equalsIgnoreCase(card.getName()) && ((Minion) target).getManaCost() == card.getManaCost() &&
+                                        ((Minion) target).getLiveInRound() == ((Minion) card).getLiveInRound() && ((Minion) target).getDamage() == ((Minion) card).getDamage() &&
+                                        (((Minion) target).getHealth() == ((Minion) card).getHealth())) {
+                                    return (Attackable) card;
+                                }
+                            }
+                        }
+                    }
+               }
+           }
+        }
+        else {
+            return null;
+        }
+        return null;
+    }
+
+    card getCard(card card, int nobat) {
+        if (nobat==1) {
+           return checkFriend(card);
+        }
+        else {
+           return checkEnemy(card);
+        }
+    }
+
+    card checkEnemy(card card) {
+        if (gameManager.getGameState().getEnemy().getHand()!=null) {
+            for (card cardMoredNazar : gameManager.getGameState().getEnemy().getHand()) {
+                if (card.getName().equalsIgnoreCase(cardMoredNazar.getName()) && card.getManaCost() == cardMoredNazar.getManaCost()) {
+                    if (card instanceof Minion && cardMoredNazar instanceof Minion) {
+                        if (((Minion) card).getDamage() == ((Minion) cardMoredNazar).getDamage() && ((Minion) card).getHealth() == ((Minion) cardMoredNazar).getHealth() && ((Minion) card).getLiveInRound() == ((Minion) cardMoredNazar).getLiveInRound()) {
+                            return cardMoredNazar;
+                        }
+                    }
+                    if (card instanceof weapen && cardMoredNazar instanceof weapen) {
+                        if (((weapen) card).getDamage() == ((weapen) cardMoredNazar).getDamage() && ((weapen) card).getDurability() == ((weapen) cardMoredNazar).getDurability()) {
+                            return cardMoredNazar;
+                        }
+                    }
+                    if (card instanceof spell && cardMoredNazar instanceof spell) {
+                        return cardMoredNazar;
+                    }
+                }
+            }
+        }
+        if (card instanceof Minion&&gameManager.getGameState().getEnemy().getGround()!=null) {
+            for (Minion minion : gameManager.getGameState().getEnemy().getGround()) {
+                if (card.getName().equalsIgnoreCase(minion.getName()) && card.getManaCost() == minion.getManaCost() &&
+                        ((Minion) card).getLiveInRound() == minion.getLiveInRound() && ((Minion) card).getDamage() == minion.getDamage() &&
+                        ((Minion) card).getHealth() == minion.getHealth()) {
+                    return minion;
+                }
+            }
+        }
+        return null;
+    }
+
+    card checkFriend(card card) {
+        System.out.println(card);
+        if (gameManager.getGameState().getFreind().getHand()!=null) {
+            for (card cardMoredNazar : gameManager.getGameState().getFreind().getHand()) {
+                if (card.getName().equalsIgnoreCase(cardMoredNazar.getName()) && card.getManaCost() == cardMoredNazar.getManaCost()) {
+                    if (card instanceof Minion && cardMoredNazar instanceof Minion) {
+                        if (((Minion) card).getDamage() == ((Minion) cardMoredNazar).getDamage() && ((Minion) card).getHealth() == ((Minion) cardMoredNazar).getHealth() && ((Minion) card).getLiveInRound() == ((Minion) cardMoredNazar).getLiveInRound()) {
+                            System.out.println("success");
+                            return cardMoredNazar;
+
+                        }
+                    }
+                    if (card instanceof weapen && cardMoredNazar instanceof weapen) {
+                        if (((weapen) card).getDamage() == ((weapen) cardMoredNazar).getDamage() && ((weapen) card).getDurability() == ((weapen) cardMoredNazar).getDurability()) {
+                            return cardMoredNazar;
+                        }
+                    }
+                    if (card instanceof spell && cardMoredNazar instanceof spell) {
+                        return cardMoredNazar;
+                    }
+                }
+
+            }
+        }
+        if (card instanceof Minion&&gameManager.getGameState().getFreind().getGround()!=null) {
+            for (Minion minion : gameManager.getGameState().getFreind().getGround()) {
+                if (card.getName().equalsIgnoreCase(minion.getName()) && card.getManaCost() == minion.getManaCost() &&
+                        ((Minion) card).getLiveInRound() == minion.getLiveInRound() && ((Minion) card).getDamage() == minion.getDamage() &&
+                        ((Minion) card).getHealth() == minion.getHealth()) {
+                    return minion;
+                }
+            }
+        }
+        return null;
     }
 
     private <A> A getObject(Class<A> aClass, String jsonValue) {
@@ -538,7 +740,7 @@ public class LogicHandler {
         return null;
     }
 
-    private <A> void setBody(Request request, A Object) {
+     <A> void setBody(Request request, A Object) {
         try {
             String ObjectString = objectMapper.writeValueAsString(Object);
             request.setBody(ObjectString);
@@ -556,25 +758,15 @@ public class LogicHandler {
     }
 
     public void myLogger(String fileName, String write, boolean append) {
-        //lazy
-        if (fileWriter!=null){
-
-        }else {
-            try {
-                fileWriter = new FileWriter(fileName, append);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
 
         try {
+            fileWriter = new FileWriter(fileName, append);
             fileWriter.write(write);
             fileWriter.flush();
+            fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
     }
 

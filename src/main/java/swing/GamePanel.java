@@ -3,7 +3,6 @@ package swing;
 import client.ClientConstants;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import model.GameState;
-import CLI.LogicMapper;
 import CLI.utilities;
 import client.Controller;
 import logic.Constans;
@@ -26,7 +25,6 @@ public class GamePanel extends JPanel  {
     private ClientConstants constans = Controller.getInstance().getClientConstants();
     private Controller controller = Controller.getInstance();
     private GameListener gameListener;
-    private LogicMapper logicMapper = controller.getLogicMapper();
     //graphic items
     private PlayPanel init;
     private JButton nextTurn;
@@ -54,8 +52,9 @@ public class GamePanel extends JPanel  {
         setBackButton();
         setExitButton();
         setBackground(Color.pink);
-        init = new PlayPanel(constans.getGroundX(), constans.getMinYGame(), constans.getPanelWidth() - constans.getGroundX(), constans.getMaxYGame(), gameState.getFreind(), this);
-
+        if (gameListener instanceof TrainingListener) {
+            init = new PlayPanel(constans.getGroundX(), constans.getMinYGame(), constans.getPanelWidth() - constans.getGroundX(), constans.getMaxYGame(), gameState.getFreind(), this);
+        }
     }
 
     private void updateGameStateForPainting() {
@@ -158,7 +157,10 @@ public class GamePanel extends JPanel  {
         add(nextTurn);
     }
     private void sendTurnRequest(){
-        Request request =new Request(Controller.getInstance().getClient().getToken(),"turn",null,"");
+
+       // String body =Controller.getInstance().getStringValueOfGameState(Controller.getInstance().getGameState());
+      String body="";
+        Request request =new Request(Controller.getInstance().getClient().getToken(),"turn",null,body);
         Controller.getInstance().getClient().getSender().send(request);
     }
 
@@ -189,6 +191,17 @@ public class GamePanel extends JPanel  {
         }
         g.setColor(Color.BLACK);
     }
+    private void paintWeapens(Graphics g){
+        if (gameState.getFreind().getMyWeapen()!=null){
+            freindWeapen =new Picture(constans.getFreindHeroX()-5*(constans.getSad()/4), constans.getFriendHeroY(),gameState.getFreind().getMyWeapen());
+            freindWeapen.paint(g);
+        }
+        if (gameState.getEnemy().getMyWeapen()!=null){
+            enemyWeapen= new Picture(constans.getEnemyHeroX()-5*(constans.getSad()/4),constans.getEnemyHeroY(),gameState.getEnemy().getMyWeapen());
+            enemyWeapen.paint(g);
+        }
+
+    }
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -202,6 +215,7 @@ public class GamePanel extends JPanel  {
         paintGrounds(g);
         freind.paintHero(g);
         enemy.paintHero(g);
+        paintWeapens(g);
 
 
     }
@@ -242,12 +256,6 @@ public class GamePanel extends JPanel  {
         for (int i = 0; i < enemyGround.size(); i++) {
             enemyGround.get(i).paint(g);
         }
-        if (freindWeapen != null) {
-            freindWeapen.paint(g);
-        }
-        if (enemyWeapen != null) {
-            enemyWeapen.paint(g);
-        }
     }
 
     public void exclusiveRepaint() {
@@ -255,12 +263,15 @@ public class GamePanel extends JPanel  {
         target = null;
         repaint();
         revalidate();
+        System.out.println("we do exclusive repaint");
     }
 
     private void sendDrawHandRequest(GamePacket gamePacket){
         try {
+            ArrayList<String> par =new ArrayList<>();
+           // par.add(Controller.getInstance().getStringValueOfGameState(Controller.getInstance().getGameState()));
             String gamePacketString = Controller.getInstance().getObjectMapper().writeValueAsString(gamePacket);
-            Request request = new Request(Controller.getInstance().getClient().getToken(),"drawHand",null,gamePacketString);
+            Request request = new Request(Controller.getInstance().getClient().getToken(),"drawHand",par,gamePacketString);
             Controller.getInstance().getClient().getSender().send(request);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -269,8 +280,10 @@ public class GamePanel extends JPanel  {
     }
     private void sendAttackWithMinionRequest(GamePacket gamePacket){
         try {
+            ArrayList<String> par =new ArrayList<>();
+          //  par.add(Controller.getInstance().getStringValueOfGameState(Controller.getInstance().getGameState()));
             String gamePacketString = Controller.getInstance().getObjectMapper().writeValueAsString(gamePacket);
-            Request request = new Request(Controller.getInstance().getClient().getToken(),"attackWithMinion",null,gamePacketString);
+            Request request = new Request(Controller.getInstance().getClient().getToken(),"attackWithMinion",par,gamePacketString);
             Controller.getInstance().getClient().getSender().send(request);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -278,8 +291,10 @@ public class GamePanel extends JPanel  {
     }
     private void sendAttackWeapenRequest(GamePacket gamePacket){
         try {
+            ArrayList<String> par =new ArrayList<>();
+           // par.add(Controller.getInstance().getStringValueOfGameState(Controller.getInstance().getGameState()));
             String gamePacketString = Controller.getInstance().getObjectMapper().writeValueAsString(gamePacket);
-            Request request = new Request(Controller.getInstance().getClient().getToken(),"attackWeapen",null,gamePacketString);
+            Request request = new Request(Controller.getInstance().getClient().getToken(),"attackWeapen",par,gamePacketString);
             Controller.getInstance().getClient().getSender().send(request);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -547,10 +562,6 @@ public class GamePanel extends JPanel  {
 
     }
 
-    private void doLog(String log, GamePlayer gamePlayer) {
-        String st1 = String.format("%s.txt", Controller.getInstance().getGameState().getPlayer().getUsername() + Controller.getInstance().getGameState().getPlayer().getPassword());
-        Controller.getInstance().myLogger(st1, gamePlayer.getNameOfPlayer() + " " + log + " " + utilities.time() + "\n", true);
-    }
     //getter& setter
 
     public GameState getGameState() {
@@ -575,14 +586,6 @@ public class GamePanel extends JPanel  {
 
     public void setController(Controller controller) {
         this.controller = controller;
-    }
-
-    public LogicMapper getLogicMapper() {
-        return logicMapper;
-    }
-
-    public void setLogicMapper(LogicMapper logicMapper) {
-        this.logicMapper = logicMapper;
     }
 
     public PlayPanel getInit() {

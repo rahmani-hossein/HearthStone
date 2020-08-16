@@ -1,6 +1,6 @@
 package swing.Listener;
 
-import CLI.LogicMapper;
+
 import model.*;
 import swing.GamePanel;
 import swing.button.Picture;

@@ -98,8 +98,16 @@ public class ClientHandler extends Thread {
                     break;
                 case "training":
                     logicHandler.handleTraining(request);
+                    System.out.println("after training");
                     break;
 
+                case "playPanel":
+                    logicHandler.getGameManager().setGameState(getObject(GameState.class,request.getBody()));
+                    logicHandler.setBody(request,logicHandler.getGameManager().getGameState());
+                    request.setResult(true);
+                    send(convertRequest(request));
+
+                    break;
                 case "turn":
                     if (game!=null){
                         game.handleTurn(request);
@@ -220,9 +228,9 @@ public class ClientHandler extends Thread {
             }
             if (gameServer.getAcceptForPlay().size() == 1) {
 
-                Request request1 = new Request(request.getToken(), "waiting", null, request.getBody());
+                Request request1 = new Request(request.getToken(), "waiting", request.getParameters(), request.getBody());
                 request1.setResult(true);
-                gameServer.setUnhandled(request1);
+                gameServer.setUnhandled(request);
                 send(convertRequest(request1));
             }
         }
@@ -320,5 +328,13 @@ public class ClientHandler extends Thread {
 
     public void setAcceptPlay(boolean acceptPlay) {
         this.acceptPlay = acceptPlay;
+    }
+
+    public LogicHandler getLogicHandler() {
+        return logicHandler;
+    }
+
+    public void setLogicHandler(LogicHandler logicHandler) {
+        this.logicHandler = logicHandler;
     }
 }

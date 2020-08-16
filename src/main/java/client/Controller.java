@@ -34,7 +34,6 @@ public class Controller {
     private Converter converter = new Converter();
     private Constans constants;
     private ClientConstants clientConstants;
-    private LogicMapper logicMapper;
     private GamePanel gamePanel;
     private String txtAddress;
     private ObjectMapper objectMapper;
@@ -58,7 +57,16 @@ public class Controller {
     }
 
 
-    public String getStringValueOfGameState(GameState gameState) {
+    public <A> String getStringValueOfObject(A object) {
+        try {
+            String message = objectMapper.writeValueAsString(object);
+            return message;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+    public  String getStringValueOfGameState(GameState gameState) {
         try {
             String message = objectMapper.writeValueAsString(gameState);
             return message;
@@ -134,8 +142,8 @@ public class Controller {
         System.out.println("you will delete your account  if you want type your password else type something");
         ArrayList<String>parameters= new ArrayList<>();
         parameters.add(text);
-        String gameStateString = getStringValueOfGameState(Controller.getInstance().getGameState());
-        Request request = new Request(Controller.getInstance().getClient().getToken(),"delete",parameters,gameStateString);
+        String playerString = getStringValueOfObject(Controller.getInstance().getGameState().getPlayer());
+        Request request = new Request(Controller.getInstance().getClient().getToken(),"delete",parameters,playerString);
         client.getSender().send(request);
 
     }
@@ -159,14 +167,6 @@ public class Controller {
 
     public void setGamePanel(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
-    }
-
-    public LogicMapper getLogicMapper() {
-        return logicMapper;
-    }
-
-    public void setLogicMapper(LogicMapper logicMapper) {
-        this.logicMapper = logicMapper;
     }
 
     public Constans getConstants() {

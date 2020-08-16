@@ -55,9 +55,9 @@ public class PlayPanel extends JPanel {
                 for (int i = 0; i < number; i++) {
                     handleAdd(friend.getInitCard().remove(0),friend.getHand());
                 }
+                Request request= new Request(Controller.getInstance().getClient().getToken(),"playPanel",null,Controller.getInstance().getStringValueOfGameState(Controller.getInstance().getGameState()));
+                Controller.getInstance().getClient().getSender().send(request);
                 setVisible(false);
-                parent.repaint();
-                parent.revalidate();
             }
         });
         add(exit);

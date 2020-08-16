@@ -104,7 +104,7 @@ public class GameMaker {
             deckReader = new DeckReader(deckReaderAddress1);
             makeFromDeckReader(gameState1);
         } else {
-            make(gameState1);
+            make();//gamestate1
         }
     }
 
@@ -118,9 +118,11 @@ public class GameMaker {
     }
     public void makeOnlineGameStates(String deck1, Player player1,String deck2, Player player2){
         GamePlayer unhandled=online(deck1,player1);
-        buildPassive(unhandled,passive1);
+         unhandled= buildPassive(unhandled,passive1);
+         unhandled.setNameOfPlayer("player1");
         GamePlayer number2= online(deck2,player2);
-        buildPassive(number2,passive2);
+        number2 = buildPassive(number2,passive2);
+        number2.setNameOfPlayer("player2");
         gameState1.setFreind(unhandled);
         gameState1.setEnemy(number2);
         gameState2.setFreind(number2);
@@ -132,9 +134,9 @@ public class GameMaker {
     }
 // for training
     public void buildPassive1() {
-        buildPassive(gameState1.getFreind(),passive1);
+         gameState1.setFreind(buildPassive(gameState1.getFreind(),passive1));
     }
-    private void buildPassive(GamePlayer gamePlayer, String passive){
+    private GamePlayer buildPassive(GamePlayer gamePlayer, String passive){
         switch (passive) {
             case "twiceDraw":
                 gamePlayer.setCardPerRound(2);
@@ -153,7 +155,9 @@ public class GameMaker {
                 gamePlayer.setNurse(true);
                 break;
         }
+        return gamePlayer;
     }
+
 
     private void makeFromDeckReader(GameState gameState) {
         gameState.setFreind(makeGamePlayer(deckReader.getFriendListCard(), true));
@@ -161,12 +165,12 @@ public class GameMaker {
     }
 
     // making gameState gamePlayers when we do'nt have deckReader
-    private void make(GameState gameState) {
+    private void make() {
         player1.setCurrentDeck(findDeck(player1,deck1));
-        gameState.setFreind(makeGamePlayer(player1));
-        gameState.getFreind().setNameOfPlayer("friend");
-        gameState.setEnemy(makeGamePlayer(new DeckManager().buildEnemy("myEnemy")));
-        gameState.getEnemy().setNameOfPlayer("enemy");
+        gameState1.setFreind(makeGamePlayer(player1));
+        gameState1.getFreind().setNameOfPlayer("friend");
+        gameState1.setEnemy(makeGamePlayer(new DeckManager().buildEnemy("myEnemy")));
+        gameState1.getEnemy().setNameOfPlayer("enemy");
 
     }
 
@@ -180,6 +184,18 @@ public class GameMaker {
         return null;
     }
 
+    GamePlayer makeOnlineGamePlayer(Player player){
+        ArrayList<card> hand = new ArrayList<>();
+        LinkedList<Minion> ground = new LinkedList<>();
+        ArrayList<card> deck = new ArrayList<>();
+        add(player.getCurrentDeck().getMinions(), deck);
+        add(player.getCurrentDeck().getSpells(), deck);
+        add(player.getCurrentDeck().getWeapens(), deck);
+        GamePlayer gamePlayer = new GamePlayer(deck, hand, ground, new HeroCreator().createHero(player.getCurrentDeck().getDeckHero().getName()));
+        gamePlayer.setCup(player.getCurrentDeck().getCup());
+        System.out.println("we set successfully "+gamePlayer.getInitCard().size());
+        return gamePlayer;
+    }
     //maybe we want to use it later too .in coclusion we set it here public.
     public GamePlayer makeGamePlayer(Player player) {
         ArrayList<card> hand = new ArrayList<>();
@@ -246,5 +262,21 @@ public class GameMaker {
         for (int i = 0; i < types.size(); i++) {
             deck.add(types.get(i));
         }
+    }
+
+    public GameState getGameState1() {
+        return gameState1;
+    }
+
+    public void setGameState1(GameState gameState1) {
+        this.gameState1 = gameState1;
+    }
+
+    public GameState getGameState2() {
+        return gameState2;
+    }
+
+    public void setGameState2(GameState gameState2) {
+        this.gameState2 = gameState2;
     }
 }

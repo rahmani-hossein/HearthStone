@@ -5,6 +5,7 @@ import Interfaces.Attackable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import model.heroPackage.*;
 
 import java.util.Map;
@@ -21,6 +22,7 @@ import java.util.Map;
         @JsonSubTypes.Type(value = rouge.class, name = "rouge")
 
 })
+@JsonTypeName("hero")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class Hero implements Attackable {
     protected int HP;
