@@ -68,13 +68,23 @@ public class Game {
 
     void handleTurn(Request request) {
         if (request.getToken() == token1) {
-            gameManager1.nextRound();
-            updateGameStates(gameManager1, gameManager2);
-            gameManager2.getGameState().setTurn(!gameManager2.getGameState().isTurn());
-        } else if (request.getToken() == token2) {
-            gameManager2.nextRound();
-            updateGameStates(gameManager2, gameManager1);
-            gameManager1.getGameState().setTurn(!gameManager1.getGameState().isTurn());
+            if (!gameManager1.getGameState().isTurn()) {
+                gameManager1.nextRound();
+                updateGameStates(gameManager1, gameManager2);
+                gameManager2.getGameState().setTurn(!gameManager2.getGameState().isTurn());
+            }
+            else {
+                System.out.println(" it is not your turn;");
+            }
+        }else if (request.getToken() == token2) {
+            if (!gameManager2.getGameState().isTurn()) {
+                gameManager2.nextRound();
+                updateGameStates(gameManager2, gameManager1);
+                gameManager1.getGameState().setTurn(!gameManager1.getGameState().isTurn());
+            }
+            else {
+                System.out.println(" it is not your turn");
+            }
         }
         createRequests("turn");
     }
@@ -115,7 +125,6 @@ public class Game {
 
 
     private void handlerAttackWithMinion(GameManager gameManager, ClientHandler clientHandler, Request request) {
-        gameManager.setGameState(getObject(GameState.class, request.getParameters().get(0)));
         GamePacket gamePacket = getObject(GamePacket.class, request.getBody());
         if (gamePacket != null) {
             int nobat=getNobat(gamePacket.getHasTurn(),gameManager);
@@ -130,7 +139,6 @@ public class Game {
     }
 
     private void handlerAttackWeapen(GameManager gameManager, ClientHandler clientHandler, Request request) {
-        gameManager.setGameState(getObject(GameState.class, request.getParameters().get(0)));
         GamePacket gamePacket = getObject(GamePacket.class, request.getBody());
 
         if (gamePacket != null) {
@@ -145,7 +153,6 @@ public class Game {
     }
 
     private void handlerDrawHand(GameManager gameManager, ClientHandler clientHandler, Request request) {
-        gameManager.setGameState(getObject(GameState.class, request.getParameters().get(0)));
         GamePacket gamePacket = getObject(GamePacket.class, request.getBody());
         if (gamePacket != null) {
             int nobat=getNobat(gamePacket.getHasTurn(),gameManager);

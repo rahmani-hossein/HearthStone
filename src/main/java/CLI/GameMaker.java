@@ -130,7 +130,7 @@ public class GameMaker {
     }
     private GamePlayer online(String deck, Player player){
         player.setCurrentDeck(findDeck(player,deck));
-         return makeGamePlayer(player);
+         return makeOnlineGamePlayer(player);
     }
 // for training
     public void buildPassive1() {
@@ -191,6 +191,11 @@ public class GameMaker {
         add(player.getCurrentDeck().getMinions(), deck);
         add(player.getCurrentDeck().getSpells(), deck);
         add(player.getCurrentDeck().getWeapens(), deck);
+        for (int i = 0; i < 3; i++) {
+            card card=deck.remove(0);
+            hand.add(card);
+            System.out.println(card.toString());
+        }
         GamePlayer gamePlayer = new GamePlayer(deck, hand, ground, new HeroCreator().createHero(player.getCurrentDeck().getDeckHero().getName()));
         gamePlayer.setCup(player.getCurrentDeck().getCup());
         System.out.println("we set successfully "+gamePlayer.getInitCard().size());

@@ -22,6 +22,7 @@ public class GameManager {
     private ServerConstants constans = ConstantsLoader.getInstance().getServerConstants();
     private String txtAddress;
     private FileWriter fileWriter;
+    private int numberofRoundClick=0;
 
     public GameManager(GameState gameState) {
         this.gameState = gameState;
@@ -29,9 +30,10 @@ public class GameManager {
 
 
     public void nextRound() {
-        gameState.setTurn(!gameState.isTurn());
+
         setManaInRound();
         drawCardPerRound();
+        gameState.setTurn(!gameState.isTurn());
         increseRound();
 
     }
@@ -250,13 +252,10 @@ public class GameManager {
 
 
     private void setManaInRound() {
-        if (!gameState.isTurn()) {
             setMaxMana(gameState.getFreind());
             setMaxMana(gameState.getEnemy());
             gameState.getFreind().setMana(gameState.getFreind().getMaxManaPerRound());
-        } else {
             gameState.getEnemy().setMana(gameState.getEnemy().getMaxManaPerRound());
-        }
     }
 
     // for every round

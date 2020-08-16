@@ -10,4 +10,60 @@ signed in at:Sun 2020.08.16 at 08:45:52 PM IRDT
 you get all decksSun 2020.08.16 at 08:45:53 PM IRDT
 signed in at:Sun 2020.08.16 at 08:52:38 PM IRDT
 you get all decksSun 2020.08.16 at 08:52:39 PM IRDT
-signed up at:Sun 2020.08.16 at 08:55:58 PM IRDT
+signed up at:Sun 2020.08.16 at 08:55:58 PM IRDTsigned in at:Sun 2020.08.16 at 10:30:50 PM IRDT
+you get all decksSun 2020.08.16 at 10:30:51 PM IRDT
+signed up at:Sun 2020.08.16 at 10:32:01 PM IRDTsigned in at:Sun 2020.08.16 at 10:49:21 PM IRDT
+you get all decksSun 2020.08.16 at 10:49:22 PM IRDT
+signed in at:Sun 2020.08.16 at 11:00:38 PM IRDT
+you get all decksSun 2020.08.16 at 11:00:39 PM IRDT
+player1 blazingBattlemage drew Sun 2020.08.16 at 11:00:51 PM IRDT
+player1 draw blazingBattlemage to ground Sun 2020.08.16 at 11:00:51 PM IRDT
+you draw  a card from hand Sun 2020.08.16 at 11:00:51 PM IRDT
+signed up at:Sun 2020.08.16 at 11:02:22 PM IRDTsigned in at:Sun 2020.08.16 at 11:05:06 PM IRDT
+you get all decksSun 2020.08.16 at 11:05:07 PM IRDT
+player1 blazingBattlemage drew Sun 2020.08.16 at 11:05:21 PM IRDT
+player1 draw blazingBattlemage to ground Sun 2020.08.16 at 11:05:21 PM IRDT
+you draw  a card from hand Sun 2020.08.16 at 11:05:21 PM IRDT
+player1 blazingBattlemage attacked Sun 2020.08.16 at 11:05:42 PM IRDT
+you attackWithMinion Sun 2020.08.16 at 11:05:42 PM IRDT
+player1 hotAirballon drew Sun 2020.08.16 at 11:05:46 PM IRDT
+player1 draw hotAirballon to ground Sun 2020.08.16 at 11:05:46 PM IRDT
+you draw  a card from hand Sun 2020.08.16 at 11:05:46 PM IRDT
+signed up at:Sun 2020.08.16 at 11:06:22 PM IRDTsigned in at:Sun 2020.08.16 at 11:21:16 PM IRDT
+you get all decksSun 2020.08.16 at 11:21:16 PM IRDT
+player1 blazingBattlemage drew Sun 2020.08.16 at 11:21:29 PM IRDT
+player1 draw blazingBattlemage to ground Sun 2020.08.16 at 11:21:29 PM IRDT
+you draw  a card from hand Sun 2020.08.16 at 11:21:29 PM IRDT
+signed up at:Sun 2020.08.16 at 11:23:04 PM IRDTsigned in at:Sun 2020.08.16 at 11:24:49 PM IRDT
+you get all decksSun 2020.08.16 at 11:24:50 PM IRDT
+player1 blazingBattlemage drew Sun 2020.08.16 at 11:25:02 PM IRDT
+player1 draw blazingBattlemage to ground Sun 2020.08.16 at 11:25:02 PM IRDT
+you draw  a card from hand Sun 2020.08.16 at 11:25:02 PM IRDT
+player1 hotAirballon drew Sun 2020.08.16 at 11:25:37 PM IRDT
+player1 draw hotAirballon to ground Sun 2020.08.16 at 11:25:37 PM IRDT
+you draw  a card from hand Sun 2020.08.16 at 11:25:37 PM IRDT
+player1 hotAirballon drew Sun 2020.08.16 at 11:25:40 PM IRDT
+player1 draw hotAirballon to ground Sun 2020.08.16 at 11:25:40 PM IRDT
+you draw  a card from hand Sun 2020.08.16 at 11:25:40 PM IRDT
+signed up at:Sun 2020.08.16 at 11:26:28 PM IRDTsigned in at:Sun 2020.08.16 at 11:46:44 PM IRDT
+you get all decksSun 2020.08.16 at 11:46:45 PM IRDT
+player1 blazingBattlemage drew Sun 2020.08.16 at 11:47:01 PM IRDT
+player1 draw blazingBattlemage to ground Sun 2020.08.16 at 11:47:01 PM IRDT
+you draw  a card from hand Sun 2020.08.16 at 11:47:01 PM IRDT
+player2 draw card success Sun 2020.08.16 at 11:47:04 PM IRDT
+player2 draw card success Sun 2020.08.16 at 11:47:04 PM IRDT
+player1 draw card success Sun 2020.08.16 at 11:47:04 PM IRDT
+player1 draw card success Sun 2020.08.16 at 11:47:04 PM IRDT
+player1 evasiveChimaera drew Sun 2020.08.16 at 11:47:46 PM IRDT
+player1 draw evasiveChimaera to ground Sun 2020.08.16 at 11:47:46 PM IRDT
+you draw  a card from hand Sun 2020.08.16 at 11:47:46 PM IRDT
+player1 hotAirballon drew Sun 2020.08.16 at 11:47:48 PM IRDT
+player1 draw hotAirballon to ground Sun 2020.08.16 at 11:47:48 PM IRDT
+you draw  a card from hand Sun 2020.08.16 at 11:47:48 PM IRDT
+player1 blazingBattlemage attacked Sun 2020.08.16 at 11:47:58 PM IRDT
+you attackWithMinion Sun 2020.08.16 at 11:47:58 PM IRDT
+player2 draw card success Sun 2020.08.16 at 11:48:03 PM IRDT
+player2 draw card success Sun 2020.08.16 at 11:48:03 PM IRDT
+player1 draw card success Sun 2020.08.16 at 11:48:03 PM IRDT
+player1 draw card success Sun 2020.08.16 at 11:48:03 PM IRDT
+signed up at:Sun 2020.08.16 at 11:48:07 PM IRDT
